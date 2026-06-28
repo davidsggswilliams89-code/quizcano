@@ -150,8 +150,8 @@ BEGINNING OF YOU MAY PLAY CSS
     gap:10px;
     overflow-x:auto;
     padding:0 18px 8px;
-    scrollbar-width:none;
     scroll-behavior:smooth;
+    scrollbar-width:none;
 }
 
 .play-scroll::-webkit-scrollbar{
@@ -162,74 +162,111 @@ BEGINNING OF YOU MAY PLAY CSS
     flex-shrink:0;
 }
 
-/* Small Premium Card */
+/* Quiz Card */
+
 .play-card{
-    width:70px;
-    height:70px;
-    border-radius:10px;
-    overflow:hidden;
+
+    width:68px;
+    height:86px;
+
+    border-radius:15px;
 
     display:flex;
     flex-direction:column;
-    align-items:center;
     justify-content:center;
+    align-items:center;
 
-    padding:5px 5px;
+    padding:6px;
+
+    overflow:hidden;
 
     border:1px solid rgba(255,255,255,.08);
 
     box-shadow:0 4px 10px rgba(0,0,0,.28);
 
     transition:.25s;
+
 }
 
 .play-card:hover{
+
     transform:translateY(-2px);
+
 }
 
-.play-icon{
-    font-size:28px;
-    margin-bottom:3px;
-    line-height:1;
+/* Quiz Image */
+
+.play-image{
+
+    width:40px;
+    height:40px;
+
+    object-fit:contain;
+
+    margin-bottom:4px;
+
 }
+
+/* Quiz Title */
 
 .play-title{
+
     color:#FFFFFF;
+
     font-size:9px;
+
     font-weight:600;
+
     text-align:center;
+
     line-height:11px;
-    max-width:60px;
+
+    max-width:58px;
+
 }
 
 /* Card Colors */
 
 .card-purple{
+
     background:linear-gradient(180deg,#8B5CF6,#5B21B6);
-}
 
-.card-green{
-    background:linear-gradient(180deg,#10B981,#047857);
-}
-
-.card-blue{
-    background:linear-gradient(180deg,#3B82F6,#1E3A8A);
 }
 
 .card-orange{
-    background:linear-gradient(180deg,#F97316,#B91C1C);
+
+    background:linear-gradient(180deg,#FF9A3D,#FF6A00);
+
+}
+
+.card-blue{
+
+    background:linear-gradient(180deg,#3B82F6,#1D4ED8);
+
+}
+
+.card-green{
+
+    background:linear-gradient(180deg,#22C55E,#15803D);
+
 }
 
 .card-pink{
-    background:linear-gradient(180deg,#A855F7,#6D28D9);
+
+    background:linear-gradient(180deg,#EC4899,#BE185D);
+
 }
 
 .card-red{
-    background:linear-gradient(180deg,#EF4444,#991B1B);
+
+    background:linear-gradient(180deg,#EF4444,#B91C1C);
+
 }
 
 .card-cyan{
+
     background:linear-gradient(180deg,#06B6D4,#0F766E);
+
 }
 
 /* =========================================================
@@ -292,94 +329,38 @@ BEGINNING OF YOU MAY PLAY
 
     <div class="play-scroll">
 
-        <!-- Card 1 -->
         <div class="play-item">
             <div class="play-card card-purple">
-                <div class="play-icon">
-                    🧠
-                </div>
-
-                <div class="play-title">
-                    Brain Quiz
-                </div>
+                <img src="images/brain.png" alt="Brain Quiz" class="play-image">
+                <div class="play-title">Brain Quiz</div>
             </div>
         </div>
 
-        <!-- Card 2 -->
         <div class="play-item">
             <div class="play-card card-orange">
-                <div class="play-icon">
-                    🎮
-                </div>
-
-                <div class="play-title">
-                    Gaming
-                </div>
+                <img src="images/gaming.png" alt="Gaming" class="play-image">
+                <div class="play-title">Gaming</div>
             </div>
         </div>
 
-        <!-- Card 3 -->
         <div class="play-item">
             <div class="play-card card-blue">
-                <div class="play-icon">
-                    🎬
-                </div>
-
-                <div class="play-title">
-                    Movies
-                </div>
+                <img src="images/movies.png" alt="Movies" class="play-image">
+                <div class="play-title">Movies</div>
             </div>
         </div>
 
-        <!-- Card 4 -->
         <div class="play-item">
             <div class="play-card card-green">
-                <div class="play-icon">
-                    ⚽
-                </div>
-
-                <div class="play-title">
-                    Sports
-                </div>
+                <img src="images/sports.png" alt="Sports" class="play-image">
+                <div class="play-title">Sports</div>
             </div>
         </div>
 
-        <!-- Card 5 -->
         <div class="play-item">
             <div class="play-card card-pink">
-                <div class="play-icon">
-                    🎵
-                </div>
-
-                <div class="play-title">
-                    Music
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="play-item">
-            <div class="play-card card-red">
-                <div class="play-icon">
-                    🌍
-                </div>
-
-                <div class="play-title">
-                    Geography
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 7 -->
-        <div class="play-item">
-            <div class="play-card card-cyan">
-                <div class="play-icon">
-                    🔬
-                </div>
-
-                <div class="play-title">
-                    Science
-                </div>
+                <img src="images/music.png" alt="Music" class="play-image">
+                <div class="play-title">Music</div>
             </div>
         </div>
 
