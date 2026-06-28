@@ -122,30 +122,19 @@ BEGINNING OF YOU MAY PLAY CSS
 ========================================================= */
 
 .section-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:8px 18px 15px;
+    padding:18px;
 }
 
 .section-header h2{
-    font-size:24px;
+    font-size:20px;
     font-weight:700;
-}
-
-.section-header a{
-    text-decoration:none;
-    color:#FF9D00;
-    font-size:14px;
-    font-weight:600;
 }
 
 .play-scroll{
     display:flex;
-    gap:14px;
     overflow-x:auto;
+    gap:16px;
     padding:0 18px 10px;
-    scroll-behavior:smooth;
     scrollbar-width:none;
 }
 
@@ -153,51 +142,27 @@ BEGINNING OF YOU MAY PLAY CSS
     display:none;
 }
 
-.play-card{
-    min-width:150px;
-    background:#171C2F;
-    border-radius:22px;
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,.06);
-    transition:.35s;
+.play-item{
     flex-shrink:0;
+    width:100px;
 }
 
-.play-card:hover{
-    transform:translateY(-6px);
+.play-item img{
+    width:100px;
+    height:100px;
+    border-radius:20px;
+    object-fit:cover;
+    display:block;
 }
 
-.play-image{
-    height:110px;
-    background:linear-gradient(135deg,#7C3AED,#2563EB);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.play-icon{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    background:rgba(255,255,255,.18);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:20px;
-}
-
-.play-info{
-    padding:12px;
-}
-
-.play-info h3{
-    font-size:16px;
-    margin-bottom:4px;
-}
-
-.play-info p{
-    color:#9CA3AF;
-    font-size:13px;
+.play-title{
+    margin-top:10px;
+    font-size:15px;
+    color:#fff;
+    text-align:center;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 
 /* =========================================================
@@ -247,81 +212,48 @@ SECTION 01
 END OF HEADER  HTML
 ========================================================= -->
 
-<!-- =========================================================
+<!-- ===============================
 SECTION 02
-BEGINNING OF YOU MAY PLAY. HTML
-========================================================= -->
+BEGINNING OF YOU MAY PLAY
+===================================== -->
 
 <div class="section-header">
-
-<h2>You May Play</h2>
-
-<a href="#">Explore →</a>
-
+    <h2>You May Play</h2>
 </div>
 
 <div class="play-scroll">
 
-<div class="play-card">
-
-<div class="play-image">
-
-<div class="play-icon">🧠</div>
-
+<div class="play-item">
+<img src="https://picsum.photos/200?1">
+<div class="play-title">Brain Quiz</div>
 </div>
 
-<div class="play-info">
-
-<h3>Brain Quiz</h3>
-
-<p>250 Questions</p>
-
+<div class="play-item">
+<img src="https://picsum.photos/200?2">
+<div class="play-title">Sports Quiz</div>
 </div>
 
+<div class="play-item">
+<img src="https://picsum.photos/200?3">
+<div class="play-title">Movie Quiz</div>
 </div>
 
-<div class="play-card">
-
-<div class="play-image" style="background:linear-gradient(135deg,#FF8A00,#FF5F00);">
-
-<div class="play-icon">🎮</div>
-
+<div class="play-item">
+<img src="https://picsum.photos/200?4">
+<div class="play-title">History</div>
 </div>
 
-<div class="play-info">
-
-<h3>Gaming</h3>
-
-<p>420 Questions</p>
-
+<div class="play-item">
+<img src="https://picsum.photos/200?5">
+<div class="play-title">Science</div>
 </div>
 
 </div>
 
-<div class="play-card">
-
-<div class="play-image" style="background:linear-gradient(135deg,#10B981,#059669);">
-
-<div class="play-icon">⚽</div>
-
-</div>
-
-<div class="play-info">
-
-<h3>Sports</h3>
-
-<p>180 Questions</p>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- =========================================================
+<!-- =======================================
+END OF YOU MAY PLAY
 SECTION 02
-END OF YOU MAY PLAY HTML
-========================================================= -->    
+========================================= -->    
 </body>
 
 </html>
