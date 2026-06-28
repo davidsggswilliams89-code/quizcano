@@ -593,13 +593,14 @@ SCRIPT SECTIONS
 ========================================================= -->
 
 <script>
-/* ====================================
+/* =========================================================
 SECTION 03
 BEGINNING OF DAILY CHALLENGE JS
-==================================== */
+========================================================= */
 
 /* ===========================
-Daily Featured Banners
+Daily Challenge Banners
+Upload your banners here.
 =========================== */
 
 const banners = [
@@ -610,22 +611,22 @@ const banners = [
 },
 
 {
-    image:"images/sports-banner.png",
+    image:"featurebanner2.png",
     link:"#play-game"
 },
 
 {
-    image:"images/music-banner.png",
+    image:"featurebanner3.png",
     link:"#play-game"
 },
 
 {
-    image:"images/environment-banner.png",
+    image:"featurebanner4.png",
     link:"#play-game"
 },
 
 {
-    image:"images/brain-banner.png",
+    image:"featurebanner5.png",
     link:"#play-game"
 }
 
@@ -633,47 +634,54 @@ const banners = [
 
 
 /* ===========================
-Get Today's Banner
+Load Today's Banner
 =========================== */
 
-const today = new Date();
-
-const bannerIndex = today.getDate() % banners.length;
-
 const bannerImage = document.getElementById("featuredBanner");
-
 const bannerLink = document.getElementById("bannerLink");
 
-bannerImage.src = banners[bannerIndex].image;
+function loadTodayBanner(){
 
-bannerLink.href = banners[bannerIndex].link;
+    const today = new Date();
+
+    const days = Math.floor(today.getTime()/86400000);
+
+    const index = days % banners.length;
+
+    bannerImage.src = banners[index].image;
+
+    bannerLink.href = banners[index].link;
+
+}
+
+loadTodayBanner();
 
 
 /* ===========================
-24-Hour Countdown
+24 Hour Countdown
 =========================== */
 
 function updateDailyTimer(){
 
     const now = new Date();
 
-    const tomorrow = new Date();
+    const next = new Date(now);
 
-    tomorrow.setHours(24,0,0,0);
+    next.setHours(24,0,0,0);
 
-    const distance = tomorrow - now;
+    const distance = next - now;
 
-    const hours = Math.floor(distance/(1000*60*60));
+    const hours = Math.floor(distance/1000/60/60);
 
-    const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+    const minutes = Math.floor((distance%(1000*60*60))/1000/60);
 
     const seconds = Math.floor((distance%(1000*60))/1000);
 
-    document.getElementById("dailyTimer").innerHTML =
+    document.getElementById("dailyTimer").innerHTML=
 
-        String(hours).padStart(2,"0") + ":" +
+        String(hours).padStart(2,"0")+":"+
 
-        String(minutes).padStart(2,"0") + ":" +
+        String(minutes).padStart(2,"0")+":"+
 
         String(seconds).padStart(2,"0");
 
@@ -681,43 +689,42 @@ function updateDailyTimer(){
 
 
 /* ===========================
-Refresh Every Second
-=========================== */
-
-updateDailyTimer();
-
-setInterval(updateDailyTimer,1000);
-
-
-/* ===========================
-Auto Reload After Reset
+Refresh Timer Every Second
 =========================== */
 
 setInterval(function(){
 
-    const now = new Date();
+    updateDailyTimer();
 
-    if(
+},1000);
 
-        now.getHours()===0 &&
+updateDailyTimer();
 
-        now.getMinutes()===0 &&
 
-        now.getSeconds()===0
+/* ===========================
+Check For New Day
+=========================== */
 
-    ){
+let currentDay = new Date().getDate();
 
-        location.reload();
+setInterval(function(){
+
+    const today = new Date().getDate();
+
+    if(today !== currentDay){
+
+        currentDay = today;
+
+        loadTodayBanner();
 
     }
 
 },1000);
 
-
-/* =====================================
+/* =========================================================
 END OF DAILY CHALLENGE JS
 SECTION 03
-======================================== */
+========================================================= */
 </script>
     
 </body>
