@@ -122,14 +122,14 @@ BEGINNING OF YOU MAY PLAY CSS
 ========================================================= */
 
 .you-may-play{
-    margin-top:18px;
+    margin-top:16px;
 }
 
 .section-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:0 18px 16px;
+    padding:0 18px 14px;
 }
 
 .section-header h2{
@@ -147,7 +147,7 @@ BEGINNING OF YOU MAY PLAY CSS
 
 .play-scroll{
     display:flex;
-    gap:14px;
+    gap:12px;
     overflow-x:auto;
     padding:0 18px 8px;
     scrollbar-width:none;
@@ -162,37 +162,43 @@ BEGINNING OF YOU MAY PLAY CSS
     flex-shrink:0;
 }
 
+/* Smaller cards like the Quizcano mockup */
 .play-card{
-    width:92px;
-    height:120px;
-    border-radius:18px;
+    width:78px;
+    height:102px;
+    border-radius:16px;
     position:relative;
     overflow:hidden;
+
     display:flex;
     flex-direction:column;
     justify-content:space-between;
     align-items:center;
-    padding:14px 10px 12px;
+
+    padding:10px 6px 10px;
+
     border:1px solid rgba(255,255,255,.08);
-    box-shadow:0 6px 18px rgba(0,0,0,.35);
+
+    box-shadow:0 5px 12px rgba(0,0,0,.30);
+
     transition:.25s;
 }
 
 .play-card:hover{
-    transform:translateY(-4px);
+    transform:translateY(-3px);
 }
 
 .play-icon{
-    font-size:42px;
+    font-size:34px;
     margin-top:2px;
 }
 
 .play-title{
     color:#FFFFFF;
-    font-size:11px;
+    font-size:10px;
     font-weight:600;
     text-align:center;
-    line-height:15px;
+    line-height:13px;
 }
 
 /* Card Colors */
@@ -202,7 +208,7 @@ BEGINNING OF YOU MAY PLAY CSS
 }
 
 .card-green{
-    background:linear-gradient(180deg,#14B8A6,#0F766E);
+    background:linear-gradient(180deg,#10B981,#047857);
 }
 
 .card-blue{
@@ -210,11 +216,11 @@ BEGINNING OF YOU MAY PLAY CSS
 }
 
 .card-orange{
-    background:linear-gradient(180deg,#F97316,#991B1B);
+    background:linear-gradient(180deg,#F97316,#B91C1C);
 }
 
 .card-pink{
-    background:linear-gradient(180deg,#8B5CF6,#4C1D95);
+    background:linear-gradient(180deg,#A855F7,#6D28D9);
 }
 
 .card-red{
