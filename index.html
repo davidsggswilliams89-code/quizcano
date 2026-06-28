@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quizcano</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#060812;
+    color:#fff;
+}
+
+/* ===========================
+HEADER
+=========================== */
+
+.top-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px;
+}
+
+.menu-btn{
+    font-size:30px;
+    cursor:pointer;
+}
+
+.logo-area{
+    text-align:center;
+}
+
+.logo-area h1{
+    font-size:36px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.logo-area span{
+    color:#ff9d00;
+}
+
+.logo-area p{
+    font-size:15px;
+    opacity:.7;
+}
+
+.right-icons{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.notification{
+    position:relative;
+    font-size:28px;
+}
+
+.notification span{
+    position:absolute;
+    top:-8px;
+    right:-8px;
+    background:red;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+}
+
+.profile img{
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    border:3px solid orange;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ===========================
+QUIZCANO HEADER
+=========================== -->
+
+<header class="top-header">
+
+    <div class="menu-btn">
+        ☰
+    </div>
+
+    <div class="logo-area">
+        <h1>QUIZ<span>CANO</span></h1>
+        <p>Play. Learn. Win.</p>
+    </div>
+
+    <div class="right-icons">
+
+        <div class="notification">
+            🔔
+            <span>3</span>
+        </div>
+
+        <div class="profile">
+            <img src="https://i.pravatar.cc/100?img=12" alt="Profile">
+        </div>
+
+    </div>
+
+</header>
+
+</body>
+</html>
