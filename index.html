@@ -122,19 +122,33 @@ BEGINNING OF YOU MAY PLAY CSS
 ========================================================= */
 
 .section-header{
-    padding:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:8px 18px 12px;
 }
 
+/* Section Title */
 .section-header h2{
-    font-size:20px;
+    font-size:14px;
     font-weight:700;
+    color:#FFFFFF;
+}
+
+/* Explore Link */
+.section-header a{
+    text-decoration:none;
+    color:#FF9D00;
+    font-size:12px;
+    font-weight:600;
 }
 
 .play-scroll{
     display:flex;
+    gap:14px;
     overflow-x:auto;
-    gap:16px;
     padding:0 18px 10px;
+    scroll-behavior:smooth;
     scrollbar-width:none;
 }
 
@@ -142,7 +156,9 @@ BEGINNING OF YOU MAY PLAY CSS
     display:none;
 }
 
+/* Each Quiz Item */
 .play-item{
+    flex-shrink:0;
     width:75px;
 }
 
@@ -150,23 +166,34 @@ BEGINNING OF YOU MAY PLAY CSS
     width:75px;
     height:75px;
     border-radius:16px;
+    object-fit:cover;
+    display:block;
+    transition:.3s;
 }
 
+.play-item img:hover{
+    transform:scale(1.05);
+}
+
+/* Quiz Name */
 .play-title{
-    margin-top:10px;
-    font-size:15px;
-    color:#fff;
-    text-align:center;
-    white-space:nowrap;
+    margin-top:6px;
+    font-size:11px;
+    font-weight:500;
+    color:#E5E7EB;
+    line-height:14px;
+    text-align:left;
+
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
     overflow:hidden;
-    text-overflow:ellipsis;
 }
 
-/* =========================================================
+/* ======================================================
 END OF YOU MAY PLAY CSS
 SECTION 02
-========================================================= */ 
-
+========================================================= */
     </style>
 
 </head>
