@@ -283,7 +283,7 @@ BEGINNING OF DAILY CHALLENGE CSS
 
     width:100%;
 
-    padding:18px;
+    padding:14px 18px 0;
 
 }
 
@@ -299,13 +299,13 @@ Challenge Header
 
     align-items:center;
 
-    margin-bottom:14px;
+    margin-bottom:6px;
 
 }
 
 .challenge-header h2{
 
-    font-size:14px;
+    font-size:13px;
 
     font-weight:700;
 
@@ -313,13 +313,7 @@ Challenge Header
 
     margin:0;
 
-}
-
-.challenge-title p{
-
-    font-size:10px;
-
-    color:#8E98B8;
+    line-height:1;
 
 }
 
@@ -333,53 +327,50 @@ Timer
 
     align-items:center;
 
-    gap:8px;
+    gap:4px;
+
+    margin:0;
+
+    padding:0;
 
 }
-        
+
 .timer-icon{
 
-    font-size:15px;
+    font-size:12px;
 
-    color:#FFD54A;
+    color:#FFB547;
 
-    display:flex;
+    margin:0;
 
-    align-items:center;
-
-}
-        
-.timer-label{
-
-    display:block;
-
-    font-size:11px;
-
-    color:#8E98B8;
-
-    margin-bottom:4px;
+    padding:0;
 
 }
 
 #dailyTimer{
 
-    background:linear-gradient(135deg,#7C3AED,#9333EA);
+    font-size:12px;
 
-    color:#FFFFFF;
+    font-weight:600;
 
-    font-size:13px;
+    color:#FFB547;
 
-    font-weight:700;
+    background:none;
 
-    padding:6px 12px;
+    border:none;
 
-    border-radius:10px;
+    box-shadow:none;
 
-    box-shadow:0 0 10px rgba(147,51,234,.40);
+    padding:0;
 
-    letter-spacing:1px;
+    margin:0;
+
+    letter-spacing:.5px;
+
+    line-height:1;
 
 }
+
 /* ===========================
 Featured Banner
 =========================== */
@@ -387,6 +378,8 @@ Featured Banner
 .featured-banner{
 
     width:100%;
+
+    margin-top:0;
 
 }
 
@@ -404,7 +397,7 @@ Featured Banner
 
     display:block;
 
-    border-radius:20px;
+    border-radius:18px;
 
     object-fit:cover;
 
@@ -422,11 +415,7 @@ Featured Banner
 
 .featured-image:hover{
 
-    transform:scale(1.02);
-
-    box-shadow:
-        0 10px 28px rgba(0,0,0,.45),
-        0 0 24px rgba(168,85,247,.45);
+    transform:scale(1.01);
 
 }
 
@@ -436,23 +425,15 @@ Responsive
 
 @media(max-width:600px){
 
-    .challenge-header{
+    .challenge-header h2{
 
-        align-items:flex-start;
-
-    }
-
-    .challenge-title h2{
-
-        font-size:18px;
+        font-size:13px;
 
     }
 
     #dailyTimer{
 
-        font-size:14px;
-
-        padding:7px 12px;
+        font-size:12px;
 
     }
 
