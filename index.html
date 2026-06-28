@@ -156,7 +156,95 @@ YOU MAY LIKE
     font-size:14px;
     padding:0 10px 12px;
 }
-  
+    
+/* ===========================
+FEATURED CATEGORIES
+=========================== */
+
+.featured-section{
+    padding:20px 18px;
+}
+
+.featured-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.feature-card{
+
+    height:170px;
+
+    border-radius:28px;
+
+    padding:20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    color:white;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+
+    transition:.35s;
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.feature-icon{
+
+    font-size:46px;
+
+}
+
+.feature-title{
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.feature-sub{
+
+    opacity:.85;
+
+    font-size:15px;
+
+}
+
+.orange{
+
+background:linear-gradient(135deg,#ff8a00,#ff5f00);
+
+}
+
+.purple{
+
+background:linear-gradient(135deg,#7c3aed,#5b21b6);
+
+}
+
+.blue{
+
+background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+}
+
+.green{
+
+background:linear-gradient(135deg,#16a34a,#15803d);
+
+}
+    
 </style>
 
 </head>
@@ -258,6 +346,83 @@ YOU MAY LIKE
 </div>
 
 </div>   
+
+<!-- ===========================
+FEATURED CATEGORIES
+=========================== -->
+
+<div class="section-title">
+
+<h2>Featured</h2>
+
+<a href="#">See All</a>
+
+</div>
+
+<div class="featured-section">
+
+<div class="featured-grid">
+
+<div class="feature-card orange">
+
+<div class="feature-icon">🎮</div>
+
+<div>
+
+<div class="feature-title">Gaming</div>
+
+<div class="feature-sub">520 Quizzes</div>
+
+</div>
+
+</div>
+
+<div class="feature-card purple">
+
+<div class="feature-icon">🧠</div>
+
+<div>
+
+<div class="feature-title">IQ Quiz</div>
+
+<div class="feature-sub">180 Quizzes</div>
+
+</div>
+
+</div>
+
+<div class="feature-card blue">
+
+<div class="feature-icon">🎬</div>
+
+<div>
+
+<div class="feature-title">Movies</div>
+
+<div class="feature-sub">240 Quizzes</div>
+
+</div>
+
+</div>
+
+<div class="feature-card green">
+
+<div class="feature-icon">⚽</div>
+
+<div>
+
+<div class="feature-title">Sports</div>
+
+<div class="feature-sub">300 Quizzes</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+    
 
 </body>
 </html>
