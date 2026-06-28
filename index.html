@@ -305,7 +305,7 @@ Challenge Header
 
 .challenge-title h2{
 
-    font-size:20px;
+    font-size:10px;
 
     font-weight:700;
 
@@ -317,7 +317,7 @@ Challenge Header
 
 .challenge-title p{
 
-    font-size:12px;
+    font-size:10px;
 
     color:#8E98B8;
 
@@ -329,10 +329,26 @@ Timer
 
 .challenge-timer{
 
-    text-align:right;
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
 
 }
+        
+.timer-icon{
 
+    font-size:15px;
+
+    color:#FFD54A;
+
+    display:flex;
+
+    align-items:center;
+
+}
+        
 .timer-label{
 
     display:block;
@@ -351,20 +367,19 @@ Timer
 
     color:#FFFFFF;
 
-    font-size:16px;
+    font-size:13px;
 
     font-weight:700;
 
-    padding:8px 14px;
+    padding:6px 12px;
 
-    border-radius:12px;
+    border-radius:10px;
 
-    box-shadow:0 0 12px rgba(147,51,234,.45);
+    box-shadow:0 0 10px rgba(147,51,234,.40);
 
     letter-spacing:1px;
 
 }
-
 /* ===========================
 Featured Banner
 =========================== */
@@ -560,10 +575,11 @@ BEGINNING OF DAILY CHALLENGE
 
         <div class="challenge-timer">
 
-            ⏰ <span id="dailyTimer">24:00:00</span>
+    <span class="timer-icon">⏰</span>
 
-        </div>
+    <span id="dailyTimer">24:00:00</span>
 
+</div>
     </div>
 
     <div class="featured-banner">
