@@ -366,84 +366,82 @@ Timer
     margin:0;
 
     letter-spacing:.5px;
-
-    line-height:1;
-
-}
-
-/* ===========================
-Featured Banner
-=========================== */
-
-.featured-banner{
-
-    width:100%;
-
-    margin-top:0;
-
-}
-
-.featured-banner a{
-
-    display:block;
-
-    text-decoration:none;
-
-}
-
-.featured-image{
-
-    width:100%;
-
-    display:block;
-
-    border-radius:18px;
-
-    object-fit:cover;
-
-    cursor:pointer;
-
-    border:2px solid rgba(255,255,255,.08);
-
-    box-shadow:
-        0 8px 24px rgba(0,0,0,.35),
-        0 0 18px rgba(124,58,237,.28);
-
-    transition:.35s ease;
-
-}
-
-.featured-image:hover{
-
-    transform:scale(1.01);
-
-}
-
-/* ===========================
-Responsive
-=========================== */
-
-@media(max-width:600px){
-
-    .challenge-header h2{
-
-        font-size:13px;
-
-    }
-
-    #dailyTimer{
-
-        font-size:12px;
-
-    }
-
-}
-
-/* =========================================================
-END OF DAILY CHALLENGE CSS
+<!-- =========================================================
 SECTION 03
-========================================================= */
+BEGINNING OF FEATURED CAROUSEL
+========================================================= -->
 
+<section class="featured-carousel">
+
+    <div class="section-header">
+
+        <h2>⭐ Featured Challenges</h2>
+
+    </div>
+
+    <div class="carousel-container">
+
+        <div class="carousel-slides" id="carouselSlides">
+
+            <!-- Banner 1 -->
+
+            <a href="#" class="carousel-slide">
+
+                <img src="featurebanner1.png" alt="Banner 1">
+
+            </a>
+
+            <!-- Banner 2 -->
+
+            <a href="#" class="carousel-slide">
+
+                <img src="featurebanner2.png" alt="Banner 2">
+
+            </a>
+
+            <!-- Banner 3 -->
+
+            <a href="#" class="carousel-slide">
+
+                <img src="featurebanner3.png" alt="Banner 3">
+
+            </a>
+
+            <!-- Banner 4 -->
+
+            <a href="#" class="carousel-slide">
+
+                <img src="featurebanner4.png" alt="Banner 4">
+
+            </a>
+
+            <!-- Add Unlimited Banners Below -->
+
+        </div>
+
+    </div>
+
+    <!-- Indicator Dots -->
+
+    <div class="carousel-dots">
+
+        <span class="dot active"></span>
+
+        <span class="dot"></span>
+
+        <span class="dot"></span>
+
+        <span class="dot"></span>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+END OF FEATURED CAROUSEL
+SECTION 03
+========================================================= -->
+        
 /* =========================================================
 SECTION 04
 BEGINNING OF TRENDING QUIZZES CSS
@@ -2343,35 +2341,30 @@ BEGINNING OF DAILY CHALLENGE JS
 ========================================================= */
 
 /* ===========================
-Daily Challenge Banners
+Featured Carousel Banners
 Upload your banners here.
 =========================== */
 
-const banners = [
+const featuredBanners = [
 
 {
-    image:"featurebanner.png",
-    link:"#play-game"
+    image:"featurebanner1.png",
+    link:"#"
 },
 
 {
-    image:"featurebanner.png",
-    link:"#play-game"
+    image:"featurebanner2.png",
+    link:"#"
 },
 
 {
-    image:"featurebanner.png",
-    link:"#play-game"
+    image:"featurebanner3.png",
+    link:"#"
 },
 
 {
-    image:"featurebanner.png",
-    link:"#play-game"
-},
-
-{
-    image:"featurebanner.png",
-    link:"#play-game"
+    image:"featurebanner4.png",
+    link:"#"
 }
 
 ];
