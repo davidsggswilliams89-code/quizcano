@@ -2723,7 +2723,58 @@ document.getElementById("unlockBtn").addEventListener("click",function(){
 END OF RESULT LOCK SCREEN JS
 SECTION 06
 ========================================================= */
+/* =========================================================
+SECTION 08
+BEGINNING OF CONGRATULATIONS SCREEN JS
+========================================================= */
 
+/* ===========================
+Continue Button
+=========================== */
+
+function continueAfterUnlock(){
+
+    // Hide Unlock Screen
+
+    document.getElementById("unlockSection").style.display="none";
+
+    // Show Congratulations
+
+    document.getElementById("congratulationsSection").style.display="block";
+
+}
+
+
+/* ===========================
+Back To Home
+=========================== */
+
+function backToHome(){
+
+    // Hide Congratulations
+
+    document.getElementById("congratulationsSection").style.display="none";
+
+    // Show Home Sections
+
+    document.querySelector(".daily-challenge").style.display="block";
+
+    document.querySelector(".you-may-play").style.display="block";
+
+    document.querySelector(".trending-quizzes").style.display="block";
+
+    // Reset Quiz
+
+    currentQuestion=0;
+
+    loadQuestion();
+
+}
+
+/* =========================================================
+END OF CONGRATULATIONS SCREEN JS
+SECTION 08
+========================================================= */
 </script>
     
 </body>
