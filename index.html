@@ -443,7 +443,275 @@ Responsive
 END OF DAILY CHALLENGE CSS
 SECTION 03
 ========================================================= */
-       
+
+/* =========================================================
+SECTION 04
+BEGINNING OF TRENDING QUIZZES CSS
+========================================================= */
+
+.trending-quizzes{
+
+    width:100%;
+
+    padding:18px;
+
+}
+
+/* ===========================
+Section Header
+=========================== */
+
+.trending-quizzes .section-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:14px;
+
+    padding:0;
+
+}
+
+.trending-quizzes .section-header h2{
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+}
+
+.trending-quizzes .section-header a{
+
+    font-size:12px;
+
+    color:#FFA64D;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+/* ===========================
+Quiz Card
+=========================== */
+
+.quiz-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    background:#171C2F;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:18px;
+
+    padding:12px;
+
+    margin-bottom:12px;
+
+    text-decoration:none;
+
+    transition:.30s;
+
+}
+
+.quiz-card:hover{
+
+    transform:translateY(-2px);
+
+    background:#1D2440;
+
+}
+
+/* ===========================
+Ranking Number
+=========================== */
+
+.quiz-number{
+
+    width:34px;
+
+    height:34px;
+
+    border-radius:50%;
+
+    background:#2D3656;
+
+    color:#FFFFFF;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    flex-shrink:0;
+
+}
+
+.gold{
+
+    background:#F4B400;
+
+    color:#111111;
+
+}
+
+.silver{
+
+    background:#C0C0C0;
+
+    color:#111111;
+
+}
+
+.bronze{
+
+    background:#CD7F32;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Quiz Thumbnail
+=========================== */
+
+.quiz-thumb{
+
+    width:64px;
+
+    height:64px;
+
+    border-radius:14px;
+
+    object-fit:cover;
+
+    flex-shrink:0;
+
+}
+
+/* ===========================
+Quiz Details
+=========================== */
+
+.quiz-details{
+
+    flex:1;
+
+}
+
+.quiz-details h3{
+
+    font-size:14px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+    margin-bottom:4px;
+
+}
+
+.quiz-details span{
+
+    font-size:11px;
+
+    color:#9CA3AF;
+
+}
+
+/* ===========================
+Play Button
+=========================== */
+
+.quiz-play-btn{
+
+    background:#FF9D00;
+
+    color:#FFFFFF;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:8px 16px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+}
+
+.quiz-play-btn:hover{
+
+    background:#FF8800;
+
+}
+
+/* ===========================
+Responsive
+=========================== */
+
+@media(max-width:600px){
+
+    .quiz-card{
+
+        padding:10px;
+
+        gap:10px;
+
+    }
+
+    .quiz-thumb{
+
+        width:56px;
+
+        height:56px;
+
+    }
+
+    .quiz-details h3{
+
+        font-size:13px;
+
+    }
+
+    .quiz-play-btn{
+
+        padding:7px 14px;
+
+        font-size:11px;
+
+    }
+
+}
+
+/* =========================================================
+END OF TRENDING QUIZZES CSS
+SECTION 04
+========================================================= */
+
+
+        
     </style>
 
 </head>
