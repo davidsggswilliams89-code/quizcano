@@ -1213,7 +1213,208 @@ Responsive
 END OF RESULT LOCK SCREEN CSS
 SECTION 06
 ========================================================= */
+/* =========================================================
+SECTION 07
+BEGINNING OF CPA GRIP LOCKER CSS
+========================================================= */
 
+.locker-section{
+
+    width:100%;
+
+    padding:22px 18px;
+
+}
+
+.locker-card{
+
+    background:#171C2F;
+
+    border-radius:22px;
+
+    padding:28px 20px;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    box-shadow:0 8px 24px rgba(0,0,0,.35);
+
+}
+
+.locker-icon{
+
+    width:80px;
+
+    height:80px;
+
+    margin:0 auto 18px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#FF9D00,#FFB800);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:38px;
+
+}
+
+.locker-card h2{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+    margin-bottom:12px;
+
+}
+
+.locker-card p{
+
+    font-size:14px;
+
+    color:#A9B3D0;
+
+    line-height:1.7;
+
+    margin-bottom:20px;
+
+}
+
+.locker-list{
+
+    list-style:none;
+
+    text-align:left;
+
+    margin-bottom:24px;
+
+}
+
+.locker-list li{
+
+    background:#202945;
+
+    padding:14px 16px;
+
+    margin-bottom:10px;
+
+    border-radius:12px;
+
+    color:#FFFFFF;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+#cpagrip-container{
+
+    min-height:120px;
+
+    background:#111726;
+
+    border:2px dashed rgba(255,255,255,.12);
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#8E98B8;
+
+    margin-bottom:22px;
+
+    padding:20px;
+
+}
+
+.unlock-btn{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,#FF9D00,#FFB800);
+
+    color:#FFFFFF;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+    box-shadow:0 6px 18px rgba(255,157,0,.35);
+
+}
+
+.unlock-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.unlock-btn:active{
+
+    transform:scale(.98);
+
+}
+
+/* ===========================
+Responsive
+=========================== */
+
+@media(max-width:600px){
+
+    .locker-card{
+
+        padding:22px 16px;
+
+    }
+
+    .locker-card h2{
+
+        font-size:20px;
+
+    }
+
+    .locker-card p{
+
+        font-size:13px;
+
+    }
+
+    .locker-list li{
+
+        font-size:13px;
+
+    }
+
+}
+
+/* =========================================================
+END OF CPA GRIP LOCKER CSS
+SECTION 07
+========================================================= */
+    
         
         
     </style>
@@ -1996,6 +2197,70 @@ document.querySelector(".next-btn").addEventListener("click", function(){
 END OF QUIZ PLAYER JS. sectiom 5
 ========================================================= */
 /* =========================================================
+SECTION 07
+BEGINNING OF CPA GRIP LOCKER JS
+========================================================= */
+
+/* ===========================
+Open CPA Locker
+=========================== */
+
+function openLocker(){
+
+    // Hide Result Section
+
+    document.getElementById("resultSection").style.display="none";
+
+    // Show CPA Locker
+
+    document.getElementById("lockerSection").style.display="block";
+
+}
+
+/* ===========================
+Unlock Results
+(Temporary Demo)
+Replace with CPA Grip callback later.
+=========================== */
+
+function unlockResults(){
+
+    // Hide Locker
+
+    document.getElementById("lockerSection").style.display="none";
+
+    // Show Final Results
+
+    document.getElementById("hiddenResult").style.display="block";
+
+}
+
+/* ===========================
+Unlock Button
+=========================== */
+
+document.querySelector(".unlock-btn").addEventListener("click",function(){
+
+    this.innerHTML="Checking Offer...";
+
+    this.disabled=true;
+
+    // Simulate CPA completion
+
+    setTimeout(function(){
+
+        unlockResults();
+
+    },3000);
+
+});
+
+/* =========================================================
+END OF CPA GRIP LOCKER JS
+SECTION 07
+========================================================= */
+    
+/* =========================================================
 SECTION 06
 BEGINNING OF RESULT LOCK SCREEN JS
 ========================================================= */
@@ -2060,208 +2325,7 @@ document.getElementById("unlockBtn").addEventListener("click",function(){
 END OF RESULT LOCK SCREEN JS
 SECTION 06
 ========================================================= */
-/* =========================================================
-SECTION 07
-BEGINNING OF CPA GRIP LOCKER CSS
-========================================================= */
 
-.locker-section{
-
-    width:100%;
-
-    padding:22px 18px;
-
-}
-
-.locker-card{
-
-    background:#171C2F;
-
-    border-radius:22px;
-
-    padding:28px 20px;
-
-    text-align:center;
-
-    border:1px solid rgba(255,255,255,.06);
-
-    box-shadow:0 8px 24px rgba(0,0,0,.35);
-
-}
-
-.locker-icon{
-
-    width:80px;
-
-    height:80px;
-
-    margin:0 auto 18px;
-
-    border-radius:50%;
-
-    background:linear-gradient(135deg,#FF9D00,#FFB800);
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:38px;
-
-}
-
-.locker-card h2{
-
-    font-size:22px;
-
-    font-weight:700;
-
-    color:#FFFFFF;
-
-    margin-bottom:12px;
-
-}
-
-.locker-card p{
-
-    font-size:14px;
-
-    color:#A9B3D0;
-
-    line-height:1.7;
-
-    margin-bottom:20px;
-
-}
-
-.locker-list{
-
-    list-style:none;
-
-    text-align:left;
-
-    margin-bottom:24px;
-
-}
-
-.locker-list li{
-
-    background:#202945;
-
-    padding:14px 16px;
-
-    margin-bottom:10px;
-
-    border-radius:12px;
-
-    color:#FFFFFF;
-
-    font-size:14px;
-
-    font-weight:600;
-
-}
-
-#cpagrip-container{
-
-    min-height:120px;
-
-    background:#111726;
-
-    border:2px dashed rgba(255,255,255,.12);
-
-    border-radius:16px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    color:#8E98B8;
-
-    margin-bottom:22px;
-
-    padding:20px;
-
-}
-
-.unlock-btn{
-
-    width:100%;
-
-    padding:16px;
-
-    border:none;
-
-    border-radius:16px;
-
-    background:linear-gradient(135deg,#FF9D00,#FFB800);
-
-    color:#FFFFFF;
-
-    font-size:16px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.30s;
-
-    box-shadow:0 6px 18px rgba(255,157,0,.35);
-
-}
-
-.unlock-btn:hover{
-
-    transform:translateY(-2px);
-
-}
-
-.unlock-btn:active{
-
-    transform:scale(.98);
-
-}
-
-/* ===========================
-Responsive
-=========================== */
-
-@media(max-width:600px){
-
-    .locker-card{
-
-        padding:22px 16px;
-
-    }
-
-    .locker-card h2{
-
-        font-size:20px;
-
-    }
-
-    .locker-card p{
-
-        font-size:13px;
-
-    }
-
-    .locker-list li{
-
-        font-size:13px;
-
-    }
-
-}
-
-/* =========================================================
-END OF CPA GRIP LOCKER CSS
-SECTION 07
-========================================================= */
-    
 </script>
     
 </body>
