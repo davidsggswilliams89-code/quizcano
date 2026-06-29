@@ -1626,7 +1626,65 @@ BEGINNING OF RESULT LOCK SCREEN
 END OF RESULT LOCK SCREEN
 SECTION 06
 ========================================================= -->    
+<!-- =========================================================
+SECTION 07
+BEGINNING OF CPA GRIP CONTENT LOCKER
+========================================================= -->
 
+<section class="locker-section" id="lockerSection" style="display:none;">
+
+    <div class="locker-card">
+
+        <div class="locker-icon">
+            🔒
+        </div>
+
+        <h2>Unlock Your Results</h2>
+
+        <p>
+
+            Your quiz has been completed successfully.
+
+            Complete one quick sponsored offer below to unlock your:
+
+        </p>
+
+        <ul class="locker-list">
+
+            <li>🏆 Final Score</li>
+
+            <li>🧠 Brain Assessment</li>
+
+            <li>🎖 Performance Badge</li>
+
+            <li>✅ Correct Answers</li>
+
+            <li>❌ Wrong Answers</li>
+
+        </ul>
+
+        <!-- CPA Grip Script Goes Here -->
+
+        <div id="cpagrip-container">
+
+            <!-- Paste your CPA Grip Content Locker code here -->
+
+        </div>
+
+        <button class="unlock-btn" onclick="checkUnlock()">
+
+            I've Completed the Offer
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+END OF CPA GRIP CONTENT LOCKER
+SECTION 07
+========================================================= -->
 
     
 <!-- =========================================================
@@ -2001,6 +2059,207 @@ document.getElementById("unlockBtn").addEventListener("click",function(){
 /* =========================================================
 END OF RESULT LOCK SCREEN JS
 SECTION 06
+========================================================= */
+/* =========================================================
+SECTION 07
+BEGINNING OF CPA GRIP LOCKER CSS
+========================================================= */
+
+.locker-section{
+
+    width:100%;
+
+    padding:22px 18px;
+
+}
+
+.locker-card{
+
+    background:#171C2F;
+
+    border-radius:22px;
+
+    padding:28px 20px;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    box-shadow:0 8px 24px rgba(0,0,0,.35);
+
+}
+
+.locker-icon{
+
+    width:80px;
+
+    height:80px;
+
+    margin:0 auto 18px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#FF9D00,#FFB800);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:38px;
+
+}
+
+.locker-card h2{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+    margin-bottom:12px;
+
+}
+
+.locker-card p{
+
+    font-size:14px;
+
+    color:#A9B3D0;
+
+    line-height:1.7;
+
+    margin-bottom:20px;
+
+}
+
+.locker-list{
+
+    list-style:none;
+
+    text-align:left;
+
+    margin-bottom:24px;
+
+}
+
+.locker-list li{
+
+    background:#202945;
+
+    padding:14px 16px;
+
+    margin-bottom:10px;
+
+    border-radius:12px;
+
+    color:#FFFFFF;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+#cpagrip-container{
+
+    min-height:120px;
+
+    background:#111726;
+
+    border:2px dashed rgba(255,255,255,.12);
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#8E98B8;
+
+    margin-bottom:22px;
+
+    padding:20px;
+
+}
+
+.unlock-btn{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,#FF9D00,#FFB800);
+
+    color:#FFFFFF;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+    box-shadow:0 6px 18px rgba(255,157,0,.35);
+
+}
+
+.unlock-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.unlock-btn:active{
+
+    transform:scale(.98);
+
+}
+
+/* ===========================
+Responsive
+=========================== */
+
+@media(max-width:600px){
+
+    .locker-card{
+
+        padding:22px 16px;
+
+    }
+
+    .locker-card h2{
+
+        font-size:20px;
+
+    }
+
+    .locker-card p{
+
+        font-size:13px;
+
+    }
+
+    .locker-list li{
+
+        font-size:13px;
+
+    }
+
+}
+
+/* =========================================================
+END OF CPA GRIP LOCKER CSS
+SECTION 07
 ========================================================= */
     
 </script>
