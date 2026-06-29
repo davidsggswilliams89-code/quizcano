@@ -1414,10 +1414,296 @@ Responsive
 END OF CPA GRIP LOCKER CSS
 SECTION 07
 ========================================================= */
-    
+/* =========================================================
+SECTION 08
+BEGINNING OF FINAL RESULT CSS
+========================================================= */
+
+.final-result{
+
+    width:100%;
+
+    padding:22px 18px;
+
+}
+
+/* ===========================
+Trophy
+=========================== */
+
+.result-trophy{
+
+    width:90px;
+
+    height:90px;
+
+    margin:0 auto 18px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#FF9D00,#FFC83D);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:48px;
+
+    box-shadow:0 8px 22px rgba(255,157,0,.35);
+
+}
+
+/* ===========================
+Heading
+=========================== */
+
+.final-title{
+
+    text-align:center;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+    margin-bottom:6px;
+
+}
+
+.final-subtitle{
+
+    text-align:center;
+
+    font-size:14px;
+
+    color:#8E98B8;
+
+    margin-bottom:22px;
+
+}
+
+/* ===========================
+Result Card
+=========================== */
+
+.final-card{
+
+    background:#171C2F;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    box-shadow:0 8px 22px rgba(0,0,0,.35);
+
+    margin-bottom:22px;
+
+}
+
+/* ===========================
+Result Row
+=========================== */
+
+.result-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:14px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.result-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.result-row span{
+
+    color:#A8B2D1;
+
+    font-size:14px;
+
+    font-weight:500;
+
+}
+
+.result-row strong{
+
+    color:#FFFFFF;
+
+    font-size:15px;
+
+    font-weight:700;
+
+}
+
+/* ===========================
+Share Button
+=========================== */
+
+.share-result-btn{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:14px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,#25D366,#128C7E);
+
+    color:#FFFFFF;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+}
+
+.share-result-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+Play Again Button
+=========================== */
+
+.play-again-btn{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:14px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,#FF9D00,#FFC83D);
+
+    color:#FFFFFF;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+}
+
+.play-again-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+Back Home Button
+=========================== */
+
+.home-btn{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#202945;
+
+    color:#FFFFFF;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+}
+
+.home-btn:hover{
+
+    background:#293454;
+
+}
+
+/* ===========================
+Responsive
+=========================== */
+
+@media(max-width:600px){
+
+    .result-trophy{
+
+        width:80px;
+
+        height:80px;
+
+        font-size:42px;
+
+    }
+
+    .final-title{
+
+        font-size:22px;
+
+    }
+
+    .final-subtitle{
+
+        font-size:13px;
+
+    }
+
+    .result-row span{
+
+        font-size:13px;
+
+    }
+
+    .result-row strong{
+
+        font-size:14px;
+
+    }
+
+}
+
+/* =========================================================
+END OF FINAL RESULT CSS
+SECTION 08
+========================================================= */    
         
         
-    </style>
+</style>
 
 </head>
 
@@ -1886,6 +2172,118 @@ BEGINNING OF CPA GRIP CONTENT LOCKER
 END OF CPA GRIP CONTENT LOCKER
 SECTION 07
 ========================================================= -->
+<!-- =========================================================
+SECTION 08
+BEGINNING OF FINAL RESULT
+========================================================= -->
+
+<section class="final-result" id="finalResult" style="display:none;">
+
+    <!-- Trophy -->
+
+    <div class="result-trophy">
+
+        🏆
+
+    </div>
+
+    <!-- Title -->
+
+    <h2 class="final-title">
+
+        Congratulations!
+
+    </h2>
+
+    <p class="final-subtitle">
+
+        Your Quiz Result Has Been Unlocked
+
+    </p>
+
+    <!-- Result Card -->
+
+    <div class="final-card">
+
+        <div class="result-row">
+
+            <span>Final Score</span>
+
+            <strong id="finalScore">
+                18 / 20
+            </strong>
+
+        </div>
+
+        <div class="result-row">
+
+            <span>Performance Badge</span>
+
+            <strong id="performanceBadge">
+                🥇 Excellent
+            </strong>
+
+        </div>
+
+        <div class="result-row">
+
+            <span>Brain Assessment</span>
+
+            <strong id="brainAssessment">
+                Genius Level
+            </strong>
+
+        </div>
+
+        <div class="result-row">
+
+            <span>Correct Answers</span>
+
+            <strong id="correctAnswers">
+                18
+            </strong>
+
+        </div>
+
+        <div class="result-row">
+
+            <span>Wrong Answers</span>
+
+            <strong id="wrongAnswers">
+                2
+            </strong>
+
+        </div>
+
+    </div>
+
+    <!-- Action Buttons -->
+
+    <button class="share-result-btn">
+
+        📤 Share Result
+
+    </button>
+
+    <button class="play-again-btn" onclick="playAgain()">
+
+        🔄 Play Again
+
+    </button>
+
+    <button class="home-btn" onclick="goHome()">
+
+        🏠 Back Home
+
+    </button>
+
+</section>
+
+<!-- =========================================================
+END OF FINAL RESULT
+SECTION 08
+========================================================= -->
+
 
     
 <!-- =========================================================
