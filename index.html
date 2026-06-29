@@ -1018,7 +1018,201 @@ Responsive
 END OF QUIZ PLAYER CSS
 SECTION 05
 ========================================================= */
+/* =========================================================
+SECTION 06
+BEGINNING OF RESULT LOCK SCREEN CSS
+========================================================= */
 
+.result-section{
+
+    width:100%;
+
+    padding:20px 18px 30px;
+
+}
+
+.result-card{
+
+    background:#151C33;
+
+    border-radius:20px;
+
+    padding:24px 20px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.35),
+        0 0 18px rgba(124,58,237,.18);
+
+}
+
+.result-icon{
+
+    width:70px;
+
+    height:70px;
+
+    margin:0 auto 18px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#7C3AED,#9333EA);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:34px;
+
+    box-shadow:0 0 20px rgba(147,51,234,.35);
+
+}
+
+.result-card h2{
+
+    text-align:center;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+    margin-bottom:10px;
+
+}
+
+.result-message{
+
+    text-align:center;
+
+    font-size:13px;
+
+    color:#AEB8D0;
+
+    line-height:22px;
+
+    margin-bottom:24px;
+
+}
+
+.locked-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    margin-bottom:28px;
+
+}
+
+.locked-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#0F172A;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:14px;
+
+    padding:14px 16px;
+
+    color:#FFFFFF;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.unlock-btn{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:linear-gradient(135deg,#FF9D00,#FF6A00);
+
+    color:#FFFFFF;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+}
+
+.unlock-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 18px rgba(255,106,0,.35);
+
+}
+
+.unlock-btn:active{
+
+    transform:scale(.98);
+
+}
+
+/* ===========================
+Responsive
+=========================== */
+
+@media(max-width:600px){
+
+    .result-card{
+
+        padding:20px 16px;
+
+    }
+
+    .result-card h2{
+
+        font-size:20px;
+
+    }
+
+    .locked-item{
+
+        font-size:13px;
+
+        padding:13px 14px;
+
+    }
+
+    .unlock-btn{
+
+        height:50px;
+
+        font-size:15px;
+
+    }
+
+}
+
+/* =========================================================
+END OF RESULT LOCK SCREEN CSS
+SECTION 06
+========================================================= */
 
         
         
@@ -1327,7 +1521,7 @@ BEGINNING OF QUIZ PLAYER
             QUESTION
         </span>
 
-        <h3 id="questionText">
+        <h3 id="questionText">u
 
             Which planet is known as the Red Planet?
 
@@ -1371,7 +1565,69 @@ BEGINNING OF QUIZ PLAYER
 END OF QUIZ PLAYER
 SECTION 05
 ========================================================= -->
-    
+<!-- =========================================================
+SECTION 06
+BEGINNING OF RESULT LOCK SCREEN
+========================================================= -->
+
+<section class="result-section" id="resultSection" style="display:none;">
+
+    <div class="result-card">
+
+        <div class="result-icon">
+            🔒
+        </div>
+
+        <h2>Quiz Completed!</h2>
+
+        <p class="result-message">
+            Your results are ready.
+            Complete the step below to unlock your score.
+        </p>
+
+        <div class="locked-list">
+
+            <div class="locked-item">
+                <span>🎯 Final Score</span>
+                <span>🔒</span>
+            </div>
+
+            <div class="locked-item">
+                <span>🏆 Performance Badge</span>
+                <span>🔒</span>
+            </div>
+
+            <div class="locked-item">
+                <span>🧠 Brain Assessment</span>
+                <span>🔒</span>
+            </div>
+
+            <div class="locked-item">
+                <span>✅ Correct Answers</span>
+                <span>🔒</span>
+            </div>
+
+            <div class="locked-item">
+                <span>❌ Wrong Answers</span>
+                <span>🔒</span>
+            </div>
+
+        </div>
+
+        <button id="unlockBtn" class="unlock-btn">
+            🔓 Unlock Results
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+END OF RESULT LOCK SCREEN
+SECTION 06
+========================================================= -->    
+
+
     
 <!-- =========================================================
 SCRIPT SECTIONS.  SCRIPT SECTIONS. SCRIPT SECTIONS. SCRIPT SECTIONS. SCRIPT SECTIONS. SCRIPT SECTIONS.  SCRIPT SECTIONS
@@ -1671,6 +1927,71 @@ loadQuestion();
 
 /* =========================================================
 END OF QUIZ PLAYER JS. sectiom 5
+========================================================= */
+/* =========================================================
+SECTION 06
+BEGINNING OF RESULT LOCK SCREEN JS
+========================================================= */
+
+/* ===========================
+Show Result Screen
+=========================== */
+
+function showResultScreen(){
+
+    // Hide Quiz Section
+    document.getElementById("quizPlayer").style.display="none";
+
+    // Show Result Lock Section
+    document.getElementById("resultSection").style.display="block";
+
+}
+
+
+/* ===========================
+Quiz Finished
+=========================== */
+
+/*
+When the last question is answered,
+call:
+
+showResultScreen();
+
+Example:
+
+if(currentQuestion === questions.length){
+
+    showResultScreen();
+
+}
+*/
+
+
+/* ===========================
+Unlock Button
+=========================== */
+
+document.getElementById("unlockBtn").addEventListener("click",function(){
+
+    /*
+    CPA Grip Link
+
+    Example:
+
+    window.location.href="https://your-cpagrip-link.com";
+
+    Replace with your real CPA Grip URL later.
+    */
+
+    alert("CPA Grip will be connected here.");
+
+});
+
+
+/* =========================================================
+END OF RESULT LOCK SCREEN JS
+SECTION 06
 ========================================================= */
     
 </script>
