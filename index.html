@@ -1903,25 +1903,21 @@ button.classList.add("selected");
 Next Question
 =========================== */
 
-document.querySelector(".next-btn").addEventListener("click",function(){
+document.querySelector(".next-btn").addEventListener("click", function(){
 
-if(currentQuestion<quizQuestions.length-1){
+    if(currentQuestion < quizQuestions.length - 1){
 
-currentQuestion++;
+        currentQuestion++;
 
-loadQuestion();
+        loadQuestion();
 
-}else{
+    }else{
 
-alert("🎉 Quiz Completed!");
+        showResultScreen();
 
-goHome();
+        currentQuestion = 0;
 
-currentQuestion=0;
-
-loadQuestion();
-
-}
+    }
 
 });
 
