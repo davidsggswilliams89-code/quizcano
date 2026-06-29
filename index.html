@@ -1572,6 +1572,7 @@ BEGINNING OF RESULT LOCK SCREEN
 
 <section class="result-section" id="resultSection" style="display:none;">
 
+    
     <div class="result-card">
 
         <div class="result-icon">
@@ -1789,6 +1790,7 @@ function startQuiz(category){
 
 }
 
+   
 /* ===========================
 Back To Home
 =========================== */
@@ -1804,7 +1806,19 @@ function goHome(){
     document.querySelector(".trending-quizzes").style.display="block";
 
 }
+    
+/* ===========================
+Show Result Screen
+=========================== */
 
+function showResultScreen(){
+
+    document.getElementById("quizPlayer").style.display = "none";
+
+    document.getElementById("resultSection").style.display = "block";
+
+}
+    
 /* ===========================
 Sample Questions
 =========================== */
