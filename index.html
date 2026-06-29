@@ -366,81 +366,163 @@ Timer
     margin:0;
 
     letter-spacing:.5px;
-<!-- =========================================================
+/* =========================================================
 SECTION 03
-BEGINNING OF FEATURED CAROUSEL
-========================================================= -->
+BEGINNING OF FEATURED CAROUSEL CSS
+========================================================= */
 
-<section class="featured-carousel">
+.featured-carousel{
 
-    <div class="section-header">
+    width:100%;
 
-        <h2>⭐ Featured Challenges</h2>
+    padding:14px 18px 0;
 
-    </div>
+}
 
-    <div class="carousel-container">
+/* ===========================
+Section Header
+=========================== */
 
-        <div class="carousel-slides" id="carouselSlides">
+.featured-carousel .section-header{
 
-            <!-- Banner 1 -->
+    padding:0;
 
-            <a href="#" class="carousel-slide">
+    margin-bottom:10px;
 
-                <img src="featurebanner1.png" alt="Banner 1">
+}
 
-            </a>
+.featured-carousel .section-header h2{
 
-            <!-- Banner 2 -->
+    font-size:15px;
 
-            <a href="#" class="carousel-slide">
+    font-weight:700;
 
-                <img src="featurebanner2.png" alt="Banner 2">
+    color:#FFFFFF;
 
-            </a>
+}
 
-            <!-- Banner 3 -->
+/* ===========================
+Carousel Container
+=========================== */
 
-            <a href="#" class="carousel-slide">
+.carousel-container{
 
-                <img src="featurebanner3.png" alt="Banner 3">
+    width:100%;
 
-            </a>
+    overflow:hidden;
 
-            <!-- Banner 4 -->
+    border-radius:18px;
 
-            <a href="#" class="carousel-slide">
+    border:2px solid rgba(255,255,255,.08);
 
-                <img src="featurebanner4.png" alt="Banner 4">
+    box-shadow:
+        0 8px 24px rgba(0,0,0,.35),
+        0 0 18px rgba(124,58,237,.20);
 
-            </a>
+}
 
-            <!-- Add Unlimited Banners Below -->
+/* ===========================
+Slides
+=========================== */
 
-        </div>
+.carousel-slides{
 
-    </div>
+    display:flex;
 
-    <!-- Indicator Dots -->
+    transition:transform .6s ease-in-out;
 
-    <div class="carousel-dots">
+}
 
-        <span class="dot active"></span>
+/* ===========================
+Single Slide
+=========================== */
 
-        <span class="dot"></span>
+.carousel-slide{
 
-        <span class="dot"></span>
+    min-width:100%;
 
-        <span class="dot"></span>
+    display:block;
 
-    </div>
+    text-decoration:none;
 
-</section>
+}
 
-<!-- =========================================================
-END OF FEATURED CAROUSEL
+.carousel-slide img{
+
+    width:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+}
+
+/* ===========================
+Indicator Dots
+=========================== */
+
+.carousel-dots{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:12px;
+
+}
+
+.dot{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#5A6485;
+
+    transition:.3s;
+
+}
+
+.dot.active{
+
+    width:24px;
+
+    border-radius:20px;
+
+    background:#FF9D00;
+
+}
+
+/* ===========================
+Responsive
+=========================== */
+
+@media(max-width:600px){
+
+    .featured-carousel{
+
+        padding:14px 18px 0;
+
+    }
+
+    .featured-carousel .section-header h2{
+
+        font-size:14px;
+
+    }
+
+}
+
+/* =========================================================
+END OF FEATURED CAROUSEL CSS
 SECTION 03
-========================================================= -->
+========================================================= */
         
 /* =========================================================
 SECTION 04
