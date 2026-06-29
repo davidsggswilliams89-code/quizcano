@@ -2451,14 +2451,14 @@ SCRIPT SECTIONS.  SCRIPT SECTIONS. SCRIPT SECTIONS. SCRIPT SECTIONS. SCRIPT SECT
 ========================================================= -->
 
 <script>
+    
 /* =========================================================
 SECTION 03
-BEGINNING OF DAILY CHALLENGE JS
+BEGINNING OF FEATURED CAROUSEL JS
 ========================================================= */
 
 /* ===========================
-Featured Carousel Banners
-Upload your banners here.
+Featured Banners
 =========================== */
 
 const featuredBanners = [
@@ -2487,95 +2487,89 @@ const featuredBanners = [
 
 
 /* ===========================
-Load Today's Banner
+Load Carousel
 =========================== */
 
-const bannerImage = document.getElementById("featuredBanner");
-const bannerLink = document.getElementById("bannerLink");
+const carouselSlides = document.getElementById("carouselSlides");
 
-function loadTodayBanner(){
+const dotsContainer = document.querySelector(".carousel-dots");
 
-    const today = new Date();
+carouselSlides.innerHTML = "";
 
-    const days = Math.floor(today.getTime()/86400000);
+dotsContainer.innerHTML = "";
 
-    const index = days % banners.length;
+featuredBanners.forEach(function(banner,index){
 
-    bannerImage.src = banners[index].image;
+    carouselSlides.innerHTML += `
 
-    bannerLink.href = banners[index].link;
+    <a href="${banner.link}" class="carousel-slide">
+
+        <img src="${banner.image}" alt="Featured Banner">
+
+    </a>
+
+    `;
+
+    dotsContainer.innerHTML += `
+
+    <span class="dot ${index===0 ? "active" : ""}"></span>
+
+    `;
+
+});
+
+
+/* ===========================
+Auto Carousel
+=========================== */
+
+let currentSlide = 0;
+
+const dots = document.querySelectorAll(".dot");
+
+function showSlide(index){
+
+    carouselSlides.style.transform =
+    "translateX(-"+(index*100)+"%)";
+
+    dots.forEach(function(dot){
+
+        dot.classList.remove("active");
+
+    });
+
+    dots[index].classList.add("active");
 
 }
 
-loadTodayBanner();
-
 
 /* ===========================
-24 Hour Countdown
+Next Slide
 =========================== */
 
-function updateDailyTimer(){
+function nextSlide(){
 
-    const now = new Date();
+    currentSlide++;
 
-    const next = new Date(now);
+    if(currentSlide >= featuredBanners.length){
 
-    next.setHours(24,0,0,0);
-
-    const distance = next - now;
-
-    const hours = Math.floor(distance/1000/60/60);
-
-    const minutes = Math.floor((distance%(1000*60*60))/1000/60);
-
-    const seconds = Math.floor((distance%(1000*60))/1000);
-
-    document.getElementById("dailyTimer").innerHTML=
-
-        String(hours).padStart(2,"0")+":"+
-
-        String(minutes).padStart(2,"0")+":"+
-
-        String(seconds).padStart(2,"0");
-
-}
-
-
-/* ===========================
-Refresh Timer Every Second
-=========================== */
-
-setInterval(function(){
-
-    updateDailyTimer();
-
-},1000);
-
-updateDailyTimer();
-
-
-/* ===========================
-Check For New Day
-=========================== */
-
-let currentDay = new Date().getDate();
-
-setInterval(function(){
-
-    const today = new Date().getDate();
-
-    if(today !== currentDay){
-
-        currentDay = today;
-
-        loadTodayBanner();
+        currentSlide = 0;
 
     }
 
-},1000);
+    showSlide(currentSlide);
+
+}
+
+
+/* ===========================
+Auto Play
+=========================== */
+
+setInterval(nextSlide,5000);
 
 /* =========================================================
-END OF DAILY CHALLENGE JS
+END OF FEATURED CAROUSEL JS
 SECTION 03
 ========================================================= */
 /* =========================================================
