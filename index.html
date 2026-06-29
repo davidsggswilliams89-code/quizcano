@@ -710,7 +710,304 @@ END OF TRENDING QUIZZES CSS
 SECTION 04
 ========================================================= */
 
+/* =========================================================
+SECTION 05
+BEGINNING OF QUIZ PLAYER CSS
+========================================================= */
 
+.quiz-player{
+
+    width:100%;
+
+    padding:18px;
+
+}
+
+/* ===========================
+Quiz Header
+=========================== */
+
+.quiz-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:18px;
+
+}
+
+.quiz-back{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#1A2035;
+
+    color:#FFFFFF;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.quiz-back:hover{
+
+    background:#252E49;
+
+}
+
+.quiz-header-text{
+
+    flex:1;
+
+}
+
+.quiz-header-text h2{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+    margin-bottom:3px;
+
+}
+
+.quiz-header-text span{
+
+    font-size:12px;
+
+    color:#8E98B8;
+
+}
+
+/* ===========================
+Progress Bar
+=========================== */
+
+.progress-bar{
+
+    width:100%;
+
+    height:8px;
+
+    background:#1A2035;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin-bottom:22px;
+
+}
+
+.progress-fill{
+
+    width:5%;
+
+    height:100%;
+
+    background:linear-gradient(90deg,#FF9D00,#FFC83D);
+
+    border-radius:20px;
+
+    transition:.4s;
+
+}
+
+/* ===========================
+Question Card
+=========================== */
+
+.question-card{
+
+    background:#171C2F;
+
+    border-radius:20px;
+
+    padding:24px;
+
+    margin-bottom:22px;
+
+    border:1px solid rgba(255,255,255,.06);
+
+}
+
+.question-number{
+
+    display:inline-block;
+
+    font-size:11px;
+
+    color:#FF9D00;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+
+    letter-spacing:1px;
+
+}
+
+.question-card h3{
+
+    font-size:20px;
+
+    line-height:1.5;
+
+    color:#FFFFFF;
+
+    font-weight:700;
+
+}
+
+/* ===========================
+Answer Buttons
+=========================== */
+
+.answers{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.answer-btn{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#171C2F;
+
+    color:#FFFFFF;
+
+    text-align:left;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+    border:2px solid transparent;
+
+}
+
+.answer-btn:hover{
+
+    background:#202945;
+
+    border-color:#FF9D00;
+
+}
+
+.answer-btn.selected{
+
+    background:#FF9D00;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Next Button
+=========================== */
+
+.next-btn{
+
+    width:100%;
+
+    margin-top:24px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(90deg,#FF9D00,#FFB300);
+
+    color:#FFFFFF;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.next-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+Responsive
+=========================== */
+
+@media(max-width:600px){
+
+    .quiz-header-text h2{
+
+        font-size:16px;
+
+    }
+
+    .question-card{
+
+        padding:20px;
+
+    }
+
+    .question-card h3{
+
+        font-size:18px;
+
+    }
+
+    .answer-btn{
+
+        font-size:14px;
+
+        padding:15px;
+
+    }
+
+}
+
+/* =========================================================
+END OF QUIZ PLAYER CSS
+SECTION 05
+========================================================= */
+
+
+        
         
     </style>
 
@@ -971,6 +1268,96 @@ BEGINNING OF TRENDING QUIZZES
 END OF TRENDING QUIZZES
 SECTION 04
 ========================================================= -->
+<!-- =========================================================
+SECTION 05
+BEGINNING OF QUIZ PLAYER
+========================================================= -->
+
+<section class="quiz-player" id="quizPlayer" style="display:none;">
+
+    <!-- Quiz Header -->
+
+    <div class="quiz-header">
+
+        <button class="quiz-back" onclick="goHome()">
+            ←
+        </button>
+
+        <div class="quiz-header-text">
+
+            <h2 id="quizCategory">
+                General Knowledge
+            </h2>
+
+            <span id="questionCounter">
+                Question 1 of 20
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- Progress Bar -->
+
+    <div class="progress-bar">
+
+        <div class="progress-fill" id="progressFill"></div>
+
+    </div>
+
+    <!-- Question Card -->
+
+    <div class="question-card">
+
+        <span class="question-number">
+            QUESTION
+        </span>
+
+        <h3 id="questionText">
+
+            Which planet is known as the Red Planet?
+
+        </h3>
+
+    </div>
+
+    <!-- Answer Options -->
+
+    <div class="answers">
+
+        <button class="answer-btn">
+            Earth
+        </button>
+
+        <button class="answer-btn">
+            Mars
+        </button>
+
+        <button class="answer-btn">
+            Jupiter
+        </button>
+
+        <button class="answer-btn">
+            Venus
+        </button>
+
+    </div>
+
+    <!-- Next Button -->
+
+    <button class="next-btn">
+
+        Next Question →
+
+    </button>
+
+</section>
+
+<!-- =========================================================
+END OF QUIZ PLAYER
+SECTION 05
+========================================================= -->
+    
     
 <!-- =========================================================
 SCRIPT SECTIONS.  SCRIPT SECTIONS. SCRIPT SECTIONS. SCRIPT SECTIONS. SCRIPT SECTIONS. SCRIPT SECTIONS.  SCRIPT SECTIONS
@@ -1109,6 +1496,169 @@ setInterval(function(){
 END OF DAILY CHALLENGE JS
 SECTION 03
 ========================================================= */
+/* =========================================================
+SECTION 05
+BEGINNING OF QUIZ PLAYER JS
+========================================================= */
+
+/* ===========================
+Open Quiz
+=========================== */
+
+function startQuiz(category){
+
+    document.querySelector(".daily-challenge").style.display="none";
+
+    document.querySelector(".you-may-play").style.display="none";
+
+    document.querySelector(".trending-quizzes").style.display="none";
+
+    document.getElementById("quizPlayer").style.display="block";
+
+    document.getElementById("quizCategory").innerHTML=category;
+
+}
+
+/* ===========================
+Back To Home
+=========================== */
+
+function goHome(){
+
+    document.getElementById("quizPlayer").style.display="none";
+
+    document.querySelector(".daily-challenge").style.display="block";
+
+    document.querySelector(".you-may-play").style.display="block";
+
+    document.querySelector(".trending-quizzes").style.display="block";
+
+}
+
+/* ===========================
+Sample Questions
+=========================== */
+
+const quizQuestions=[
+
+{
+
+question:"Which planet is known as the Red Planet?",
+
+answers:["Earth","Mars","Venus","Jupiter"],
+
+correct:1
+
+},
+
+{
+
+question:"What is the largest ocean on Earth?",
+
+answers:["Atlantic","Indian","Pacific","Arctic"],
+
+correct:2
+
+},
+
+{
+
+question:"Which animal is called the King of the Jungle?",
+
+answers:["Tiger","Lion","Elephant","Leopard"],
+
+correct:1
+
+}
+
+];
+
+let currentQuestion=0;
+
+/* ===========================
+Load Question
+=========================== */
+
+function loadQuestion(){
+
+    document.getElementById("questionText").innerHTML=
+
+    quizQuestions[currentQuestion].question;
+
+    document.getElementById("questionCounter").innerHTML=
+
+    "Question "+(currentQuestion+1)+" of "+quizQuestions.length;
+
+    const buttons=document.querySelectorAll(".answer-btn");
+
+    buttons.forEach(function(btn,index){
+
+        btn.innerHTML=quizQuestions[currentQuestion].answers[index];
+
+        btn.classList.remove("selected");
+
+    });
+
+    document.getElementById("progressFill").style.width=
+
+    ((currentQuestion+1)/quizQuestions.length)*100+"%";
+
+}
+
+loadQuestion();
+
+/* ===========================
+Select Answer
+=========================== */
+
+const answerButtons=document.querySelectorAll(".answer-btn");
+
+answerButtons.forEach(function(button){
+
+button.addEventListener("click",function(){
+
+answerButtons.forEach(function(btn){
+
+btn.classList.remove("selected");
+
+});
+
+button.classList.add("selected");
+
+});
+
+});
+
+/* ===========================
+Next Question
+=========================== */
+
+document.querySelector(".next-btn").addEventListener("click",function(){
+
+if(currentQuestion<quizQuestions.length-1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+alert("🎉 Quiz Completed!");
+
+goHome();
+
+currentQuestion=0;
+
+loadQuestion();
+
+}
+
+});
+
+/* =========================================================
+END OF QUIZ PLAYER JS. sectiom 5
+========================================================= */
+    
 </script>
     
 </body>
