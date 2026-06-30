@@ -2189,19 +2189,28 @@ SECTION 11
 /* =========================================================
 SECTION 12
 BEGINNING OF PROFESSIONAL QUIZ MANAGER CSS
+PART 1
 ========================================================= */
+
+/* ===========================
+Quiz Manager Container
+=========================== */
 
 .quiz-manager{
 
     width:100%;
-    padding:22px 18px;
+    padding:22px 18px 40px;
     display:none;
 
 }
 
+/* ===========================
+Header
+=========================== */
+
 .quiz-manager-header{
 
-    margin-bottom:22px;
+    margin-bottom:24px;
 
 }
 
@@ -2216,8 +2225,8 @@ BEGINNING OF PROFESSIONAL QUIZ MANAGER CSS
 
 .quiz-manager-header p{
 
-    font-size:14px;
     color:#9CA3AF;
+    font-size:14px;
 
 }
 
@@ -2228,18 +2237,22 @@ Quiz Information Card
 .quiz-info-card{
 
     background:#171C2F;
-    border-radius:18px;
-    padding:20px;
-    margin-bottom:20px;
     border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:22px;
 
 }
+
+/* ===========================
+Inputs
+=========================== */
 
 .quiz-info-card input,
 .quiz-info-card select{
 
     width:100%;
-    height:52px;
+    height:54px;
     margin-bottom:14px;
     border:none;
     border-radius:14px;
@@ -2247,6 +2260,14 @@ Quiz Information Card
     color:#FFFFFF;
     padding:0 16px;
     font-size:15px;
+    outline:none;
+
+}
+
+.quiz-info-card input:focus,
+.quiz-info-card select:focus{
+
+    border:1px solid #FF9D00;
 
 }
 
@@ -2254,6 +2275,7 @@ Quiz Information Card
 
     padding:14px;
     height:auto;
+    cursor:pointer;
 
 }
 
@@ -2264,18 +2286,18 @@ Question List
 .question-list{
 
     background:#171C2F;
-    border-radius:18px;
-    padding:20px;
-    margin-bottom:20px;
     border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:22px;
 
 }
 
 .question-list h3{
 
     color:#FFFFFF;
-    margin-bottom:16px;
     font-size:18px;
+    margin-bottom:18px;
 
 }
 
@@ -2283,12 +2305,135 @@ Question List
 
     color:#9CA3AF;
     text-align:center;
-    padding:24px;
+    padding:24px 0;
 
 }
 
 /* ===========================
-Buttons
+Question Card
+=========================== */
+
+.question-card{
+
+    background:#0F172A;
+    border-radius:16px;
+    padding:16px;
+    margin-bottom:14px;
+    border:1px solid rgba(255,255,255,.06);
+
+}
+
+/* ===========================
+Question Editor
+=========================== */
+
+#questionEditor{
+
+    display:none;
+
+}
+
+/* ===========================
+Saved Quizzes
+=========================== */
+
+.saved-quizzes{
+
+    margin-top:24px;
+
+}
+
+.saved-quizzes h3{
+
+    color:#FFFFFF;
+    font-size:18px;
+    margin-bottom:18px;
+
+}
+
+.saved-quiz-card{
+
+    background:#171C2F;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:16px;
+    box-shadow:0 6px 16px rgba(0,0,0,.25);
+
+}
+
+.saved-quiz-card h4{
+
+    color:#FFFFFF;
+    font-size:17px;
+    margin-bottom:8px;
+
+}
+
+.saved-quiz-card p{
+
+    color:#9CA3AF;
+    font-size:13px;
+    line-height:1.6;
+    margin-bottom:16px;
+
+}
+
+/* ===========================
+Saved Quiz Buttons
+=========================== */
+
+.saved-quiz-actions{
+
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+
+}
+
+.saved-quiz-actions button{
+
+    border:none;
+    border-radius:12px;
+    padding:10px 16px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:600;
+    transition:.30s;
+
+}
+
+.edit-quiz-btn{
+
+    background:#FF9D00;
+    color:#FFFFFF;
+
+}
+
+.delete-quiz-btn{
+
+    background:#DC2626;
+    color:#FFFFFF;
+
+}
+
+.view-quiz-btn{
+
+    background:#2563EB;
+    color:#FFFFFF;
+
+}
+
+.edit-quiz-btn:hover,
+.delete-quiz-btn:hover,
+.view-quiz-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+Main Buttons
 =========================== */
 
 .manager-btn{
@@ -2303,216 +2448,60 @@ Buttons
     font-size:16px;
     font-weight:700;
     cursor:pointer;
+    transition:.30s;
+    box-shadow:0 6px 18px rgba(255,157,0,.30);
+
+}
+
+.manager-btn:hover{
+
+    transform:translateY(-2px);
+    box-shadow:0 10px 22px rgba(255,157,0,.40);
+
+}
+
+.manager-btn:active{
+
+    transform:scale(.98);
+
+}
+
+/* ===========================
+Responsive
+=========================== */
+
+@media(max-width:600px){
+
+    .quiz-manager{
+
+        padding:18px 14px 30px;
+
+    }
+
+    .quiz-manager-header h2{
+
+        font-size:24px;
+
+    }
+
+    .saved-quiz-actions{
+
+        flex-direction:column;
+
+    }
+
+    .saved-quiz-actions button{
+
+        width:100%;
+
+    }
 
 }
 
 /* =========================================================
 END OF PROFESSIONAL QUIZ MANAGER CSS
 SECTION 12
-========================================================= */
-        
-
-/* =========================================================
-SECTION 12
-BEGINNING OF SAVED QUIZZES LIST CSS
-========================================================= */
-
-.saved-quizzes{
-
-    margin-top:24px;
-
-}
-
-.saved-quizzes h3{
-
-    color:#FFFFFF;
-
-    font-size:18px;
-
-    margin-bottom:16px;
-
-}
-
-.saved-quiz-card{
-
-    background:#171C2F;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:16px;
-
-    padding:18px;
-
-    margin-bottom:14px;
-
-    box-shadow:0 6px 16px rgba(0,0,0,.25);
-
-}
-
-.saved-quiz-card h4{
-
-    color:#FFFFFF;
-
-    font-size:17px;
-
-    margin-bottom:8px;
-
-}
-
-.saved-quiz-card p{
-
-    color:#9CA3AF;
-
-    font-size:13px;
-
-    margin-bottom:14px;
-
-}
-
-.saved-quiz-actions{
-
-    display:flex;
-
-    gap:10px;
-
-    flex-wrap:wrap;
-
-}
-
-.saved-quiz-actions button{
-
-    border:none;
-
-    border-radius:10px;
-
-    padding:10px 16px;
-
-    cursor:pointer;
-
-    font-weight:600;
-
-}
-
-.edit-quiz-btn{
-
-    background:#FF9D00;
-
-    color:#FFFFFF;
-
-}
-
-.delete-quiz-btn{
-
-    background:#DC2626;
-
-    color:#FFFFFF;
-
-}
-
-.view-quiz-btn{
-
-    background:#2563EB;
-
-    color:#FFFFFF;
-
-}
-
-/* =========================================================
-END OF SAVED QUIZZES LIST CSS
-SECTION 12
-========================================================= */
-/* =========================================================
-SECTION 12
-BEGINNING OF QUESTION EDITOR CSS
-========================================================= */
-
-.question-editor{
-
-    display:none;
-    width:100%;
-    padding:22px 18px;
-
-}
-
-.question-editor-card{
-
-    background:#171C2F;
-    border-radius:20px;
-    padding:20px;
-    border:1px solid rgba(255,255,255,.08);
-
-}
-
-.question-editor-card h2{
-
-    color:#FFFFFF;
-    margin-bottom:20px;
-    font-size:24px;
-
-}
-
-.question-editor-card textarea,
-.question-editor-card input,
-.question-editor-card select{
-
-    width:100%;
-    margin-bottom:14px;
-    border:none;
-    border-radius:14px;
-    background:#0F172A;
-    color:#FFFFFF;
-    padding:14px;
-    font-size:15px;
-
-}
-
-.question-editor-card textarea{
-
-    min-height:110px;
-    resize:vertical;
-
-}
-
-.editor-buttons{
-
-    display:flex;
-    gap:12px;
-
-}
-
-.editor-buttons button{
-
-    flex:1;
-    height:52px;
-    border:none;
-    border-radius:14px;
-    cursor:pointer;
-    font-weight:700;
-
-}
-
-#saveQuestionBtn{
-
-    background:#FF9D00;
-    color:#FFFFFF;
-
-}
-
-#cancelQuestionBtn{
-
-    background:#374151;
-    color:#FFFFFF;
-
-}
-
-/* =========================================================
-END OF QUESTION EDITOR CSS
-SECTION 12
-========================================================= */    
-
-
-
-        
+========================================================= */                
         
 </style>
 
@@ -4424,42 +4413,53 @@ document.getElementById("adminLoginBtn").addEventListener("click", function(){
 END OF ADMIN LOGIN JS
 SECTION 11
 ========================================================= */
-
 /* =========================================================
 SECTION 12
-BEGINNING OF QUESTION EDITOR JS
+BEGINNING OF PROFESSIONAL QUIZ MANAGER JS
+PART 1
 ========================================================= */
 
-let quizQuestions = [];
-let editingQuestion = -1;
-
 /* ===========================
-Saved Quizzes
+Variables
 =========================== */
 
+let quizQuestions = [];
+
 let savedQuizzes = [];
-        
+
+let editingQuestion = -1;
+
+let editingQuiz = -1;
+
 /* ===========================
 Open Question Editor
 =========================== */
 
-document.getElementById("addQuestionBtn").addEventListener("click",function(){
+document.getElementById("addQuestionBtn").addEventListener("click", function(){
 
-    document.getElementById("quizManager").style.display="none";
+    clearQuestionEditor();
 
-    document.getElementById("questionEditor").style.display="block";
+    editingQuestion = -1;
+
+    document.getElementById("quizManager").style.display = "none";
+
+    document.getElementById("questionEditor").style.display = "block";
 
 });
 
 /* ===========================
-Cancel
+Cancel Question Editor
 =========================== */
 
-document.getElementById("cancelQuestionBtn").addEventListener("click",function(){
+document.getElementById("cancelQuestionBtn").addEventListener("click", function(){
 
-    document.getElementById("questionEditor").style.display="none";
+    clearQuestionEditor();
 
-    document.getElementById("quizManager").style.display="block";
+    editingQuestion = -1;
+
+    document.getElementById("questionEditor").style.display = "none";
+
+    document.getElementById("quizManager").style.display = "block";
 
 });
 
@@ -4467,35 +4467,62 @@ document.getElementById("cancelQuestionBtn").addEventListener("click",function()
 Save Question
 =========================== */
 
-document.getElementById("saveQuestionBtn").addEventListener("click",function(){
+document.getElementById("saveQuestionBtn").addEventListener("click", function(){
 
-    const question={
+    const question = {
 
-        question:document.getElementById("editorQuestion").value,
+        question: document.getElementById("editorQuestion").value.trim(),
 
-        optionA:document.getElementById("editorOptionA").value,
+        optionA: document.getElementById("editorOptionA").value.trim(),
 
-        optionB:document.getElementById("editorOptionB").value,
+        optionB: document.getElementById("editorOptionB").value.trim(),
 
-        optionC:document.getElementById("editorOptionC").value,
+        optionC: document.getElementById("editorOptionC").value.trim(),
 
-        optionD:document.getElementById("editorOptionD").value,
+        optionD: document.getElementById("editorOptionD").value.trim(),
 
-        answer:document.getElementById("editorAnswer").value
+        answer: document.getElementById("editorAnswer").value
 
     };
 
-    if(editingQuestion === -1){
+    if(question.question===""){
 
-    quizQuestions.push(question);
+        alert("Please enter the question.");
 
-}else{
+        return;
 
-    quizQuestions[editingQuestion] = question;
+    }
 
-    editingQuestion = -1;
+    if(question.optionA==="" ||
+       question.optionB==="" ||
+       question.optionC==="" ||
+       question.optionD===""){
 
-}
+        alert("Please fill all options.");
+
+        return;
+
+    }
+
+    if(question.answer===""){
+
+        alert("Please select the correct answer.");
+
+        return;
+
+    }
+
+    if(editingQuestion===-1){
+
+        quizQuestions.push(question);
+
+    }else{
+
+        quizQuestions[editingQuestion]=question;
+
+        editingQuestion=-1;
+
+    }
 
     refreshQuestionList();
 
@@ -4508,87 +4535,7 @@ document.getElementById("saveQuestionBtn").addEventListener("click",function(){
 });
 
 /* ===========================
-Save Complete Quiz
-=========================== */
-
-document.getElementById("saveQuizBtn").addEventListener("click", function(){
-
-    const quiz = {
-
-        title: document.getElementById("quizTitle").value,
-
-        category: document.getElementById("quizCategory").value,
-
-        image: document.getElementById("quizImage").value,
-
-        questions: [...quizQuestions]
-
-    };
-
-    savedQuizzes.push(quiz);
-
-    refreshSavedQuizList();
-
-});        
-
-/* ===========================
-Refresh List
-=========================== */
-
-function refreshQuestionList(){
-
-    document.getElementById("questionCount").innerHTML=quizQuestions.length;
-
-    const container=document.getElementById("questionContainer");
-
-    container.innerHTML="";
-
-    quizQuestions.forEach(function(q,index){
-
-        container.innerHTML += `
-
-<div style="background:#0F172A;padding:16px;border-radius:14px;margin-bottom:12px;">
-
-    <strong style="color:#FFFFFF;">
-        Question ${index+1}
-    </strong>
-
-    <p style="color:#9CA3AF;margin:10px 0;">
-        ${q.question}
-    </p>
-
-    <button onclick="editQuestion(${index})"
-        style="padding:8px 14px;border:none;border-radius:8px;background:#FF9D00;color:#fff;margin-right:8px;cursor:pointer;">
-
-        ✏ Edit
-
-    </button>
-
-    <button onclick="deleteQuestion(${index})"
-        style="padding:8px 14px;border:none;border-radius:8px;background:#DC2626;color:#fff;cursor:pointer;">
-
-        🗑 Delete
-
-    </button>
-
-</div>
-
-`;
-
-    });
-
-    if(quizQuestions.length===0){
-
-        container.innerHTML="No questions have been added yet.";
-
-    }
-
-}
-
-    
-
-/* ===========================
-Clear Editor
+Clear Question Editor
 =========================== */
 
 function clearQuestionEditor(){
@@ -4604,6 +4551,85 @@ function clearQuestionEditor(){
     document.getElementById("editorOptionD").value="";
 
     document.getElementById("editorAnswer").selectedIndex=0;
+
+}
+ /* =========================================================
+SECTION 12
+PROFESSIONAL QUIZ MANAGER JS
+PART 2
+========================================================= */
+
+/* ===========================
+Refresh Question List
+=========================== */
+
+function refreshQuestionList(){
+
+    document.getElementById("questionCount").innerHTML = quizQuestions.length;
+
+    const container = document.getElementById("questionContainer");
+
+    container.innerHTML = "";
+
+    if(quizQuestions.length===0){
+
+        container.innerHTML = `
+
+            <p class="empty-question">
+
+                No questions added yet.
+
+            </p>
+
+        `;
+
+        return;
+
+    }
+
+    quizQuestions.forEach(function(q,index){
+
+        container.innerHTML += `
+
+        <div class="question-card">
+
+            <strong style="color:#FFFFFF;">
+
+                Question ${index+1}
+
+            </strong>
+
+            <p style="color:#9CA3AF;margin:12px 0;">
+
+                ${q.question}
+
+            </p>
+
+            <div class="saved-quiz-actions">
+
+                <button
+                    class="edit-quiz-btn"
+                    onclick="editQuestion(${index})">
+
+                    ✏ Edit
+
+                </button>
+
+                <button
+                    class="delete-quiz-btn"
+                    onclick="deleteQuestion(${index})">
+
+                    🗑 Delete
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
 
 }
 
@@ -4629,9 +4655,9 @@ function editQuestion(index){
 
     editingQuestion = index;
 
-    document.getElementById("quizManager").style.display="none";
+    document.getElementById("quizManager").style.display = "none";
 
-    document.getElementById("questionEditor").style.display="block";
+    document.getElementById("questionEditor").style.display = "block";
 
 }
 
@@ -4650,14 +4676,10 @@ function deleteQuestion(index){
     }
 
 }
-    
-/* =========================================================
-END OF QUESTION EDITOR JS
+  /* =========================================================
 SECTION 12
-========================================================= */   
-/* =========================================================
-SECTION 12
-BEGINNING OF SAVE COMPLETE QUIZ JS
+PROFESSIONAL QUIZ MANAGER JS
+PART 3
 ========================================================= */
 
 /* ===========================
@@ -4666,23 +4688,17 @@ Save Complete Quiz
 
 document.getElementById("saveQuizBtn").addEventListener("click", function(){
 
-    const quizData = {
+    const title = document.getElementById("quizTitle").value.trim();
 
-        title: document.getElementById("quizTitle").value.trim(),
+    const category = document.getElementById("quizCategory").value;
 
-        category: document.getElementById("quizCategory").value,
+    const thumbnailInput = document.getElementById("quizThumbnail");
 
-        thumbnail: document.getElementById("quizThumbnail").files[0]
-            ? document.getElementById("quizThumbnail").files[0].name
-            : "",
+    const thumbnail = thumbnailInput.files.length > 0
+        ? thumbnailInput.files[0].name
+        : "";
 
-        questions: quizQuestions
-
-    };
-
-    /* Validation */
-
-    if(quizData.title===""){
+    if(title===""){
 
         alert("Please enter the quiz title.");
 
@@ -4690,7 +4706,7 @@ document.getElementById("saveQuizBtn").addEventListener("click", function(){
 
     }
 
-    if(quizData.category===""){
+    if(category===""){
 
         alert("Please select a category.");
 
@@ -4706,17 +4722,233 @@ document.getElementById("saveQuizBtn").addEventListener("click", function(){
 
     }
 
-    console.log(quizData);
+    const quiz={
 
-    alert("Quiz saved successfully! (Temporary Demo)");
+        title:title,
+
+        category:category,
+
+        thumbnail:thumbnail,
+
+        questions:[...quizQuestions]
+
+    };
+
+    if(editingQuiz===-1){
+
+        savedQuizzes.push(quiz);
+
+    }else{
+
+        savedQuizzes[editingQuiz]=quiz;
+
+        editingQuiz=-1;
+
+    }
+
+    refreshSavedQuizList();
+
+    alert("Quiz saved successfully!");
+
+    document.getElementById("quizTitle").value="";
+
+    document.getElementById("quizCategory").selectedIndex=0;
+
+    document.getElementById("quizThumbnail").value="";
+
+    quizQuestions=[];
+
+    refreshQuestionList();
 
 });
 
+/* ===========================
+Refresh Saved Quiz List
+=========================== */
+
+function refreshSavedQuizList(){
+
+    const container=document.getElementById("savedQuizContainer");
+
+    container.innerHTML="";
+
+    if(savedQuizzes.length===0){
+
+        container.innerHTML=`
+
+            <p class="empty-question">
+
+                No quizzes saved yet.
+
+            </p>
+
+        `;
+
+        return;
+
+    }
+
+    savedQuizzes.forEach(function(quiz,index){
+
+        container.innerHTML += `
+
+        <div class="saved-quiz-card">
+
+            <h4>
+
+                ${quiz.title}
+
+            </h4>
+
+            <p>
+
+                Category:
+                <strong>${quiz.category}</strong>
+
+                <br>
+
+                Questions:
+                <strong>${quiz.questions.length}</strong>
+
+            </p>
+
+            <div class="saved-quiz-actions">
+
+                <button
+                    class="view-quiz-btn"
+                    onclick="viewSavedQuiz(${index})">
+
+                    👁 View
+
+                </button>
+
+                <button
+                    class="edit-quiz-btn"
+                    onclick="editSavedQuiz(${index})">
+
+                    ✏ Edit
+
+                </button>
+
+                <button
+                    class="delete-quiz-btn"
+                    onclick="deleteSavedQuiz(${index})">
+
+                    🗑 Delete
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+    
 /* =========================================================
-END OF SAVE COMPLETE QUIZ JS
 SECTION 12
+PROFESSIONAL QUIZ MANAGER JS
+PART 4
 ========================================================= */
 
+/* ===========================
+View Saved Quiz
+=========================== */
+
+function viewSavedQuiz(index){
+
+    const quiz = savedQuizzes[index];
+
+    let message = "";
+
+    message += "Quiz Title: " + quiz.title + "\n\n";
+
+    message += "Category: " + quiz.category + "\n\n";
+
+    message += "Questions: " + quiz.questions.length + "\n\n";
+
+    quiz.questions.forEach(function(q,i){
+
+        message += (i+1) + ". " + q.question + "\n";
+
+    });
+
+    alert(message);
+
+}
+
+/* ===========================
+Edit Saved Quiz
+=========================== */
+
+function editSavedQuiz(index){
+
+    const quiz = savedQuizzes[index];
+
+    editingQuiz = index;
+
+    document.getElementById("quizTitle").value = quiz.title;
+
+    document.getElementById("quizCategory").value = quiz.category;
+
+    quizQuestions = [...quiz.questions];
+
+    refreshQuestionList();
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+}
+
+/* ===========================
+Delete Saved Quiz
+=========================== */
+
+function deleteSavedQuiz(index){
+
+    if(confirm("Delete this quiz?")){
+
+        savedQuizzes.splice(index,1);
+
+        refreshSavedQuizList();
+
+    }
+
+}
+
+/* ===========================
+Back To Dashboard
+=========================== */
+
+document.getElementById("backToDashboardBtn").addEventListener("click",function(){
+
+    document.getElementById("quizManager").style.display="none";
+
+    document.getElementById("adminDashboard").style.display="block";
+
+});
+
+/* ===========================
+Initialize
+=========================== */
+
+refreshQuestionList();
+
+refreshSavedQuizList();
+
+/* =========================================================
+END OF PROFESSIONAL QUIZ MANAGER JS
+SECTION 12
+========================================================= */
+        
     
 </script>
     
