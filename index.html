@@ -1778,7 +1778,147 @@ Responsive
 END OF FINAL RESULT CSS
 SECTION 08
 ========================================================= */    
-        
+/* =========================================================
+SECTION 09
+BEGINNING OF TEMPO ADMIN DASHBOARD CSS
+========================================================= */
+
+.tempo-admin{
+
+    width:100%;
+
+    padding:22px 18px 40px;
+
+}
+
+.admin-header{
+
+    text-align:center;
+
+    margin-bottom:28px;
+
+}
+
+.admin-header h2{
+
+    font-size:26px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+    margin-bottom:6px;
+
+}
+
+.admin-header p{
+
+    color:#8E98B8;
+
+    font-size:14px;
+
+}
+
+.admin-menu{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+
+}
+
+.admin-card{
+
+    background:#171C2F;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:20px;
+
+    padding:26px 18px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:14px;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+    color:#FFFFFF;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.30);
+
+}
+
+.admin-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:#FF9D00;
+
+    box-shadow:0 10px 24px rgba(255,157,0,.20);
+
+}
+
+.admin-card span{
+
+    font-size:14px;
+
+    text-align:center;
+
+}
+
+.admin-card{
+
+    font-size:40px;
+
+}
+
+/* Responsive */
+
+@media(max-width:600px){
+
+    .admin-menu{
+
+        grid-template-columns:1fr 1fr;
+
+        gap:14px;
+
+    }
+
+    .admin-card{
+
+        padding:22px 12px;
+
+        font-size:34px;
+
+    }
+
+    .admin-card span{
+
+        font-size:13px;
+
+    }
+
+}
+
+/* =========================================================
+END OF TEMPO ADMIN DASHBOARD CSS
+SECTION 09
+========================================================= */        
         
 </style>
 
@@ -2481,7 +2621,66 @@ END OF FINAL RESULT
 SECTION 08
 ========================================================= -->
 
+<!-- =========================================================
+SECTION 09
+BEGINNING OF TEMPO ADMIN DASHBOARD
+========================================================= -->
 
+<section class="tempo-admin" id="tempoAdmin" style="display:none;">
+
+    <div class="admin-header">
+
+        <h2>Tempo Admin Dashboard</h2>
+
+        <p>Manage Quizcano From One Place</p>
+
+    </div>
+
+    <div class="admin-menu">
+
+        <button class="admin-card" onclick="openQuizManager()">
+            📝
+            <span>Quiz Manager</span>
+        </button>
+
+        <button class="admin-card" onclick="openCategoryManager()">
+            📂
+            <span>Categories</span>
+        </button>
+
+        <button class="admin-card" onclick="openBannerManager()">
+            🖼
+            <span>Featured Banners</span>
+        </button>
+
+        <button class="admin-card" onclick="openTrendingManager()">
+            🔥
+            <span>Trending Quizzes</span>
+        </button>
+
+        <button class="admin-card" onclick="openDailyManager()">
+            🎯
+            <span>Daily Challenge</span>
+        </button>
+
+        <button class="admin-card" onclick="openUsersManager()">
+            👥
+            <span>Players</span>
+        </button>
+
+        <button class="admin-card" onclick="openSettingsManager()">
+            ⚙️
+            <span>Settings</span>
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+END OF TEMPO ADMIN DASHBOARD
+SECTION 09
+========================================================= -->
     
 <!-- =========================================================
 SCRIPT SECTIONS.  SCRIPT SECTIONS. SCRIPT SECTIONS. SCRIPT SECTIONS. SCRIPT SECTIONS. SCRIPT SECTIONS.  SCRIPT SECTIONS
@@ -2974,6 +3173,112 @@ function backToHome(){
 END OF CONGRATULATIONS SCREEN JS
 SECTION 08
 ========================================================= */
+
+
+/* =========================================================
+SECTION 09
+BEGINNING OF TEMPO ADMIN DASHBOARD JS
+========================================================= */
+
+/* ===========================
+Open Admin Dashboard
+=========================== */
+
+function openTempoAdmin(){
+
+    document.querySelector(".you-may-play").style.display="none";
+    document.querySelector(".trending-quizzes").style.display="none";
+
+    const featured=document.querySelector(".featured-carousel");
+    if(featured){
+        featured.style.display="none";
+    }
+
+    const daily=document.querySelector(".daily-challenge");
+    if(daily){
+        daily.style.display="none";
+    }
+
+    document.getElementById("tempoAdmin").style.display="block";
+
+}
+
+/* ===========================
+Close Admin Dashboard
+=========================== */
+
+function closeTempoAdmin(){
+
+    document.getElementById("tempoAdmin").style.display="none";
+
+    document.querySelector(".you-may-play").style.display="block";
+    document.querySelector(".trending-quizzes").style.display="block";
+
+    const featured=document.querySelector(".featured-carousel");
+    if(featured){
+        featured.style.display="block";
+    }
+
+    const daily=document.querySelector(".daily-challenge");
+    if(daily){
+        daily.style.display="block";
+    }
+
+}
+
+/* ===========================
+Dashboard Buttons
+=========================== */
+
+function openQuizManager(){
+
+    alert("Section 10 - Quiz Manager");
+
+}
+
+function openCategoryManager(){
+
+    alert("Section 11 - Categories");
+
+}
+
+function openBannerManager(){
+
+    alert("Section 12 - Featured Banners");
+
+}
+
+function openTrendingManager(){
+
+    alert("Section 13 - Trending Quizzes");
+
+}
+
+function openDailyManager(){
+
+    alert("Section 14 - Daily Challenge");
+
+}
+
+function openUsersManager(){
+
+    alert("Section 15 - Players");
+
+}
+
+function openSettingsManager(){
+
+    alert("Section 16 - Settings");
+
+}
+
+/* =========================================================
+END OF TEMPO ADMIN DASHBOARD JS
+SECTION 09
+========================================================= */
+
+
+    
 </script>
     
 </body>
