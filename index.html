@@ -4193,7 +4193,17 @@ document.getElementById("saveQuestionBtn").addEventListener("click",function(){
 
     };
 
+    if(editingQuestion === -1){
+
     quizQuestions.push(question);
+
+}else{
+
+    quizQuestions[editingQuestion] = question;
+
+    editingQuestion = -1;
+
+}
 
     refreshQuestionList();
 
@@ -4279,11 +4289,6 @@ function clearQuestionEditor(){
 
 }
 
-/* =========================================================
-END OF QUESTION EDITOR JS
-SECTION 12
-========================================================= */
-
 /* ===========================
 Edit Question
 =========================== */
@@ -4328,6 +4333,10 @@ function deleteQuestion(index){
 
 }
     
+/* =========================================================
+END OF QUESTION EDITOR JS
+SECTION 12
+========================================================= */   
     
 </script>
     
