@@ -4097,7 +4097,61 @@ logo.addEventListener("click", function(){
 END OF HIDDEN ADMIN ACCESS JS
 SECTION 12
 ========================================================= */
-    
+  /* =========================================================
+SECTION 12
+BEGINNING OF UPLOAD QUIZ MANAGER JS
+========================================================= */
+
+let currentQuizQuestions = [];
+
+/* ===========================
+Add Question
+=========================== */
+
+function addQuestion(){
+
+    const question = {
+
+        question: document.getElementById("quizQuestion").value,
+
+        options: [
+
+            document.getElementById("optionA").value,
+
+            document.getElementById("optionB").value,
+
+            document.getElementById("optionC").value,
+
+            document.getElementById("optionD").value
+
+        ],
+
+        answer: document.getElementById("correctAnswer").value
+
+    };
+
+    currentQuizQuestions.push(question);
+
+    alert("Question Added Successfully");
+
+    document.getElementById("quizQuestion").value = "";
+
+    document.getElementById("optionA").value = "";
+
+    document.getElementById("optionB").value = "";
+
+    document.getElementById("optionC").value = "";
+
+    document.getElementById("optionD").value = "";
+
+    document.getElementById("correctAnswer").selectedIndex = 0;
+
+}
+
+/* =========================================================
+END OF UPLOAD QUIZ MANAGER JS
+SECTION 12
+========================================================= */  
 
     
 </script>
