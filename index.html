@@ -2071,7 +2071,121 @@ END OF ADMIN DASHBOARD CSS
 SECTION 10
 ========================================================= */
 
+/* =========================================================
+SECTION 11
+BEGINNING OF ADMIN LOGIN CSS
+========================================================= */
 
+.admin-login{
+
+    width:100%;
+
+    max-width:420px;
+
+    margin:50px auto;
+
+    padding:22px;
+
+    display:none;
+
+}
+
+.login-card{
+
+    background:#171C2F;
+
+    border-radius:22px;
+
+    padding:28px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+
+}
+
+.login-title{
+
+    text-align:center;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+    margin-bottom:8px;
+
+}
+
+.login-subtitle{
+
+    text-align:center;
+
+    color:#9CA3AF;
+
+    font-size:14px;
+
+    margin-bottom:28px;
+
+}
+
+.login-input{
+
+    width:100%;
+
+    height:52px;
+
+    background:#0F172A;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:14px;
+
+    padding:0 16px;
+
+    color:#FFFFFF;
+
+    font-size:15px;
+
+    margin-bottom:16px;
+
+    outline:none;
+
+}
+
+.login-input:focus{
+
+    border-color:#FF9D00;
+
+}
+
+.login-btn{
+
+    width:100%;
+
+    height:54px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:linear-gradient(135deg,#FF9D00,#FFB800);
+
+    color:#FFFFFF;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+/* =========================================================
+END OF ADMIN LOGIN CSS
+SECTION 11
+========================================================= */
 
         
 </style>
@@ -2924,7 +3038,49 @@ BEGINNING OF ADMIN DASHBOARD
 END OF ADMIN DASHBOARD
 SECTION 10
 ========================================================= -->    
+<!-- =========================================================
+SECTION 11
+BEGINNING OF ADMIN LOGIN
+========================================================= -->
 
+<section class="admin-login" id="adminLogin">
+
+    <div class="login-card">
+
+        <h2 class="login-title">
+            Admin Login
+        </h2>
+
+        <p class="login-subtitle">
+            Login to manage Quizcano
+        </p>
+
+        <input
+            type="text"
+            id="adminUsername"
+            class="login-input"
+            placeholder="Username">
+
+        <input
+            type="password"
+            id="adminPassword"
+            class="login-input"
+            placeholder="Password">
+
+        <button
+            class="login-btn"
+            id="adminLoginBtn">
+            Login
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+END OF ADMIN LOGIN
+SECTION 11
+========================================================= -->
     
     
     
@@ -3619,6 +3775,41 @@ END OF ADMIN DASHBOARD JS
 SECTION 10
 ========================================================= */
 // openTempoAdmin();
+
+ /* =========================================================
+SECTION 11
+BEGINNING OF ADMIN LOGIN JS
+========================================================= */
+
+/* ===========================
+Admin Login
+=========================== */
+
+document.getElementById("adminLoginBtn").addEventListener("click", function(){
+
+    const username = document.getElementById("adminUsername").value.trim();
+
+    const password = document.getElementById("adminPassword").value.trim();
+
+    if(username === "admin" && password === "12345"){
+
+        document.getElementById("adminLogin").style.display = "none";
+
+        openAdminDashboard();
+
+    }else{
+
+        alert("Invalid Username or Password");
+
+    }
+
+});
+
+/* =========================================================
+END OF ADMIN LOGIN JS
+SECTION 11
+========================================================= */
+document.getElementById("adminLogin").style.display = "block";
 
     
 
