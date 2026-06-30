@@ -3293,6 +3293,10 @@ BEGINNING OF PROFESSIONAL QUIZ MANAGER HTML
 
     </button>
 
+<button id="saveQuizBtn" class="manager-btn">
+    💾 Save Complete Quiz
+</button>
+    
     <button
         class="manager-btn"
         id="saveQuizBtn">
@@ -4337,6 +4341,72 @@ function deleteQuestion(index){
 END OF QUESTION EDITOR JS
 SECTION 12
 ========================================================= */   
+/* =========================================================
+SECTION 12
+BEGINNING OF SAVE COMPLETE QUIZ JS
+========================================================= */
+
+/* ===========================
+Save Complete Quiz
+=========================== */
+
+document.getElementById("saveQuizBtn").addEventListener("click", function(){
+
+    const quizData = {
+
+        title: document.getElementById("quizTitle").value.trim(),
+
+        category: document.getElementById("quizCategory").value,
+
+        thumbnail: document.getElementById("quizThumbnail").files[0]
+            ? document.getElementById("quizThumbnail").files[0].name
+            : "",
+
+        questions: quizQuestions
+
+    };
+
+    /* Validation */
+
+    if(quizData.title===""){
+
+        alert("Please enter the quiz title.");
+
+        return;
+
+    }
+
+    if(quizData.category===""){
+
+        alert("Please select a category.");
+
+        return;
+
+    }
+
+    if(quizQuestions.length===0){
+
+        alert("Please add at least one question.");
+
+        return;
+
+    }
+
+    console.log(quizData);
+
+    alert("Quiz saved successfully! (Temporary Demo)");
+
+});
+
+/* =========================================================
+END OF SAVE COMPLETE QUIZ JS
+SECTION 12
+========================================================= */
+
+
+
+
+
     
 </script>
     
