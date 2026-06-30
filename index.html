@@ -2312,6 +2312,205 @@ SECTION 12
 ========================================================= */
         
 
+/* =========================================================
+SECTION 12
+BEGINNING OF SAVED QUIZZES LIST CSS
+========================================================= */
+
+.saved-quizzes{
+
+    margin-top:24px;
+
+}
+
+.saved-quizzes h3{
+
+    color:#FFFFFF;
+
+    font-size:18px;
+
+    margin-bottom:16px;
+
+}
+
+.saved-quiz-card{
+
+    background:#171C2F;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:16px;
+
+    padding:18px;
+
+    margin-bottom:14px;
+
+    box-shadow:0 6px 16px rgba(0,0,0,.25);
+
+}
+
+.saved-quiz-card h4{
+
+    color:#FFFFFF;
+
+    font-size:17px;
+
+    margin-bottom:8px;
+
+}
+
+.saved-quiz-card p{
+
+    color:#9CA3AF;
+
+    font-size:13px;
+
+    margin-bottom:14px;
+
+}
+
+.saved-quiz-actions{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+}
+
+.saved-quiz-actions button{
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:10px 16px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+}
+
+.edit-quiz-btn{
+
+    background:#FF9D00;
+
+    color:#FFFFFF;
+
+}
+
+.delete-quiz-btn{
+
+    background:#DC2626;
+
+    color:#FFFFFF;
+
+}
+
+.view-quiz-btn{
+
+    background:#2563EB;
+
+    color:#FFFFFF;
+
+}
+
+/* =========================================================
+END OF SAVED QUIZZES LIST CSS
+SECTION 12
+========================================================= */
+/* =========================================================
+SECTION 12
+BEGINNING OF QUESTION EDITOR CSS
+========================================================= */
+
+.question-editor{
+
+    display:none;
+    width:100%;
+    padding:22px 18px;
+
+}
+
+.question-editor-card{
+
+    background:#171C2F;
+    border-radius:20px;
+    padding:20px;
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.question-editor-card h2{
+
+    color:#FFFFFF;
+    margin-bottom:20px;
+    font-size:24px;
+
+}
+
+.question-editor-card textarea,
+.question-editor-card input,
+.question-editor-card select{
+
+    width:100%;
+    margin-bottom:14px;
+    border:none;
+    border-radius:14px;
+    background:#0F172A;
+    color:#FFFFFF;
+    padding:14px;
+    font-size:15px;
+
+}
+
+.question-editor-card textarea{
+
+    min-height:110px;
+    resize:vertical;
+
+}
+
+.editor-buttons{
+
+    display:flex;
+    gap:12px;
+
+}
+
+.editor-buttons button{
+
+    flex:1;
+    height:52px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    font-weight:700;
+
+}
+
+#saveQuestionBtn{
+
+    background:#FF9D00;
+    color:#FFFFFF;
+
+}
+
+#cancelQuestionBtn{
+
+    background:#374151;
+    color:#FFFFFF;
+
+}
+
+/* =========================================================
+END OF QUESTION EDITOR CSS
+SECTION 12
+========================================================= */    
+
+
 
         
         
@@ -3296,6 +3495,24 @@ BEGINNING OF PROFESSIONAL QUIZ MANAGER HTML
 <button id="saveQuizBtn" class="manager-btn">
     💾 Save Complete Quiz
 </button>
+
+<!-- ==========================
+Saved Quizzes
+========================== -->
+
+<div class="saved-quizzes">
+
+    <h3>Saved Quizzes</h3>
+
+    <div id="savedQuizContainer">
+
+        <p class="empty-question">
+            No quizzes saved yet.
+        </p>
+
+    </div>
+
+</div>
     
     <button
         class="manager-btn"
@@ -4152,6 +4369,12 @@ let quizQuestions = [];
 let editingQuestion = -1;
 
 /* ===========================
+Saved Quizzes
+=========================== */
+
+let savedQuizzes = [];
+        
+/* ===========================
 Open Question Editor
 =========================== */
 
@@ -4220,6 +4443,30 @@ document.getElementById("saveQuestionBtn").addEventListener("click",function(){
 });
 
 /* ===========================
+Save Complete Quiz
+=========================== */
+
+document.getElementById("saveQuizBtn").addEventListener("click", function(){
+
+    const quiz = {
+
+        title: document.getElementById("quizTitle").value,
+
+        category: document.getElementById("quizCategory").value,
+
+        image: document.getElementById("quizImage").value,
+
+        questions: [...quizQuestions]
+
+    };
+
+    savedQuizzes.push(quiz);
+
+    refreshSavedQuizList();
+
+});        
+
+/* ===========================
 Refresh List
 =========================== */
 
@@ -4272,6 +4519,8 @@ function refreshQuestionList(){
     }
 
 }
+
+    
 
 /* ===========================
 Clear Editor
