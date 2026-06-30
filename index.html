@@ -1919,6 +1919,160 @@ BEGINNING OF TEMPO ADMIN DASHBOARD CSS
 END OF TEMPO ADMIN DASHBOARD CSS
 SECTION 09
 ========================================================= */        
+/* =========================================================
+SECTION 10
+BEGINNING OF ADMIN DASHBOARD CSS
+========================================================= */
+
+.admin-dashboard{
+
+    width:100%;
+
+    padding:22px 18px;
+
+}
+
+.dashboard-header{
+
+    margin-bottom:22px;
+
+}
+
+.dashboard-header h2{
+
+    font-size:26px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+    margin-bottom:6px;
+
+}
+
+.dashboard-header p{
+
+    font-size:14px;
+
+    color:#9CA3AF;
+
+}
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+
+    margin-bottom:24px;
+
+}
+
+.dashboard-card{
+
+    background:#171C2F;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:20px;
+
+    text-align:center;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.25);
+
+}
+
+.dashboard-card h3{
+
+    font-size:30px;
+
+    color:#FF9D00;
+
+    margin-bottom:8px;
+
+    font-weight:700;
+
+}
+
+.dashboard-card span{
+
+    color:#A8B2D1;
+
+    font-size:14px;
+
+}
+
+.dashboard-actions{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.dashboard-actions button{
+
+    width:100%;
+
+    height:54px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,#FF9D00,#FFB800);
+
+    color:#FFFFFF;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+}
+
+.dashboard-actions button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 20px rgba(255,157,0,.35);
+
+}
+
+.dashboard-actions button:active{
+
+    transform:scale(.98);
+
+}
+
+/* Responsive */
+
+@media(max-width:600px){
+
+    .dashboard-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* =========================================================
+END OF ADMIN DASHBOARD CSS
+SECTION 10
+========================================================= */
+
+
+
         
 </style>
 
@@ -2681,6 +2835,99 @@ BEGINNING OF TEMPO ADMIN DASHBOARD
 END OF TEMPO ADMIN DASHBOARD
 SECTION 09
 ========================================================= -->
+<!-- =========================================================
+SECTION 10
+BEGINNING OF ADMIN DASHBOARD
+========================================================= -->
+
+<section class="admin-dashboard" id="adminDashboard" style="display:none;">
+
+    <div class="dashboard-header">
+
+        <h2>Admin Dashboard</h2>
+
+        <p>Welcome back, Administrator</p>
+
+    </div>
+
+    <!-- Statistics -->
+
+    <div class="dashboard-grid">
+
+        <div class="dashboard-card">
+
+            <h3 id="totalQuiz">0</h3>
+
+            <span>Total Quizzes</span>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <h3 id="totalCategory">11</h3>
+
+            <span>Categories</span>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <h3 id="totalDaily">0</h3>
+
+            <span>Daily Challenge</span>
+
+        </div>
+
+        <div class="dashboard-card">
+
+            <h3 id="totalBanner">0</h3>
+
+            <span>Featured Banners</span>
+
+        </div>
+
+    </div>
+
+    <!-- Quick Actions -->
+
+    <div class="dashboard-actions">
+
+        <button id="uploadQuizBtn">
+            ➕ Upload Quiz
+        </button>
+
+        <button id="manageQuizBtn">
+            📚 Manage Quiz
+        </button>
+
+        <button id="manageBannerBtn">
+            🖼 Featured Banner
+        </button>
+
+        <button id="manageDailyBtn">
+            ⭐ Daily Challenge
+        </button>
+
+        <button id="manageCategoryBtn">
+            📂 Categories
+        </button>
+
+        <button id="logoutBtn">
+            🚪 Logout
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+END OF ADMIN DASHBOARD
+SECTION 10
+========================================================= -->    
+
+    
+    
+    
     
 <!-- =========================================================
 SCRIPT SECTIONS.  SCRIPT SECTIONS. SCRIPT SECTIONS. SCRIPT SECTIONS. SCRIPT SECTIONS. SCRIPT SECTIONS.  SCRIPT SECTIONS
@@ -3276,7 +3523,112 @@ function openSettingsManager(){
 END OF TEMPO ADMIN DASHBOARD JS
 SECTION 09
 ========================================================= */
+/* =========================================================
+SECTION 10
+BEGINNING OF ADMIN DASHBOARD JS
+========================================================= */
 
+/* ===========================
+Open Admin Dashboard
+=========================== */
+
+function openAdminDashboard(){
+
+    // Hide Admin Login
+
+    const login=document.getElementById("adminLogin");
+
+    if(login){
+
+        login.style.display="none";
+
+    }
+
+    // Show Dashboard
+
+    document.getElementById("adminDashboard").style.display="block";
+
+}
+
+/* ===========================
+Logout
+=========================== */
+
+document.getElementById("logoutBtn").addEventListener("click",function(){
+
+    document.getElementById("adminDashboard").style.display="none";
+
+    const login=document.getElementById("adminLogin");
+
+    if(login){
+
+        login.style.display="block";
+
+    }
+
+});
+
+/* ===========================
+Dashboard Buttons
+=========================== */
+
+document.getElementById("uploadQuizBtn").addEventListener("click",function(){
+
+    alert("Section 11 - Upload Quiz");
+
+});
+
+document.getElementById("manageQuizBtn").addEventListener("click",function(){
+
+    alert("Section 12 - Manage Quiz");
+
+});
+
+document.getElementById("manageBannerBtn").addEventListener("click",function(){
+
+    alert("Section 13 - Featured Banner");
+
+});
+
+document.getElementById("manageDailyBtn").addEventListener("click",function(){
+
+    alert("Section 14 - Daily Challenge");
+
+});
+
+document.getElementById("manageCategoryBtn").addEventListener("click",function(){
+
+    alert("Section 15 - Categories");
+
+});
+
+/* ===========================
+Update Dashboard Statistics
+=========================== */
+
+function refreshDashboard(){
+
+    document.getElementById("totalQuiz").innerHTML="0";
+
+    document.getElementById("totalCategory").innerHTML="11";
+
+    document.getElementById("totalDaily").innerHTML="0";
+
+    document.getElementById("totalBanner").innerHTML="0";
+
+}
+
+/* Load Dashboard */
+
+refreshDashboard();
+
+/* =========================================================
+END OF ADMIN DASHBOARD JS
+SECTION 10
+========================================================= */
+
+
+    
 
     
 </script>
