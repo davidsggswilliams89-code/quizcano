@@ -3479,7 +3479,7 @@ Dashboard Buttons
 
 function openQuizManager(){
 
-    alert("Section 10 - Quiz Manager");
+    openAdminDashboard();
 
 }
 
@@ -3534,22 +3534,14 @@ Open Admin Dashboard
 
 function openAdminDashboard(){
 
-    // Hide Admin Login
+    // Hide Tempo Admin
+    document.getElementById("tempoAdmin").style.display = "none";
 
-    const login=document.getElementById("adminLogin");
-
-    if(login){
-
-        login.style.display="none";
-
-    }
-
-    // Show Dashboard
-
-    document.getElementById("adminDashboard").style.display="block";
+    // Show Admin Dashboard
+    document.getElementById("adminDashboard").style.display = "block";
 
 }
-
+    
 /* ===========================
 Logout
 =========================== */
@@ -3626,7 +3618,7 @@ refreshDashboard();
 END OF ADMIN DASHBOARD JS
 SECTION 10
 ========================================================= */
-
+openTempoAdmin();
 
     
 
