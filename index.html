@@ -3410,15 +3410,27 @@ SECTION 11
 <!-- =========================================================
 SECTION 12
 BEGINNING OF PROFESSIONAL QUIZ MANAGER HTML
+PART 1
 ========================================================= -->
 
-<section class="quiz-manager" id="quizManager">
+<section
+    id="quizManager"
+    class="quiz-manager"
+    style="display:none;">
+
+    <!-- ==========================
+    Header
+    =========================== -->
 
     <div class="quiz-manager-header">
 
-        <h2>Quiz Manager</h2>
+        <h2>
+            Quiz Manager
+        </h2>
 
-        <p>Create and manage professional quizzes</p>
+        <p>
+            Create, edit and manage your quizzes professionally.
+        </p>
 
     </div>
 
@@ -3435,20 +3447,45 @@ BEGINNING OF PROFESSIONAL QUIZ MANAGER HTML
 
         <select id="quizCategory">
 
-            <option value="">Select Category</option>
+            <option value="">
+                Select Category
+            </option>
 
-            <option>General Knowledge</option>
-            <option>Sports</option>
-            <option>Movies</option>
-            <option>Music</option>
-            <option>Science</option>
-            <option>History</option>
-            <option>Technology</option>
-            <option>Geography</option>
-            <option>Games</option>
-            <option>Mathematics</option>
-            <option>Image Identification</option>
-            <option>Daily Challenge</option>
+            <option value="General Knowledge">
+                General Knowledge
+            </option>
+
+            <option value="Sports">
+                Sports
+            </option>
+
+            <option value="Science">
+                Science
+            </option>
+
+            <option value="Technology">
+                Technology
+            </option>
+
+            <option value="History">
+                History
+            </option>
+
+            <option value="Mathematics">
+                Mathematics
+            </option>
+
+            <option value="English">
+                English
+            </option>
+
+            <option value="Geography">
+                Geography
+            </option>
+
+            <option value="Entertainment">
+                Entertainment
+            </option>
 
         </select>
 
@@ -3466,15 +3503,20 @@ BEGINNING OF PROFESSIONAL QUIZ MANAGER HTML
     <div class="question-list">
 
         <h3>
+
             Questions
+
             (<span id="questionCount">0</span>)
+
         </h3>
 
-        <div
-            id="questionContainer"
-            class="empty-question">
+        <div id="questionContainer">
 
-            No questions have been added yet.
+            <p class="empty-question">
+
+                No questions added yet.
+
+            </p>
 
         </div>
 
@@ -3492,28 +3534,6 @@ BEGINNING OF PROFESSIONAL QUIZ MANAGER HTML
 
     </button>
 
-<button id="saveQuizBtn" class="manager-btn">
-    💾 Save Complete Quiz
-</button>
-
-<!-- ==========================
-Saved Quizzes
-========================== -->
-
-<div class="saved-quizzes">
-
-    <h3>Saved Quizzes</h3>
-
-    <div id="savedQuizContainer">
-
-        <p class="empty-question">
-            No quizzes saved yet.
-        </p>
-
-    </div>
-
-</div>
-    
     <button
         class="manager-btn"
         id="saveQuizBtn">
@@ -3521,92 +3541,137 @@ Saved Quizzes
         💾 Save Complete Quiz
 
     </button>
+    
+<!-- ==========================
+    Question Editor
+    =========================== -->
+
+    <section
+        id="questionEditor"
+        class="quiz-manager"
+        style="display:none;">
+
+        <div class="quiz-manager-header">
+
+            <h2>
+                Question Editor
+            </h2>
+
+            <p>
+                Create or edit a quiz question.
+            </p>
+
+        </div>
+
+        <div class="quiz-info-card">
+
+            <input
+                type="text"
+                id="editorQuestion"
+                placeholder="Enter Question">
+
+            <input
+                type="text"
+                id="editorOptionA"
+                placeholder="Option A">
+
+            <input
+                type="text"
+                id="editorOptionB"
+                placeholder="Option B">
+
+            <input
+                type="text"
+                id="editorOptionC"
+                placeholder="Option C">
+
+            <input
+                type="text"
+                id="editorOptionD"
+                placeholder="Option D">
+
+            <select id="editorAnswer">
+
+                <option value="">
+                    Correct Answer
+                </option>
+
+                <option value="A">
+                    Option A
+                </option>
+
+                <option value="B">
+                    Option B
+                </option>
+
+                <option value="C">
+                    Option C
+                </option>
+
+                <option value="D">
+                    Option D
+                </option>
+
+            </select>
+
+            <button
+                class="manager-btn"
+                id="saveQuestionBtn">
+
+                💾 Save Question
+
+            </button>
+
+            <button
+                class="manager-btn"
+                id="cancelQuestionBtn">
+
+                ❌ Cancel
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================
+    Saved Quizzes
+    =========================== -->
+
+    <div class="saved-quizzes">
+
+        <h3>
+            Saved Quizzes
+        </h3>
+
+        <div id="savedQuizContainer">
+
+            <p class="empty-question">
+
+                No quizzes saved yet.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================
+    Back Button
+    =========================== -->
+
+    <button
+        class="manager-btn"
+        id="backToDashboardBtn">
+
+        ⬅ Back to Dashboard
+
+    </button>
 
 </section>
 
 <!-- =========================================================
 END OF PROFESSIONAL QUIZ MANAGER HTML
-SECTION 12
-========================================================= -->
-<!-- =========================================================
-SECTION 12
-BEGINNING OF QUESTION EDITOR
-========================================================= -->
-
-<section class="question-editor" id="questionEditor" style="display:none;">
-
-    <div class="quiz-manager-header">
-
-        <h2>Add Question</h2>
-
-        <p>Create a new quiz question</p>
-
-    </div>
-
-    <div class="quiz-info-card">
-
-        <textarea
-            id="editorQuestion"
-            placeholder="Enter Question"
-            style="width:100%;height:120px;padding:15px;border:none;border-radius:14px;background:#0F172A;color:#FFFFFF;margin-bottom:14px;"></textarea>
-
-        <input
-            type="text"
-            id="editorOptionA"
-            placeholder="Option A">
-
-        <input
-            type="text"
-            id="editorOptionB"
-            placeholder="Option B">
-
-        <input
-            type="text"
-            id="editorOptionC"
-            placeholder="Option C">
-
-        <input
-            type="text"
-            id="editorOptionD"
-            placeholder="Option D">
-
-        <select id="editorAnswer">
-
-            <option value="">Correct Answer</option>
-
-            <option value="A">Option A</option>
-
-            <option value="B">Option B</option>
-
-            <option value="C">Option C</option>
-
-            <option value="D">Option D</option>
-
-        </select>
-
-        <button
-            class="manager-btn"
-            id="saveQuestionBtn">
-
-            ✅ Save Question
-
-        </button>
-
-        <button
-            class="manager-btn"
-            id="cancelQuestionBtn"
-            style="background:#374151;">
-
-            ← Back to Quiz
-
-        </button>
-
-    </div>
-
-</section>
-
-<!-- =========================================================
-END OF QUESTION EDITOR
 SECTION 12
 ========================================================= -->
     
