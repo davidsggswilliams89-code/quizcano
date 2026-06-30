@@ -2188,10 +2188,10 @@ SECTION 11
 ========================================================= */
 /* =========================================================
 SECTION 12
-BEGINNING OF UPLOAD QUIZ MANAGER CSS
+BEGINNING OF PROFESSIONAL QUIZ MANAGER CSS
 ========================================================= */
 
-.upload-quiz-manager{
+.quiz-manager{
 
     width:100%;
     padding:22px 18px;
@@ -2199,116 +2199,118 @@ BEGINNING OF UPLOAD QUIZ MANAGER CSS
 
 }
 
-.upload-header{
+.quiz-manager-header{
 
     margin-bottom:22px;
 
 }
 
-.upload-header h2{
+.quiz-manager-header h2{
 
-    font-size:26px;
+    font-size:28px;
     font-weight:700;
     color:#FFFFFF;
     margin-bottom:6px;
 
 }
 
-.upload-header p{
+.quiz-manager-header p{
 
     font-size:14px;
     color:#9CA3AF;
 
 }
 
-.upload-form{
+/* ===========================
+Quiz Information Card
+=========================== */
 
-    display:flex;
-    flex-direction:column;
-    gap:16px;
+.quiz-info-card{
 
-}
-
-.upload-form label{
-
-    font-size:14px;
-    font-weight:600;
-    color:#FFFFFF;
+    background:#171C2F;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:20px;
+    border:1px solid rgba(255,255,255,.08);
 
 }
 
-.upload-form input,
-.upload-form select,
-.upload-form textarea{
+.quiz-info-card input,
+.quiz-info-card select{
 
     width:100%;
-    padding:15px;
-    background:#171C2F;
-    border:1px solid rgba(255,255,255,.08);
+    height:52px;
+    margin-bottom:14px;
+    border:none;
     border-radius:14px;
+    background:#0F172A;
     color:#FFFFFF;
+    padding:0 16px;
     font-size:15px;
-    outline:none;
 
 }
 
-.upload-form input:focus,
-.upload-form select:focus,
-.upload-form textarea:focus{
+.quiz-info-card input[type="file"]{
 
-    border-color:#FF9D00;
-
-}
-
-.upload-form textarea{
-
-    min-height:120px;
-    resize:vertical;
+    padding:14px;
+    height:auto;
 
 }
 
-.save-quiz-btn{
+/* ===========================
+Question List
+=========================== */
+
+.question-list{
+
+    background:#171C2F;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:20px;
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.question-list h3{
+
+    color:#FFFFFF;
+    margin-bottom:16px;
+    font-size:18px;
+
+}
+
+.empty-question{
+
+    color:#9CA3AF;
+    text-align:center;
+    padding:24px;
+
+}
+
+/* ===========================
+Buttons
+=========================== */
+
+.manager-btn{
 
     width:100%;
     height:54px;
     border:none;
     border-radius:16px;
+    margin-top:14px;
     background:linear-gradient(135deg,#FF9D00,#FFB800);
     color:#FFFFFF;
     font-size:16px;
     font-weight:700;
     cursor:pointer;
-    transition:.30s;
-
-}
-
-.save-quiz-btn:hover{
-
-    transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(255,157,0,.35);
-
-}
-
-.save-quiz-btn:active{
-
-    transform:scale(.98);
-
-}
-
-@media(max-width:600px){
-
-    .upload-header h2{
-
-        font-size:22px;
-
-    }
 
 }
 
 /* =========================================================
-END OF UPLOAD QUIZ MANAGER CSS
+END OF PROFESSIONAL QUIZ MANAGER CSS
 SECTION 12
 ========================================================= */
+        
 
 
         
@@ -3208,29 +3210,31 @@ SECTION 11
 ========================================================= -->
 <!-- =========================================================
 SECTION 12
-BEGINNING OF UPLOAD QUIZ MANAGER
+BEGINNING OF PROFESSIONAL QUIZ MANAGER HTML
 ========================================================= -->
 
-<section class="upload-quiz-manager" id="uploadQuizManager">
+<section class="quiz-manager" id="quizManager">
 
-    <div class="upload-header">
+    <div class="quiz-manager-header">
 
-        <h2>Upload New Quiz</h2>
+        <h2>Quiz Manager</h2>
 
-        <p>Create and organize quizzes for Quizcano</p>
+        <p>Create and manage professional quizzes</p>
 
     </div>
 
-    <div class="upload-form">
+    <!-- ==========================
+    Quiz Information
+    =========================== -->
 
-        <label>Quiz Title</label>
+    <div class="quiz-info-card">
+
         <input
             type="text"
             id="quizTitle"
-            placeholder="Enter quiz title">
+            placeholder="Quiz Title">
 
-        <label>Category</label>
-        <select id="quizCategorySelect">
+        <select id="quizCategory">
 
             <option value="">Select Category</option>
 
@@ -3245,57 +3249,134 @@ BEGINNING OF UPLOAD QUIZ MANAGER
             <option>Games</option>
             <option>Mathematics</option>
             <option>Image Identification</option>
-
             <option>Daily Challenge</option>
 
         </select>
 
-        <label>Quiz Thumbnail</label>
-
         <input
             type="file"
-            id="quizImage"
+            id="quizThumbnail"
             accept="image/*">
 
-        <label>Question</label>
+    </div>
+
+    <!-- ==========================
+    Question List
+    =========================== -->
+
+    <div class="question-list">
+
+        <h3>
+            Questions
+            (<span id="questionCount">0</span>)
+        </h3>
+
+        <div
+            id="questionContainer"
+            class="empty-question">
+
+            No questions have been added yet.
+
+        </div>
+
+    </div>
+
+    <!-- ==========================
+    Action Buttons
+    =========================== -->
+
+    <button
+        class="manager-btn"
+        id="addQuestionBtn">
+
+        ➕ Add Question
+
+    </button>
+
+    <button
+        class="manager-btn"
+        id="saveQuizBtn">
+
+        💾 Save Complete Quiz
+
+    </button>
+
+</section>
+
+<!-- =========================================================
+END OF PROFESSIONAL QUIZ MANAGER HTML
+SECTION 12
+========================================================= -->
+<!-- =========================================================
+SECTION 12
+BEGINNING OF QUESTION EDITOR
+========================================================= -->
+
+<section class="question-editor" id="questionEditor" style="display:none;">
+
+    <div class="quiz-manager-header">
+
+        <h2>Add Question</h2>
+
+        <p>Create a new quiz question</p>
+
+    </div>
+
+    <div class="quiz-info-card">
 
         <textarea
-            id="quizQuestion"
-            placeholder="Enter your quiz question"></textarea>
+            id="editorQuestion"
+            placeholder="Enter Question"
+            style="width:100%;height:120px;padding:15px;border:none;border-radius:14px;background:#0F172A;color:#FFFFFF;margin-bottom:14px;"></textarea>
 
-        <label>Option A</label>
-        <input type="text" id="optionA">
+        <input
+            type="text"
+            id="editorOptionA"
+            placeholder="Option A">
 
-        <label>Option B</label>
-        <input type="text" id="optionB">
+        <input
+            type="text"
+            id="editorOptionB"
+            placeholder="Option B">
 
-        <label>Option C</label>
-        <input type="text" id="optionC">
+        <input
+            type="text"
+            id="editorOptionC"
+            placeholder="Option C">
 
-        <label>Option D</label>
-        <input type="text" id="optionD">
+        <input
+            type="text"
+            id="editorOptionD"
+            placeholder="Option D">
 
-        <label>Correct Answer</label>
+        <select id="editorAnswer">
 
-        <select id="correctAnswer">
+            <option value="">Correct Answer</option>
 
-            <option value="">Select Correct Answer</option>
+            <option value="A">Option A</option>
 
-            <option>A</option>
+            <option value="B">Option B</option>
 
-            <option>B</option>
+            <option value="C">Option C</option>
 
-            <option>C</option>
-
-            <option>D</option>
+            <option value="D">Option D</option>
 
         </select>
 
         <button
-            class="save-quiz-btn"
-            id="saveQuizBtn">
+            class="manager-btn"
+            id="saveQuestionBtn">
 
-            💾 Save Quiz
+            ✅ Save Question
+
+        </button>
+
+        <button
+            class="manager-btn"
+            id="cancelQuestionBtn"
+            style="background:#374151;">
+
+            ← Back to Quiz
 
         </button>
 
@@ -3304,9 +3385,9 @@ BEGINNING OF UPLOAD QUIZ MANAGER
 </section>
 
 <!-- =========================================================
-END OF UPLOAD QUIZ MANAGER
+END OF QUESTION EDITOR
 SECTION 12
-========================================================= -->    
+========================================================= -->
     
     
     
@@ -4060,99 +4141,193 @@ SECTION 11
 
 /* =========================================================
 SECTION 12
-BEGINNING OF HIDDEN ADMIN ACCESS JS
+BEGINNING OF QUESTION EDITOR JS
 ========================================================= */
 
-let adminTapCount = 0;
+let quizQuestions = [];
+let editingQuestion = -1;
 
-const logo = document.querySelector(".logo-area");
+/* ===========================
+Open Question Editor
+=========================== */
 
-logo.addEventListener("click", function(){
+document.getElementById("addQuestionBtn").addEventListener("click",function(){
 
-    adminTapCount++;
+    document.getElementById("quizManager").style.display="none";
 
-    if(adminTapCount >= 7){
-
-        document.getElementById("adminLogin").style.display = "block";
-
-        document.querySelector(".featured-carousel").style.display = "none";
-
-        document.querySelector(".you-may-play").style.display = "none";
-
-        document.querySelector(".trending-quizzes").style.display = "none";
-
-        adminTapCount = 0;
-
-    }
-
-    setTimeout(function(){
-
-        adminTapCount = 0;
-
-    },3000);
+    document.getElementById("questionEditor").style.display="block";
 
 });
 
-/* =========================================================
-END OF HIDDEN ADMIN ACCESS JS
-SECTION 12
-========================================================= */
-  /* =========================================================
-SECTION 12
-BEGINNING OF UPLOAD QUIZ MANAGER JS
-========================================================= */
-
-let currentQuizQuestions = [];
-
 /* ===========================
-Add Question
+Cancel
 =========================== */
 
-function addQuestion(){
+document.getElementById("cancelQuestionBtn").addEventListener("click",function(){
 
-    const question = {
+    document.getElementById("questionEditor").style.display="none";
 
-        question: document.getElementById("quizQuestion").value,
+    document.getElementById("quizManager").style.display="block";
 
-        options: [
+});
 
-            document.getElementById("optionA").value,
+/* ===========================
+Save Question
+=========================== */
 
-            document.getElementById("optionB").value,
+document.getElementById("saveQuestionBtn").addEventListener("click",function(){
 
-            document.getElementById("optionC").value,
+    const question={
 
-            document.getElementById("optionD").value
+        question:document.getElementById("editorQuestion").value,
 
-        ],
+        optionA:document.getElementById("editorOptionA").value,
 
-        answer: document.getElementById("correctAnswer").value
+        optionB:document.getElementById("editorOptionB").value,
+
+        optionC:document.getElementById("editorOptionC").value,
+
+        optionD:document.getElementById("editorOptionD").value,
+
+        answer:document.getElementById("editorAnswer").value
 
     };
 
-    currentQuizQuestions.push(question);
+    quizQuestions.push(question);
 
-    alert("Question Added Successfully");
+    refreshQuestionList();
 
-    document.getElementById("quizQuestion").value = "";
+    clearQuestionEditor();
 
-    document.getElementById("optionA").value = "";
+    document.getElementById("questionEditor").style.display="none";
 
-    document.getElementById("optionB").value = "";
+    document.getElementById("quizManager").style.display="block";
 
-    document.getElementById("optionC").value = "";
+});
 
-    document.getElementById("optionD").value = "";
+/* ===========================
+Refresh List
+=========================== */
 
-    document.getElementById("correctAnswer").selectedIndex = 0;
+function refreshQuestionList(){
+
+    document.getElementById("questionCount").innerHTML=quizQuestions.length;
+
+    const container=document.getElementById("questionContainer");
+
+    container.innerHTML="";
+
+    quizQuestions.forEach(function(q,index){
+
+        container.innerHTML += `
+
+<div style="background:#0F172A;padding:16px;border-radius:14px;margin-bottom:12px;">
+
+    <strong style="color:#FFFFFF;">
+        Question ${index+1}
+    </strong>
+
+    <p style="color:#9CA3AF;margin:10px 0;">
+        ${q.question}
+    </p>
+
+    <button onclick="editQuestion(${index})"
+        style="padding:8px 14px;border:none;border-radius:8px;background:#FF9D00;color:#fff;margin-right:8px;cursor:pointer;">
+
+        ✏ Edit
+
+    </button>
+
+    <button onclick="deleteQuestion(${index})"
+        style="padding:8px 14px;border:none;border-radius:8px;background:#DC2626;color:#fff;cursor:pointer;">
+
+        🗑 Delete
+
+    </button>
+
+</div>
+
+`;
+
+    });
+
+    if(quizQuestions.length===0){
+
+        container.innerHTML="No questions have been added yet.";
+
+    }
+
+}
+
+/* ===========================
+Clear Editor
+=========================== */
+
+function clearQuestionEditor(){
+
+    document.getElementById("editorQuestion").value="";
+
+    document.getElementById("editorOptionA").value="";
+
+    document.getElementById("editorOptionB").value="";
+
+    document.getElementById("editorOptionC").value="";
+
+    document.getElementById("editorOptionD").value="";
+
+    document.getElementById("editorAnswer").selectedIndex=0;
 
 }
 
 /* =========================================================
-END OF UPLOAD QUIZ MANAGER JS
+END OF QUESTION EDITOR JS
 SECTION 12
-========================================================= */  
+========================================================= */
 
+/* ===========================
+Edit Question
+=========================== */
+
+function editQuestion(index){
+
+    const q = quizQuestions[index];
+
+    document.getElementById("editorQuestion").value = q.question;
+
+    document.getElementById("editorOptionA").value = q.optionA;
+
+    document.getElementById("editorOptionB").value = q.optionB;
+
+    document.getElementById("editorOptionC").value = q.optionC;
+
+    document.getElementById("editorOptionD").value = q.optionD;
+
+    document.getElementById("editorAnswer").value = q.answer;
+
+    editingQuestion = index;
+
+    document.getElementById("quizManager").style.display="none";
+
+    document.getElementById("questionEditor").style.display="block";
+
+}
+
+/* ===========================
+Delete Question
+=========================== */
+
+function deleteQuestion(index){
+
+    if(confirm("Delete this question?")){
+
+        quizQuestions.splice(index,1);
+
+        refreshQuestionList();
+
+    }
+
+}
+    
     
 </script>
     
