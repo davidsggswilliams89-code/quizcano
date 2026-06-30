@@ -3809,8 +3809,46 @@ document.getElementById("adminLoginBtn").addEventListener("click", function(){
 END OF ADMIN LOGIN JS
 SECTION 11
 ========================================================= */
-document.getElementById("adminLogin").style.display = "block";
 
+/* =========================================================
+SECTION 12
+BEGINNING OF HIDDEN ADMIN ACCESS JS
+========================================================= */
+
+let adminTapCount = 0;
+
+const logo = document.querySelector(".logo-area");
+
+logo.addEventListener("click", function(){
+
+    adminTapCount++;
+
+    if(adminTapCount >= 7){
+
+        document.getElementById("adminLogin").style.display = "block";
+
+        document.querySelector(".featured-carousel").style.display = "none";
+
+        document.querySelector(".you-may-play").style.display = "none";
+
+        document.querySelector(".trending-quizzes").style.display = "none";
+
+        adminTapCount = 0;
+
+    }
+
+    setTimeout(function(){
+
+        adminTapCount = 0;
+
+    },3000);
+
+});
+
+/* =========================================================
+END OF HIDDEN ADMIN ACCESS JS
+SECTION 12
+========================================================= */
     
 
     
