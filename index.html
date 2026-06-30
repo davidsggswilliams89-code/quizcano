@@ -2186,7 +2186,132 @@ BEGINNING OF ADMIN LOGIN CSS
 END OF ADMIN LOGIN CSS
 SECTION 11
 ========================================================= */
+/* =========================================================
+SECTION 12
+BEGINNING OF UPLOAD QUIZ MANAGER CSS
+========================================================= */
 
+.upload-quiz-manager{
+
+    width:100%;
+    padding:22px 18px;
+    display:none;
+
+}
+
+.upload-header{
+
+    margin-bottom:22px;
+
+}
+
+.upload-header h2{
+
+    font-size:26px;
+    font-weight:700;
+    color:#FFFFFF;
+    margin-bottom:6px;
+
+}
+
+.upload-header p{
+
+    font-size:14px;
+    color:#9CA3AF;
+
+}
+
+.upload-form{
+
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+
+}
+
+.upload-form label{
+
+    font-size:14px;
+    font-weight:600;
+    color:#FFFFFF;
+
+}
+
+.upload-form input,
+.upload-form select,
+.upload-form textarea{
+
+    width:100%;
+    padding:15px;
+    background:#171C2F;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:14px;
+    color:#FFFFFF;
+    font-size:15px;
+    outline:none;
+
+}
+
+.upload-form input:focus,
+.upload-form select:focus,
+.upload-form textarea:focus{
+
+    border-color:#FF9D00;
+
+}
+
+.upload-form textarea{
+
+    min-height:120px;
+    resize:vertical;
+
+}
+
+.save-quiz-btn{
+
+    width:100%;
+    height:54px;
+    border:none;
+    border-radius:16px;
+    background:linear-gradient(135deg,#FF9D00,#FFB800);
+    color:#FFFFFF;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.30s;
+
+}
+
+.save-quiz-btn:hover{
+
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(255,157,0,.35);
+
+}
+
+.save-quiz-btn:active{
+
+    transform:scale(.98);
+
+}
+
+@media(max-width:600px){
+
+    .upload-header h2{
+
+        font-size:22px;
+
+    }
+
+}
+
+/* =========================================================
+END OF UPLOAD QUIZ MANAGER CSS
+SECTION 12
+========================================================= */
+
+
+        
         
 </style>
 
@@ -3081,7 +3206,107 @@ BEGINNING OF ADMIN LOGIN
 END OF ADMIN LOGIN
 SECTION 11
 ========================================================= -->
-    
+<!-- =========================================================
+SECTION 12
+BEGINNING OF UPLOAD QUIZ MANAGER
+========================================================= -->
+
+<section class="upload-quiz-manager" id="uploadQuizManager">
+
+    <div class="upload-header">
+
+        <h2>Upload New Quiz</h2>
+
+        <p>Create and organize quizzes for Quizcano</p>
+
+    </div>
+
+    <div class="upload-form">
+
+        <label>Quiz Title</label>
+        <input
+            type="text"
+            id="quizTitle"
+            placeholder="Enter quiz title">
+
+        <label>Category</label>
+        <select id="quizCategorySelect">
+
+            <option value="">Select Category</option>
+
+            <option>General Knowledge</option>
+            <option>Sports</option>
+            <option>Movies</option>
+            <option>Music</option>
+            <option>Science</option>
+            <option>History</option>
+            <option>Technology</option>
+            <option>Geography</option>
+            <option>Games</option>
+            <option>Mathematics</option>
+            <option>Image Identification</option>
+
+            <option>Daily Challenge</option>
+
+        </select>
+
+        <label>Quiz Thumbnail</label>
+
+        <input
+            type="file"
+            id="quizImage"
+            accept="image/*">
+
+        <label>Question</label>
+
+        <textarea
+            id="quizQuestion"
+            placeholder="Enter your quiz question"></textarea>
+
+        <label>Option A</label>
+        <input type="text" id="optionA">
+
+        <label>Option B</label>
+        <input type="text" id="optionB">
+
+        <label>Option C</label>
+        <input type="text" id="optionC">
+
+        <label>Option D</label>
+        <input type="text" id="optionD">
+
+        <label>Correct Answer</label>
+
+        <select id="correctAnswer">
+
+            <option value="">Select Correct Answer</option>
+
+            <option>A</option>
+
+            <option>B</option>
+
+            <option>C</option>
+
+            <option>D</option>
+
+        </select>
+
+        <button
+            class="save-quiz-btn"
+            id="saveQuizBtn">
+
+            💾 Save Quiz
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+END OF UPLOAD QUIZ MANAGER
+SECTION 12
+========================================================= -->    
     
     
     
