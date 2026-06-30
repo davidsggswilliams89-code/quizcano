@@ -3727,12 +3727,14 @@ document.getElementById("logoutBtn").addEventListener("click",function(){
 
     document.getElementById("adminDashboard").style.display="none";
 
-    const login=document.getElementById("adminLogin");
+    document.querySelector(".featured-carousel").style.display="block";
+    document.querySelector(".you-may-play").style.display="block";
+    document.querySelector(".trending-quizzes").style.display="block";
 
-    if(login){
+    const daily = document.querySelector(".daily-challenge");
 
-        login.style.display="block";
-
+    if(daily){
+        daily.style.display="block";
     }
 
 });
