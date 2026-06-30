@@ -3697,6 +3697,27 @@ function openAdminDashboard(){
     document.getElementById("adminDashboard").style.display = "block";
 
 }
+    /* ===========================
+Back To Home
+=========================== */
+
+function backToHomeFromAdmin(){
+
+    document.getElementById("adminDashboard").style.display = "none";
+
+    document.querySelector(".featured-carousel").style.display = "block";
+
+    document.querySelector(".you-may-play").style.display = "block";
+
+    document.querySelector(".trending-quizzes").style.display = "block";
+
+    const daily = document.querySelector(".daily-challenge");
+
+    if(daily){
+        daily.style.display = "block";
+    }
+
+}
     
 /* ===========================
 Logout
