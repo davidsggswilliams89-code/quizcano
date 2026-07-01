@@ -3361,7 +3361,7 @@ SECTION 11
 BEGINNING OF ADMIN LOGIN
 ========================================================= -->
 
-<section class="admin-login" id="adminLogin">
+<section class="admin-login" id="adminLogin" style="display:none;">
 
     <div class="login-card">
 
@@ -4425,14 +4425,22 @@ document.getElementById("gameIcon").addEventListener("click", function(){
 
         adminTapCount = 0;
 
-        document.getElementById("homePage").style.display = "none";
+        // Hide Home Sections
+        document.querySelector(".featured-carousel").style.display = "none";
+        document.querySelector(".you-may-play").style.display = "none";
+        document.querySelector(".trending-quizzes").style.display = "none";
 
+        const daily = document.querySelector(".daily-challenge");
+        if(daily){
+            daily.style.display = "none";
+        }
+
+        // Show Admin Login
         document.getElementById("adminLogin").style.display = "block";
 
     }
 
 });
-
 /* Reset after 3 seconds */
 
 setInterval(function(){
