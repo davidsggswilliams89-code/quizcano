@@ -4408,6 +4408,36 @@ document.getElementById("adminLoginBtn").addEventListener("click", function(){
     }
 
 });
+/* ===========================
+Hidden Admin Access
+=========================== */
+
+let adminTapCount = 0;
+
+document.getElementById("gameIcon").addEventListener("click", function(){
+
+    adminTapCount++;
+
+    if(adminTapCount >= 7){
+
+        adminTapCount = 0;
+
+        document.getElementById("homePage").style.display = "none";
+
+        document.getElementById("adminLogin").style.display = "block";
+
+    }
+
+});
+
+/* Reset after 3 seconds */
+
+setInterval(function(){
+
+    adminTapCount = 0;
+
+},3000);
+    
 
 /* =========================================================
 END OF ADMIN LOGIN JS
