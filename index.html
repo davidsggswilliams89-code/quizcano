@@ -32,6 +32,8 @@ body{
 
     font-family:Arial,Helvetica,sans-serif;
 
+    color:#FFFFFF;
+
 }
 
 /* ===========================
@@ -42,7 +44,7 @@ Top Header
 
     width:100%;
 
-    height:110px;
+    height:82px;
 
     background:#0B1120;
 
@@ -52,13 +54,13 @@ Top Header
 
     justify-content:space-between;
 
-    padding:15px 18px;
+    padding:10px 14px;
 
     position:sticky;
 
     top:0;
 
-    z-index:999;
+    z-index:1000;
 
 }
 
@@ -68,19 +70,19 @@ Menu Button
 
 .menu-btn{
 
-    width:72px;
+    width:48px;
 
-    height:72px;
+    height:48px;
 
     border:none;
 
-    border-radius:22px;
+    border-radius:14px;
 
     background:#1A2138;
 
     color:#FFFFFF;
 
-    font-size:38px;
+    font-size:24px;
 
     cursor:pointer;
 
@@ -100,7 +102,7 @@ Logo Area
 
 .logo{
 
-    font-size:58px;
+    font-size:34px;
 
     font-weight:900;
 
@@ -126,16 +128,16 @@ Logo Area
 
 .logo-tagline{
 
-    margin-top:6px;
+    margin-top:3px;
 
-    font-size:18px;
+    font-size:11px;
 
     color:#8B93A7;
 
 }
 
 /* ===========================
-Right Section
+Right Side
 =========================== */
 
 .header-right{
@@ -144,9 +146,94 @@ Right Section
 
     align-items:center;
 
+    gap:10px;
+
+}
+
+/* ===========================
+Notification Button
+=========================== */
+
+.notification-btn{
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#1A2138;
+
+    color:#FFFFFF;
+
+    font-size:20px;
+
+    position:relative;
+
+    cursor:pointer;
+
+}
+
+.notification-count{
+
+    position:absolute;
+
+    top:-4px;
+
+    right:-4px;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:#EF4444;
+
+    color:#FFFFFF;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* ===========================
+Brain Icon
+=========================== */
+
+.profile-image{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    background:#1A2138;
+
+    border:3px solid #F59E0B;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:22px;
+
+}
+
 /* =========================================================
-SECTION 01
-QUIZCANO HEADER CSS
+END OF SECTION 01 CSS CSSS CSS CSS CSS CSS CSS CSS
 ========================================================= */
 
 *{
@@ -313,187 +400,6 @@ Notification
 
 }
 
-.notification-count{
-
-    position:absolute;
-
-    top:-4px;
-
-    right:-4px;
-
-    width:18px;
-
-    height:18px;
-
-    background:#FF3B30;
-
-    color:#FFFFFF;
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:10px;
-
-    font-weight:bold;
-
-}
-
-/* ===========================
-Brain Icon
-=========================== */
-
-.profile-image{
-
-    width:48px;
-
-    height:48px;
-
-    border-radius:50%;
-
-    border:3px solid #F59E0B;
-
-    background:#1A2138;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:24px;
-
-    cursor:pointer;
-
-}
-
-/* =========================================================
-END OF SECTION 01
-========================================================= */
-/* =========================================================
-SECTION 02
-FEATURED CAROUSEL CSS
-========================================================= */
-
-/* ===========================
-Featured Carousel
-=========================== */
-
-.featured-carousel{
-
-    width:100%;
-
-    padding:15px 15px 10px;
-
-}
-
-/* ===========================
-Carousel Container
-=========================== */
-
-.carousel-container{
-
-    width:100%;
-
-    overflow:hidden;
-
-    border-radius:20px;
-
-    background:#111827;
-
-    position:relative;
-
-}
-
-/* ===========================
-Slides Wrapper
-=========================== */
-
-.carousel-slides{
-
-    display:flex;
-
-    flex-direction:row;
-
-    flex-wrap:nowrap;
-
-    width:900%;
-
-    transition:transform .5s ease-in-out;
-
-}
-
-/* ===========================
-Each Slide
-=========================== */
-
-.carousel-slide{
-
-    width:100%;
-
-    flex:0 0 100%;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-/* ===========================
-Slide Link
-=========================== */
-
-.carousel-slide a{
-
-    width:100%;
-
-    display:block;
-
-    text-decoration:none;
-
-}
-
-/* ===========================
-Banner Image
-=========================== */
-
-.carousel-slide img{
-
-    width:100%;
-
-    height:220px;
-
-    display:block;
-
-    object-fit:contain;
-
-    object-position:center;
-
-    background:#111827;
-
-    border-radius:20px;
-
-}
-
-/* ===========================
-Carousel Dots
-=========================== */
-
-.carousel-dots{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:10px;
 /* =========================================================
 SECTION 02
 FEATURED CAROUSEL CSS
@@ -521,55 +427,35 @@ Carousel Container
 
     overflow:hidden;
 
-    border-radius:20px;
+    border-radius:18px;
 
     background:#111827;
 
-    box-shadow:0 8px 20px rgba(0,0,0,.25);
-
 }
 
 /* ===========================
-Slides Wrapper
+Carousel Track
 =========================== */
 
-.carousel-slides{
+.carousel-track{
 
     display:flex;
 
-    transition:transform .5s ease-in-out;
+    transition:transform .6s ease;
 
 }
 
 /* ===========================
-Each Banner
+Carousel Item
 =========================== */
 
-.carousel-slide{
+.carousel-item{
 
     min-width:100%;
 
     flex-shrink:0;
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:10px;
-
-}
-
-/* ===========================
-Banner Link
-=========================== */
-
-.carousel-slide a{
-
-    width:100%;
-
-    text-decoration:none;
+    padding:5px;
 
 }
 
@@ -577,7 +463,7 @@ Banner Link
 Banner Image
 =========================== */
 
-.carousel-slide img{
+.carousel-item img{
 
     width:100%;
 
@@ -587,9 +473,9 @@ Banner Image
 
     object-fit:contain;
 
-    background:#FFFFFF;
-
     border-radius:18px;
+
+    background:#FFFFFF;
 
 }
 
@@ -605,7 +491,7 @@ Carousel Dots
 
     align-items:center;
 
-    gap:10px;
+    gap:8px;
 
     margin-top:15px;
 
@@ -644,8 +530,9 @@ Active Dot
 }
 
 /* =========================================================
-END OF SECTION 02
+END OF SECTION 02  CSS CSSS CSS CSS
 ========================================================= */
+
     
 </style>
 
@@ -655,12 +542,12 @@ END OF SECTION 02
     
 <!-- =========================================================
 SECTION 01
-QUIZCANO HEADER. HTML
+QUIZCANO HEADER HTM HTML HTML HTML HTML HTML
 ========================================================= -->
 
 <header class="top-header">
 
-    <!-- Left -->
+    <!-- Left Menu -->
     <button class="menu-btn" id="menuBtn">
         ☰
     </button>
@@ -668,7 +555,7 @@ QUIZCANO HEADER. HTML
     <!-- Center Logo -->
     <div class="logo-area">
 
-        <h1 id="gameIcon" class="logo">
+        <h1 class="logo" id="gameIcon">
 
             <span class="logo-white">QUIZ</span><span class="logo-orange">CANO</span>
 
@@ -682,7 +569,7 @@ QUIZCANO HEADER. HTML
 
     </div>
 
-    <!-- Right -->
+    <!-- Right Side -->
     <div class="header-right">
 
         <button class="notification-btn">
@@ -697,17 +584,18 @@ QUIZCANO HEADER. HTML
 
         </button>
 
-        <img
-            src="profile.jpg"
-            alt="Profile"
-            class="profile-image">
+        <div class="profile-image">
+
+            🧠
+
+        </div>
 
     </div>
 
 </header>
 
 <!-- =========================================================
-END OF SECTION 01
+END OF SECTION 01  HTML HTML HTML
 ========================================================= -->
 <!-- =========================================================
 SECTION 02
@@ -718,76 +606,48 @@ FEATURED CAROUSEL
 
     <div class="carousel-container">
 
-        <div class="carousel-slides" id="carouselSlides">
+        <div class="carousel-track" id="carouselTrack">
 
-            <!-- Banner 1 -->
-            <div class="carousel-slide">
-                <a href="#">
-                    <img src="featurebanner1.png" alt="Banner 1">
-                </a>
+            <div class="carousel-item">
+                <img src="featurebanner1.png" alt="Banner 1">
             </div>
 
-            <!-- Banner 2 -->
-            <div class="carousel-slide">
-                <a href="#">
-                    <img src="featurebanner2.png" alt="Banner 2">
-                </a>
+            <div class="carousel-item">
+                <img src="featurebanner2.png" alt="Banner 2">
             </div>
 
-            <!-- Banner 3 -->
-            <div class="carousel-slide">
-                <a href="#">
-                    <img src="featurebanner3.png" alt="Banner 3">
-                </a>
+            <div class="carousel-item">
+                <img src="featurebanner3.png" alt="Banner 3">
             </div>
 
-            <!-- Banner 4 -->
-            <div class="carousel-slide">
-                <a href="#">
-                    <img src="featurebanner4.png" alt="Banner 4">
-                </a>
+            <div class="carousel-item">
+                <img src="featurebanner4.png" alt="Banner 4">
             </div>
 
-            <!-- Banner 5 -->
-            <div class="carousel-slide">
-                <a href="#">
-                    <img src="featurebanner5.png" alt="Banner 5">
-                </a>
+            <div class="carousel-item">
+                <img src="featurebanner5.png" alt="Banner 5">
             </div>
 
-            <!-- Banner 6 -->
-            <div class="carousel-slide">
-                <a href="#">
-                    <img src="featurebanner6.png" alt="Banner 6">
-                </a>
+            <div class="carousel-item">
+                <img src="featurebanner6.png" alt="Banner 6">
             </div>
 
-            <!-- Banner 7 -->
-            <div class="carousel-slide">
-                <a href="#">
-                    <img src="featurebanner7.png" alt="Banner 7">
-                </a>
+            <div class="carousel-item">
+                <img src="featurebanner7.png" alt="Banner 7">
             </div>
 
-            <!-- Banner 8 -->
-            <div class="carousel-slide">
-                <a href="#">
-                    <img src="featurebanner8.png" alt="Banner 8">
-                </a>
+            <div class="carousel-item">
+                <img src="featurebanner8.png" alt="Banner 8">
             </div>
 
-            <!-- Banner 9 -->
-            <div class="carousel-slide">
-                <a href="#">
-                    <img src="featurebanner9.png" alt="Banner 9">
-                </a>
+            <div class="carousel-item">
+                <img src="featurebanner9.png" alt="Banner 9">
             </div>
 
         </div>
 
     </div>
 
-    <!-- Carousel Dots -->
     <div class="carousel-dots">
 
         <span class="dot active"></span>
@@ -805,12 +665,12 @@ FEATURED CAROUSEL
 </section>
 
 <!-- =========================================================
-END OF SECTION 02
+END OF SECTION 02  HTM HTM HTML HTML
 ========================================================= -->
 
     
-    
  <script>
+
 /* =========================================================
 SECTION 02
 FEATURED CAROUSEL JAVASCRIPT
@@ -820,13 +680,15 @@ FEATURED CAROUSEL JAVASCRIPT
 Variables
 =========================== */
 
-const carouselSlides = document.getElementById("carouselSlides");
+const track = document.getElementById("carouselTrack");
+
+const slides = document.querySelectorAll(".carousel-item");
 
 const dots = document.querySelectorAll(".dot");
 
-const totalSlides = document.querySelectorAll(".carousel-slide").length;
-
 let currentSlide = 0;
+
+const totalSlides = slides.length;
 
 /* ===========================
 Show Slide
@@ -834,7 +696,7 @@ Show Slide
 
 function showSlide(index){
 
-    carouselSlides.style.transform =
+    track.style.transform =
     "translateX(-" + (index * 100) + "%)";
 
     dots.forEach(function(dot){
@@ -900,7 +762,7 @@ dots.forEach(function(dot,index){
 });
 
 /* ===========================
-Auto Play
+Auto Slide
 =========================== */
 
 setInterval(function(){
@@ -910,16 +772,16 @@ setInterval(function(){
 },5000);
 
 /* ===========================
-Initialize
+Start
 =========================== */
 
 showSlide(0);
 
 /* =========================================================
-END OF SECTION 02  JAVA
+END OF SECTION 02 JAVA SCRIPT JAVA JAVA JAVA
 ========================================================= */
 
-</script>
+ </script>
 
 </body>
 
