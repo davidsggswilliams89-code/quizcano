@@ -387,7 +387,7 @@ Featured Carousel
 
     width:100%;
 
-    padding:15px;
+    padding:15px 15px 10px;
 
 }
 
@@ -405,6 +405,8 @@ Carousel Container
 
     background:#111827;
 
+    position:relative;
+
 }
 
 /* ===========================
@@ -415,9 +417,11 @@ Slides Wrapper
 
     display:flex;
 
+    flex-direction:row;
+
     flex-wrap:nowrap;
 
-    width:100%;
+    width:900%;
 
     transition:transform .5s ease-in-out;
 
@@ -429,9 +433,27 @@ Each Slide
 
 .carousel-slide{
 
+    width:100%;
+
     flex:0 0 100%;
 
-    max-width:100%;
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* ===========================
+Slide Link
+=========================== */
+
+.carousel-slide a{
+
+    width:100%;
+
+    display:block;
 
     text-decoration:none;
 
@@ -445,7 +467,7 @@ Banner Image
 
     width:100%;
 
-    height:190px;
+    height:220px;
 
     display:block;
 
@@ -465,17 +487,15 @@ Carousel Dots
 
 .carousel-dots{
 
-    width:100%;
-
     display:flex;
 
     justify-content:center;
 
     align-items:center;
 
-    gap:8px;
+    gap:10px;
 
-    margin-top:12px;
+    margin-top:14px;
 
 }
 
@@ -507,6 +527,8 @@ Active Dot
 
     width:28px;
 
+    height:10px;
+
     border-radius:20px;
 
     background:#F59E0B;
@@ -514,7 +536,7 @@ Active Dot
 }
 
 /* =========================================================
-END OF SECTION 02
+END OF SECTION 02  CSS
 ========================================================= */
     
 </style>
@@ -684,11 +706,17 @@ featuredBanners.forEach(function(banner,index){
 
     carouselSlides.innerHTML += `
 
-    <a href="${banner.link}" class="carousel-slide">
+    <div class="carousel-slide">
 
-        <img src="${banner.image}" alt="Featured Banner">
+        <a href="${banner.link}">
 
-    </a>
+            <img
+                src="${banner.image}"
+                alt="Featured Banner">
+
+        </a>
+
+    </div>
 
     `;
 
@@ -701,10 +729,12 @@ featuredBanners.forEach(function(banner,index){
 });
 
 /* ===========================
-Carousel Variables
+Variables
 =========================== */
 
 let currentSlide = 0;
+
+const slides = document.querySelectorAll(".carousel-slide");
 
 const dots = document.querySelectorAll(".dot");
 
@@ -715,7 +745,7 @@ Show Slide
 function showSlide(index){
 
     carouselSlides.style.transform =
-    "translateX(-"+(index*100)+"%)";
+    `translateX(-${index * 100}%)`;
 
     dots.forEach(function(dot){
 
@@ -735,27 +765,9 @@ function nextSlide(){
 
     currentSlide++;
 
-    if(currentSlide >= featuredBanners.length){
+    if(currentSlide >= slides.length){
 
         currentSlide = 0;
-
-    }
-
-    showSlide(currentSlide);
-
-}
-
-/* ===========================
-Previous Slide
-=========================== */
-
-function previousSlide(){
-
-    currentSlide--;
-
-    if(currentSlide < 0){
-
-        currentSlide = featuredBanners.length - 1;
 
     }
 
@@ -780,13 +792,23 @@ dots.forEach(function(dot,index){
 });
 
 /* ===========================
+Initialize
+=========================== */
+
+showSlide(0);
+
+/* ===========================
 Auto Play
 =========================== */
 
-setInterval(nextSlide,5000);
+setInterval(function(){
+
+    nextSlide();
+
+},5000);
 
 /* =========================================================
-END OF SECTION 02  JAVA
+END OF SECTION 02 java 
 ========================================================= */
 
 </script>
