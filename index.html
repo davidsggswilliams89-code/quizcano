@@ -494,8 +494,120 @@ Carousel Dots
     align-items:center;
 
     gap:10px;
+/* =========================================================
+SECTION 02
+FEATURED CAROUSEL CSS
+========================================================= */
 
-    margin-top:14px;
+/* ===========================
+Featured Carousel
+=========================== */
+
+.featured-carousel{
+
+    width:100%;
+
+    padding:15px;
+
+}
+
+/* ===========================
+Carousel Container
+=========================== */
+
+.carousel-container{
+
+    width:100%;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:#111827;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+}
+
+/* ===========================
+Slides Wrapper
+=========================== */
+
+.carousel-slides{
+
+    display:flex;
+
+    transition:transform .5s ease-in-out;
+
+}
+
+/* ===========================
+Each Banner
+=========================== */
+
+.carousel-slide{
+
+    min-width:100%;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:10px;
+
+}
+
+/* ===========================
+Banner Link
+=========================== */
+
+.carousel-slide a{
+
+    width:100%;
+
+    text-decoration:none;
+
+}
+
+/* ===========================
+Banner Image
+=========================== */
+
+.carousel-slide img{
+
+    width:100%;
+
+    height:200px;
+
+    display:block;
+
+    object-fit:contain;
+
+    background:#FFFFFF;
+
+    border-radius:18px;
+
+}
+
+/* ===========================
+Carousel Dots
+=========================== */
+
+.carousel-dots{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-top:15px;
 
 }
 
@@ -513,8 +625,6 @@ Dot
 
     background:#4B5563;
 
-    cursor:pointer;
-
     transition:.3s;
 
 }
@@ -527,8 +637,6 @@ Active Dot
 
     width:28px;
 
-    height:10px;
-
     border-radius:20px;
 
     background:#F59E0B;
@@ -536,7 +644,7 @@ Active Dot
 }
 
 /* =========================================================
-END OF SECTION 02  CSS
+END OF SECTION 02
 ========================================================= */
     
 </style>
@@ -610,23 +718,94 @@ FEATURED CAROUSEL
 
     <div class="carousel-container">
 
-        <div
-            class="carousel-slides"
-            id="carouselSlides">
+        <div class="carousel-slides" id="carouselSlides">
+
+            <!-- Banner 1 -->
+            <div class="carousel-slide">
+                <a href="#">
+                    <img src="featurebanner1.png" alt="Banner 1">
+                </a>
+            </div>
+
+            <!-- Banner 2 -->
+            <div class="carousel-slide">
+                <a href="#">
+                    <img src="featurebanner2.png" alt="Banner 2">
+                </a>
+            </div>
+
+            <!-- Banner 3 -->
+            <div class="carousel-slide">
+                <a href="#">
+                    <img src="featurebanner3.png" alt="Banner 3">
+                </a>
+            </div>
+
+            <!-- Banner 4 -->
+            <div class="carousel-slide">
+                <a href="#">
+                    <img src="featurebanner4.png" alt="Banner 4">
+                </a>
+            </div>
+
+            <!-- Banner 5 -->
+            <div class="carousel-slide">
+                <a href="#">
+                    <img src="featurebanner5.png" alt="Banner 5">
+                </a>
+            </div>
+
+            <!-- Banner 6 -->
+            <div class="carousel-slide">
+                <a href="#">
+                    <img src="featurebanner6.png" alt="Banner 6">
+                </a>
+            </div>
+
+            <!-- Banner 7 -->
+            <div class="carousel-slide">
+                <a href="#">
+                    <img src="featurebanner7.png" alt="Banner 7">
+                </a>
+            </div>
+
+            <!-- Banner 8 -->
+            <div class="carousel-slide">
+                <a href="#">
+                    <img src="featurebanner8.png" alt="Banner 8">
+                </a>
+            </div>
+
+            <!-- Banner 9 -->
+            <div class="carousel-slide">
+                <a href="#">
+                    <img src="featurebanner9.png" alt="Banner 9">
+                </a>
+            </div>
 
         </div>
 
     </div>
 
-    <div
-        class="carousel-dots">
+    <!-- Carousel Dots -->
+    <div class="carousel-dots">
+
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
 
     </div>
 
 </section>
 
 <!-- =========================================================
-END OF SECTION 02 HTML
+END OF SECTION 02
 ========================================================= -->
 
     
@@ -634,109 +813,20 @@ END OF SECTION 02 HTML
  <script>
 /* =========================================================
 SECTION 02
-FEATURED CAROUSEL JS
+FEATURED CAROUSEL JAVASCRIPT
 ========================================================= */
-
-/* ===========================
-Featured Banners
-=========================== */
-
-const featuredBanners = [
-
-{
-    image:"featurebanner1.png",
-    link:"#"
-},
-
-{
-    image:"featurebanner2.png",
-    link:"#"
-},
-
-{
-    image:"featurebanner3.png",
-    link:"#"
-},
-
-{
-    image:"featurebanner4.png",
-    link:"#"
-},
-
-{
-    image:"featurebanner5.png",
-    link:"#"
-},
-
-{
-    image:"featurebanner6.png",
-    link:"#"
-},
-
-{
-    image:"featurebanner7.png",
-    link:"#"
-},
-
-{
-    image:"featurebanner8.png",
-    link:"#"
-},
-
-{
-    image:"featurebanner9.png",
-    link:"#"
-}
-
-];
-
-/* ===========================
-Load Carousel
-=========================== */
-
-const carouselSlides = document.getElementById("carouselSlides");
-
-const dotsContainer = document.querySelector(".carousel-dots");
-
-carouselSlides.innerHTML = "";
-
-dotsContainer.innerHTML = "";
-
-featuredBanners.forEach(function(banner,index){
-
-    carouselSlides.innerHTML += `
-
-    <div class="carousel-slide">
-
-        <a href="${banner.link}">
-
-            <img
-                src="${banner.image}"
-                alt="Featured Banner">
-
-        </a>
-
-    </div>
-
-    `;
-
-    dotsContainer.innerHTML += `
-
-    <span class="dot ${index===0 ? "active" : ""}"></span>
-
-    `;
-
-});
 
 /* ===========================
 Variables
 =========================== */
 
-let currentSlide = 0;
-
-const slides = document.querySelectorAll(".carousel-slide");
+const carouselSlides = document.getElementById("carouselSlides");
 
 const dots = document.querySelectorAll(".dot");
+
+const totalSlides = document.querySelectorAll(".carousel-slide").length;
+
+let currentSlide = 0;
 
 /* ===========================
 Show Slide
@@ -745,7 +835,7 @@ Show Slide
 function showSlide(index){
 
     carouselSlides.style.transform =
-    `translateX(-${index * 100}%)`;
+    "translateX(-" + (index * 100) + "%)";
 
     dots.forEach(function(dot){
 
@@ -765,7 +855,7 @@ function nextSlide(){
 
     currentSlide++;
 
-    if(currentSlide >= slides.length){
+    if(currentSlide >= totalSlides){
 
         currentSlide = 0;
 
@@ -776,7 +866,25 @@ function nextSlide(){
 }
 
 /* ===========================
-Dot Click
+Previous Slide
+=========================== */
+
+function previousSlide(){
+
+    currentSlide--;
+
+    if(currentSlide < 0){
+
+        currentSlide = totalSlides - 1;
+
+    }
+
+    showSlide(currentSlide);
+
+}
+
+/* ===========================
+Dot Navigation
 =========================== */
 
 dots.forEach(function(dot,index){
@@ -792,12 +900,6 @@ dots.forEach(function(dot,index){
 });
 
 /* ===========================
-Initialize
-=========================== */
-
-showSlide(0);
-
-/* ===========================
 Auto Play
 =========================== */
 
@@ -807,8 +909,14 @@ setInterval(function(){
 
 },5000);
 
+/* ===========================
+Initialize
+=========================== */
+
+showSlide(0);
+
 /* =========================================================
-END OF SECTION 02 java 
+END OF SECTION 02  JAVA
 ========================================================= */
 
 </script>
