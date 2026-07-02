@@ -387,7 +387,7 @@ Featured Carousel
 
     width:100%;
 
-    padding:16px 16px 10px;
+    padding:15px;
 
 }
 
@@ -401,33 +401,37 @@ Carousel Container
 
     overflow:hidden;
 
-    border-radius:22px;
+    border-radius:20px;
 
-    background:#1A2138;
-
-    box-shadow:0 6px 20px rgba(0,0,0,.35);
+    background:#111827;
 
 }
 
 /* ===========================
-Slides
+Slides Wrapper
 =========================== */
 
 .carousel-slides{
 
     display:flex;
 
-    transition:transform .5s ease;
+    flex-wrap:nowrap;
+
+    width:100%;
+
+    transition:transform .5s ease-in-out;
 
 }
 
 /* ===========================
-Single Slide
+Each Slide
 =========================== */
 
 .carousel-slide{
 
-    min-width:100%;
+    flex:0 0 100%;
+
+    max-width:100%;
 
     text-decoration:none;
 
@@ -441,19 +445,27 @@ Banner Image
 
     width:100%;
 
-    height:200px;
+    height:190px;
 
     display:block;
 
-    object-fit:cover;
+    object-fit:contain;
+
+    object-position:center;
+
+    background:#111827;
+
+    border-radius:20px;
 
 }
 
 /* ===========================
-Dots
+Carousel Dots
 =========================== */
 
 .carousel-dots{
+
+    width:100%;
 
     display:flex;
 
@@ -463,7 +475,7 @@ Dots
 
     gap:8px;
 
-    margin-top:14px;
+    margin-top:12px;
 
 }
 
@@ -479,7 +491,9 @@ Dot
 
     border-radius:50%;
 
-    background:#475569;
+    background:#4B5563;
+
+    cursor:pointer;
 
     transition:.3s;
 
@@ -500,7 +514,7 @@ Active Dot
 }
 
 /* =========================================================
-END OF SECTION 02  CSS
+END OF SECTION 02 CSS
 ========================================================= */
     
 </style>
