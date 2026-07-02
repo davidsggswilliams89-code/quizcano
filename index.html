@@ -374,6 +374,135 @@ Brain Icon
 /* =========================================================
 END OF SECTION 01
 ========================================================= */
+/* =========================================================
+SECTION 02
+FEATURED CAROUSEL CSS
+========================================================= */
+
+/* ===========================
+Featured Carousel
+=========================== */
+
+.featured-carousel{
+
+    width:100%;
+
+    padding:16px 16px 10px;
+
+}
+
+/* ===========================
+Carousel Container
+=========================== */
+
+.carousel-container{
+
+    width:100%;
+
+    overflow:hidden;
+
+    border-radius:22px;
+
+    background:#1A2138;
+
+    box-shadow:0 6px 20px rgba(0,0,0,.35);
+
+}
+
+/* ===========================
+Slides
+=========================== */
+
+.carousel-slides{
+
+    display:flex;
+
+    transition:transform .5s ease;
+
+}
+
+/* ===========================
+Single Slide
+=========================== */
+
+.carousel-slide{
+
+    min-width:100%;
+
+    text-decoration:none;
+
+}
+
+/* ===========================
+Banner Image
+=========================== */
+
+.carousel-slide img{
+
+    width:100%;
+
+    height:200px;
+
+    display:block;
+
+    object-fit:cover;
+
+}
+
+/* ===========================
+Dots
+=========================== */
+
+.carousel-dots{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:14px;
+
+}
+
+/* ===========================
+Dot
+=========================== */
+
+.dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#475569;
+
+    transition:.3s;
+
+}
+
+/* ===========================
+Active Dot
+=========================== */
+
+.dot.active{
+
+    width:28px;
+
+    border-radius:20px;
+
+    background:#F59E0B;
+
+}
+
+/* =========================================================
+END OF SECTION 02  CSS
+========================================================= */
+    
 </style>
 
 </head>
@@ -436,10 +565,215 @@ QUIZCANO HEADER
 <!-- =========================================================
 END OF SECTION 01
 ========================================================= -->
+<!-- =========================================================
+SECTION 02
+FEATURED CAROUSEL
+========================================================= -->
 
-<script>
+<section class="featured-carousel">
 
-/* JavaScript will go here later */
+    <div class="carousel-container">
+
+        <div
+            class="carousel-slides"
+            id="carouselSlides">
+
+        </div>
+
+    </div>
+
+    <div
+        class="carousel-dots">
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 02 HTML
+========================================================= -->
+
+    
+    
+ <script>
+/* =========================================================
+SECTION 02
+FEATURED CAROUSEL JS
+========================================================= */
+
+/* ===========================
+Featured Banners
+=========================== */
+
+const featuredBanners = [
+
+{
+    image:"featurebanner1.png",
+    link:"#"
+},
+
+{
+    image:"featurebanner2.png",
+    link:"#"
+},
+
+{
+    image:"featurebanner3.png",
+    link:"#"
+},
+
+{
+    image:"featurebanner4.png",
+    link:"#"
+},
+
+{
+    image:"featurebanner5.png",
+    link:"#"
+},
+
+{
+    image:"featurebanner6.png",
+    link:"#"
+},
+
+{
+    image:"featurebanner7.png",
+    link:"#"
+},
+
+{
+    image:"featurebanner8.png",
+    link:"#"
+},
+
+{
+    image:"featurebanner9.png",
+    link:"#"
+}
+
+];
+
+/* ===========================
+Load Carousel
+=========================== */
+
+const carouselSlides = document.getElementById("carouselSlides");
+
+const dotsContainer = document.querySelector(".carousel-dots");
+
+carouselSlides.innerHTML = "";
+
+dotsContainer.innerHTML = "";
+
+featuredBanners.forEach(function(banner,index){
+
+    carouselSlides.innerHTML += `
+
+    <a href="${banner.link}" class="carousel-slide">
+
+        <img src="${banner.image}" alt="Featured Banner">
+
+    </a>
+
+    `;
+
+    dotsContainer.innerHTML += `
+
+    <span class="dot ${index===0 ? "active" : ""}"></span>
+
+    `;
+
+});
+
+/* ===========================
+Carousel Variables
+=========================== */
+
+let currentSlide = 0;
+
+const dots = document.querySelectorAll(".dot");
+
+/* ===========================
+Show Slide
+=========================== */
+
+function showSlide(index){
+
+    carouselSlides.style.transform =
+    "translateX(-"+(index*100)+"%)";
+
+    dots.forEach(function(dot){
+
+        dot.classList.remove("active");
+
+    });
+
+    dots[index].classList.add("active");
+
+}
+
+/* ===========================
+Next Slide
+=========================== */
+
+function nextSlide(){
+
+    currentSlide++;
+
+    if(currentSlide >= featuredBanners.length){
+
+        currentSlide = 0;
+
+    }
+
+    showSlide(currentSlide);
+
+}
+
+/* ===========================
+Previous Slide
+=========================== */
+
+function previousSlide(){
+
+    currentSlide--;
+
+    if(currentSlide < 0){
+
+        currentSlide = featuredBanners.length - 1;
+
+    }
+
+    showSlide(currentSlide);
+
+}
+
+/* ===========================
+Dot Click
+=========================== */
+
+dots.forEach(function(dot,index){
+
+    dot.addEventListener("click",function(){
+
+        currentSlide = index;
+
+        showSlide(currentSlide);
+
+    });
+
+});
+
+/* ===========================
+Auto Play
+=========================== */
+
+setInterval(nextSlide,5000);
+
+/* =========================================================
+END OF SECTION 02  JAVA
+========================================================= */
 
 </script>
 
