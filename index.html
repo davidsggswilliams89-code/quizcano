@@ -144,7 +144,148 @@ Right Section
 
     align-items:center;
 
-    gap:15px;
+/* =========================================================
+SECTION 01
+QUIZCANO HEADER CSS
+========================================================= */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    background:#0B1120;
+
+    font-family:Arial,Helvetica,sans-serif;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Top Header
+=========================== */
+
+.top-header{
+
+    width:100%;
+
+    height:82px;
+
+    background:#0B1120;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:10px 14px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
+}
+
+/* ===========================
+Menu Button
+=========================== */
+
+.menu-btn{
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#1A2138;
+
+    color:#FFFFFF;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+}
+
+/* ===========================
+Logo Area
+=========================== */
+
+.logo-area{
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+.logo{
+
+    font-size:34px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    user-select:none;
+
+}
+
+.logo-white{
+
+    color:#FFFFFF;
+
+}
+
+.logo-orange{
+
+    color:#F59E0B;
+
+}
+
+.logo-tagline{
+
+    margin-top:3px;
+
+    font-size:11px;
+
+    color:#8B93A7;
+
+}
+
+/* ===========================
+Right Section
+=========================== */
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
 
 }
 
@@ -154,17 +295,17 @@ Notification
 
 .notification-btn{
 
-    width:72px;
+    width:48px;
 
-    height:72px;
+    height:48px;
 
     border:none;
 
-    border-radius:22px;
+    border-radius:14px;
 
     background:#1A2138;
 
-    font-size:34px;
+    font-size:22px;
 
     position:relative;
 
@@ -176,13 +317,13 @@ Notification
 
     position:absolute;
 
-    top:-8px;
+    top:-4px;
 
-    right:-6px;
+    right:-4px;
 
-    width:30px;
+    width:18px;
 
-    height:30px;
+    height:18px;
 
     background:#FF3B30;
 
@@ -196,27 +337,37 @@ Notification
 
     justify-content:center;
 
-    font-size:16px;
+    font-size:10px;
 
     font-weight:bold;
 
 }
 
 /* ===========================
-Profile
+Brain Icon
 =========================== */
 
 .profile-image{
 
-    width:72px;
+    width:48px;
 
-    height:72px;
+    height:48px;
 
     border-radius:50%;
 
-    border:4px solid #F59E0B;
+    border:3px solid #F59E0B;
 
-    object-fit:cover;
+    background:#1A2138;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:24px;
+
+    cursor:pointer;
 
 }
 
