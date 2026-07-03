@@ -10,6 +10,7 @@
 <title>QUIZCANO</title>
 
 <style>
+    
 /* =========================================================
 SECTION 01
 QUIZCANO HEADER CSS
@@ -75,7 +76,7 @@ Menu Button
 
     border:none;
 
-    border-radius:14px;
+    border-radius:50%;
 
     background:#1A2138;
 
@@ -83,7 +84,15 @@ Menu Button
 
     font-size:24px;
 
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
     cursor:pointer;
+
+    flex-shrink:0;
 
 }
 
@@ -95,9 +104,21 @@ Logo Area
 
     flex:1;
 
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
     text-align:center;
 
 }
+
+/* ===========================
+Logo
+=========================== */
 
 .logo{
 
@@ -141,72 +162,20 @@ Right Side
 
 .header-right{
 
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-}
-
-/* ===========================
-Notification Button
-=========================== */
-
-.notification-btn{
-
     width:48px;
 
-    height:48px;
-
-    border:none;
-
-    border-radius:14px;
-
-    background:#1A2138;
-
-    color:#FFFFFF;
-
-    font-size:20px;
-
-    position:relative;
-
-    cursor:pointer;
-
-}
-
-.notification-count{
-
-    position:absolute;
-
-    top:-4px;
-
-    right:-4px;
-
-    width:18px;
-
-    height:18px;
-
-    border-radius:50%;
-
-    background:#EF4444;
-
-    color:#FFFFFF;
-
-    font-size:10px;
-
-    font-weight:bold;
-
     display:flex;
 
-    justify-content:center;
+    justify-content:flex-end;
 
     align-items:center;
+
+    flex-shrink:0;
 
 }
 
 /* ===========================
-Brain Icon
+Brain Profile Icon
 =========================== */
 
 .profile-image{
@@ -229,10 +198,12 @@ Brain Icon
 
     font-size:22px;
 
+    cursor:pointer;
+
 }
 
 /* =========================================================
-END OF SECTION 01. css css css
+END OF SECTION 01 CSS
 ========================================================= */
 
 /* =========================================================
@@ -412,18 +383,6 @@ QUIZCANO HEADER HTM HTML HTML HTML HTML HTML
 
     <!-- Right Side -->
     <div class="header-right">
-
-        <button class="notification-btn">
-
-            🔔
-
-            <span class="notification-count">
-
-                3
-
-            </span>
-
-        </button>
 
         <div class="profile-image">
 
