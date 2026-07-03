@@ -565,14 +565,14 @@ END OF SECTION 03 CSS
 ========================================================= */
 /* =========================================================
 SECTION 04
-MOST PLAYED QUIZZES CSS
+QUIZ BANNER LIST CSS
 ========================================================= */
 
 /* ===========================
-Most Played Section
+Quiz List Section
 =========================== */
 
-.mostplayed-section{
+.quiz-list-section{
 
     width:100%;
 
@@ -584,7 +584,7 @@ Most Played Section
 Header
 =========================== */
 
-.mostplayed-header{
+.quiz-list-header{
 
     display:flex;
 
@@ -592,7 +592,7 @@ Header
 
     align-items:center;
 
-    margin-bottom:18px;
+    margin-bottom:16px;
 
 }
 
@@ -600,7 +600,7 @@ Header
 Section Title
 =========================== */
 
-.mostplayed-title{
+.quiz-list-title{
 
     font-size:20px;
 
@@ -613,32 +613,10 @@ Section Title
 }
 
 /* ===========================
-View All
+Quiz Banner List
 =========================== */
 
-.mostplayed-viewall{
-
-    text-decoration:none;
-
-    color:#F59E0B;
-
-    font-size:15px;
-
-    font-weight:700;
-
-}
-
-.mostplayed-viewall:hover{
-
-    color:#FFD166;
-
-}
-
-/* ===========================
-Quiz List
-=========================== */
-
-#mostPlayedContainer{
+.quiz-banner-list{
 
     display:flex;
 
@@ -649,234 +627,74 @@ Quiz List
 }
 
 /* ===========================
-Quiz Card
+Banner Card
 =========================== */
 
-.mostplayed-card{
+.quiz-banner-card{
+
+    display:block;
 
     width:100%;
 
-    min-height:105px;
+    overflow:hidden;
 
-    background:#1A2138;
+    border-radius:18px;
 
-    border-radius:24px;
+    background:#111827;
 
-    border:1px solid rgba(255,255,255,.05);
+    text-decoration:none;
 
-    padding:14px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-
-    transition:.25s;
+    transition:transform .25s ease;
 
 }
 
-.mostplayed-card:hover{
+/* ===========================
+Banner Hover
+=========================== */
+
+.quiz-banner-card:hover{
 
     transform:translateY(-2px);
 
 }
 
 /* ===========================
-Ranking Circle
+Banner Image
 =========================== */
 
-.rank-circle{
+.quiz-banner-card img{
 
-    width:54px;
+    width:100%;
 
-    height:54px;
+    display:block;
 
-    border-radius:50%;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    flex-shrink:0;
-
-    font-size:24px;
-
-    font-weight:800;
-
-    color:#FFFFFF;
-
-    background:#31395E;
-
-}
-
-/* Top 3 Colors */
-
-.rank1{
-
-    background:#FFC107;
-
-    color:#111111;
-
-}
-
-.rank2{
-
-    background:#D6D6D6;
-
-    color:#111111;
-
-}
-
-.rank3{
-
-    background:#CD7F32;
-
-}
-
-/* ===========================
-Quiz Banner
-=========================== */
-
-.quiz-banner{
-
-    width:74px;
-
-    height:74px;
-
-    border-radius:14px;
+    aspect-ratio:16/9;
 
     object-fit:cover;
 
-    flex-shrink:0;
-
-}
-
-/* ===========================
-Quiz Information
-=========================== */
-
-.quiz-info{
-
-    flex:1;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-}
-
-/* Quiz Title */
-
-.quiz-title{
-
-    font-size:16px;
-
-    font-weight:800;
-
-    color:#FFFFFF;
-
-    margin-bottom:8px;
-
-    line-height:1.3;
-
-}
-
-/* Players */
-
-.quiz-players{
-
-    font-size:14px;
-
-    color:#9CA3AF;
-
-    font-weight:600;
-
-}
-
-/* ===========================
-Play Button
-=========================== */
-
-.play-btn{
-
-    width:112px;
-
-    height:52px;
-
-    border:none;
-
     border-radius:18px;
 
-    background:#F59E0B;
+    user-select:none;
 
-    color:#FFFFFF;
-
-    font-size:20px;
-
-    font-weight:800;
-
-    cursor:pointer;
-
-    flex-shrink:0;
-
-    box-shadow:0 0 18px rgba(245,158,11,.35);
-
-    transition:.25s;
-
-}
-
-.play-btn:hover{
-
-    background:#FFB61D;
-
-    transform:scale(1.03);
+    -webkit-user-drag:none;
 
 }
 
 /* ===========================
-Responsive
+Banner Active
 =========================== */
 
-@media(max-width:380px){
+.quiz-banner-card:active{
 
-    .quiz-banner{
-
-        width:64px;
-
-        height:64px;
-
-    }
-
-    .play-btn{
-
-        width:95px;
-
-        height:48px;
-
-        font-size:17px;
-
-    }
-
-    .rank-circle{
-
-        width:48px;
-
-        height:48px;
-
-        font-size:20px;
-
-    }
+    transform:scale(.98);
 
 }
 
 /* =========================================================
 END OF SECTION 04 CSS
 ========================================================= */
+
+
 
 
 </style>
@@ -1444,7 +1262,51 @@ playButtons.forEach(function(button){
 /* =========================================================
 END OF SECTION 04 JAVASCRIPT
 ========================================================= */
-    
+/* =========================================================
+SECTION 04
+QUIZ BANNER LIST JAVASCRIPT
+========================================================= */
+
+/* ===========================
+Quiz Banner Variables
+=========================== */
+
+const quizBannerCards =
+document.querySelectorAll(".quiz-banner-card");
+
+/* ===========================
+Banner Click Event
+=========================== */
+
+quizBannerCards.forEach(function(card){
+
+    card.addEventListener("click",function(event){
+
+        event.preventDefault();
+
+        /* ===========================
+        Get Banner Image
+        =========================== */
+
+        const bannerImage =
+        card.querySelector("img").getAttribute("src");
+
+        console.log("Selected Quiz Banner:", bannerImage);
+
+        /* ===========================
+        Open Quiz Page
+        (Temporary)
+        =========================== */
+
+        window.location.href = "quiz.html";
+
+    });
+
+});
+
+/* =========================================================
+END OF SECTION 04 JAVASCRIPT
+========================================================= */    
 
 
 
