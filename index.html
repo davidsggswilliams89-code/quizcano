@@ -392,12 +392,12 @@ Category Section
 
     width:100%;
 
-    padding:12px 15px 18px;
+    padding:16px 15px 20px;
 
 }
 
 /* ===========================
-Section Header
+Header
 =========================== */
 
 .category-header{
@@ -408,7 +408,7 @@ Section Header
 
     align-items:center;
 
-    margin-bottom:14px;
+    margin-bottom:16px;
 
 }
 
@@ -424,7 +424,7 @@ Section Title
 
     color:#FFFFFF;
 
-    letter-spacing:.5px;
+    letter-spacing:.3px;
 
 }
 
@@ -460,8 +460,6 @@ Horizontal Scroll
 
     display:flex;
 
-    align-items:center;
-
     gap:14px;
 
     overflow-x:auto;
@@ -474,7 +472,7 @@ Horizontal Scroll
 
     scrollbar-width:none;
 
-    padding-bottom:5px;
+    padding-bottom:4px;
 
 }
 
@@ -492,19 +490,17 @@ Category Card
 
 .category-card{
 
-    flex:0 0 auto;
+    flex:0 0 72px;
 
-    width:60px;
+    width:72px;
 
-    height:60px;
+    height:72px;
 
-    border-radius:10px;
+    border-radius:8px;
 
     overflow:hidden;
 
     background:#1A2138;
-
-    border:3px solid #F59E0B;
 
     display:flex;
 
@@ -514,7 +510,7 @@ Category Card
 
     cursor:pointer;
 
-    transition:.3s;
+    transition:all .25s ease;
 
 }
 
@@ -524,9 +520,7 @@ Hover Effect
 
 .category-card:hover{
 
-    transform:scale(1.08);
-
-    border-color:#FFD166;
+    transform:scale(1.05);
 
 }
 
@@ -536,9 +530,7 @@ Active Category
 
 .category-card.active{
 
-    border:3px solid #FFFFFF;
-
-    transform:scale(1.08);
+    box-shadow:0 0 0 2px #F59E0B;
 
 }
 
@@ -548,15 +540,17 @@ Category Image
 
 .category-card img{
 
-    width:68px;
+    width:100%;
 
-    height:68px;
-
-    object-fit:cover;
+    height:100%;
 
     display:block;
 
-    border-radius:10px;
+    object-fit:cover;
+
+    user-select:none;
+
+    pointer-events:none;
 
 }
 
