@@ -379,7 +379,190 @@ Active Dot
 /* =========================================================
 END OF SECTION 02 CSS
 ========================================================= */
-    
+/* =========================================================
+SECTION 03
+QUIZ CATEGORY SCROLLER CSS
+========================================================= */
+
+/* ===========================
+Category Section
+=========================== */
+
+.category-section{
+
+    width:100%;
+
+    padding:12px 15px 18px;
+
+}
+
+/* ===========================
+Section Header
+=========================== */
+
+.category-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:14px;
+
+}
+
+/* ===========================
+Section Title
+=========================== */
+
+.category-title{
+
+    font-size:20px;
+
+    font-weight:800;
+
+    color:#FFFFFF;
+
+    letter-spacing:.5px;
+
+}
+
+/* ===========================
+View All Button
+=========================== */
+
+.view-all{
+
+    text-decoration:none;
+
+    color:#F59E0B;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.view-all:hover{
+
+    color:#FFD166;
+
+}
+
+/* ===========================
+Horizontal Scroll
+=========================== */
+
+.category-scroll{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    overflow-x:auto;
+
+    overflow-y:hidden;
+
+    scroll-behavior:smooth;
+
+    -webkit-overflow-scrolling:touch;
+
+    scrollbar-width:none;
+
+    padding-bottom:5px;
+
+}
+
+/* Hide Scrollbar */
+
+.category-scroll::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+/* ===========================
+Category Card
+=========================== */
+
+.category-card{
+
+    flex:0 0 auto;
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    background:#1A2138;
+
+    border:3px solid #F59E0B;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+/* ===========================
+Hover Effect
+=========================== */
+
+.category-card:hover{
+
+    transform:scale(1.08);
+
+    border-color:#FFD166;
+
+}
+
+/* ===========================
+Active Category
+=========================== */
+
+.category-card.active{
+
+    border:3px solid #FFFFFF;
+
+    transform:scale(1.08);
+
+}
+
+/* ===========================
+Category Image
+=========================== */
+
+.category-card img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    border-radius:50%;
+
+}
+
+/* =========================================================
+END OF SECTION 03 CSS
+========================================================= */
     
 </style>
 
@@ -505,6 +688,116 @@ SECTION 02 FEATURED CAROUSEL
 <!-- =========================================================
 END OF SECTION 02 HTML
 ========================================================= -->
+<!-- =========================================================
+SECTION 03
+QUIZ CATEGORY SCROLLER HTML
+========================================================= -->
+
+<section class="category-section">
+
+    <!-- ==========================
+    Section Header
+    =========================== -->
+
+    <div class="category-header">
+
+        <h2 class="category-title">
+            🎯 Quiz Categories
+        </h2>
+
+        <a href="#" class="view-all">
+            View All
+        </a>
+
+    </div>
+
+    <!-- ==========================
+    Horizontal Category Scroll
+    =========================== -->
+
+    <div class="category-scroll" id="categoryScroll">
+
+        <!-- Category 01 -->
+        <div class="category-card" data-category="general">
+
+            <img src="category1.png" alt="General Knowledge">
+
+        </div>
+
+        <!-- Category 02 -->
+        <div class="category-card" data-category="sports">
+
+            <img src="category2.png" alt="Sports">
+
+        </div>
+
+        <!-- Category 03 -->
+        <div class="category-card" data-category="movies">
+
+            <img src="category3.png" alt="Movies">
+
+        </div>
+
+        <!-- Category 04 -->
+        <div class="category-card" data-category="science">
+
+            <img src="category4.png" alt="Science">
+
+        </div>
+
+        <!-- Category 05 -->
+        <div class="category-card" data-category="history">
+
+            <img src="category5.png" alt="History">
+
+        </div>
+
+        <!-- Category 06 -->
+        <div class="category-card" data-category="music">
+
+            <img src="category6.png" alt="Music">
+
+        </div>
+
+        <!-- Category 07 -->
+        <div class="category-card" data-category="technology">
+
+            <img src="category7.png" alt="Technology">
+
+        </div>
+
+        <!-- Category 08 -->
+        <div class="category-card" data-category="animals">
+
+            <img src="category8.png" alt="Animals">
+
+        </div>
+
+        <!-- Category 09 -->
+        <div class="category-card" data-category="geography">
+
+            <img src="category9.png" alt="Geography">
+
+        </div>
+
+        <!-- Category 10 -->
+        <div class="category-card" data-category="football">
+
+            <img src="category10.png" alt="Football">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 03 HTML
+========================================================= -->
+
+
+
+
     
  <script>
 
@@ -617,7 +910,99 @@ showSlide(0);
 /* =========================================================
 END OF SECTION 02 JAVA SCRIPT JAVA JAVA JAVA
 ========================================================= */
+/* =========================================================
+SECTION 03
+QUIZ CATEGORY SCROLLER JAVASCRIPT
+========================================================= */
 
+/* ===========================
+Variables
+=========================== */
+
+const categoryCards =
+document.querySelectorAll(".category-card");
+
+/* ===========================
+Category Click
+=========================== */
+
+categoryCards.forEach(function(card){
+
+    card.addEventListener("click",function(){
+
+        /* Remove Active */
+
+        categoryCards.forEach(function(item){
+
+            item.classList.remove("active");
+
+        });
+
+        /* Active Current */
+
+        this.classList.add("active");
+
+        /* Get Category */
+
+        const selectedCategory =
+        this.getAttribute("data-category");
+
+        /* Show Section 04 */
+
+        loadCategory(selectedCategory);
+
+    });
+
+});
+
+/* ===========================
+Load Category
+=========================== */
+
+function loadCategory(category){
+
+    /*
+    SECTION 04 WILL USE THIS VALUE.
+
+    Example values:
+
+    general
+    sports
+    movies
+    science
+    history
+    music
+    technology
+    animals
+    geography
+    football
+
+    */
+
+    console.log("Selected Category:",category);
+
+}
+
+/* ===========================
+Default Category
+=========================== */
+
+if(categoryCards.length>0){
+
+    categoryCards[0].classList.add("active");
+
+    loadCategory(
+
+        categoryCards[0].getAttribute("data-category")
+
+    );
+
+}
+
+/* =========================================================
+END OF SECTION 03 JAVASCRIPT
+========================================================= */
+     
  </script>
 
 </body>
