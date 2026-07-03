@@ -228,17 +228,39 @@ Section Title
 
 .featured-title{
 
-    color:#FFFFFF;
+    display:flex;
 
-    font-size:18px;
+    align-items:center;
 
-    font-weight:700;
-
-    margin-bottom:10px;
+    gap:8px;
 
     margin-left:4px;
 
-    letter-spacing:.5px;
+    margin-bottom:10px;
+
+    font-size:22px;
+
+    font-weight:900;
+
+    color:#FFFFFF;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    text-shadow:0 2px 8px rgba(0,0,0,.35);
+
+}
+
+/* ===========================
+Emoji
+=========================== */
+
+.featured-title::before{
+
+    content:"🔥";
+
+    font-size:24px;
 
 }
 
@@ -357,7 +379,6 @@ Active Dot
 /* =========================================================
 END OF SECTION 02 CSS
 ========================================================= */
-
     
     
 </style>
