@@ -563,7 +563,296 @@ Category Image
 /* =========================================================
 END OF SECTION 03 CSS
 ========================================================= */
+/* =========================================================
+SECTION 04
+MOST PLAYED QUIZZES CSS
+========================================================= */
 
+/* ===========================
+Most Played Section
+=========================== */
+
+.most-played-section{
+
+    width:100%;
+
+    padding:18px 15px 25px;
+
+}
+
+/* ===========================
+Header
+=========================== */
+
+.most-played-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+/* ===========================
+Title
+=========================== */
+
+.most-played-title{
+
+    font-size:22px;
+
+    font-weight:800;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+View All
+=========================== */
+
+.most-played-view{
+
+    text-decoration:none;
+
+    color:#F59E0B;
+
+    font-size:15px;
+
+    font-weight:700;
+
+}
+
+.most-played-view:hover{
+
+    color:#FFD166;
+
+}
+
+/* ===========================
+Quiz List
+=========================== */
+
+.quiz-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+/* ===========================
+Quiz Card
+=========================== */
+
+.quiz-card{
+
+    width:100%;
+
+    background:#181F34;
+
+    border-radius:24px;
+
+    padding:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    transition:.25s;
+
+}
+
+.quiz-card:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+Rank Circle
+=========================== */
+
+.quiz-rank{
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:20px;
+
+    font-weight:800;
+
+    color:#FFFFFF;
+
+    flex-shrink:0;
+
+}
+
+/* Rank Colors */
+
+.rank1{
+
+    background:#F4B400;
+
+    color:#111111;
+
+}
+
+.rank2{
+
+    background:#D8D8D8;
+
+    color:#111111;
+
+}
+
+.rank3{
+
+    background:#C67A2D;
+
+}
+
+.rank-default{
+
+    background:#2C345A;
+
+}
+
+/* ===========================
+Quiz Image
+=========================== */
+
+.quiz-image{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    flex-shrink:0;
+
+    background:#0F172A;
+
+}
+
+.quiz-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+/* ===========================
+Quiz Details
+=========================== */
+
+.quiz-details{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+/* Quiz Title */
+
+.quiz-name{
+
+    font-size:21px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+    margin-bottom:8px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+/* Players */
+
+.quiz-players{
+
+    font-size:15px;
+
+    color:#9CA3AF;
+
+}
+
+/* ===========================
+Play Button
+=========================== */
+
+.play-btn{
+
+    width:110px;
+
+    height:54px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#F59E0B;
+
+    color:#FFFFFF;
+
+    font-size:20px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    flex-shrink:0;
+
+    box-shadow:0 0 18px rgba(245,158,11,.45);
+
+    transition:.25s;
+
+}
+
+.play-btn:hover{
+
+    transform:scale(1.03);
+
+    background:#FFB31A;
+
+}
+
+/* =========================================================
+END OF SECTION 04 CSS
+========================================================= */
 
 </style>
 
@@ -776,7 +1065,182 @@ QUIZ CATEGORY SCROLLER HTML
 <!-- =========================================================
 END OF SECTION 03 HTML
 ========================================================= -->
-    
+<!-- =========================================================
+SECTION 04
+TRENDING QUIZZES HTML
+========================================================= -->
+
+<section class="trending-section">
+
+    <!-- ==========================
+    Section Header
+    =========================== -->
+
+    <div class="trending-header">
+
+        <h2 class="trending-title">
+            🔥 Most Played Quizzes
+        </h2>
+
+        <a href="#" class="trending-view-all">
+            View All
+        </a>
+
+    </div>
+
+    <!-- ==========================
+    Quiz List
+    =========================== -->
+
+    <div id="trendingQuizList">
+
+        <!-- Quiz Item -->
+
+        <div class="trending-card">
+
+            <div class="quiz-rank rank1">
+                1
+            </div>
+
+            <img src="quizbanner1.png" class="quiz-banner" alt="Quiz Banner">
+
+            <div class="quiz-info">
+
+                <h3 class="quiz-title">
+                    Find The Hidden Word
+                </h3>
+
+                <p class="quiz-players">
+                    👥 34,956,120 Players
+                </p>
+
+            </div>
+
+            <button class="play-btn">
+                PLAY
+            </button>
+
+        </div>
+
+        <!-- Quiz Item -->
+
+        <div class="trending-card">
+
+            <div class="quiz-rank rank2">
+                2
+            </div>
+
+            <img src="quizbanner2.png" class="quiz-banner" alt="Quiz Banner">
+
+            <div class="quiz-info">
+
+                <h3 class="quiz-title">
+                    Find The Number
+                </h3>
+
+                <p class="quiz-players">
+                    👥 31,752,840 Players
+                </p>
+
+            </div>
+
+            <button class="play-btn">
+                PLAY
+            </button>
+
+        </div>
+
+        <!-- Quiz Item -->
+
+        <div class="trending-card">
+
+            <div class="quiz-rank rank3">
+                3
+            </div>
+
+            <img src="quizbanner3.png" class="quiz-banner" alt="Quiz Banner">
+
+            <div class="quiz-info">
+
+                <h3 class="quiz-title">
+                    Science Challenge
+                </h3>
+
+                <p class="quiz-players">
+                    👥 29,635,201 Players
+                </p>
+
+            </div>
+
+            <button class="play-btn">
+                PLAY
+            </button>
+
+        </div>
+
+        <!-- Quiz Item -->
+
+        <div class="trending-card">
+
+            <div class="quiz-rank">
+                4
+            </div>
+
+            <img src="quizbanner4.png" class="quiz-banner" alt="Quiz Banner">
+
+            <div class="quiz-info">
+
+                <h3 class="quiz-title">
+                    Geography Master
+                </h3>
+
+                <p class="quiz-players">
+                    👥 27,900,451 Players
+                </p>
+
+            </div>
+
+            <button class="play-btn">
+                PLAY
+            </button>
+
+        </div>
+
+        <!-- Quiz Item -->
+
+        <div class="trending-card">
+
+            <div class="quiz-rank">
+                5
+            </div>
+
+            <img src="quizbanner5.png" class="quiz-banner" alt="Quiz Banner">
+
+            <div class="quiz-info">
+
+                <h3 class="quiz-title">
+                    Math Genius
+                </h3>
+
+                <p class="quiz-players">
+                    👥 25,381,441 Players
+                </p>
+
+            </div>
+
+            <button class="play-btn">
+                PLAY
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 04 HTML
+========================================================= -->    
  <script>
 
 /* =========================================================
@@ -980,6 +1444,153 @@ if(categoryCards.length>0){
 /* =========================================================
 END OF SECTION 03 JAVASCRIPT
 ========================================================= */
+/* =========================================================
+SECTION 04
+MOST PLAYED QUIZZES JAVASCRIPT
+========================================================= */
+
+/* ===========================
+Sample Data
+(Replace with Firestore Later)
+=========================== */
+
+const mostPlayedQuizzes = [
+
+{
+    rank:1,
+    title:"Find The Hidden Word",
+    players:"34,956,120 Players",
+    image:"quiz1.png"
+},
+
+{
+    rank:2,
+    title:"Find The Number",
+    players:"31,752,840 Players",
+    image:"quiz2.png"
+},
+
+{
+    rank:3,
+    title:"Science Challenge",
+    players:"29,635,201 Players",
+    image:"quiz3.png"
+},
+
+{
+    rank:4,
+    title:"Geography Master",
+    players:"27,900,451 Players",
+    image:"quiz4.png"
+},
+
+{
+    rank:5,
+    title:"Math Genius",
+    players:"25,381,441 Players",
+    image:"quiz5.png"
+},
+
+{
+    rank:6,
+    title:"Mind Genius",
+    players:"25,381,441 Players",
+    image:"quiz6.png"
+},
+
+{
+    rank:7,
+    title:"Image Identification",
+    players:"511,441 Players",
+    image:"quiz7.png"
+}
+
+];
+
+/* ===========================
+Container
+=========================== */
+
+const trendingContainer =
+document.getElementById("trendingContainer");
+
+/* ===========================
+Load Quiz Cards
+=========================== */
+
+function loadTrendingQuizzes(){
+
+    trendingContainer.innerHTML = "";
+
+    mostPlayedQuizzes.forEach(function(quiz){
+
+        const card = document.createElement("div");
+
+        card.className = "trending-card";
+
+        card.innerHTML = `
+
+        <div class="rank-circle">
+            ${quiz.rank}
+        </div>
+
+        <img
+            src="${quiz.image}"
+            class="quiz-thumb"
+            alt="${quiz.title}"
+        >
+
+        <div class="quiz-details">
+
+            <h3>${quiz.title}</h3>
+
+            <p>👥 ${quiz.players}</p>
+
+        </div>
+
+        <button
+            class="play-btn"
+            onclick="playQuiz('${quiz.title}')">
+
+            PLAY
+
+        </button>
+
+        `;
+
+        trendingContainer.appendChild(card);
+
+    });
+
+}
+
+/* ===========================
+Play Button
+=========================== */
+
+function playQuiz(title){
+
+    console.log("Play:",title);
+
+    // Later:
+    // Open quiz page
+    // Load questions from Firestore
+
+}
+
+/* ===========================
+Initialize
+=========================== */
+
+loadTrendingQuizzes();
+
+/* =========================================================
+END OF SECTION 04 JAVASCRIPT
+========================================================= */    
+
+
+
+
      
  </script>
 
