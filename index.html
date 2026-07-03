@@ -234,6 +234,40 @@ Carousel Container
 
     border-radius:20px;
 
+    position:relative;
+
+}
+
+/* ===========================
+Banner Label
+=========================== */
+
+.carousel-label{
+
+    position:absolute;
+
+    top:14px;
+
+    left:14px;
+
+    background:rgba(0,0,0,.70);
+
+    color:#FFFFFF;
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    z-index:10;
+
 }
 
 /* ===========================
@@ -274,9 +308,9 @@ Banner Image
 
     display:block;
 
-    border-radius:20px;
-
     object-fit:contain;
+
+    border-radius:20px;
 
 }
 
@@ -314,6 +348,8 @@ Dot
 
     transition:.3s;
 
+    cursor:pointer;
+
 }
 
 /* ===========================
@@ -335,7 +371,6 @@ Active Dot
 /* =========================================================
 END OF SECTION 02 CSS
 ========================================================= */
-
     
 </style>
 
@@ -397,6 +432,11 @@ FEATURED CAROUSEL
 
     <div class="carousel-container">
 
+        <!-- Banner Label -->
+        <div class="carousel-label">
+            DAILY CHALLENGE
+        </div>
+
         <div class="carousel-track" id="carouselTrack">
 
             <div class="carousel-item">
@@ -456,9 +496,8 @@ FEATURED CAROUSEL
 </section>
 
 <!-- =========================================================
-END OF SECTION 02  HTM HTM HTML HTML
+END OF SECTION 02 HTML
 ========================================================= -->
-
     
  <script>
 
