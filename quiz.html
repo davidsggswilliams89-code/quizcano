@@ -1200,6 +1200,481 @@ FIREBASE INITIALIZATION HTML
 <!-- =========================================================
 END OF SECTION 07.1 HTML
 ========================================================= -->    
+/* =========================================================
+SECTION 07.2
+FIRESTORE COLLECTIONS
+========================================================= */
+
+/* ===========================
+Firestore Collections
+=========================== */
+
+const COLLECTIONS = {
+
+    categories: "categories",
+
+    quizzes: "quizzes"
+
+};
+
+/* ===========================
+Firestore Fields
+=========================== */
+
+const QUIZ_FIELDS = {
+
+    categoryId: "categoryId",
+
+    image: "image",
+
+    uploadTime: "uploadTime",
+
+    questionNumber: "questionNumber",
+
+    optionA: "optionA",
+
+    optionB: "optionB",
+
+    optionC: "optionC",
+
+    optionD: "optionD",
+
+    correctAnswer: "correctAnswer"
+
+};
+
+/* ===========================
+Global Access
+=========================== */
+
+window.COLLECTIONS = COLLECTIONS;
+
+window.QUIZ_FIELDS = QUIZ_FIELDS;
+
+/* =========================================================
+END OF SECTION 07.2
+========================================================= */
+/* =========================================================
+SECTION 07.3
+LOAD SELECTED CATEGORY
+========================================================= */
+
+/* ===========================
+Selected Category
+=========================== */
+
+let selectedCategory = "";
+
+/* ===========================
+Read Category From URL
+=========================== */
+
+function loadSelectedCategory(){
+
+    const params =
+
+    new URLSearchParams(
+
+        window.location.search
+
+    );
+
+    selectedCategory =
+
+    params.get("category");
+
+    /* No Category Selected */
+
+    if(
+
+        !selectedCategory ||
+
+        selectedCategory.trim() === ""
+
+    ){
+
+        alert(
+
+            "No quiz category selected."
+
+        );
+
+        window.location.href =
+
+        "index.html";
+
+        return;
+
+    }
+
+    console.log(
+
+        "Selected Category:",
+
+        selectedCategory
+
+    );
+
+}
+
+/* ===========================
+Start
+=========================== */
+
+loadSelectedCategory();
+
+/* =========================================================
+END OF SECTION 07.3
+========================================================= */
+/* =========================================================
+SECTION 07.4
+LOAD QUIZZES FROM FIRESTORE
+========================================================= */
+
+/* ===========================
+Quiz List
+=========================== */
+
+let quizList = [];
+
+/* ===========================
+Current Quiz Index
+=========================== */
+
+let currentQuizIndex = 0;
+
+/* ===========================
+Load Category Quizzes
+=========================== */
+
+async function loadCategoryQuizzes(){
+
+    try{
+
+        const {
+
+            collection,
+
+            query,
+
+            where,
+
+            orderBy,
+
+            getDocs
+
+        } = await import(
+
+            "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js"
+
+        );
+
+        const quizQuery = query(
+
+            collection(db,COLLECTIONS.quizzes),
+
+            where(
+
+                QUIZ_FIELDS.categoryId,
+
+                "==",
+
+                selectedCategory
+
+            ),
+
+            orderBy(
+
+                QUIZ_FIELDS.uploadTime,
+
+                "desc"
+
+            )
+
+        );
+
+        const snapshot =
+
+        await getDocs(quizQuery);
+
+        quizList = [];
+
+        snapshot.forEach(function(doc){
+
+            quizList.push({
+
+                id:doc.id,
+
+                ...doc.data()
+
+            });
+
+        });
+
+        console.log(
+
+            "Total Quizzes:",
+
+            quizList.length
+
+        );
+
+        /* No Quiz */
+
+        if(quizList.length===0){
+
+            alert(
+
+                "No quizzes found in this category."
+
+            );
+
+            window.location.href="index.html";
+
+            return;
+
+        }
+
+        /* Load First Quiz */
+
+        currentQuizIndex=0;
+
+        displayQuiz();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+/* ===========================
+Start Loading
+=========================== */
+
+loadCategoryQuizzes();
+
+/* =========================================================
+END OF SECTION 07.4
+========================================================= */
+/* =========================================================
+SECTION 07.5
+DISPLAY QUIZ
+========================================================= */
+
+/* ===========================
+Display Current Quiz
+=========================== */
+
+function displayQuiz(){
+
+    /* No Quiz Available */
+
+    if(quizList.length===0){
+
+        return;
+
+    }
+
+    /* Current Quiz */
+
+    const quiz =
+
+    quizList[currentQuizIndex];
+
+    /* ===========================
+    Question Image
+    =========================== */
+
+    updateQuestionImage(
+
+        quiz.image
+
+    );
+
+    /* ===========================
+    Answer Information
+    =========================== */
+
+    document.getElementById(
+
+        "answerA"
+
+    ).textContent =
+
+    quiz.optionA;
+
+    document.getElementById(
+
+        "answerB"
+
+    ).textContent =
+
+    quiz.optionB;
+
+    document.getElementById(
+
+        "answerC"
+
+    ).textContent =
+
+    quiz.optionC;
+
+    document.getElementById(
+
+        "answerD"
+
+    ).textContent =
+
+    quiz.optionD;
+
+    /* ===========================
+    Question Counter
+    =========================== */
+
+    currentQuizQuestion =
+
+    currentQuizIndex + 1;
+
+    loadQuestionCounter();
+
+    /* ===========================
+    Progress Bar
+    =========================== */
+
+    const progress =
+
+    (currentQuizQuestion /
+
+    quizList.length)
+
+    *100;
+
+    progressBarFill.style.width =
+
+    progress + "%";
+
+    /* ===========================
+    Reset Timer
+    =========================== */
+
+    resetCountdown();
+
+    /* ===========================
+    Reset Answer Buttons
+    =========================== */
+
+    resetAnswers();
+
+    /* ===========================
+    Reset Information
+    =========================== */
+
+    resetQuizInformation();
+
+    /* ===========================
+    Disable Next Button
+    =========================== */
+
+    nextQuestionBtn.disabled = true;
+
+    nextQuestionBtn.classList.remove(
+
+        "enabled"
+
+    );
+
+    console.log(
+
+        "Displaying Question",
+
+        currentQuizQuestion
+
+    );
+
+}
+
+/* =========================================================
+END OF SECTION 07.5
+========================================================= */
+/* =========================================================
+SECTION 07.6
+LOAD NEXT QUIZ
+========================================================= */
+
+/* ===========================
+Load Next Quiz
+=========================== */
+
+function loadNextQuiz(){
+
+    /* Next Quiz */
+
+    currentQuizIndex++;
+
+    /* Quiz Finished */
+
+    if(currentQuizIndex >= quizList.length){
+
+        window.location.href =
+
+        "offer.html";
+
+        return;
+
+    }
+
+    /* Display Next Quiz */
+
+    displayQuiz();
+
+}
+
+/* ===========================
+Next Button Click
+=========================== */
+
+nextQuestionBtn.addEventListener(
+
+    "click",
+
+    function(){
+
+        /* Prevent Click */
+
+        if(this.disabled){
+
+            return;
+
+        }
+
+        /* Load Next Quiz */
+
+        loadNextQuiz();
+
+    }
+
+);
+
+/* ===========================
+Time Up
+=========================== */
+
+function autoNextQuestion(){
+
+    loadNextQuiz();
+
+}
+
+/* =========================================================
+END OF SECTION 07.6
+========================================================= */
+    
+
+    
 <script>
 /* =========================================================
 SECTION 01
