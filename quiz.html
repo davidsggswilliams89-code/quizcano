@@ -1003,45 +1003,29 @@ QUIZ ANSWER SELECTOR HTML
 
     <div class="answer-container">
 
-        <!-- Option A -->
+        <button id="answerA"
+class="answer-circle"
+data-option="A">
+A
+</button>
 
-        <button
-            class="answer-circle"
-            data-option="A">
+<button id="answerB"
+class="answer-circle"
+data-option="B">
+B
+</button>
 
-            A
+<button id="answerC"
+class="answer-circle"
+data-option="C">
+C
+</button>
 
-        </button>
-
-        <!-- Option B -->
-
-        <button
-            class="answer-circle"
-            data-option="B">
-
-            B
-
-        </button>
-
-        <!-- Option C -->
-
-        <button
-            class="answer-circle"
-            data-option="C">
-
-            C
-
-        </button>
-
-        <!-- Option D -->
-
-        <button
-            class="answer-circle"
-            data-option="D">
-
-            D
-
-        </button>
+<button id="answerD"
+class="answer-circle"
+data-option="D">
+D
+</button>
 
     </div>
 
@@ -1186,16 +1170,16 @@ FIREBASE INITIALIZATION HTML
     const db =
 
     getFirestore(app);
-
+    </script>
     /* =========================================================
     GLOBAL ACCESS
     ========================================================= */
 
     window.db = db;
 
-<!-- =========================================================
-END OF SECTION 07.1 HTML
-========================================================= -->    
+/* =========================================================
+END OF SECTION 07.1
+========================================================= */
 /* =========================================================
 SECTION 07.2
 FIRESTORE COLLECTIONS
