@@ -1144,15 +1144,15 @@ END OF SECTION 03 JAVASCRIPT
 ========================================================= */
 /* =========================================================
 SECTION 04
-QUIZ ANSWER OPTIONS JAVASCRIPT
+QUIZ ANSWER SELECTOR JAVASCRIPT
 ========================================================= */
 
 /* ===========================
-Answer Elements
+Answer Circle Elements
 =========================== */
 
-const answerButtons =
-document.querySelectorAll(".answer-btn");
+const answerCircles =
+document.querySelectorAll(".answer-circle");
 
 /* ===========================
 Selected Answer
@@ -1161,6 +1161,38 @@ Selected Answer
 let selectedAnswer = null;
 
 let answerTime = 0;
+
+/* ===========================
+Disable All Answers
+=========================== */
+
+function disableAnswers(){
+
+    answerCircles.forEach(function(circle){
+
+        circle.classList.add("disabled");
+
+    });
+
+}
+
+/* ===========================
+Reset Answers
+=========================== */
+
+function resetAnswers(){
+
+    selectedAnswer = null;
+
+    answerCircles.forEach(function(circle){
+
+        circle.classList.remove("selected");
+
+        circle.classList.remove("disabled");
+
+    });
+
+}
 
 /* ===========================
 Enable Next Button
@@ -1182,46 +1214,14 @@ function enableNextButton(){
 }
 
 /* ===========================
-Disable All Answers
+Select Answer
 =========================== */
 
-function disableAnswers(){
+answerCircles.forEach(function(circle){
 
-    answerButtons.forEach(function(button){
+    circle.addEventListener("click",function(){
 
-        button.classList.add("disabled");
-
-    });
-
-}
-
-/* ===========================
-Reset Answers
-=========================== */
-
-function resetAnswers(){
-
-    selectedAnswer = null;
-
-    answerButtons.forEach(function(button){
-
-        button.classList.remove("selected");
-
-        button.classList.remove("disabled");
-
-    });
-
-}
-
-/* ===========================
-Answer Selection
-=========================== */
-
-answerButtons.forEach(function(button){
-
-    button.addEventListener("click",function(){
-
-        /* Prevent Multiple Click */
+        /* Already Selected */
 
         if(selectedAnswer !== null){
 
@@ -1229,28 +1229,29 @@ answerButtons.forEach(function(button){
 
         }
 
-        /* Save Selected Option */
+        /* Save Selected Answer */
 
         selectedAnswer =
         this.dataset.option;
 
-        /* Save Exact Time */
+        /* Save Response Time */
 
-        answerTime = 20 - countdownTime;
+        answerTime =
+        20 - countdownTime;
 
-        /* Remove Previous Selection */
+        /* Remove Previous */
 
-        answerButtons.forEach(function(btn){
+        answerCircles.forEach(function(btn){
 
             btn.classList.remove("selected");
 
         });
 
-        /* Highlight Selected */
+        /* Highlight */
 
         this.classList.add("selected");
 
-        /* Stop Countdown */
+        /* Stop Timer */
 
         stopCountdown();
 
@@ -1264,14 +1265,14 @@ answerButtons.forEach(function(button){
 
         console.log(
 
-            "Selected:",
+            "Answer:",
             selectedAnswer
 
         );
 
         console.log(
 
-            "Answered In:",
+            "Response Time:",
             answerTime,
             "Seconds"
 
@@ -1284,6 +1285,7 @@ answerButtons.forEach(function(button){
 /* =========================================================
 END OF SECTION 04 JAVASCRIPT
 ========================================================= */
+
     
 </script>
 
