@@ -735,7 +735,100 @@ Enabled State
 /* =========================================================
 END OF SECTION 05 CSS
 ========================================================= */
+/* =========================================================
+SECTION 06
+QUIZ INFORMATION CSS
+========================================================= */
 
+/* ===========================
+Quiz Information Section
+=========================== */
+
+.quiz-info-section{
+
+    width:100%;
+
+    padding:0 15px 30px;
+
+}
+
+/* ===========================
+Information Card
+=========================== */
+
+.quiz-info-card{
+
+    width:100%;
+
+    background:#111827;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:18px;
+
+    padding:16px 18px;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
+
+}
+
+/* ===========================
+Information Row
+=========================== */
+
+.quiz-info-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:10px 0;
+
+}
+
+/* Divider */
+
+.quiz-info-row:not(:last-child){
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+/* ===========================
+Information Title
+=========================== */
+
+.info-title{
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#9CA3AF;
+
+}
+
+/* ===========================
+Information Value
+=========================== */
+
+.info-value{
+
+    font-size:17px;
+
+    font-weight:800;
+
+    color:#F59E0B;
+
+    letter-spacing:.3px;
+
+}
+
+/* =========================================================
+END OF SECTION 06 CSS
+========================================================= */
 
 
     
@@ -984,7 +1077,62 @@ QUIZ NEXT BUTTON HTML
 <!-- =========================================================
 END OF SECTION 05 HTML
 ========================================================= -->
+<!-- =========================================================
+SECTION 06
+QUIZ INFORMATION HTML
+========================================================= -->
 
+<section class="quiz-info-section">
+
+    <!-- ==========================
+    Quiz Status Card
+    =========================== -->
+
+    <div class="quiz-info-card">
+
+        <div class="quiz-info-row">
+
+            <span class="info-title">
+
+                Selected Answer
+
+            </span>
+
+            <span
+                class="info-value"
+                id="selectedAnswerText">
+
+                -
+
+            </span>
+
+        </div>
+
+        <div class="quiz-info-row">
+
+            <span class="info-title">
+
+                Response Time
+
+            </span>
+
+            <span
+                class="info-value"
+                id="responseTimeText">
+
+                0.0s
+
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 06 HTML
+========================================================= -->
 
 
     
@@ -1426,6 +1574,7 @@ answerCircles.forEach(function(circle){
 /* =========================================================
 END OF SECTION 04 JAVASCRIPT
 ========================================================= */
+
 /* =========================================================
 SECTION 05
 QUIZ NEXT BUTTON JAVASCRIPT
@@ -1439,12 +1588,12 @@ const nextQuestionBtn =
 document.getElementById("nextQuestionBtn");
 
 /* ===========================
-Next Question
+Next Question Button
 =========================== */
 
 nextQuestionBtn.addEventListener("click",function(){
 
-    /* Prevent Clicking When Disabled */
+    /* Prevent Click If Disabled */
 
     if(this.disabled){
 
@@ -1452,11 +1601,15 @@ nextQuestionBtn.addEventListener("click",function(){
 
     }
 
-    /* Move To Next Question */
+    /* ===========================
+    Move To Next Question
+    =========================== */
 
     currentQuizQuestion++;
 
-    /* Quiz Finished */
+    /* ===========================
+    Quiz Completed
+    =========================== */
 
     if(currentQuizQuestion > quizTotalQuestions){
 
@@ -1467,51 +1620,138 @@ nextQuestionBtn.addEventListener("click",function(){
 
     }
 
-    /* Update Counter */
+    /* ===========================
+    Update Question Counter
+    =========================== */
 
     loadQuestionCounter();
 
-    /* Reset Answer Buttons */
+    /* ===========================
+    Reset Answer Selection
+    =========================== */
 
     resetAnswers();
 
-    /* Disable Next Button */
+    /* ===========================
+    Reset Quiz Information
+    =========================== */
+
+    resetQuizInformation();
+
+    /* ===========================
+    Disable Next Button
+    =========================== */
 
     this.disabled = true;
 
     this.classList.remove("enabled");
 
-    /* Restart Timer */
+    /* ===========================
+    Restart Countdown Timer
+    =========================== */
 
     resetCountdown();
 
-    /* Update Progress Bar */
+    /* ===========================
+    Update Progress Bar
+    =========================== */
 
-    const completed =
+    const progress =
     ((currentQuizQuestion - 1) /
     quizTotalQuestions) * 100;
 
     progressBarFill.style.width =
-    completed + "%";
+    progress + "%";
 
     /* ===========================
     Load Next Question
-    (Firestore Section Later)
+    (Firestore Integration Later)
     =========================== */
 
     console.log(
 
         "Loading Question",
+
         currentQuizQuestion
 
     );
 
-});
+}
 
 /* =========================================================
 END OF SECTION 05 JAVASCRIPT
-========================================================= */    
+========================================================= */
+    
+/* =========================================================
+SECTION 06
+QUIZ INFORMATION JAVASCRIPT
+========================================================= */
 
+/* ===========================
+Information Elements
+=========================== */
+
+const selectedAnswerText =
+document.getElementById("selectedAnswerText");
+
+const responseTimeText =
+document.getElementById("responseTimeText");
+
+/* ===========================
+Update Quiz Information
+=========================== */
+
+function updateQuizInformation(){
+
+    /* Selected Answer */
+
+    if(selectedAnswer === null){
+
+        selectedAnswerText.textContent = "-";
+
+    }else{
+
+        selectedAnswerText.textContent = selectedAnswer;
+
+    }
+
+    /* Response Time */
+
+    responseTimeText.textContent =
+    answerTime.toFixed(1) + "s";
+
+}
+
+/* ===========================
+Reset Information
+=========================== */
+
+function resetQuizInformation(){
+
+    selectedAnswerText.textContent = "-";
+
+    responseTimeText.textContent = "0.0s";
+
+}
+
+/* ===========================
+Refresh Information After
+Answer Selection
+=========================== */
+
+answerCircles.forEach(function(circle){
+
+    circle.addEventListener("click",function(){
+
+        updateQuizInformation();
+
+    });
+
+});
+
+/* =========================================================
+END OF SECTION 06 JAVASCRIPT
+========================================================= */
 </script>
 
 </body>
