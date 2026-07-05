@@ -501,9 +501,10 @@ Loading State
 /* =========================================================
 END OF SECTION 03 CSS
 ========================================================= */
+
 /* =========================================================
 SECTION 04
-QUIZ ANSWER OPTIONS CSS
+QUIZ ANSWER SELECTOR CSS
 ========================================================= */
 
 /* ===========================
@@ -514,43 +515,61 @@ Answer Section
 
     width:100%;
 
-    padding:0 15px 24px;
+    padding:10px 15px 24px;
+
+}
+
+/* ===========================
+Answer Container
+=========================== */
+
+.answer-container{
 
     display:flex;
 
-    flex-direction:column;
+    justify-content:space-between;
+
+    align-items:center;
 
     gap:14px;
 
 }
 
 /* ===========================
-Answer Button
+Answer Circle
 =========================== */
 
-.answer-btn{
+.answer-circle{
 
-    width:100%;
+    flex:1;
 
-    min-height:68px;
+    height:58px;
+
+    max-width:58px;
+
+    border:none;
+
+    border-radius:50%;
 
     background:#1A2138;
 
-    border:2px solid transparent;
+    color:#FFFFFF;
 
-    border-radius:18px;
+    font-size:22px;
 
-    display:flex;
-
-    align-items:center;
-
-    gap:16px;
-
-    padding:0 18px;
+    font-weight:900;
 
     cursor:pointer;
 
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
     transition:all .25s ease;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.25);
 
 }
 
@@ -558,7 +577,7 @@ Answer Button
 Hover
 =========================== */
 
-.answer-btn:hover{
+.answer-circle:hover{
 
     background:#232C48;
 
@@ -570,102 +589,41 @@ Hover
 Pressed
 =========================== */
 
-.answer-btn:active{
+.answer-circle:active{
 
-    transform:scale(.98);
+    transform:scale(.95);
 
 }
 
 /* ===========================
-Selected Answer
+Selected
 =========================== */
 
-.answer-btn.selected{
+.answer-circle.selected{
 
     background:#F59E0B;
 
-    border-color:#FFD166;
-
-    box-shadow:0 6px 18px rgba(245,158,11,.35);
-
-}
-
-/* ===========================
-Answer Letter
-=========================== */
-
-.answer-letter{
-
-    width:42px;
-
-    height:42px;
-
-    border-radius:50%;
-
-    background:#0B1120;
-
     color:#FFFFFF;
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:18px;
-
-    font-weight:900;
-
-    flex-shrink:0;
+    box-shadow:0 0 0 3px rgba(245,158,11,.35);
 
 }
 
 /* ===========================
-Selected Letter
+Disabled
 =========================== */
 
-.answer-btn.selected .answer-letter{
-
-    background:#FFFFFF;
-
-    color:#F59E0B;
-
-}
-
-/* ===========================
-Answer Text
-=========================== */
-
-.answer-text{
-
-    flex:1;
-
-    text-align:left;
-
-    color:#FFFFFF;
-
-    font-size:16px;
-
-    font-weight:700;
-
-    line-height:1.4;
-
-}
-
-/* ===========================
-Disabled Answers
-=========================== */
-
-.answer-btn.disabled{
+.answer-circle.disabled{
 
     pointer-events:none;
+
+    opacity:.7;
 
 }
 
 /* =========================================================
 END OF SECTION 04 CSS
-========================================================= */    
-
+========================================================= */
     
 </style>
 
@@ -832,35 +790,56 @@ QUIZ QUESTION IMAGE HTML
 END OF SECTION 03 HTML
 ========================================================= -->
 <!-- =========================================================
+<!-- =========================================================
 SECTION 04
 QUIZ ANSWER SELECTOR HTML
 ========================================================= -->
 
 <section class="answer-section">
 
-    <button class="answer-circle" data-option="A">
+    <div class="answer-container">
 
-        A
+        <!-- Option A -->
 
-    </button>
+        <button
+            class="answer-circle"
+            data-option="A">
 
-    <button class="answer-circle" data-option="B">
+            A
 
-        B
+        </button>
 
-    </button>
+        <!-- Option B -->
 
-    <button class="answer-circle" data-option="C">
+        <button
+            class="answer-circle"
+            data-option="B">
 
-        C
+            B
 
-    </button>
+        </button>
 
-    <button class="answer-circle" data-option="D">
+        <!-- Option C -->
 
-        D
+        <button
+            class="answer-circle"
+            data-option="C">
 
-    </button>
+            C
+
+        </button>
+
+        <!-- Option D -->
+
+        <button
+            class="answer-circle"
+            data-option="D">
+
+            D
+
+        </button>
+
+    </div>
 
 </section>
 
