@@ -1288,20 +1288,30 @@ quizBannerCards.forEach(function(card){
         event.preventDefault();
 
         /* ===========================
-        Get Banner Image
+        Get Selected Category
         =========================== */
 
-        const bannerImage =
-        card.querySelector("img").getAttribute("src");
+        const category =
 
-        console.log("Selected Quiz Banner:", bannerImage);
+        card.dataset.category;
+
+        console.log(
+
+            "Selected Category:",
+
+            category
+
+        );
 
         /* ===========================
         Open Quiz Page
-        (Temporary)
         =========================== */
 
-        window.location.href = "quiz.html";
+        window.location.href =
+
+        "quiz.html?category=" +
+
+        encodeURIComponent(category);
 
     });
 
@@ -1309,8 +1319,7 @@ quizBannerCards.forEach(function(card){
 
 /* =========================================================
 END OF SECTION 04 JAVASCRIPT
-========================================================= */    
-
+========================================================= */
 
 
      
