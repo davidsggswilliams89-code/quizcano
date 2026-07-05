@@ -217,7 +217,171 @@ Counter Divider
 /* =========================================================
 END OF SECTION 01 CSS
 ========================================================= */
+/* =========================================================
+SECTION 02
+QUIZ PROGRESS & TIMER CSS
+========================================================= */
 
+/* ===========================
+Quiz Progress Section
+=========================== */
+
+.quiz-progress-section{
+
+    width:100%;
+
+    padding:12px 15px 20px;
+
+}
+
+/* ===========================
+Header
+=========================== */
+
+.progress-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:12px;
+
+}
+
+/* ===========================
+Progress Title
+=========================== */
+
+.progress-title{
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+    letter-spacing:.3px;
+
+}
+
+/* ===========================
+Timer
+=========================== */
+
+.timer-text{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:4px;
+
+    padding:8px 14px;
+
+    background:#1A2138;
+
+    border-radius:50px;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    color:#F59E0B;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.25);
+
+}
+
+/* ===========================
+Countdown Number
+=========================== */
+
+#countdownTimer{
+
+    min-width:20px;
+
+    text-align:center;
+
+    font-size:18px;
+
+    font-weight:900;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Progress Bar Container
+=========================== */
+
+.progress-bar-container{
+
+    width:100%;
+
+    height:12px;
+
+    background:#1A2138;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    box-shadow:inset 0 2px 5px rgba(0,0,0,.35);
+
+}
+
+/* ===========================
+Progress Fill
+=========================== */
+
+.progress-bar-fill{
+
+    width:5%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        #F59E0B,
+        #FFD166
+    );
+
+    border-radius:50px;
+
+    transition:width .4s ease;
+
+}
+
+/* ===========================
+Timer Warning
+=========================== */
+
+.timer-warning{
+
+    color:#FF6B6B !important;
+
+}
+
+/* ===========================
+Progress Animation
+=========================== */
+
+.progress-bar-fill.animate{
+
+    transition:width .5s ease-in-out;
+
+}
+
+/* =========================================================
+END OF SECTION 02 CSS
+========================================================= */
+
+
+
+
+    
 </style>
 
 </head>
@@ -292,7 +456,56 @@ QUIZ PAGE HEADER HTML
 SECTION 01
 QUIZ PAGE HEADER HTML
 ========================================================= -->
+<!-- =========================================================
+SECTION 02
+QUIZ PROGRESS & TIMER HTML
+========================================================= -->
 
+<section class="quiz-progress-section">
+
+    <!-- ==========================
+    Progress Header
+    =========================== -->
+
+    <div class="progress-header">
+
+        <span class="progress-title">
+
+            Quiz Progress
+
+        </span>
+
+        <span class="timer-text">
+
+            ⏱️
+            <span id="countdownTimer">
+
+                20
+
+            </span>s
+
+        </span>
+
+    </div>
+
+    <!-- ==========================
+    Progress Bar
+    =========================== -->
+
+    <div class="progress-bar-container">
+
+        <div class="progress-bar-fill"
+             id="progressBarFill">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 02 HTML
+========================================================= -->
 
 
     
@@ -367,7 +580,157 @@ loadQuestionCounter();
 /* =========================================================
 END OF SECTION 01 JAVASCRIPT
 ========================================================= */
+/* =========================================================
+SECTION 02
+QUIZ PROGRESS & TIMER JAVASCRIPT
+========================================================= */
 
+/* ===========================
+Timer Settings
+=========================== */
+
+let countdownTime = 20;
+
+let timerInterval = null;
+
+let questionAnswered = false;
+
+/* ===========================
+Section 02 Elements
+=========================== */
+
+const countdownTimer =
+document.getElementById("countdownTimer");
+
+const progressBarFill =
+document.getElementById("progressBarFill");
+
+const timerText =
+document.querySelector(".timer-text");
+
+/* ===========================
+Start Countdown
+=========================== */
+
+function startCountdown(){
+
+    clearInterval(timerInterval);
+
+    countdownTime = 20;
+
+    questionAnswered = false;
+
+    updateTimerUI();
+
+    timerInterval = setInterval(function(){
+
+        if(questionAnswered){
+
+            clearInterval(timerInterval);
+
+            return;
+
+        }
+
+        countdownTime--;
+
+        updateTimerUI();
+
+        /* Warning at last 5 seconds */
+
+        if(countdownTime <= 5){
+
+            timerText.classList.add("timer-warning");
+
+            if(navigator.vibrate){
+
+                navigator.vibrate(80);
+
+            }
+
+        }
+
+        /* Time Up */
+
+        if(countdownTime <= 0){
+
+            clearInterval(timerInterval);
+
+            timerText.classList.remove("timer-warning");
+
+            autoNextQuestion();
+
+        }
+
+    },1000);
+
+}
+
+/* ===========================
+Update Timer UI
+=========================== */
+
+function updateTimerUI(){
+
+    countdownTimer.textContent = countdownTime;
+
+    const progress =
+    (countdownTime / 20) * 100;
+
+    progressBarFill.style.width =
+    progress + "%";
+
+}
+
+/* ===========================
+Stop Timer
+=========================== */
+
+function stopCountdown(){
+
+    questionAnswered = true;
+
+    clearInterval(timerInterval);
+
+}
+
+/* ===========================
+Auto Next Question
+=========================== */
+
+function autoNextQuestion(){
+
+    console.log("Time Out");
+
+    /* Section 05 will control
+       loading the next question */
+
+}
+
+/* ===========================
+Reset Timer
+=========================== */
+
+function resetCountdown(){
+
+    timerText.classList.remove("timer-warning");
+
+    startCountdown();
+
+}
+
+/* ===========================
+Start First Question
+=========================== */
+
+startCountdown();
+
+/* =========================================================
+END OF SECTION 02 JAVASCRIPT
+========================================================= */
+
+
+    
 </script>
 
 </body>
