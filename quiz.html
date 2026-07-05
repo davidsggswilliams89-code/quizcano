@@ -404,7 +404,7 @@ Question Card
 
     background:#111827;
 
-    border-radius:24px;
+    border-radius:20px;
 
     overflow:hidden;
 
@@ -628,6 +628,114 @@ Disabled
 /* =========================================================
 END OF SECTION 04 CSS
 ========================================================= */
+/* =========================================================
+SECTION 05
+QUIZ NEXT BUTTON CSS
+========================================================= */
+
+/* ===========================
+Next Section
+=========================== */
+
+.next-section{
+
+    width:100%;
+
+    padding:0 15px 30px;
+
+}
+
+/* ===========================
+Next Button
+=========================== */
+
+.next-question-btn{
+
+    width:100%;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#F59E0B;
+
+    color:#FFFFFF;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transition:all .25s ease;
+
+    box-shadow:0 6px 18px rgba(245,158,11,.30);
+
+}
+
+/* ===========================
+Hover
+=========================== */
+
+.next-question-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 24px rgba(245,158,11,.35);
+
+}
+
+/* ===========================
+Pressed
+=========================== */
+
+.next-question-btn:active{
+
+    transform:scale(.98);
+
+}
+
+/* ===========================
+Disabled State
+=========================== */
+
+.next-question-btn:disabled{
+
+    background:#374151;
+
+    color:#9CA3AF;
+
+    cursor:not-allowed;
+
+    box-shadow:none;
+
+    transform:none;
+
+}
+
+/* ===========================
+Enabled State
+=========================== */
+
+.next-question-btn.enabled{
+
+    background:#F59E0B;
+
+    color:#FFFFFF;
+
+}
+
+/* =========================================================
+END OF SECTION 05 CSS
+========================================================= */
     
 </style>
 
@@ -849,6 +957,31 @@ QUIZ ANSWER SELECTOR HTML
 
 <!-- =========================================================
 END OF SECTION 04 HTML
+========================================================= -->
+<!-- =========================================================
+SECTION 05
+QUIZ NEXT BUTTON HTML
+========================================================= -->
+
+<section class="next-section">
+
+    <!-- ==========================
+    Next Question Button
+    =========================== -->
+
+    <button
+        id="nextQuestionBtn"
+        class="next-question-btn"
+        disabled>
+
+        Next Question →
+
+    </button>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 05 HTML
 ========================================================= -->
     
 <script>
@@ -1290,7 +1423,91 @@ answerCircles.forEach(function(circle){
 /* =========================================================
 END OF SECTION 04 JAVASCRIPT
 ========================================================= */
+/* =========================================================
+SECTION 05
+QUIZ NEXT BUTTON JAVASCRIPT
+========================================================= */
 
+/* ===========================
+Next Button Element
+=========================== */
+
+const nextQuestionBtn =
+document.getElementById("nextQuestionBtn");
+
+/* ===========================
+Next Question
+=========================== */
+
+nextQuestionBtn.addEventListener("click",function(){
+
+    /* Prevent Clicking When Disabled */
+
+    if(this.disabled){
+
+        return;
+
+    }
+
+    /* Move To Next Question */
+
+    currentQuizQuestion++;
+
+    /* Quiz Finished */
+
+    if(currentQuizQuestion > quizTotalQuestions){
+
+        window.location.href =
+        "offer.html";
+
+        return;
+
+    }
+
+    /* Update Counter */
+
+    loadQuestionCounter();
+
+    /* Reset Answer Buttons */
+
+    resetAnswers();
+
+    /* Disable Next Button */
+
+    this.disabled = true;
+
+    this.classList.remove("enabled");
+
+    /* Restart Timer */
+
+    resetCountdown();
+
+    /* Update Progress Bar */
+
+    const completed =
+    ((currentQuizQuestion - 1) /
+    quizTotalQuestions) * 100;
+
+    progressBarFill.style.width =
+    completed + "%";
+
+    /* ===========================
+    Load Next Question
+    (Firestore Section Later)
+    =========================== */
+
+    console.log(
+
+        "Loading Question",
+        currentQuizQuestion
+
+    );
+
+});
+
+/* =========================================================
+END OF SECTION 05 JAVASCRIPT
+========================================================= */
     
 </script>
 
