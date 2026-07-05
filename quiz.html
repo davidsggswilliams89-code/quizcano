@@ -501,7 +501,170 @@ Loading State
 /* =========================================================
 END OF SECTION 03 CSS
 ========================================================= */
+/* =========================================================
+SECTION 04
+QUIZ ANSWER OPTIONS CSS
+========================================================= */
 
+/* ===========================
+Answer Section
+=========================== */
+
+.answer-section{
+
+    width:100%;
+
+    padding:0 15px 24px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+/* ===========================
+Answer Button
+=========================== */
+
+.answer-btn{
+
+    width:100%;
+
+    min-height:68px;
+
+    background:#1A2138;
+
+    border:2px solid transparent;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:0 18px;
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+
+}
+
+/* ===========================
+Hover
+=========================== */
+
+.answer-btn:hover{
+
+    background:#232C48;
+
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+Pressed
+=========================== */
+
+.answer-btn:active{
+
+    transform:scale(.98);
+
+}
+
+/* ===========================
+Selected Answer
+=========================== */
+
+.answer-btn.selected{
+
+    background:#F59E0B;
+
+    border-color:#FFD166;
+
+    box-shadow:0 6px 18px rgba(245,158,11,.35);
+
+}
+
+/* ===========================
+Answer Letter
+=========================== */
+
+.answer-letter{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    background:#0B1120;
+
+    color:#FFFFFF;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:18px;
+
+    font-weight:900;
+
+    flex-shrink:0;
+
+}
+
+/* ===========================
+Selected Letter
+=========================== */
+
+.answer-btn.selected .answer-letter{
+
+    background:#FFFFFF;
+
+    color:#F59E0B;
+
+}
+
+/* ===========================
+Answer Text
+=========================== */
+
+.answer-text{
+
+    flex:1;
+
+    text-align:left;
+
+    color:#FFFFFF;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    line-height:1.4;
+
+}
+
+/* ===========================
+Disabled Answers
+=========================== */
+
+.answer-btn.disabled{
+
+    pointer-events:none;
+
+}
+
+/* =========================================================
+END OF SECTION 04 CSS
+========================================================= */
 
 
     
@@ -671,7 +834,98 @@ QUIZ QUESTION IMAGE HTML
 <!-- =========================================================
 END OF SECTION 03 HTML
 ========================================================= -->
+<!-- =========================================================
+SECTION 04
+QUIZ ANSWER OPTIONS HTML
+========================================================= -->
 
+<section class="answer-section">
+
+    <!-- ==========================
+    Answer A
+    =========================== -->
+
+    <button class="answer-btn" data-option="A">
+
+        <span class="answer-letter">
+
+            A
+
+        </span>
+
+        <span class="answer-text" id="answerA">
+
+            Answer Option A
+
+        </span>
+
+    </button>
+
+    <!-- ==========================
+    Answer B
+    =========================== -->
+
+    <button class="answer-btn" data-option="B">
+
+        <span class="answer-letter">
+
+            B
+
+        </span>
+
+        <span class="answer-text" id="answerB">
+
+            Answer Option B
+
+        </span>
+
+    </button>
+
+    <!-- ==========================
+    Answer C
+    =========================== -->
+
+    <button class="answer-btn" data-option="C">
+
+        <span class="answer-letter">
+
+            C
+
+        </span>
+
+        <span class="answer-text" id="answerC">
+
+            Answer Option C
+
+        </span>
+
+    </button>
+
+    <!-- ==========================
+    Answer D
+    =========================== -->
+
+    <button class="answer-btn" data-option="D">
+
+        <span class="answer-letter">
+
+            D
+
+        </span>
+
+        <span class="answer-text" id="answerD">
+
+            Answer Option D
+
+        </span>
+
+    </button>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 04 HTML
+========================================================= -->
 
 
 
@@ -973,7 +1227,148 @@ loadQuestionImage(currentQuestionImage);
 /* =========================================================
 END OF SECTION 03 JAVASCRIPT
 ========================================================= */
+/* =========================================================
+SECTION 04
+QUIZ ANSWER OPTIONS JAVASCRIPT
+========================================================= */
 
+/* ===========================
+Answer Elements
+=========================== */
+
+const answerButtons =
+document.querySelectorAll(".answer-btn");
+
+/* ===========================
+Selected Answer
+=========================== */
+
+let selectedAnswer = null;
+
+let answerTime = 0;
+
+/* ===========================
+Enable Next Button
+=========================== */
+
+function enableNextButton(){
+
+    const nextButton =
+    document.getElementById("nextQuestionBtn");
+
+    if(nextButton){
+
+        nextButton.disabled = false;
+
+        nextButton.classList.add("enabled");
+
+    }
+
+}
+
+/* ===========================
+Disable All Answers
+=========================== */
+
+function disableAnswers(){
+
+    answerButtons.forEach(function(button){
+
+        button.classList.add("disabled");
+
+    });
+
+}
+
+/* ===========================
+Reset Answers
+=========================== */
+
+function resetAnswers(){
+
+    selectedAnswer = null;
+
+    answerButtons.forEach(function(button){
+
+        button.classList.remove("selected");
+
+        button.classList.remove("disabled");
+
+    });
+
+}
+
+/* ===========================
+Answer Selection
+=========================== */
+
+answerButtons.forEach(function(button){
+
+    button.addEventListener("click",function(){
+
+        /* Prevent Multiple Click */
+
+        if(selectedAnswer !== null){
+
+            return;
+
+        }
+
+        /* Save Selected Option */
+
+        selectedAnswer =
+        this.dataset.option;
+
+        /* Save Exact Time */
+
+        answerTime = 20 - countdownTime;
+
+        /* Remove Previous Selection */
+
+        answerButtons.forEach(function(btn){
+
+            btn.classList.remove("selected");
+
+        });
+
+        /* Highlight Selected */
+
+        this.classList.add("selected");
+
+        /* Stop Countdown */
+
+        stopCountdown();
+
+        /* Lock Answers */
+
+        disableAnswers();
+
+        /* Enable Next Button */
+
+        enableNextButton();
+
+        console.log(
+
+            "Selected:",
+            selectedAnswer
+
+        );
+
+        console.log(
+
+            "Answered In:",
+            answerTime,
+            "Seconds"
+
+        );
+
+    });
+
+});
+
+/* =========================================================
+END OF SECTION 04 JAVASCRIPT
+========================================================= */
     
 </script>
 
