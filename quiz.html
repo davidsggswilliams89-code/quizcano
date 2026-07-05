@@ -1135,7 +1135,71 @@ END OF SECTION 06 HTML
 ========================================================= -->
 
 
-    
+<!-- =========================================================
+SECTION 07.1
+FIREBASE INITIALIZATION HTML
+========================================================= -->
+
+<!-- Firebase App -->
+
+<script type="module">
+
+    import { initializeApp }
+
+    from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
+    import {
+
+        getFirestore
+
+    }
+
+    from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+    /* =========================================================
+    FIREBASE CONFIGURATION
+    Replace With Your Firebase Config
+    ========================================================= */
+
+    const firebaseConfig = {
+
+        apiKey: "YOUR_API_KEY",
+
+        authDomain: "YOUR_PROJECT.firebaseapp.com",
+
+        projectId: "YOUR_PROJECT_ID",
+
+        storageBucket: "YOUR_PROJECT.appspot.com",
+
+        messagingSenderId: "YOUR_SENDER_ID",
+
+        appId: "YOUR_APP_ID"
+
+    };
+
+    /* =========================================================
+    INITIALIZE FIREBASE
+    ========================================================= */
+
+    const app =
+
+    initializeApp(firebaseConfig);
+
+    const db =
+
+    getFirestore(app);
+
+    /* =========================================================
+    GLOBAL ACCESS
+    ========================================================= */
+
+    window.db = db;
+
+</script>
+
+<!-- =========================================================
+END OF SECTION 07.1 HTML
+========================================================= -->    
 <script>
 /* =========================================================
 SECTION 01
