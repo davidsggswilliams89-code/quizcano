@@ -377,9 +377,134 @@ Progress Animation
 /* =========================================================
 END OF SECTION 02 CSS
 ========================================================= */
+/* =========================================================
+SECTION 03
+QUIZ QUESTION IMAGE CSS
+========================================================= */
+
+/* ===========================
+Question Section
+=========================== */
+
+.question-section{
+
+    width:100%;
+
+    padding:0 15px 20px;
+
+}
+
+/* ===========================
+Question Card
+=========================== */
+
+.question-card{
+
+    width:100%;
+
+    background:#111827;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.30);
+
+}
+
+/* ===========================
+Question Label
+=========================== */
+
+.question-label{
+
+    padding:14px 18px;
+
+    font-size:16px;
+
+    font-weight:800;
+
+    color:#FFFFFF;
+
+    background:#1A2138;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+/* ===========================
+Question Image Container
+=========================== */
+
+.question-image-container{
+
+    width:100%;
+
+    aspect-ratio:1/1;
+
+    background:#0F172A;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+}
+
+/* ===========================
+Question Image
+=========================== */
+
+.question-image{
+
+    width:100%;
+
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    user-select:none;
+
+    pointer-events:none;
+
+    -webkit-user-drag:none;
+
+    transition:transform .35s ease;
+
+}
+
+/* ===========================
+Image Hover
+=========================== */
+
+.question-card:hover .question-image{
+
+    transform:scale(1.02);
+
+}
+
+/* ===========================
+Loading State
+=========================== */
+
+.question-image.loading{
+
+    opacity:.45;
+
+}
+
+/* =========================================================
+END OF SECTION 03 CSS
+========================================================= */
 
 
 
+    
 
     
 </style>
@@ -506,8 +631,51 @@ QUIZ PROGRESS & TIMER HTML
 <!-- =========================================================
 END OF SECTION 02 HTML
 ========================================================= -->
+<!-- =========================================================
+SECTION 03
+QUIZ QUESTION IMAGE HTML
+========================================================= -->
+
+<section class="question-section">
+
+    <!-- ==========================
+    Question Card
+    =========================== -->
+
+    <div class="question-card">
+
+        <!-- Question Number -->
+
+        <div class="question-label">
+
+            Question
+
+        </div>
+
+        <!-- Question Image -->
+
+        <div class="question-image-container">
+
+            <img
+                id="questionImage"
+                class="question-image"
+                src="question-placeholder.jpg"
+                alt="Quiz Question">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 03 HTML
+========================================================= -->
 
 
+
+
+    
     
     
 <script>
@@ -728,7 +896,83 @@ startCountdown();
 /* =========================================================
 END OF SECTION 02 JAVASCRIPT
 ========================================================= */
+/* =========================================================
+SECTION 03
+QUIZ QUESTION IMAGE JAVASCRIPT
+========================================================= */
 
+/* ===========================
+Question Image Element
+=========================== */
+
+const questionImage =
+document.getElementById("questionImage");
+
+/* ===========================
+Question Image Placeholder
+=========================== */
+
+const placeholderImage =
+"question-placeholder.jpg";
+
+/* ===========================
+Current Question Image
+=========================== */
+
+let currentQuestionImage =
+placeholderImage;
+
+/* ===========================
+Load Question Image
+=========================== */
+
+function loadQuestionImage(imageSrc){
+
+    questionImage.classList.add("loading");
+
+    const imageLoader = new Image();
+
+    imageLoader.onload = function(){
+
+        questionImage.src = imageSrc;
+
+        questionImage.classList.remove("loading");
+
+    };
+
+    imageLoader.onerror = function(){
+
+        questionImage.src = placeholderImage;
+
+        questionImage.classList.remove("loading");
+
+    };
+
+    imageLoader.src = imageSrc;
+
+}
+
+/* ===========================
+Next Question Image
+=========================== */
+
+function updateQuestionImage(imageSrc){
+
+    currentQuestionImage = imageSrc;
+
+    loadQuestionImage(currentQuestionImage);
+
+}
+
+/* ===========================
+First Question
+=========================== */
+
+loadQuestionImage(currentQuestionImage);
+
+/* =========================================================
+END OF SECTION 03 JAVASCRIPT
+========================================================= */
 
     
 </script>
