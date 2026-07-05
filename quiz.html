@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>QUIZCANO - Quiz</title>
+
+<style>
+
+/* =========================================================
+SECTION 01
+QUIZ PAGE HEADER CSS
+========================================================= */
+
+/* ===========================
+Reset
+=========================== */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    background:#0B1120;
+
+    font-family:Arial,Helvetica,sans-serif;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Quiz Header
+=========================== */
+
+.quiz-header{
+
+    width:100%;
+
+    height:82px;
+
+    background:#0B1120;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:10px 15px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+}
+
+/* ===========================
+Back Button
+=========================== */
+
+.quiz-back-btn{
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#1A2138;
+
+    color:#FFFFFF;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.quiz-back-btn:hover{
+
+    background:#232C48;
+
+}
+
+.quiz-back-btn:active{
+
+    transform:scale(.95);
+
+}
+
+/* ===========================
+Logo Area
+=========================== */
+
+.quiz-logo-area{
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+/* ===========================
+Logo
+=========================== */
+
+.quiz-logo{
+
+    font-size:32px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    line-height:1;
+
+}
+
+/* ===========================
+Logo Colors
+=========================== */
+
+.logo-white{
+
+    color:#FFFFFF;
+
+}
+
+.logo-orange{
+
+    color:#F59E0B;
+
+}
+
+/* ===========================
+Tagline
+=========================== */
+
+.quiz-tagline{
+
+    margin-top:4px;
+
+    font-size:11px;
+
+    color:#8B93A7;
+
+}
+
+/* ===========================
+Question Counter
+=========================== */
+
+.question-counter{
+
+    min-width:58px;
+
+    height:48px;
+
+    padding:0 12px;
+
+    border-radius:24px;
+
+    background:#1A2138;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:4px;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Counter Divider
+=========================== */
+
+.counter-divider{
+
+    color:#F59E0B;
+
+}
+
+/* =========================================================
+END OF SECTION 01 CSS
+========================================================= */
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================================================
+SECTION 01
+QUIZ PAGE HEADER HTML
+========================================================= -->
+
+<header class="quiz-header">
+
+    <!-- ==========================
+    Back Button
+    =========================== -->
+
+    <button class="quiz-back-btn" id="quizBackBtn">
+
+        ←
+
+    </button>
+
+    <!-- ==========================
+    Logo Area
+    =========================== -->
+
+    <div class="quiz-logo-area">
+
+        <h1 class="quiz-logo">
+
+            <span class="logo-white">QUIZ</span><span class="logo-orange">CANO</span>
+
+        </h1>
+
+        <p class="quiz-tagline">
+
+            Play • Learn • Win
+
+        </p>
+
+    </div>
+
+    <!-- ==========================
+    Question Counter
+    =========================== -->
+
+    <div class="question-counter">
+
+        <span id="currentQuestion">
+
+            1
+
+        </span>
+
+        <span class="counter-divider">
+
+            /
+
+        </span>
+
+        <span id="totalQuestions">
+
+            20
+
+        </span>
+
+    </div>
+
+</header>
+
+/* =========================================================
+SECTION 01
+QUIZ PAGE HEADER JAVASCRIPT
+========================================================= */
+
+/* ===========================
+Variables
+=========================== */
+
+const quizBackBtn =
+document.getElementById("quizBackBtn");
+
+const currentQuestion =
+document.getElementById("currentQuestion");
+
+const totalQuestions =
+document.getElementById("totalQuestions");
+
+/* ===========================
+Quiz Settings
+=========================== */
+
+let currentQuizQuestion = 1;
+
+const quizTotalQuestions = 20;
+
+/* ===========================
+Load Counter
+=========================== */
+
+function loadQuestionCounter(){
+
+    currentQuestion.textContent =
+    currentQuizQuestion;
+
+    totalQuestions.textContent =
+    quizTotalQuestions;
+
+}
+
+/* ===========================
+Back To Home
+=========================== */
+
+quizBackBtn.addEventListener("click",function(){
+
+    const leaveQuiz = confirm(
+
+        "Leave this quiz and return to the Home page?"
+
+    );
+
+    if(leaveQuiz){
+
+        window.location.href = "index.html";
+
+    }
+
+});
+
+/* ===========================
+Start
+=========================== */
+
+loadQuestionCounter();
+
+/* =========================================================
+END OF SECTION 01 JAVASCRIPT
+========================================================= */
+
+</script>
+
+</body>
+
+</html>
