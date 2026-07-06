@@ -1434,7 +1434,105 @@ async()=>{
 /* =========================================================
 END OF SECTION 08
 ========================================================= */
-    
+/* =========================================================
+SECTION 09
+LOAD CATEGORIES
+========================================================= */
+
+/* ===========================
+Load Categories
+=========================== */
+
+async function loadCategories(){
+
+    categoryList.innerHTML = "";
+
+    const snapshot =
+    await getDocs(
+
+        collection(
+            db,
+            "categories"
+        )
+
+    );
+
+    snapshot.forEach((document)=>{
+
+        const category =
+        document.data();
+
+        categoryList.innerHTML += `
+
+        <div class="category-card">
+
+            <img
+            src="${category.banner}"
+            alt="${category.name}">
+
+            <div
+            class="category-card-content">
+
+                <h3
+                class="category-card-title">
+
+                    ${category.name}
+
+                </h3>
+
+                <p
+                class="category-card-location">
+
+                    ${category.location}
+
+                </p>
+
+                <div
+                class="category-card-buttons">
+
+                    <button
+                    class="edit-category-btn"
+                    data-id="${document.id}">
+
+                        Edit
+
+                    </button>
+
+                    <button
+                    class="delete-category-btn"
+                    data-id="${document.id}">
+
+                        Delete
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+/* ===========================
+Load When Opening
+=========================== */
+
+manageCategoryButton.addEventListener(
+"click",
+()=>{
+
+    loadCategories();
+
+});
+
+/* =========================================================
+END OF SECTION 09
+========================================================= */    
 </script>
 
 </body>
