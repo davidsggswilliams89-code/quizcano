@@ -1063,8 +1063,20 @@ END OF SECTION 04 JAVASCRIPT
 ========================================================= */
 /* =========================================================
 SECTION 08
-UPLOAD CATEGORY BANNER TO CLOUDINARY
+UPLOAD CATEGORY TO CLOUDINARY
+AND SAVE TO FIRESTORE
 ========================================================= */
+
+/* ===========================
+Firestore Imports
+=========================== */
+
+import {
+    collection,
+    addDoc,
+    serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 /* ===========================
 Save Category Button
@@ -1074,7 +1086,7 @@ const saveCategoryButton =
 document.getElementById("saveCategoryButton");
 
 /* ===========================
-Upload To Cloudinary
+Save Category
 =========================== */
 
 saveCategoryButton.addEventListener(
@@ -1112,7 +1124,7 @@ async function(){
     try{
 
         /* ===========================
-        Create FormData
+        Upload To Cloudinary
         =========================== */
 
         const formData =
@@ -1127,10 +1139,6 @@ async function(){
         "upload_preset",
         "Ummuhalti"
         );
-
-        /* ===========================
-        Upload To Cloudinary
-        =========================== */
 
         const response =
         await fetch(
@@ -1148,27 +1156,62 @@ async function(){
         const result =
         await response.json();
 
-        /* ===========================
-        Check Upload Success
-        =========================== */
-
         if(!response.ok){
 
-            console.error(result);
+            throw new Error(
 
-            alert(result.error.message);
+                result.error.message
 
-            throw new Error(result.error.message);
+            );
 
         }
 
         /* ===========================
-        Save URL To Firestore
+        Save To Firestore
         =========================== */
 
-        await saveCategory(
-        result.secure_url
+        await addDoc(
+
+            collection(
+                db,
+                "categories"
+            ),
+
+            {
+
+                location:
+                categoryLocation.value,
+
+                banner:
+                result.secure_url,
+
+                createdAt:
+                serverTimestamp()
+
+            }
+
         );
+
+        alert(
+        "Category saved successfully."
+        );
+
+        /* ===========================
+        Reset Form
+        =========================== */
+
+        categoryLocation.value="";
+
+        categoryBanner.value="";
+
+        categoryPreview.src="";
+
+        categoryPreview.classList.remove("show");
+
+        categoryPreviewText.classList.remove("hide");
+
+        categoryPreviewText.textContent=
+        "No banner selected.";
 
     }
 
@@ -1177,30 +1220,26 @@ async function(){
         console.error(error);
 
         alert(
+
         "Upload failed: " +
+
         error.message
+
         );
 
     }
 
-    finally{
+    saveCategoryButton.disabled=false;
 
-        saveCategoryButton.disabled=false;
-
-        saveCategoryButton.textContent=
-        "Save Category";
-
-    }
+    saveCategoryButton.textContent=
+    "Save Category";
 
 });
 
 /* =========================================================
 END OF SECTION 08
-========================================================= */
+========================================================= */        
 
-/* =========================================================
-END OF SECTION 09
-========================================================= */
         
 
         
