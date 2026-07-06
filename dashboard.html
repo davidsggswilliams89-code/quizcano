@@ -1145,7 +1145,58 @@ document.getElementById("categoryList");
 /* =========================================================
 END OF SECTION 04
 ========================================================= */
+/* =========================================================
+SECTION 05
+DASHBOARD NAVIGATION
+========================================================= */
 
+/* ===========================
+Create Category
+=========================== */
+
+createCategoryButton.addEventListener("click", () => {
+
+    createCategorySection.classList.add("show");
+
+    manageCategorySection.classList.remove("show");
+
+});
+
+/* ===========================
+Manage Categories
+=========================== */
+
+manageCategoryButton.addEventListener("click", () => {
+
+    manageCategorySection.classList.add("show");
+
+    createCategorySection.classList.remove("show");
+
+});
+
+/* ===========================
+Create Quiz
+=========================== */
+
+createQuizButton.addEventListener("click", () => {
+
+    alert("Create Quiz section coming in Section 12.");
+
+});
+
+/* ===========================
+Manage Quiz
+=========================== */
+
+manageQuizButton.addEventListener("click", () => {
+
+    alert("Manage Quiz section coming in Section 13.");
+
+});
+
+/* =========================================================
+END OF SECTION 05
+========================================================= */
     
 </script>
 
