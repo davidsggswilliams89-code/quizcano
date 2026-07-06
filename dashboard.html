@@ -1101,6 +1101,7 @@ import {
     collection,
     addDoc,
     getDocs,
+    getDoc,
     deleteDoc,
     doc,
     serverTimestamp
@@ -1516,7 +1517,128 @@ async function(event){
 /* =========================================================
 END OF SECTION 09
 ========================================================= */
+/* =========================================================
+SECTION 10
+EDIT CATEGORY
+========================================================= */
 
+/* ===========================
+Firestore Imports
+=========================== */
+
+import {
+    getDoc
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+/* ===========================
+Edit Category ID
+=========================== */
+
+let editingCategoryId = null;
+
+/* ===========================
+Edit Category
+=========================== */
+
+document.addEventListener(
+
+"click",
+
+async function(event){
+
+    if(
+
+        !event.target.classList.contains(
+
+            "edit-category-btn"
+
+        )
+
+    ){
+
+        return;
+
+    }
+
+    editingCategoryId =
+
+    event.target.dataset.id;
+
+    try{
+
+        const documentRef =
+
+        doc(
+
+            db,
+
+            "categories",
+
+            editingCategoryId
+
+        );
+
+        const documentSnap =
+
+        await getDoc(documentRef);
+
+        if(!documentSnap.exists()){
+
+            alert("Category not found.");
+
+            return;
+
+        }
+
+        const data =
+
+        documentSnap.data();
+
+        categoryName.value =
+        data.name;
+
+        categoryLocation.value =
+        data.location;
+
+        categoryPreview.src =
+        data.banner;
+
+        categoryPreview.classList.add("show");
+
+        categoryPreviewText.classList.add("hide");
+
+        createCategorySection.classList.add("show");
+
+        createCategorySection.scrollIntoView({
+
+            behavior:"smooth"
+
+        });
+
+        saveCategoryButton.textContent =
+        "Update Category";
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+
+            "Failed to load category."
+
+        );
+
+    }
+
+});
+
+/* =========================================================
+END OF SECTION 10
+========================================================= */
+    
     
 </script>
 
