@@ -1317,7 +1317,123 @@ async function uploadCategoryBanner(file){
 /* =========================================================
 END OF SECTION 07
 ========================================================= */
+/* =========================================================
+SECTION 08
+SAVE CATEGORY
+========================================================= */
 
+/* ===========================
+Save Category
+=========================== */
+
+saveCategoryButton.addEventListener(
+"click",
+async()=>{
+
+    const location =
+    categoryLocation.value.trim();
+
+    const name =
+    categoryName.value.trim();
+
+    const file =
+    categoryBanner.files[0];
+
+    if(
+        !location ||
+        !name ||
+        !file
+    ){
+
+        alert(
+        "Please complete all fields."
+        );
+
+        return;
+
+    }
+
+    try{
+
+        saveCategoryButton.disabled =
+        true;
+
+        saveCategoryButton.textContent =
+        "Saving...";
+
+        const bannerUrl =
+        await uploadCategoryBanner(file);
+
+        await addDoc(
+
+            collection(
+                db,
+                "categories"
+            ),
+
+            {
+
+                name:name,
+
+                location:location,
+
+                banner:bannerUrl,
+
+                createdAt:
+                serverTimestamp()
+
+            }
+
+        );
+
+        alert(
+        "Category created successfully."
+        );
+
+        categoryLocation.value="";
+
+        categoryName.value="";
+
+        categoryBanner.value="";
+
+        categoryPreview.src="";
+
+        categoryPreview.style.display=
+        "none";
+
+        categoryPreviewText.style.display=
+        "block";
+
+        categoryPreviewText.textContent=
+        "No banner selected.";
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+        "Failed to save category."
+        );
+
+    }
+
+    finally{
+
+        saveCategoryButton.disabled=
+        false;
+
+        saveCategoryButton.textContent=
+        "Save Category";
+
+    }
+
+});
+
+/* =========================================================
+END OF SECTION 08
+========================================================= */
     
 </script>
 
