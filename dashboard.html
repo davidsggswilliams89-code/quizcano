@@ -12,20 +12,1056 @@
 
     <style>
 
-    /* Paste CSS sections here */
+    /* =========================================================
+SECTION 01
+ADMIN DASHBOARD HEADER CSS
+========================================================= */
 
+/* ===========================
+Reset
+=========================== */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    background:#0B1120;
+
+    font-family:Arial,Helvetica,sans-serif;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Dashboard Header
+=========================== */
+
+.dashboard-header{
+
+    width:100%;
+
+    padding:60px 20px 35px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+/* ===========================
+Title Area
+=========================== */
+
+.dashboard-title-area{
+
+    width:100%;
+
+    max-width:500px;
+
+}
+
+/* ===========================
+Dashboard Logo
+=========================== */
+
+.dashboard-logo{
+
+    font-size:42px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    line-height:1;
+
+}
+
+/* ===========================
+Logo Colors
+=========================== */
+
+.logo-white{
+
+    color:#FFFFFF;
+
+}
+
+.logo-orange{
+
+    color:#F59E0B;
+
+}
+
+/* ===========================
+Dashboard Title
+=========================== */
+
+.dashboard-title{
+
+    margin-top:18px;
+
+    font-size:30px;
+
+    font-weight:800;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Dashboard Description
+=========================== */
+
+.dashboard-description{
+
+    margin-top:12px;
+
+    font-size:16px;
+
+    line-height:1.6;
+
+    color:#9CA3AF;
+
+}
+
+/* =========================================================
+END OF SECTION 01 CSS
+========================================================= */
+/* =========================================================
+SECTION 02
+ADMIN MENU CARDS CSS
+========================================================= */
+
+/* ===========================
+Menu Section
+=========================== */
+
+.dashboard-menu-section{
+
+    width:100%;
+
+    max-width:900px;
+
+    margin:0 auto;
+
+    padding:0 20px 40px;
+
+}
+
+/* ===========================
+Menu Grid
+=========================== */
+
+.dashboard-menu-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+}
+
+/* ===========================
+Menu Card
+=========================== */
+
+.dashboard-menu-card{
+
+    background:#111827;
+
+    border:2px solid #1F2937;
+
+    border-radius:20px;
+
+    padding:24px 18px;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+
+    text-align:center;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Hover
+=========================== */
+
+.dashboard-menu-card:hover{
+
+    border-color:#F59E0B;
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 25px rgba(245,158,11,.20);
+
+}
+
+/* ===========================
+Active
+=========================== */
+
+.dashboard-menu-card:active{
+
+    transform:scale(.98);
+
+}
+
+/* ===========================
+Menu Icon
+=========================== */
+
+.dashboard-menu-icon{
+
+    font-size:40px;
+
+    margin-bottom:14px;
+
+}
+
+/* ===========================
+Menu Title
+=========================== */
+
+.dashboard-menu-title{
+
+    font-size:18px;
+
+    font-weight:800;
+
+    margin-bottom:10px;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Menu Description
+=========================== */
+
+.dashboard-menu-description{
+
+    font-size:14px;
+
+    line-height:1.6;
+
+    color:#9CA3AF;
+
+}
+
+/* ===========================
+Mobile
+=========================== */
+
+@media(max-width:600px){
+
+    .dashboard-menu-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* =========================================================
+END OF SECTION 02 CSS
+========================================================= */
+/* =========================================================
+SECTION 03
+CREATE CATEGORY CSS
+========================================================= */
+
+/* ===========================
+Create Category Section
+=========================== */
+
+.create-category-section{
+
+    display:none;
+
+    width:100%;
+
+    max-width:700px;
+
+    margin:30px auto;
+
+    padding:25px;
+
+    background:#111827;
+
+    border:2px solid #1F2937;
+
+    border-radius:20px;
+
+}
+
+/* ===========================
+Show Section
+=========================== */
+
+.create-category-section.show{
+
+    display:block;
+
+}
+
+/* ===========================
+Title
+=========================== */
+
+.create-category-title{
+
+    font-size:26px;
+
+    font-weight:800;
+
+    color:#FFFFFF;
+
+    margin-bottom:25px;
+
+    text-align:center;
+
+}
+
+/* ===========================
+Label
+=========================== */
+
+.create-category-label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Input
+=========================== */
+
+.create-category-input{
+
+    width:100%;
+
+    height:56px;
+
+    margin-bottom:22px;
+
+    padding:0 16px;
+
+    border:2px solid #1F2937;
+
+    border-radius:14px;
+
+    background:#0B1120;
+
+    color:#FFFFFF;
+
+    font-size:16px;
+
+    outline:none;
+
+}
+
+/* ===========================
+File Input
+=========================== */
+
+input[type="file"].create-category-input{
+
+    height:auto;
+
+    padding:14px;
+
+}
+
+/* ===========================
+Focus
+=========================== */
+
+.create-category-input:focus{
+
+    border-color:#F59E0B;
+
+}
+
+/* ===========================
+Save Button
+=========================== */
+
+.save-category-button{
+
+    width:100%;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#F59E0B;
+
+    color:#FFFFFF;
+
+    font-size:17px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+/* ===========================
+Hover
+=========================== */
+
+.save-category-button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 20px rgba(245,158,11,.25);
+
+}
+
+/* ===========================
+Active
+=========================== */
+
+.save-category-button:active{
+
+    transform:scale(.98);
+
+}
+
+/* =========================================================
+END OF SECTION 03 CSS
+========================================================= */
+/* =========================================================
+SECTION 04
+CATEGORY BANNER PREVIEW CSS
+========================================================= */
+
+/* ===========================
+Preview Container
+=========================== */
+
+.category-preview-container{
+
+    width:100%;
+
+    margin-bottom:24px;
+
+    border:2px dashed #374151;
+
+    border-radius:16px;
+
+    background:#0B1120;
+
+    padding:14px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* ===========================
+Preview Image
+=========================== */
+
+.category-preview-image{
+
+    width:100%;
+
+    max-width:500px;
+
+    height:220px;
+
+    object-fit:contain;
+
+    border-radius:12px;
+
+    display:none;
+
+}
+
+/* ===========================
+Show Image
+=========================== */
+
+.category-preview-image.show{
+
+    display:block;
+
+}
+
+/* ===========================
+Preview Text
+=========================== */
+
+.category-preview-text{
+
+    color:#9CA3AF;
+
+    font-size:15px;
+
+    text-align:center;
+
+    margin-top:12px;
+
+}
+
+/* ===========================
+Hide Text
+=========================== */
+
+.category-preview-text.hide{
+
+    display:none;
+
+}
+
+/* =========================================================
+END OF SECTION 04 CSS
+========================================================= */
+
+        
     </style>
 
 </head>
 
 <body>
+<!-- =========================================================
+SECTION 01
+ADMIN DASHBOARD HEADER HTML
+========================================================= -->
 
-    <!-- Paste HTML sections here -->
+<header class="dashboard-header">
 
+    <!-- ==========================
+    Dashboard Title Area
+    =========================== -->
+
+    <div class="dashboard-title-area">
+
+        <!-- Logo -->
+
+        <h1 class="dashboard-logo">
+
+            <span class="logo-white">QUIZ</span><span class="logo-orange">CANO</span>
+
+        </h1>
+
+        <!-- Dashboard Title -->
+
+        <h2 class="dashboard-title">
+
+            Admin Dashboard
+
+        </h2>
+
+        <!-- Dashboard Description -->
+
+        <p class="dashboard-description">
+
+            Manage categories, quizzes and Quizcano content.
+
+        </p>
+
+    </div>
+
+</header>
+
+<!-- =========================================================
+END OF SECTION 01 HTML
+========================================================= -->
+<!-- =========================================================
+SECTION 02
+ADMIN MENU CARDS HTML
+========================================================= -->
+
+<section class="dashboard-menu-section">
+
+    <!-- ==========================
+    Menu Grid
+    =========================== -->
+
+    <div class="dashboard-menu-grid">
+
+        <!-- Create Category -->
+
+        <button
+            class="dashboard-menu-card"
+            id="createCategoryButton">
+
+            <div class="dashboard-menu-icon">
+
+                📁
+
+            </div>
+
+            <h3 class="dashboard-menu-title">
+
+                Create Category
+
+            </h3>
+
+            <p class="dashboard-menu-description">
+
+                Add a new quiz category.
+
+            </p>
+
+        </button>
+
+        <!-- Manage Categories -->
+
+        <button
+            class="dashboard-menu-card"
+            id="manageCategoryButton">
+
+            <div class="dashboard-menu-icon">
+
+                🗂️
+
+            </div>
+
+            <h3 class="dashboard-menu-title">
+
+                Manage Categories
+
+            </h3>
+
+            <p class="dashboard-menu-description">
+
+                Edit or delete categories.
+
+            </p>
+
+        </button>
+
+        <!-- Create Quiz -->
+
+        <button
+            class="dashboard-menu-card"
+            id="createQuizButton">
+
+            <div class="dashboard-menu-icon">
+
+                ➕
+
+            </div>
+
+            <h3 class="dashboard-menu-title">
+
+                Create Quiz
+
+            </h3>
+
+            <p class="dashboard-menu-description">
+
+                Create quizzes with up to 20 questions.
+
+            </p>
+
+        </button>
+
+        <!-- Manage Quizzes -->
+
+        <button
+            class="dashboard-menu-card"
+            id="manageQuizButton">
+
+            <div class="dashboard-menu-icon">
+
+                📝
+
+            </div>
+
+            <h3 class="dashboard-menu-title">
+
+                Manage Quizzes
+
+            </h3>
+
+            <p class="dashboard-menu-description">
+
+                Edit or remove existing quizzes.
+
+            </p>
+
+        </button>
+
+        <!-- Logout -->
+
+        <button
+            class="dashboard-menu-card"
+            id="logoutButton">
+
+            <div class="dashboard-menu-icon">
+
+                🚪
+
+            </div>
+
+            <h3 class="dashboard-menu-title">
+
+                Logout
+
+            </h3>
+
+            <p class="dashboard-menu-description">
+
+                Sign out of the admin dashboard.
+
+            </p>
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 02 HTML
+========================================================= -->
+
+<!-- =========================================================
+SECTION 03
+CREATE CATEGORY HTML
+========================================================= -->
+
+<section
+    class="create-category-section"
+    id="createCategorySection">
+
+    <!-- ==========================
+    Section Title
+    =========================== -->
+
+    <h2 class="create-category-title">
+
+        Create Category
+
+    </h2>
+
+    <!-- ==========================
+    Display Location
+    =========================== -->
+
+    <label
+        class="create-category-label"
+        for="categoryLocation">
+
+        Display Category In
+
+    </label>
+
+    <select
+        id="categoryLocation"
+        class="create-category-input">
+
+        <option value="">
+
+            Select Location
+
+        </option>
+
+        <option value="dailyChallenge">
+
+            Daily Challenge
+
+        </option>
+
+        <option value="quizCategory">
+
+            Quiz Category
+
+        </option>
+
+        <option value="popularQuizzes">
+
+            Popular Quizzes
+
+        </option>
+
+    </select>
+
+    <!-- ==========================
+    Banner Upload
+    =========================== -->
+
+    <label
+        class="create-category-label"
+        for="categoryBanner">
+
+        Category Banner
+
+    </label>
+
+    <input
+        type="file"
+        id="categoryBanner"
+        class="create-category-input"
+        accept="image/*">
+
+    <!-- =========================================================
+    SECTION 04
+    CATEGORY BANNER PREVIEW HTML
+    ========================================================= -->
+
+    <!-- ==========================
+    Preview Title
+    =========================== -->
+
+    <label
+        class="create-category-label">
+
+        Banner Preview
+
+    </label>
+
+    <!-- ==========================
+    Preview Container
+    =========================== -->
+
+    <div
+        class="category-preview-container">
+
+        <img
+            id="categoryPreview"
+            class="category-preview-image"
+            src=""
+            alt="Category Preview">
+
+        <p
+            id="categoryPreviewText"
+            class="category-preview-text">
+
+            No banner selected.
+
+        </p>
+
+    </div>
+
+    <!-- =========================================================
+    END OF SECTION 04 HTML
+    ========================================================= -->
+
+    <!-- ==========================
+    Save Button
+    =========================== -->
+
+    <button
+        id="saveCategoryButton"
+        class="save-category-button">
+
+        Save Category
+
+    </button>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 03 HTML
+========================================================= -->
+
+
+    
+
+    
+    
+    
     <script type="module">
 
-    /* Paste JavaScript sections here */
 
+/* =========================================================
+SECTION 07
+FIREBASE STORAGE CONFIGURATION
+========================================================= */
+
+/* ===========================
+Firebase Imports
+=========================== */
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+import {
+    getStorage,
+    ref,
+    uploadBytes,
+    getDownloadURL
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
+
+import {
+    getFirestore
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+/* ===========================
+Firebase Config
+=========================== */
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyAnMxqDpdzgKEW1vkRSrLysT-0nu_vEf8Q",
+
+    authDomain: "quizcano.firebaseapp.com",
+
+    projectId: "quizcano",
+
+    storageBucket: "quizcano.firebasestorage.app",
+
+    messagingSenderId: "834135771491",
+
+    appId: "1:834135771491:web:c9998944df72d14a7b2b56"
+
+};
+
+/* ===========================
+Initialize Firebase
+=========================== */
+
+const app = initializeApp(firebaseConfig);
+
+const storage = getStorage(app);
+
+const db = getFirestore(app);
+
+/* =========================================================
+END OF SECTION 07
+========================================================= */
+        
+/* =========================================================
+SECTION 03
+CREATE CATEGORY JAVASCRIPT
+========================================================= */
+
+/* ===========================
+Elements
+=========================== */
+
+const createCategoryButton =
+document.getElementById("createCategoryButton");
+
+const createCategorySection =
+document.getElementById("createCategorySection");
+
+/* ===========================
+Open Create Category
+=========================== */
+
+createCategoryButton.addEventListener("click",function(){
+
+    createCategorySection.classList.add("show");
+
+    createCategorySection.scrollIntoView({
+
+        behavior:"smooth",
+
+        block:"start"
+
+    });
+
+});
+
+/* =========================================================
+END OF SECTION 03 JAVASCRIPT
+========================================================= */
+/* =========================================================
+SECTION 04
+CATEGORY BANNER PREVIEW JAVASCRIPT
+========================================================= */
+
+/* ===========================
+Elements
+=========================== */
+
+const categoryBanner =
+document.getElementById("categoryBanner");
+
+const categoryPreview =
+document.getElementById("categoryPreview");
+
+const categoryPreviewText =
+document.getElementById("categoryPreviewText");
+
+/* ===========================
+Preview Selected Image
+=========================== */
+
+categoryBanner.addEventListener("change",function(){
+
+    const file = this.files[0];
+
+    if(!file){
+
+        categoryPreview.src = "";
+
+        categoryPreview.classList.remove("show");
+
+        categoryPreviewText.classList.remove("hide");
+
+        categoryPreviewText.textContent =
+        "No banner selected.";
+
+        return;
+
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+
+        categoryPreview.src = e.target.result;
+
+        categoryPreview.classList.add("show");
+
+        categoryPreviewText.classList.add("hide");
+
+    };
+
+    reader.readAsDataURL(file);
+
+});
+
+/* =========================================================
+END OF SECTION 04 JAVASCRIPT
+========================================================= */
+
+
+
+        
     </script>
 
 </body>
