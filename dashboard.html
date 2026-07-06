@@ -1260,7 +1260,7 @@ const CLOUDINARY_CLOUD_NAME =
 "db92r6j9z";
 
 const CLOUDINARY_UPLOAD_PRESET =
-"Ummuhalti";
+"ummuhalti";
 /* ===========================
 Upload Banner
 =========================== */
@@ -1282,12 +1282,12 @@ async function uploadCategoryBanner(file){
 
     formData.append(
         "upload_preset",
-        Ummuhalti
+        ummuhalti
     );
 
     const response = await fetch(
 
-        `https://api.cloudinary.com/v1_1/$db92r6j9z/image/upload`,
+        `https://api.cloudinary.com/v1_1/db92r6j9z/image/upload`,
 
         {
 
