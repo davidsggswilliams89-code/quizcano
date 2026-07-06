@@ -977,6 +977,9 @@ document.getElementById("createCategoryButton");
 const createCategorySection =
 document.getElementById("createCategorySection");
 
+const categoryLocation =
+document.getElementById("categoryLocation");
+
 /* ===========================
 Open Create Category
 =========================== */
@@ -1059,7 +1062,180 @@ categoryBanner.addEventListener("change",function(){
 END OF SECTION 04 JAVASCRIPT
 ========================================================= */
 
+/* =========================================================
+SECTION 08
+UPLOAD CATEGORY BANNER TO FIREBASE STORAGE
+========================================================= */
 
+/* ===========================
+Save Category Button
+=========================== */
+
+const saveCategoryButton =
+document.getElementById("saveCategoryButton");
+
+/* ===========================
+Upload Banner
+=========================== */
+
+saveCategoryButton.addEventListener("click", async function(){
+
+    const file =
+    categoryBanner.files[0];
+
+    if(!file){
+
+        alert("Please select a category banner.");
+
+        return;
+
+    }
+
+    saveCategoryButton.disabled = true;
+
+    saveCategoryButton.textContent =
+    "Uploading...";
+
+    try{
+
+        /* ===========================
+        Create Unique File Name
+        =========================== */
+
+        const fileName =
+        "categories/" +
+        Date.now() +
+        "_" +
+        file.name;
+
+        /* ===========================
+        Storage Reference
+        =========================== */
+
+        const storageRef =
+        ref(storage,fileName);
+
+        /* ===========================
+        Upload File
+        =========================== */
+
+        await uploadBytes(
+            storageRef,
+            file
+        );
+
+        /* ===========================
+        Get Download URL
+        =========================== */
+
+        const imageUrl =
+        await getDownloadURL(storageRef);
+
+        console.log("Banner URL:",imageUrl);
+
+        alert("Banner uploaded successfully.");
+
+        /* Section 09 will save this URL
+           into Firestore. */
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert("Upload failed.");
+
+    }
+
+    saveCategoryButton.disabled = false;
+
+    saveCategoryButton.textContent =
+    "Save Category";
+
+});
+
+/* =========================================================
+END OF SECTION 08
+========================================================= */
+/* =========================================================
+SECTION 09
+SAVE CATEGORY TO FIRESTORE
+========================================================= */
+
+/* ===========================
+Firestore Imports
+=========================== */
+
+import {
+    collection,
+    addDoc,
+    serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+/* ===========================
+Save Category Function
+=========================== */
+
+async function saveCategory(imageUrl){
+
+    try{
+
+        await addDoc(
+
+            collection(db,"categories"),
+
+            {
+
+                location:
+                categoryLocation.value,
+
+                banner:
+                imageUrl,
+
+                createdAt:
+                serverTimestamp()
+
+            }
+
+        );
+
+        alert("Category saved successfully.");
+
+        /* ===========================
+        Reset Form
+        =========================== */
+
+        document.getElementById("categoryLocation").value="";
+
+        categoryBanner.value="";
+
+        categoryPreview.src="";
+
+        categoryPreview.classList.remove("show");
+
+        categoryPreviewText.classList.remove("hide");
+
+        categoryPreviewText.textContent=
+        "No banner selected.";
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert("Failed to save category.");
+
+    }
+
+}
+
+/* =========================================================
+END OF SECTION 09
+========================================================= */
+        
 
         
     </script>
