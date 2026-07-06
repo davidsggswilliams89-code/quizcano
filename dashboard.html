@@ -1130,10 +1130,9 @@ saveCategoryButton.addEventListener("click", async function(){
 
         const imageUrl =
         await getDownloadURL(storageRef);
+        await saveCategory(imageUrl);
 
         console.log("Banner URL:",imageUrl);
-
-        alert("Banner uploaded successfully.");
 
         /* Section 09 will save this URL
            into Firestore. */
