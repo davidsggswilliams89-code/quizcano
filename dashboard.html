@@ -1103,6 +1103,7 @@ import {
     getDocs,
     getDoc,
     deleteDoc,
+    updateDoc,
     doc,
     serverTimestamp
 }
@@ -1215,28 +1216,54 @@ async function(){
         Save To Firestore
         =========================== */
 
-        await addDoc(
+        /* ===========================
+Create Or Update
+=========================== */
 
-            collection(db,"categories"),
+if(editingCategoryId){
 
-            {
+    await updateCategory(
 
-                name:
-                categoryName.value.trim(),
+        result.secure_url
 
-                location:
-                categoryLocation.value,
+    );
 
-                banner:
-                result.secure_url,
+}
 
-                createdAt:
-                serverTimestamp()
+else{
 
-            }
+    await addDoc(
 
-        );
+        collection(
+            db,
+            "categories"
+        ),
 
+        {
+
+            name:
+            categoryName.value.trim(),
+
+            location:
+            categoryLocation.value,
+
+            banner:
+            result.secure_url,
+
+            createdAt:
+            serverTimestamp()
+
+        }
+
+    );
+
+    alert(
+    "Category saved successfully."
+    );
+
+    loadCategories();
+
+}
         alert(
         "Category created successfully."
         );
@@ -1637,6 +1664,75 @@ async function(event){
 
 /* =========================================================
 END OF SECTION 10
+========================================================= */
+/* =========================================================
+SECTION 11
+UPDATE CATEGORY IN FIRESTORE
+========================================================= */
+
+/* ===========================
+Firestore Imports
+=========================== */
+
+import {
+    updateDoc
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+/* ===========================
+Update Category
+=========================== */
+
+async function updateCategory(imageUrl){
+
+    try{
+
+        await updateDoc(
+
+            doc(
+                db,
+                "categories",
+                editingCategoryId
+            ),
+
+            {
+
+                name:
+                categoryName.value.trim(),
+
+                location:
+                categoryLocation.value,
+
+                banner:
+                imageUrl
+
+            }
+
+        );
+
+        editingCategoryId = null;
+
+        saveCategoryButton.textContent =
+        "Save Category";
+
+        loadCategories();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+        "Failed to update category."
+        );
+
+    }
+
+}
+
+/* =========================================================
+END OF SECTION 11
 ========================================================= */
     
     
