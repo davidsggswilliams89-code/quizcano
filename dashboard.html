@@ -1257,11 +1257,10 @@ Cloudinary Configuration
 =========================== */
 
 const CLOUDINARY_CLOUD_NAME =
-"YOUR_CLOUD_NAME";
+"db92r6j9z";
 
 const CLOUDINARY_UPLOAD_PRESET =
-"YOUR_UPLOAD_PRESET";
-
+"Ummuhalti";
 /* ===========================
 Upload Banner
 =========================== */
@@ -1283,12 +1282,12 @@ async function uploadCategoryBanner(file){
 
     formData.append(
         "upload_preset",
-        CLOUDINARY_UPLOAD_PRESET
+        Ummuhalti
     );
 
     const response = await fetch(
 
-        `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+        `https://api.cloudinary.com/v1_1/$db92r6j9z/image/upload`,
 
         {
 
