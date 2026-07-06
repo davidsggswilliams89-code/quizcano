@@ -1411,13 +1411,11 @@ async()=>{
 
     catch(error){
 
-        console.error(error);
+    console.error(error);
 
-        alert(
-        "Failed to save category."
-        );
+    alert(error.message);
 
-    }
+}
 
     finally{
 
