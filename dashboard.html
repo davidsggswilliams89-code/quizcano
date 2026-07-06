@@ -1563,6 +1563,11 @@ Edit Category ID
 =========================== */
 
 let editingCategoryId = null;
+/* ===========================
+Current Banner
+=========================== */
+
+let currentBannerUrl = "";    
 
 /* ===========================
 Edit Category
@@ -1619,29 +1624,23 @@ async function(event){
         }
 
         const data =
+documentSnap.data();
 
-        documentSnap.data();
+categoryName.value =
+data.name;
 
-        categoryName.value =
-        data.name;
+categoryLocation.value =
+data.location;
 
-        categoryLocation.value =
-        data.location;
+categoryPreview.src =
+data.banner;
 
-        categoryPreview.src =
-        data.banner;
+currentBannerUrl =
+data.banner;
 
-        categoryPreview.classList.add("show");
+categoryPreview.classList.add("show");
 
-        categoryPreviewText.classList.add("hide");
-
-        createCategorySection.classList.add("show");
-
-        createCategorySection.scrollIntoView({
-
-            behavior:"smooth"
-
-        });
+categoryPreviewText.classList.add("hide");
 
         saveCategoryButton.textContent =
         "Update Category";
