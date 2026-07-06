@@ -1197,7 +1197,56 @@ manageQuizButton.addEventListener("click", () => {
 /* =========================================================
 END OF SECTION 05
 ========================================================= */
-    
+/* =========================================================
+SECTION 06
+BANNER PREVIEW
+========================================================= */
+
+/* ===========================
+Preview Selected Banner
+=========================== */
+
+categoryBanner.addEventListener("change", () => {
+
+    const file = categoryBanner.files[0];
+
+    if(!file){
+
+        categoryPreview.src = "";
+
+        categoryPreview.style.display = "none";
+
+        categoryPreviewText.style.display = "block";
+
+        categoryPreviewText.textContent =
+        "No banner selected.";
+
+        return;
+
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+
+        categoryPreview.src =
+        event.target.result;
+
+        categoryPreview.style.display =
+        "block";
+
+        categoryPreviewText.style.display =
+        "none";
+
+    };
+
+    reader.readAsDataURL(file);
+
+});
+
+/* =========================================================
+END OF SECTION 06
+========================================================= */    
 </script>
 
 </body>
