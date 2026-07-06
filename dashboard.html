@@ -1101,10 +1101,12 @@ import {
     collection,
     addDoc,
     getDocs,
+    deleteDoc,
+    doc,
     serverTimestamp
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
-
+    
 /* ===========================
 Elements
 =========================== */
@@ -1424,7 +1426,96 @@ async function loadCategories(){
 /* =========================================================
 END OF SECTION 08
 ========================================================= */
+/* =========================================================
+SECTION 09
+DELETE CATEGORY FROM FIRESTORE
+========================================================= */
 
+/* ===========================
+Delete Category
+=========================== */
+
+document.addEventListener(
+
+"click",
+
+async function(event){
+
+    if(
+
+        !event.target.classList.contains(
+
+            "delete-category-btn"
+
+        )
+
+    ){
+
+        return;
+
+    }
+
+    const categoryId =
+
+    event.target.dataset.id;
+
+    const confirmDelete =
+
+    confirm(
+
+        "Delete this category?"
+
+    );
+
+    if(!confirmDelete){
+
+        return;
+
+    }
+
+    try{
+
+        await deleteDoc(
+
+            doc(
+
+                db,
+
+                "categories",
+
+                categoryId
+
+            )
+
+        );
+
+        alert(
+
+            "Category deleted successfully."
+
+        );
+
+        loadCategories();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+
+            "Failed to delete category."
+
+        );
+
+    }
+
+});
+
+/* =========================================================
+END OF SECTION 09
+========================================================= */
 
     
 </script>
