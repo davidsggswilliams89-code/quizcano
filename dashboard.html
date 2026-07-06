@@ -1016,7 +1016,6 @@ END OF SECTION 06
 ========================================================= -->
     
 
-    
 <script type="module">
 
  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
@@ -1050,93 +1049,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
-
-/* =========================================================
-SECTION 02
-FIREBASE IMPORTS & INITIALIZATION
-========================================================= */
-
-/* ===========================
-Firebase App
-=========================== */
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-
-/* ===========================
-Firestore
-=========================== */
-
-import {
-
-    getFirestore,
-
-    collection,
-
-    addDoc,
-
-    getDocs,
-
-    getDoc,
-
-    updateDoc,
-
-    deleteDoc,
-
-    doc,
-
-    serverTimestamp
-
-}
-from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
-
-/* ===========================
-Authentication
-=========================== */
-
-import {
-
-    getAuth,
-
-    signOut
-
-}
-from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-
-/* ===========================
-Firebase Configuration
-=========================== */
-
-const firebaseConfig = {
-
-    apiKey: "AIzaSyAnMxqDpdzgKEW1vkRSrLysT-0nu_vEf8Q",
-
-    authDomain: "quizcano.firebaseapp.com",
-
-    projectId: "quizcano",
-
-    storageBucket: "quizcano.firebasestorage.app",
-
-    messagingSenderId: "834135771491",
-
-    appId: "1:834135771491:web:c9998944df72d14a7b2b56"
-
-};
-
-/* ===========================
-Initialize Firebase
-=========================== */
-
-const app = initializeApp(firebaseConfig);
-
-const db = getFirestore(app);
-
-const auth = getAuth(app);
-
-/* =========================================================
-END OF SECTION 02
-========================================================= */
-
 
     
 </script>
