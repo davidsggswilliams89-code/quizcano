@@ -1112,7 +1112,7 @@ async function(){
     try{
 
         /* ===========================
-        Form Data
+        Create FormData
         =========================== */
 
         const formData =
@@ -1125,11 +1125,11 @@ async function(){
 
         formData.append(
         "upload_preset",
-        "ummuhalti"
+        "Ummuhalti"
         );
 
         /* ===========================
-        Upload Image
+        Upload To Cloudinary
         =========================== */
 
         const response =
@@ -1146,34 +1146,51 @@ async function(){
         });
 
         const result =
-await response.json();
+        await response.json();
 
-console.log(result);
+        /* ===========================
+        Check Upload Success
+        =========================== */
 
-alert(JSON.stringify(result));
+        if(!response.ok){
 
-/* ===========================
-Image URL
-=========================== */
+            console.error(result);
 
-const imageUrl =
-result.secure_url;
+            alert(result.error.message);
 
-await saveCategory(imageUrl);
+            throw new Error(result.error.message);
+
+        }
+
+        /* ===========================
+        Save URL To Firestore
+        =========================== */
+
+        await saveCategory(
+        result.secure_url
+        );
+
+    }
+
     catch(error){
 
         console.error(error);
 
         alert(
-        "Upload failed."
+        "Upload failed: " +
+        error.message
         );
 
     }
 
-    saveCategoryButton.disabled=false;
+    finally{
 
-    saveCategoryButton.textContent=
-    "Save Category";
+        saveCategoryButton.disabled=false;
+
+        saveCategoryButton.textContent=
+        "Save Category";
+
+    }
 
 });
 
