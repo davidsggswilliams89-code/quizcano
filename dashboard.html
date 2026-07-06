@@ -1281,9 +1281,9 @@ async function uploadCategoryBanner(file){
     );
 
     formData.append(
-        "upload_preset",
-        ummuhalti
-    );
+    "upload_preset",
+    CLOUDINARY_UPLOAD_PRESET
+);
 
     const response = await fetch(
 
