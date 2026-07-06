@@ -1146,23 +1146,20 @@ async function(){
         });
 
         const result =
-        await response.json();
+await response.json();
 
-        /* ===========================
-        Image URL
-        =========================== */
+console.log(result);
 
-        const imageUrl =
-        result.secure_url;
+alert(JSON.stringify(result));
 
-        /* ===========================
-        Save To Firestore
-        =========================== */
+/* ===========================
+Image URL
+=========================== */
 
-        await saveCategory(imageUrl);
+const imageUrl =
+result.secure_url;
 
-    }
-
+await saveCategory(imageUrl);
     catch(error){
 
         console.error(error);
