@@ -11,8 +11,7 @@
     <title>QUIZCANO - Admin Dashboard</title>
 
     <style>
-
-    /* =========================================================
+/* =========================================================
 SECTION 01
 ADMIN DASHBOARD HEADER CSS
 ========================================================= */
@@ -69,7 +68,7 @@ Title Area
 
     width:100%;
 
-    max-width:500px;
+    max-width:600px;
 
 }
 
@@ -131,7 +130,7 @@ Dashboard Description
 
     font-size:16px;
 
-    line-height:1.6;
+    line-height:1.7;
 
     color:#9CA3AF;
 
@@ -153,7 +152,7 @@ Menu Section
 
     width:100%;
 
-    max-width:900px;
+    max-width:950px;
 
     margin:0 auto;
 
@@ -187,15 +186,15 @@ Menu Card
 
     border-radius:20px;
 
-    padding:24px 18px;
+    padding:26px 18px;
+
+    color:#FFFFFF;
 
     cursor:pointer;
 
     transition:.25s ease;
 
     text-align:center;
-
-    color:#FFFFFF;
 
 }
 
@@ -207,14 +206,14 @@ Hover
 
     border-color:#F59E0B;
 
-    transform:translateY(-3px);
+    transform:translateY(-4px);
 
-    box-shadow:0 10px 25px rgba(245,158,11,.20);
+    box-shadow:0 10px 28px rgba(245,158,11,.22);
 
 }
 
 /* ===========================
-Active
+Pressed
 =========================== */
 
 .dashboard-menu-card:active{
@@ -229,7 +228,7 @@ Menu Icon
 
 .dashboard-menu-icon{
 
-    font-size:40px;
+    font-size:42px;
 
     margin-bottom:14px;
 
@@ -241,13 +240,11 @@ Menu Title
 
 .dashboard-menu-title{
 
-    font-size:18px;
+    font-size:19px;
 
     font-weight:800;
 
     margin-bottom:10px;
-
-    color:#FFFFFF;
 
 }
 
@@ -266,10 +263,10 @@ Menu Description
 }
 
 /* ===========================
-Mobile
+Responsive
 =========================== */
 
-@media(max-width:600px){
+@media(max-width:650px){
 
     .dashboard-menu-grid{
 
@@ -281,7 +278,7 @@ Mobile
 
 /* =========================================================
 END OF SECTION 02 CSS
-========================================================= */
+========================================================= */    
 /* =========================================================
 SECTION 03
 CREATE CATEGORY CSS
@@ -297,17 +294,17 @@ Create Category Section
 
     width:100%;
 
-    max-width:700px;
+    max-width:720px;
 
     margin:30px auto;
 
-    padding:25px;
+    padding:28px;
 
     background:#111827;
 
     border:2px solid #1F2937;
 
-    border-radius:20px;
+    border-radius:22px;
 
 }
 
@@ -322,20 +319,18 @@ Show Section
 }
 
 /* ===========================
-Title
+Section Title
 =========================== */
 
 .create-category-title{
 
-    font-size:26px;
+    font-size:28px;
 
     font-weight:800;
 
-    color:#FFFFFF;
-
-    margin-bottom:25px;
-
     text-align:center;
+
+    margin-bottom:28px;
 
 }
 
@@ -352,8 +347,6 @@ Label
     font-size:15px;
 
     font-weight:700;
-
-    color:#FFFFFF;
 
 }
 
@@ -386,24 +379,24 @@ Input
 }
 
 /* ===========================
-File Input
-=========================== */
-
-input[type="file"].create-category-input{
-
-    height:auto;
-
-    padding:14px;
-
-}
-
-/* ===========================
 Focus
 =========================== */
 
 .create-category-input:focus{
 
     border-color:#F59E0B;
+
+}
+
+/* ===========================
+File Input
+=========================== */
+
+input[type=file].create-category-input{
+
+    height:auto;
+
+    padding:14px;
 
 }
 
@@ -415,17 +408,17 @@ Save Button
 
     width:100%;
 
-    height:56px;
+    height:58px;
 
     border:none;
 
-    border-radius:14px;
+    border-radius:16px;
 
     background:#F59E0B;
 
     color:#FFFFFF;
 
-    font-size:17px;
+    font-size:18px;
 
     font-weight:800;
 
@@ -443,17 +436,17 @@ Hover
 
     transform:translateY(-2px);
 
-    box-shadow:0 8px 20px rgba(245,158,11,.25);
-
 }
 
 /* ===========================
-Active
+Disabled
 =========================== */
 
-.save-category-button:active{
+.save-category-button:disabled{
 
-    transform:scale(.98);
+    opacity:.7;
+
+    cursor:not-allowed;
 
 }
 
@@ -461,104 +454,217 @@ Active
 END OF SECTION 03 CSS
 ========================================================= */
 /* =========================================================
-SECTION 04
-CATEGORY BANNER PREVIEW CSS
+SECTION 07
+MANAGE CATEGORIES CSS
 ========================================================= */
 
 /* ===========================
-Preview Container
+Manage Section
 =========================== */
 
-.category-preview-container{
-
-    width:100%;
-
-    margin-bottom:24px;
-
-    border:2px dashed #374151;
-
-    border-radius:16px;
-
-    background:#0B1120;
-
-    padding:14px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-/* ===========================
-Preview Image
-=========================== */
-
-.category-preview-image{
-
-    width:100%;
-
-    max-width:500px;
-
-    height:220px;
-
-    object-fit:contain;
-
-    border-radius:12px;
+.manage-category-section{
 
     display:none;
 
+    width:100%;
+
+    max-width:900px;
+
+    margin:30px auto;
+
+    padding:25px;
+
+    background:#111827;
+
+    border:2px solid #1F2937;
+
+    border-radius:20px;
+
 }
 
 /* ===========================
-Show Image
+Show Section
 =========================== */
 
-.category-preview-image.show{
+.manage-category-section.show{
 
     display:block;
 
 }
 
 /* ===========================
-Preview Text
+Title
 =========================== */
 
-.category-preview-text{
+.manage-category-title{
 
-    color:#9CA3AF;
+    font-size:26px;
 
-    font-size:15px;
+    font-weight:800;
 
     text-align:center;
 
-    margin-top:12px;
+    margin-bottom:25px;
+
+    color:#FFFFFF;
 
 }
 
 /* ===========================
-Hide Text
+Category List
 =========================== */
 
-.category-preview-text.hide{
+.category-list{
 
-    display:none;
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+
+    gap:20px;
+
+}
+
+/* ===========================
+Category Card
+=========================== */
+
+.category-card{
+
+    background:#0B1120;
+
+    border:2px solid #1F2937;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+}
+
+/* ===========================
+Banner
+=========================== */
+
+.category-card img{
+
+    width:100%;
+
+    height:150px;
+
+    object-fit:cover;
+
+}
+
+/* ===========================
+Content
+=========================== */
+
+.category-card-content{
+
+    padding:15px;
+
+}
+
+/* ===========================
+Category Name
+=========================== */
+
+.category-card-title{
+
+    font-size:18px;
+
+    font-weight:800;
+
+    margin-bottom:8px;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Location
+=========================== */
+
+.category-card-location{
+
+    font-size:14px;
+
+    color:#9CA3AF;
+
+    margin-bottom:16px;
+
+}
+
+/* ===========================
+Buttons
+=========================== */
+
+.category-card-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+/* ===========================
+Edit
+=========================== */
+
+.edit-category-btn{
+
+    flex:1;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#2563EB;
+
+    color:#FFFFFF;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+/* ===========================
+Delete
+=========================== */
+
+.delete-category-btn{
+
+    flex:1;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#DC2626;
+
+    color:#FFFFFF;
+
+    font-weight:700;
+
+    cursor:pointer;
 
 }
 
 /* =========================================================
-END OF SECTION 04 CSS
-========================================================= */
+END OF SECTION 07 CSS
+========================================================= */    
 
-        
+    
     </style>
 
 </head>
 
 <body>
+
 <!-- =========================================================
 SECTION 01
 ADMIN DASHBOARD HEADER HTML
@@ -566,13 +672,7 @@ ADMIN DASHBOARD HEADER HTML
 
 <header class="dashboard-header">
 
-    <!-- ==========================
-    Dashboard Title Area
-    =========================== -->
-
     <div class="dashboard-title-area">
-
-        <!-- Logo -->
 
         <h1 class="dashboard-logo">
 
@@ -580,19 +680,15 @@ ADMIN DASHBOARD HEADER HTML
 
         </h1>
 
-        <!-- Dashboard Title -->
-
         <h2 class="dashboard-title">
 
             Admin Dashboard
 
         </h2>
 
-        <!-- Dashboard Description -->
-
         <p class="dashboard-description">
 
-            Manage categories, quizzes and Quizcano content.
+            Manage categories, quizzes and every Quizcano activity from one secure dashboard.
 
         </p>
 
@@ -609,10 +705,6 @@ ADMIN MENU CARDS HTML
 ========================================================= -->
 
 <section class="dashboard-menu-section">
-
-    <!-- ==========================
-    Menu Grid
-    =========================== -->
 
     <div class="dashboard-menu-grid">
 
@@ -688,13 +780,13 @@ ADMIN MENU CARDS HTML
 
             <p class="dashboard-menu-description">
 
-                Create quizzes with up to 20 questions.
+                Create quizzes with 20 questions.
 
             </p>
 
         </button>
 
-        <!-- Manage Quizzes -->
+        <!-- Manage Quiz -->
 
         <button
             class="dashboard-menu-card"
@@ -714,7 +806,7 @@ ADMIN MENU CARDS HTML
 
             <p class="dashboard-menu-description">
 
-                Edit or remove existing quizzes.
+                Edit or delete quizzes.
 
             </p>
 
@@ -740,7 +832,7 @@ ADMIN MENU CARDS HTML
 
             <p class="dashboard-menu-description">
 
-                Sign out of the admin dashboard.
+                Securely sign out.
 
             </p>
 
@@ -753,19 +845,14 @@ ADMIN MENU CARDS HTML
 <!-- =========================================================
 END OF SECTION 02 HTML
 ========================================================= -->
-
 <!-- =========================================================
 SECTION 03
 CREATE CATEGORY HTML
 ========================================================= -->
 
 <section
-    class="create-category-section"
-    id="createCategorySection">
-
-    <!-- ==========================
-    Section Title
-    =========================== -->
+class="create-category-section"
+id="createCategorySection">
 
     <h2 class="create-category-title">
 
@@ -773,21 +860,18 @@ CREATE CATEGORY HTML
 
     </h2>
 
-    <!-- ==========================
-    Display Location
-    =========================== -->
+    <!-- Display Location -->
 
     <label
-        class="create-category-label"
-        for="categoryLocation">
+    class="create-category-label">
 
         Display Category In
 
     </label>
 
     <select
-        id="categoryLocation"
-        class="create-category-input">
+    id="categoryLocation"
+    class="create-category-input">
 
         <option value="">
 
@@ -815,56 +899,71 @@ CREATE CATEGORY HTML
 
     </select>
 
-    <!-- ==========================
-    Banner Upload
-    =========================== -->
+    <!-- Category Name -->
 
     <label
-        class="create-category-label"
-        for="categoryBanner">
+    class="create-category-label">
+
+        Category Name
+
+    </label>
+
+    <input
+
+    type="text"
+
+    id="categoryName"
+
+    class="create-category-input"
+
+    placeholder="Example: Football Quiz">
+
+    <!-- Banner -->
+
+    <label
+    class="create-category-label">
 
         Category Banner
 
     </label>
 
     <input
-        type="file"
-        id="categoryBanner"
-        class="create-category-input"
-        accept="image/*">
 
-    <!-- =========================================================
-    SECTION 04
-    CATEGORY BANNER PREVIEW HTML
-    ========================================================= -->
+    type="file"
 
-    <!-- ==========================
-    Preview Title
-    =========================== -->
+    id="categoryBanner"
+
+    class="create-category-input"
+
+    accept="image/*">
+
+    <!-- Preview -->
 
     <label
-        class="create-category-label">
+    class="create-category-label">
 
         Banner Preview
 
     </label>
 
-    <!-- ==========================
-    Preview Container
-    =========================== -->
-
     <div
-        class="category-preview-container">
+    class="category-preview-container">
 
         <img
-            id="categoryPreview"
-            class="category-preview-image"
-            src=""
-            alt="Category Preview">
+
+        id="categoryPreview"
+
+        class="category-preview-image"
+
+        src=""
+
+        alt="Preview">
 
         <p
-            id="categoryPreviewText"
-            class="category-preview-text">
+
+        id="categoryPreviewText"
+
+        class="category-preview-text">
 
             No banner selected.
 
@@ -872,17 +971,13 @@ CREATE CATEGORY HTML
 
     </div>
 
-    <!-- =========================================================
-    END OF SECTION 04 HTML
-    ========================================================= -->
-
-    <!-- ==========================
-    Save Button
-    =========================== -->
+    <!-- Save -->
 
     <button
-        id="saveCategoryButton"
-        class="save-category-button">
+
+    id="saveCategoryButton"
+
+    class="save-category-button">
 
         Save Category
 
@@ -892,115 +987,38 @@ CREATE CATEGORY HTML
 
 <!-- =========================================================
 END OF SECTION 03 HTML
+========================================================= -->    
+<!-- =========================================================
+SECTION 06
+MANAGE CATEGORIES HTML
 ========================================================= -->
 
+<section
+    class="manage-category-section"
+    id="manageCategorySection">
 
+    <h2 class="manage-category-title">
+
+        Manage Categories
+
+    </h2>
+
+    <div
+        id="categoryList"
+        class="category-list">
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 06
+========================================================= -->
     
 
+
     
-    
-    
-    <script type="module">
-
-
-/* =========================================================
-SECTION 07
-FIREBASE STORAGE CONFIGURATION
-========================================================= */
-
-/* ===========================
-Firebase Imports
-=========================== */
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-
-import {
-    getStorage,
-    ref,
-    uploadBytes,
-    getDownloadURL
-}
-from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
-
-import {
-    getFirestore
-}
-from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
-
-/* ===========================
-Firebase Config
-=========================== */
-
-const firebaseConfig = {
-
-    apiKey: "AIzaSyAnMxqDpdzgKEW1vkRSrLysT-0nu_vEf8Q",
-
-    authDomain: "quizcano.firebaseapp.com",
-
-    projectId: "quizcano",
-
-    storageBucket: "quizcano.firebasestorage.app",
-
-    messagingSenderId: "834135771491",
-
-    appId: "1:834135771491:web:c9998944df72d14a7b2b56"
-
-};
-
-/* ===========================
-Initialize Firebase
-=========================== */
-
-const app = initializeApp(firebaseConfig);
-
-const storage = getStorage(app);
-
-const db = getFirestore(app);
-
-/* =========================================================
-END OF SECTION 07
-========================================================= */     
-        
-/* =========================================================
-SECTION 03
-CREATE CATEGORY JAVASCRIPT
-========================================================= */
-
-/* ===========================
-Elements
-=========================== */
-
-const createCategoryButton =
-document.getElementById("createCategoryButton");
-
-const createCategorySection =
-document.getElementById("createCategorySection");
-
-const categoryLocation =
-document.getElementById("categoryLocation");
-
-/* ===========================
-Open Create Category
-=========================== */
-
-createCategoryButton.addEventListener("click",function(){
-
-    createCategorySection.classList.add("show");
-
-    createCategorySection.scrollIntoView({
-
-        behavior:"smooth",
-
-        block:"start"
-
-    });
-
-});
-
-/* =========================================================
-END OF SECTION 03 JAVASCRIPT
-========================================================= */
+<script type="module">
 /* =========================================================
 SECTION 04
 CATEGORY BANNER PREVIEW JAVASCRIPT
@@ -1020,33 +1038,41 @@ const categoryPreviewText =
 document.getElementById("categoryPreviewText");
 
 /* ===========================
-Preview Selected Image
+Preview Banner
 =========================== */
 
-categoryBanner.addEventListener("change",function(){
+categoryBanner.addEventListener(
 
-    const file = this.files[0];
+"change",
+
+function(){
+
+    const file =
+    this.files[0];
 
     if(!file){
 
-        categoryPreview.src = "";
+        categoryPreview.src="";
 
         categoryPreview.classList.remove("show");
 
         categoryPreviewText.classList.remove("hide");
 
-        categoryPreviewText.textContent =
+        categoryPreviewText.textContent=
         "No banner selected.";
 
         return;
 
     }
 
-    const reader = new FileReader();
+    const reader =
+    new FileReader();
 
-    reader.onload = function(e){
+    reader.onload =
+    function(event){
 
-        categoryPreview.src = e.target.result;
+        categoryPreview.src =
+        event.target.result;
 
         categoryPreview.classList.add("show");
 
@@ -1059,10 +1085,10 @@ categoryBanner.addEventListener("change",function(){
 });
 
 /* =========================================================
-END OF SECTION 04 JAVASCRIPT
+END OF SECTION 04
 ========================================================= */
 /* =========================================================
-SECTION 08
+SECTION 05
 UPLOAD CATEGORY TO CLOUDINARY
 AND SAVE TO FIRESTORE
 ========================================================= */
@@ -1074,32 +1100,38 @@ Firestore Imports
 import {
     collection,
     addDoc,
+    getDocs,
     serverTimestamp
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 /* ===========================
-Save Category Button
+Elements
 =========================== */
 
 const saveCategoryButton =
 document.getElementById("saveCategoryButton");
+
+const categoryName =
+document.getElementById("categoryName");
 
 /* ===========================
 Save Category
 =========================== */
 
 saveCategoryButton.addEventListener(
+
 "click",
+
 async function(){
 
     const file =
     categoryBanner.files[0];
 
-    if(!file){
+    if(!categoryName.value.trim()){
 
         alert(
-        "Please select a category banner."
+        "Please enter a category name."
         );
 
         return;
@@ -1110,6 +1142,16 @@ async function(){
 
         alert(
         "Please select where to display this category."
+        );
+
+        return;
+
+    }
+
+    if(!file){
+
+        alert(
+        "Please select a category banner."
         );
 
         return;
@@ -1131,13 +1173,13 @@ async function(){
         new FormData();
 
         formData.append(
-        "file",
-        file
+            "file",
+            file
         );
 
         formData.append(
-        "upload_preset",
-        "Ummuhalti"
+            "upload_preset",
+            "ummuhalti"
         );
 
         const response =
@@ -1172,12 +1214,12 @@ async function(){
 
         await addDoc(
 
-            collection(
-                db,
-                "categories"
-            ),
+            collection(db,"categories"),
 
             {
+
+                name:
+                categoryName.value.trim(),
 
                 location:
                 categoryLocation.value,
@@ -1193,12 +1235,14 @@ async function(){
         );
 
         alert(
-        "Category saved successfully."
+        "Category created successfully."
         );
 
         /* ===========================
         Reset Form
         =========================== */
+
+        categoryName.value="";
 
         categoryLocation.value="";
 
@@ -1220,11 +1264,8 @@ async function(){
         console.error(error);
 
         alert(
-
-        "Upload failed: " +
-
+        "Error: " +
         error.message
-
         );
 
     }
@@ -1237,13 +1278,156 @@ async function(){
 });
 
 /* =========================================================
+END OF SECTION 05
+========================================================= */
+/* =========================================================
+SECTION 08
+LOAD CATEGORIES FROM FIRESTORE
+========================================================= */
+
+/* ===========================
+Elements
+=========================== */
+
+const manageCategoryButton =
+document.getElementById("manageCategoryButton");
+
+const manageCategorySection =
+document.getElementById("manageCategorySection");
+
+const categoryList =
+document.getElementById("categoryList");
+
+/* ===========================
+Open Manage Categories
+=========================== */
+
+manageCategoryButton.addEventListener(
+
+"click",
+
+function(){
+
+    manageCategorySection.classList.add("show");
+
+    manageCategorySection.scrollIntoView({
+
+        behavior:"smooth"
+
+    });
+
+    loadCategories();
+
+});
+
+/* ===========================
+Load Categories
+=========================== */
+
+async function loadCategories(){
+
+    categoryList.innerHTML="Loading...";
+
+    try{
+
+        const snapshot =
+        await getDocs(
+
+            collection(
+                db,
+                "categories"
+            )
+
+        );
+
+        categoryList.innerHTML="";
+
+        if(snapshot.empty){
+
+            categoryList.innerHTML=
+
+            "<p>No categories found.</p>";
+
+            return;
+
+        }
+
+        snapshot.forEach(function(doc){
+
+            const data =
+            doc.data();
+
+            categoryList.innerHTML += `
+
+            <div class="category-card">
+
+                <img
+                src="${data.banner}"
+                alt="Banner">
+
+                <div class="category-card-content">
+
+                    <div class="category-card-title">
+
+                        ${data.name}
+
+                    </div>
+
+                    <div class="category-card-location">
+
+                        ${data.location}
+
+                    </div>
+
+                    <div class="category-card-buttons">
+
+                        <button
+                        class="edit-category-btn"
+                        data-id="${doc.id}">
+
+                        Edit
+
+                        </button>
+
+                        <button
+                        class="delete-category-btn"
+                        data-id="${doc.id}">
+
+                        Delete
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            `;
+
+        });
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        categoryList.innerHTML=
+
+        "<p>Failed to load categories.</p>";
+
+    }
+
+}
+
+/* =========================================================
 END OF SECTION 08
-========================================================= */        
+========================================================= */
 
-        
 
-        
-    </script>
+    
+</script>
 
 </body>
 
