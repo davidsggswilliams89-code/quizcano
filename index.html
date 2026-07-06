@@ -1,590 +1,570 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>QUIZCANO</title>
-
-<style>
-    
-/* =========================================================
-SECTION 01
-QUIZCANO HEADER CSS
-========================================================= */
-
-*{
-
-    margin:0;
-
-    padding:0;
-
-    box-sizing:border-box;
-
-}
-
-body{
-
-    background:#0B1120;
-
-    font-family:Arial,Helvetica,sans-serif;
-
-    color:#FFFFFF;
-
-}
-
-/* ===========================
-Top Header
-=========================== */
-
-.top-header{
-
-    width:100%;
-
-    height:82px;
-
-    background:#0B1120;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:10px 14px;
-
-    position:sticky;
-
-    top:0;
-
-    z-index:1000;
-
-}
-
-/* ===========================
-Menu Button
-=========================== */
-
-.menu-btn{
-
-    width:48px;
-
-    height:48px;
-
-    border:3px solid #F59E0B;
-
-    border-radius:50%;
-
-    background:#1A2138;
-
-    color:#FFFFFF;
-
-    font-size:24px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    cursor:pointer;
-
-    flex-shrink:0;
-
-}
-
-/* ===========================
-Logo Area
-=========================== */
-
-.logo-area{
-
-    flex:1;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
-}
-
-/* ===========================
-Logo
-=========================== */
-
-.logo{
-
-    font-size:34px;
-
-    font-weight:900;
-
-    letter-spacing:1px;
-
-    cursor:pointer;
-
-    user-select:none;
-
-}
-
-.logo-white{
-
-    color:#FFFFFF;
-
-}
-
-.logo-orange{
-
-    color:#F59E0B;
-
-}
-
-.logo-tagline{
-
-    margin-top:3px;
-
-    font-size:11px;
-
-    color:#8B93A7;
-
-}
-
-/* ===========================
-Right Side
-=========================== */
-
-.header-right{
-
-    width:48px;
-
-    display:flex;
-
-    justify-content:flex-end;
-
-    align-items:center;
-
-    flex-shrink:0;
-
-}
-
-/* ===========================
-Brain Profile Icon
-=========================== */
-
-.profile-image{
-
-    width:48px;
-
-    height:48px;
-
-    border-radius:50%;
-
-    background:#1A2138;
-
-    border:3px solid #F59E0B;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:22px;
-
-    cursor:pointer;
-
-}
-
-/* =========================================================
-END OF SECTION 01 CSS
-========================================================= */
-/* =========================================================
-SECTION 02
-FEATURED CAROUSEL CSS
-========================================================= */
-
-/* ===========================
-Featured Carousel
-=========================== */
-
-.featured-carousel{
-
-    width:100%;
-
-    padding:6px 8px 10px;
-
-}
-
-/* ===========================
-Section Title
-=========================== */
-
-.featured-title{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    margin-left:4px;
-
-    margin-bottom:10px;
-
-    font-size:16px;
-
-    font-weight:900;
-
-    color:#FFFFFF;
-
-    letter-spacing:1px;
-
-    text-transform:uppercase;
-
-    text-shadow:0 2px 8px rgba(0,0,0,.35);
-
-}
-
-/* ===========================
-Emoji
-=========================== */
-
-.featured-title::before{
-
-    content:"🔥";
-
-    font-size:16px;
-
-}
-
-/* ===========================
-Carousel Container
-=========================== */
-
-.carousel-container{
-
-    width:100%;
-
-    overflow:hidden;
-
-    border-radius:20px;
-
-}
-
-/* ===========================
-Carousel Track
-=========================== */
-
-.carousel-track{
-
-    display:flex;
-
-    transition:transform .6s ease;
-
-    will-change:transform;
-
-}
-
-/* ===========================
-Carousel Item
-=========================== */
-
-.carousel-item{
-
-    flex:0 0 100%;
-
-    width:100%;
-
-    padding:2px;
-
-}
-
-/* ===========================
-Banner Image
-=========================== */
-
-.carousel-item img{
-
-    width:100%;
-
-    display:block;
-
-    object-fit:contain;
-
-    border-radius:20px;
-
-}
-
-/* ===========================
-Carousel Dots
-=========================== */
-
-.carousel-dots{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:6px;
-
-    margin-top:8px;
-
-}
-
-/* ===========================
-Dot
-=========================== */
-
-.dot{
-
-    width:8px;
-
-    height:8px;
-
-    border-radius:50%;
-
-    background:#4B5563;
-
-    transition:.3s;
-
-    cursor:pointer;
-
-}
-
-/* ===========================
-Active Dot
-=========================== */
-
-.dot.active{
-
-    width:20px;
-
-    height:8px;
-
-    border-radius:20px;
-
-    background:#F59E0B;
-
-}
-
-/* =========================================================
-END OF SECTION 02 CSS
-========================================================= */
-/* =========================================================
-SECTION 03
-QUIZ CATEGORY SCROLLER CSS
-========================================================= */
-
-/* ===========================
-Category Section
-=========================== */
-
-.category-section{
-
-    width:100%;
-
-    padding:16px 15px 20px;
-
-}
-
-/* ===========================
-Header
-=========================== */
-
-.category-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:10px;
-
-}
-
-/* ===========================
-Section Title
-=========================== */
-
-.category-title{
-
-    font-size:14px;
-
-    font-weight:400;
-
-    color:#FFFFFF;
-
-    letter-spacing:.3px;
-
-}
-
-/* ===========================
-View All Button
-=========================== */
-
-.view-all{
-
-    text-decoration:none;
-
-    color:#F59E0B;
-
-    font-size:14px;
-
-    font-weight:700;
-
-    transition:.3s;
-
-}
-
-.view-all:hover{
-
-    color:#FFD166;
-
-}
-
-/* ===========================
-/* ===========================
-Horizontal Scroll
-=========================== */
-
-.category-scroll{
-
-    display:flex;
-
-    gap:14px;
-
-    overflow-x:auto;
-
-    overflow-y:hidden;
-
-    scroll-behavior:smooth;
-
-    -webkit-overflow-scrolling:touch;
-
-    scrollbar-width:none;
-
-    padding:5px;
-
-}
-
-/* Hide Scrollbar */
-
-.category-scroll::-webkit-scrollbar{
-
-    display:none;
-
-}
-
-/* ===========================
-Active Category
-=========================== */
-
-.category-card.active{
-
-    border:2px solid #F59E0B;
-
-}
-
-/* ===========================
-Hover Effect
-=========================== */
-
-.category-card:hover{
-
-    transform:scale(1.05);
-
-}
-
-/* ===========================
-Category Card
-=========================== */
-
-.category-card{
-
-    flex:0 0 72px;
-
-    width:72px;
-
-    height:72px;
-
-    padding:2px;
-
-    border-radius:16px;
-
-    border:1px solid rgba(255,255,255,.12);
-
-    background:#1A2138;
-
-    overflow:hidden;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    cursor:pointer;
-
-    transition:all .25s ease;
-
-    box-sizing:border-box;
-
-}
-/* ===========================
-Category Image
-=========================== */
-
-.category-card img{
-
-    width:110%;
-
-    height:110%;
-
-    display:block;
-
-    object-fit:cover;
-
-    user-select:none;
-
-    pointer-events:none;
-
-}
-
-/* =========================================================
-END OF SECTION 03 CSS
-========================================================= */
+<!DOCTYPE html>  <html lang="en">  <head>  <meta charset="UTF-8">  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>QUIZCANO</title>  <style>  
+      
+/* =========================================================  
+SECTION 01  
+QUIZCANO HEADER CSS  
+========================================================= */  
+  
+*{  
+  
+    margin:0;  
+  
+    padding:0;  
+  
+    box-sizing:border-box;  
+  
+}  
+  
+body{  
+  
+    background:#0B1120;  
+  
+    font-family:Arial,Helvetica,sans-serif;  
+  
+    color:#FFFFFF;  
+  
+}  
+  
+/* ===========================  
+Top Header  
+=========================== */  
+  
+.top-header{  
+  
+    width:100%;  
+  
+    height:82px;  
+  
+    background:#0B1120;  
+  
+    display:flex;  
+  
+    align-items:center;  
+  
+    justify-content:space-between;  
+  
+    padding:10px 14px;  
+  
+    position:sticky;  
+  
+    top:0;  
+  
+    z-index:1000;  
+  
+}  
+  
+/* ===========================  
+Menu Button  
+=========================== */  
+  
+.menu-btn{  
+  
+    width:48px;  
+  
+    height:48px;  
+  
+    border:3px solid #F59E0B;  
+  
+    border-radius:50%;  
+  
+    background:#1A2138;  
+  
+    color:#FFFFFF;  
+  
+    font-size:24px;  
+  
+    display:flex;  
+  
+    justify-content:center;  
+  
+    align-items:center;  
+  
+    cursor:pointer;  
+  
+    flex-shrink:0;  
+  
+}  
+  
+/* ===========================  
+Logo Area  
+=========================== */  
+  
+.logo-area{  
+  
+    flex:1;  
+  
+    display:flex;  
+  
+    flex-direction:column;  
+  
+    align-items:center;  
+  
+    justify-content:center;  
+  
+    text-align:center;  
+  
+}  
+  
+/* ===========================  
+Logo  
+=========================== */  
+  
+.logo{  
+  
+    font-size:34px;  
+  
+    font-weight:900;  
+  
+    letter-spacing:1px;  
+  
+    cursor:pointer;  
+  
+    user-select:none;  
+  
+}  
+  
+.logo-white{  
+  
+    color:#FFFFFF;  
+  
+}  
+  
+.logo-orange{  
+  
+    color:#F59E0B;  
+  
+}  
+  
+.logo-tagline{  
+  
+    margin-top:3px;  
+  
+    font-size:11px;  
+  
+    color:#8B93A7;  
+  
+}  
+  
+/* ===========================  
+Right Side  
+=========================== */  
+  
+.header-right{  
+  
+    width:48px;  
+  
+    display:flex;  
+  
+    justify-content:flex-end;  
+  
+    align-items:center;  
+  
+    flex-shrink:0;  
+  
+}  
+  
+/* ===========================  
+Brain Profile Icon  
+=========================== */  
+  
+.profile-image{  
+  
+    width:48px;  
+  
+    height:48px;  
+  
+    border-radius:50%;  
+  
+    background:#1A2138;  
+  
+    border:3px solid #F59E0B;  
+  
+    display:flex;  
+  
+    justify-content:center;  
+  
+    align-items:center;  
+  
+    font-size:22px;  
+  
+    cursor:pointer;  
+  
+}  
+  
+/* =========================================================  
+END OF SECTION 01 CSS  
+========================================================= */  
+/* =========================================================  
+SECTION 02  
+FEATURED CAROUSEL CSS  
+========================================================= */  
+  
+/* ===========================  
+Featured Carousel  
+=========================== */  
+  
+.featured-carousel{  
+  
+    width:100%;  
+  
+    padding:6px 8px 10px;  
+  
+}  
+  
+/* ===========================  
+Section Title  
+=========================== */  
+  
+.featured-title{  
+  
+    display:flex;  
+  
+    align-items:center;  
+  
+    gap:8px;  
+  
+    margin-left:4px;  
+  
+    margin-bottom:10px;  
+  
+    font-size:16px;  
+  
+    font-weight:900;  
+  
+    color:#FFFFFF;  
+  
+    letter-spacing:1px;  
+  
+    text-transform:uppercase;  
+  
+    text-shadow:0 2px 8px rgba(0,0,0,.35);  
+  
+}  
+  
+/* ===========================  
+Emoji  
+=========================== */  
+  
+.featured-title::before{  
+  
+    content:"🔥";  
+  
+    font-size:16px;  
+  
+}  
+  
+/* ===========================  
+Carousel Container  
+=========================== */  
+  
+.carousel-container{  
+  
+    width:100%;  
+  
+    overflow:hidden;  
+  
+    border-radius:20px;  
+  
+}  
+  
+/* ===========================  
+Carousel Track  
+=========================== */  
+  
+.carousel-track{  
+  
+    display:flex;  
+  
+    transition:transform .6s ease;  
+  
+    will-change:transform;  
+  
+}  
+  
+/* ===========================  
+Carousel Item  
+=========================== */  
+  
+.carousel-item{  
+  
+    flex:0 0 100%;  
+  
+    width:100%;  
+  
+    padding:2px;  
+  
+}  
+  
+/* ===========================  
+Banner Image  
+=========================== */  
+  
+.carousel-item img{  
+  
+    width:100%;  
+  
+    display:block;  
+  
+    object-fit:contain;  
+  
+    border-radius:20px;  
+  
+}  
+  
+/* ===========================  
+Carousel Dots  
+=========================== */  
+  
+.carousel-dots{  
+  
+    display:flex;  
+  
+    justify-content:center;  
+  
+    align-items:center;  
+  
+    gap:6px;  
+  
+    margin-top:8px;  
+  
+}  
+  
+/* ===========================  
+Dot  
+=========================== */  
+  
+.dot{  
+  
+    width:8px;  
+  
+    height:8px;  
+  
+    border-radius:50%;  
+  
+    background:#4B5563;  
+  
+    transition:.3s;  
+  
+    cursor:pointer;  
+  
+}  
+  
+/* ===========================  
+Active Dot  
+=========================== */  
+  
+.dot.active{  
+  
+    width:20px;  
+  
+    height:8px;  
+  
+    border-radius:20px;  
+  
+    background:#F59E0B;  
+  
+}  
+  
+/* =========================================================  
+END OF SECTION 02 CSS  
+========================================================= */  
+/* =========================================================  
+SECTION 03  
+QUIZ CATEGORY SCROLLER CSS  
+========================================================= */  
+  
+/* ===========================  
+Category Section  
+=========================== */  
+  
+.category-section{  
+  
+    width:100%;  
+  
+    padding:16px 15px 20px;  
+  
+}  
+  
+/* ===========================  
+Header  
+=========================== */  
+  
+.category-header{  
+  
+    display:flex;  
+  
+    justify-content:space-between;  
+  
+    align-items:center;  
+  
+    margin-bottom:10px;  
+  
+}  
+  
+/* ===========================  
+Section Title  
+=========================== */  
+  
+.category-title{  
+  
+    font-size:14px;  
+  
+    font-weight:400;  
+  
+    color:#FFFFFF;  
+  
+    letter-spacing:.3px;  
+  
+}  
+  
+/* ===========================  
+View All Button  
+=========================== */  
+  
+.view-all{  
+  
+    text-decoration:none;  
+  
+    color:#F59E0B;  
+  
+    font-size:14px;  
+  
+    font-weight:700;  
+  
+    transition:.3s;  
+  
+}  
+  
+.view-all:hover{  
+  
+    color:#FFD166;  
+  
+}  
+  
+/* ===========================  
+Horizontal Scroll  
+=========================== */  
+  
+.category-scroll{  
+  
+    display:flex;  
+  
+    gap:14px;  
+  
+    overflow-x:auto;  
+  
+    overflow-y:hidden;  
+  
+    scroll-behavior:smooth;  
+  
+    -webkit-overflow-scrolling:touch;  
+  
+    scrollbar-width:none;  
+  
+    padding:5px;  
+  
+}  
+  
+/* Hide Scrollbar */  
+  
+.category-scroll::-webkit-scrollbar{  
+  
+    display:none;  
+  
+}  
+  
+/* ===========================  
+Active Category  
+=========================== */  
+  
+.category-card.active{  
+  
+    border:2px solid #F59E0B;  
+  
+}  
+  
+/* ===========================  
+Hover Effect  
+=========================== */  
+  
+.category-card:hover{  
+  
+    transform:scale(1.05);  
+  
+}  
+  
+/* ===========================  
+Category Card  
+=========================== */  
+  
+.category-card{  
+  
+    flex:0 0 72px;  
+  
+    width:72px;  
+  
+    height:72px;  
+  
+    padding:2px;  
+  
+    border-radius:16px;  
+  
+    border:1px solid rgba(255,255,255,.12);  
+  
+    background:#1A2138;  
+  
+    overflow:hidden;  
+  
+    display:flex;  
+  
+    justify-content:center;  
+  
+    align-items:center;  
+  
+    cursor:pointer;  
+  
+    transition:all .25s ease;  
+  
+    box-sizing:border-box;  
+  
+}  
+/* ===========================  
+Category Image  
+=========================== */  
+  
+.category-card img{  
+  
+    width:110%;  
+  
+    height:110%;  
+  
+    display:block;  
+  
+    object-fit:cover;  
+  
+    user-select:none;  
+  
+    pointer-events:none;  
+  
+}  
+  
+/* =========================================================  
+END OF SECTION 03 CSS  
+========================================================= */  
 /* =========================================================
 SECTION 04
-QUIZ BANNER LIST CSS
+TRENDING QUIZZES CSS
 ========================================================= */
 
-/* ===========================
-Quiz List Section
-=========================== */
-
-.quiz-list-section{
+.trending-quizzes{
 
     width:100%;
 
-    padding:10px 15px 30px;
+    padding:16px 15px 30px;
 
 }
 
-/* ===========================
-Header
-=========================== */
-
-.quiz-list-header{
+.trending-quizzes .section-header{
 
     display:flex;
 
@@ -592,17 +572,13 @@ Header
 
     align-items:center;
 
-    margin-bottom:10px;
+    margin-bottom:14px;
 
 }
 
-/* ===========================
-Section Title
-=========================== */
+.trending-quizzes .section-header h2{
 
-.quiz-list-title{
-
-    font-size:14px;
+    font-size:16px;
 
     font-weight:800;
 
@@ -612,84 +588,203 @@ Section Title
 
 }
 
-/* ===========================
-Quiz Banner List
-=========================== */
+.trending-quizzes .section-header a{
 
-.quiz-banner-list{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:10px;
-
-}
-/* ===========================
-Banner Card
-=========================== */
-
-.quiz-banner-card{
-
-    display:block;
-
-    width:100%;
-
-    height:77px;
-
-    overflow:hidden;
-
-    border-radius:6px;
-
-    background:#111827;
+    color:#F59E0B;
 
     text-decoration:none;
 
-    transition:transform .25s ease;
+    font-size:13px;
 
-    box-shadow:0 4px 12px rgba(0,0,0,.25);
+    font-weight:700;
 
 }
 
-/* ===========================
-Banner Hover
-=========================== */
+.quiz-card{
 
-.quiz-banner-card:hover{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    background:#171C2F;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:18px;
+
+    padding:12px;
+
+    margin-bottom:12px;
+
+    transition:.25s ease;
+
+}
+
+.quiz-card:hover{
 
     transform:translateY(-2px);
 
+    background:#1E2744;
+
 }
 
-/* ===========================
-Banner Image
-=========================== */
+.quiz-number{
 
-.quiz-banner-card img{
+    width:26px;
 
-    width:100%;
+    height:26px;
 
-    height:100%;
+    border-radius:50%;
 
-    display:block;
+    background:#2D3656;
+
+    color:#FFFFFF;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    flex-shrink:0;
+
+}
+
+.gold{
+
+    background:#F4B400;
+
+    color:#111111;
+
+}
+
+.silver{
+
+    background:#C0C0C0;
+
+    color:#111111;
+
+}
+
+.bronze{
+
+    background:#CD7F32;
+
+}
+
+.quiz-thumb{
+
+    width:62px;
+
+    height:62px;
+
+    border-radius:12px;
 
     object-fit:cover;
 
-    border-radius:6px;
-
-    user-select:none;
-
-    -webkit-user-drag:none;
+    flex-shrink:0;
 
 }
 
-/* ===========================
-Banner Active
-=========================== */
+.quiz-details{
 
-.quiz-banner-card:active{
+    flex:1;
 
-    transform:scale(.98);
+}
+
+.quiz-details h3{
+
+    color:#FFFFFF;
+
+    font-size:14px;
+
+    margin-bottom:5px;
+
+    font-weight:700;
+
+}
+
+.quiz-details span{
+
+    color:#9CA3AF;
+
+    font-size:11px;
+
+}
+
+.play-btn{
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:10px 18px;
+
+    background:linear-gradient(135deg,#FF9D00,#FFB800);
+
+    color:#FFFFFF;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.play-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 6px 15px rgba(255,157,0,.35);
+
+}
+
+.play-btn:active{
+
+    transform:scale(.96);
+
+}
+
+@media(max-width:600px){
+
+.quiz-card{
+
+gap:10px;
+
+padding:10px;
+
+}
+
+.quiz-thumb{
+
+width:56px;
+
+height:56px;
+
+}
+
+.quiz-details h3{
+
+font-size:13px;
+
+}
+
+.play-btn{
+
+padding:8px 14px;
+
+font-size:11px;
+
+}
 
 }
 
@@ -697,636 +792,630 @@ Banner Active
 END OF SECTION 04 CSS
 ========================================================= */
 
+  
+  
+</style>  
+</head>  
+ <body> 
+ <!-- =========================================================  
+SECTION 01  
+QUIZCANO HEADER HTM HTML HTML HTML HTML HTML  
+========================================================= -->  <header class="top-header">  <!-- Left Menu -->  
+<button class="menu-btn" id="menuBtn">  
+    ☰  
+</button>  
 
+<!-- Center Logo -->  
+<div class="logo-area">  
 
+    <h1 class="logo" id="gameIcon">  
 
-</style>
+        <span class="logo-white">QUIZ</span><span class="logo-orange">CANO</span>  
 
-</head>
+    </h1>  
 
-<body>
-    
-<!-- =========================================================
-SECTION 01
-QUIZCANO HEADER HTM HTML HTML HTML HTML HTML
+    <p class="logo-tagline">  
+
+        Play • Learn • Win  
+
+    </p>  
+
+</div>  
+
+<!-- Right Side -->  
+<div class="header-right">  
+
+    <div class="profile-image">  
+
+        🧠  
+
+    </div>  
+
+</div>
+
+</header>  <!-- =========================================================  
+END OF SECTION 01  HTML HTML HTML  
+========================================================= -->  <!-- =========================================================  
+SECTION 02 FEATURED CAROUSEL  
+========================================================= -->  <section class="featured-carousel">  <h2 class="featured-title">  
+ DAILY CHALLENGE  
+</h2>  
+
+<div class="carousel-container">  
+
+    <div class="carousel-track" id="carouselTrack">  
+
+        <div class="carousel-item">  
+            <img src="featurebanner1.png" alt="Banner 1">  
+        </div>  
+
+        <div class="carousel-item">  
+            <img src="featurebanner2.png" alt="Banner 2">  
+        </div>  
+
+        <div class="carousel-item">  
+            <img src="featurebanner3.png" alt="Banner 3">  
+        </div>  
+
+        <div class="carousel-item">  
+            <img src="featurebanner4.png" alt="Banner 4">  
+        </div>  
+
+        <div class="carousel-item">  
+            <img src="featurebanner5.png" alt="Banner 5">  
+        </div>  
+
+        <div class="carousel-item">  
+            <img src="featurebanner6.png" alt="Banner 6">  
+        </div>  
+
+        <div class="carousel-item">  
+            <img src="featurebanner7.png" alt="Banner 7">  
+        </div>  
+
+        <div class="carousel-item">  
+            <img src="featurebanner8.png" alt="Banner 8">  
+        </div>  
+
+        <div class="carousel-item">  
+            <img src="featurebanner9.png" alt="Banner 9">  
+        </div>  
+
+    </div>  
+
+</div>  
+
+<div class="carousel-dots">  
+
+    <span class="dot active"></span>  
+    <span class="dot"></span>  
+    <span class="dot"></span>  
+    <span class="dot"></span>  
+    <span class="dot"></span>  
+    <span class="dot"></span>  
+    <span class="dot"></span>  
+    <span class="dot"></span>  
+    <span class="dot"></span>  
+
+</div>
+
+</section>  <!-- =========================================================  
+END OF SECTION 02 HTML  
+========================================================= -->  <!-- =========================================================  
+SECTION 03  
+QUIZ CATEGORY SCROLLER HTML  
+========================================================= -->  <section class="category-section">  <!-- ==========================  
+Section Header  
+=========================== -->  
+
+<div class="category-header">  
+
+    <h2 class="category-title">  
+        🎯 Quiz Categories  
+    </h2>  
+
+    <a href="#" class="view-all">  
+        View All  
+    </a>  
+
+</div>  
+
+<!-- ==========================  
+Horizontal Category Scroll  
+=========================== -->  
+
+<div class="category-scroll" id="categoryScroll">  
+
+    <!-- Category 01 -->  
+    <div class="category-card" data-category="general">  
+        <img src="general.jpg" alt="Category 1">  
+    </div>  
+
+    <!-- Category 02 -->  
+    <div class="category-card" data-category="sports">  
+        <img src="movies.jpg" alt="Category 2">  
+    </div>  
+
+    <!-- Category 03 -->  
+    <div class="category-card" data-category="movies">  
+        <img src="music.jpg" alt="Category 3">  
+    </div>  
+
+    <!-- Category 04 -->  
+    <div class="category-card" data-category="science">  
+        <img src="game.png" alt="Category 4">  
+    </div>  
+
+    <!-- Category 05 -->  
+    <div class="category-card" data-category="history">  
+        <img src="sport.png" alt="Category 5">  
+    </div>  
+
+    <!-- Category 06 -->  
+    <div class="category-card" data-category="music">  
+        <img src="category6.png" alt="Category 6">  
+    </div>  
+
+    <!-- Category 07 -->  
+    <div class="category-card" data-category="technology">  
+        <img src="category7.png" alt="Category 7">  
+    </div>  
+
+    <!-- Category 08 -->  
+    <div class="category-card" data-category="animals">  
+        <img src="category8.png" alt="Category 8">  
+    </div>  
+
+    <!-- Category 09 -->  
+    <div class="category-card" data-category="geography">  
+        <img src="category9.png" alt="Category 9">  
+    </div>  
+
+    <!-- Category 10 -->  
+    <div class="category-card" data-category="football">  
+        <img src="category10.png" alt="Category 10">  
+    </div>  
+
+</div>
+
+</section>  <!-- =========================================================  
+END OF SECTION 03 HTML  
 ========================================================= -->
 
-<header class="top-header">
-
-    <!-- Left Menu -->
-    <button class="menu-btn" id="menuBtn">
-        ☰
-    </button>
-
-    <!-- Center Logo -->
-    <div class="logo-area">
-
-        <h1 class="logo" id="gameIcon">
-
-            <span class="logo-white">QUIZ</span><span class="logo-orange">CANO</span>
-
-        </h1>
-
-        <p class="logo-tagline">
-
-            Play • Learn • Win
-
-        </p>
-
-    </div>
-
-    <!-- Right Side -->
-    <div class="header-right">
-
-        <div class="profile-image">
-
-            🧠
-
-        </div>
-
-    </div>
-
-</header>
-
-<!-- =========================================================
-END OF SECTION 01  HTML HTML HTML
-========================================================= -->
-<!-- =========================================================
-SECTION 02 FEATURED CAROUSEL
-========================================================= -->
-
-<section class="featured-carousel">
-
-    <h2 class="featured-title">
-     DAILY CHALLENGE
-    </h2>
-
-    <div class="carousel-container">
-
-        <div class="carousel-track" id="carouselTrack">
-
-            <div class="carousel-item">
-                <img src="featurebanner1.png" alt="Banner 1">
-            </div>
-
-            <div class="carousel-item">
-                <img src="featurebanner2.png" alt="Banner 2">
-            </div>
-
-            <div class="carousel-item">
-                <img src="featurebanner3.png" alt="Banner 3">
-            </div>
-
-            <div class="carousel-item">
-                <img src="featurebanner4.png" alt="Banner 4">
-            </div>
-
-            <div class="carousel-item">
-                <img src="featurebanner5.png" alt="Banner 5">
-            </div>
-
-            <div class="carousel-item">
-                <img src="featurebanner6.png" alt="Banner 6">
-            </div>
-
-            <div class="carousel-item">
-                <img src="featurebanner7.png" alt="Banner 7">
-            </div>
-
-            <div class="carousel-item">
-                <img src="featurebanner8.png" alt="Banner 8">
-            </div>
-
-            <div class="carousel-item">
-                <img src="featurebanner9.png" alt="Banner 9">
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="carousel-dots">
-
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-
-    </div>
-
-</section>
-
-<!-- =========================================================
-END OF SECTION 02 HTML
-========================================================= -->
-
-<!-- =========================================================
-SECTION 03
-QUIZ CATEGORY SCROLLER HTML
-========================================================= -->
-
-<section class="category-section">
-
-    <!-- ==========================
-    Section Header
-    =========================== -->
-
-    <div class="category-header">
-
-        <h2 class="category-title">
-            🎯 Quiz Categories
-        </h2>
-
-        <a href="#" class="view-all">
-            View All
-        </a>
-
-    </div>
-
-    <!-- ==========================
-    Horizontal Category Scroll
-    =========================== -->
-
-    <div class="category-scroll" id="categoryScroll">
-
-        <!-- Category 01 -->
-        <div class="category-card" data-category="general">
-            <img src="general.jpg" alt="Category 1">
-        </div>
-
-        <!-- Category 02 -->
-        <div class="category-card" data-category="sports">
-            <img src="movies.jpg" alt="Category 2">
-        </div>
-
-        <!-- Category 03 -->
-        <div class="category-card" data-category="movies">
-            <img src="music.jpg" alt="Category 3">
-        </div>
-
-        <!-- Category 04 -->
-        <div class="category-card" data-category="science">
-            <img src="game.png" alt="Category 4">
-        </div>
-
-        <!-- Category 05 -->
-        <div class="category-card" data-category="history">
-            <img src="sport.png" alt="Category 5">
-        </div>
-
-        <!-- Category 06 -->
-        <div class="category-card" data-category="music">
-            <img src="category6.png" alt="Category 6">
-        </div>
-
-        <!-- Category 07 -->
-        <div class="category-card" data-category="technology">
-            <img src="category7.png" alt="Category 7">
-        </div>
-
-        <!-- Category 08 -->
-        <div class="category-card" data-category="animals">
-            <img src="category8.png" alt="Category 8">
-        </div>
-
-        <!-- Category 09 -->
-        <div class="category-card" data-category="geography">
-            <img src="category9.png" alt="Category 9">
-        </div>
-
-        <!-- Category 10 -->
-        <div class="category-card" data-category="football">
-            <img src="category10.png" alt="Category 10">
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =========================================================
-END OF SECTION 03 HTML
-========================================================= -->
 <!-- =========================================================
 SECTION 04
-QUIZ BANNER LIST HTML
+TRENDING QUIZZES
 ========================================================= -->
 
-<section class="quiz-list-section">
+<section class="trending-quizzes">
 
-    <!-- ==========================
-    Section Header
-    =========================== -->
+    <div class="section-header">
 
-    <div class="quiz-list-header">
+        <h2>🔥 Trending Quizzes</h2>
 
-        <h2 class="quiz-list-title">
-            🎯 Popular Quizzes
-        </h2>
+        <a href="#">View All</a>
 
     </div>
 
-    <!-- ==========================
-    Quiz Banner List
-    =========================== -->
+    <!-- Quiz 1 -->
 
-    <div class="quiz-banner-list">
+    <div class="quiz-card">
 
-        <!-- Quiz Banner 01 -->
+        <div class="quiz-number gold">1</div>
 
-        <a href="quiz.html" class="quiz-banner-card">
+        <img src="FindtheHiddenWord.png"
+             class="quiz-thumb"
+             alt="Find The Hidden Word">
 
-            <img src="quiz1.jpg"
-                 alt="Quiz Banner 1">
+        <div class="quiz-details">
 
-        </a>
+            <h3>Find The Hidden Word</h3>
 
-        <!-- Quiz Banner 02 -->
+            <span>👥 34,956,120 Players</span>
 
-        <a href="quiz.html" class="quiz-banner-card">
+        </div>
 
-            <img src="quiz2.jpg"
-                 alt="Quiz Banner 2">
+        <button class="play-btn"
+                onclick="window.location.href='quiz.html?category=hiddenword'">
 
-        </a>
+            PLAY
 
-        <!-- Quiz Banner 03 -->
+        </button>
 
-        <a href="quiz.html" class="quiz-banner-card">
+    </div>
 
-            <img src="quiz3.jpg"
-                 alt="Quiz Banner 3">
+    <!-- Quiz 2 -->
 
-        </a>
+    <div class="quiz-card">
 
-        <!-- Quiz Banner 04 -->
+        <div class="quiz-number silver">2</div>
 
-        <a href="quiz.html" class="quiz-banner-card">
+        <img src="FindtheNumber.png"
+             class="quiz-thumb"
+             alt="Find The Number">
 
-            <img src="quiz4.jpg"
-                 alt="Quiz Banner 4">
+        <div class="quiz-details">
 
-        </a>
+            <h3>Find The Number</h3>
 
-        <!-- Quiz Banner 05 -->
+            <span>👥 31,752,840 Players</span>
 
-        <a href="quiz.html" class="quiz-banner-card">
+        </div>
 
-            <img src="quiz5.jpg"
-                 alt="Quiz Banner 5">
+        <button class="play-btn"
+                onclick="window.location.href='quiz.html?category=number'">
 
-        </a>
+            PLAY
 
-        <!-- Quiz Banner 06 -->
+        </button>
 
-        <a href="quiz.html" class="quiz-banner-card">
+    </div>
 
-            <img src="quiz6.jpg"
-                 alt="Quiz Banner 6">
+    <!-- Quiz 3 -->
 
-        </a>
+    <div class="quiz-card">
 
-        <!-- Quiz Banner 07 -->
+        <div class="quiz-number bronze">3</div>
 
-        <a href="quiz.html" class="quiz-banner-card">
+        <img src="General.png"
+             class="quiz-thumb"
+             alt="Science Challenge">
 
-            <img src="quiz7.jpg"
-                 alt="Quiz Banner 7">
+        <div class="quiz-details">
 
-        </a>
+            <h3>Science Challenge</h3>
 
-        <!-- Quiz Banner 08 -->
+            <span>👥 29,635,201 Players</span>
 
-        <a href="quiz.html" class="quiz-banner-card">
+        </div>
 
-            <img src="quiz8.jpg"
-                 alt="Quiz Banner 8">
+        <button class="play-btn"
+                onclick="window.location.href='quiz.html?category=science'">
 
-        </a>
+            PLAY
 
-        <!-- Quiz Banner 09 -->
+        </button>
 
-        <a href="quiz.html" class="quiz-banner-card">
+    </div>
 
-            <img src="quiz9.jpg"
-                 alt="Quiz Banner 9">
+    <!-- Quiz 4 -->
 
-        </a>
+    <div class="quiz-card">
+
+        <div class="quiz-number">4</div>
+
+        <img src="General.png"
+             class="quiz-thumb"
+             alt="Geography Master">
+
+        <div class="quiz-details">
+
+            <h3>Geography Master</h3>
+
+            <span>👥 27,900,451 Players</span>
+
+        </div>
+
+        <button class="play-btn"
+                onclick="window.location.href='quiz.html?category=geography'">
+
+            PLAY
+
+        </button>
+
+    </div>
+
+    <!-- Quiz 5 -->
+
+    <div class="quiz-card">
+
+        <div class="quiz-number">5</div>
+
+        <img src="General.png"
+             class="quiz-thumb"
+             alt="Math Genius">
+
+        <div class="quiz-details">
+
+            <h3>Math Genius</h3>
+
+            <span>👥 25,381,441 Players</span>
+
+        </div>
+
+        <button class="play-btn"
+                onclick="window.location.href='quiz.html?category=math'">
+
+            PLAY
+
+        </button>
+
+    </div>
+
+    <!-- Quiz 6 -->
+
+    <div class="quiz-card">
+
+        <div class="quiz-number">6</div>
+
+        <img src="General.png"
+             class="quiz-thumb"
+             alt="Mind Genius">
+
+        <div class="quiz-details">
+
+            <h3>Mind Genius</h3>
+
+            <span>👥 18,250,940 Players</span>
+
+        </div>
+
+        <button class="play-btn"
+                onclick="window.location.href='quiz.html?category=mind'">
+
+            PLAY
+
+        </button>
+
+    </div>
+
+    <!-- Quiz 7 -->
+
+    <div class="quiz-card">
+
+        <div class="quiz-number">7</div>
+
+        <img src="General.png"
+             class="quiz-thumb"
+             alt="Image Identification">
+
+        <div class="quiz-details">
+
+            <h3>Image Identification</h3>
+
+            <span>👥 15,511,441 Players</span>
+
+        </div>
+
+        <button class="play-btn"
+                onclick="window.location.href='quiz.html?category=image'">
+
+            PLAY
+
+        </button>
 
     </div>
 
 </section>
 
 <!-- =========================================================
-END OF SECTION 04 HTML
+END OF SECTION 04
 ========================================================= -->
 
-            
 
- <script>
 
-/* =========================================================
-SECTION 02
-FEATURED CAROUSEL JAVASCRIPT
-========================================================= */
+<script>  
+/* =========================================================  
+SECTION 02  
+FEATURED CAROUSEL JAVASCRIPT  
+========================================================= */  
+  
+/* ===========================  
+Variables  
+=========================== */  
+  
+const track = document.getElementById("carouselTrack");  
+  
+const slides = document.querySelectorAll(".carousel-item");  
+  
+const dots = document.querySelectorAll(".dot");  
+  
+let currentSlide = 0;  
+  
+const totalSlides = slides.length;  
+  
+/* ===========================  
+Show Slide  
+=========================== */  
+  
+function showSlide(index){  
+  
+    track.style.transform =  
+    "translateX(-" + (index * 100) + "%)";  
+  
+    dots.forEach(function(dot){  
+  
+        dot.classList.remove("active");  
+  
+    });  
+  
+    dots[index].classList.add("active");  
+  
+}  
+  
+/* ===========================  
+Next Slide  
+=========================== */  
+  
+function nextSlide(){  
+  
+    currentSlide++;  
+  
+    if(currentSlide >= totalSlides){  
+  
+        currentSlide = 0;  
+  
+    }  
+  
+    showSlide(currentSlide);  
+  
+}  
+  
+/* ===========================  
+Previous Slide  
+=========================== */  
+  
+function previousSlide(){  
+  
+    currentSlide--;  
+  
+    if(currentSlide < 0){  
+  
+        currentSlide = totalSlides - 1;  
+  
+    }  
+  
+    showSlide(currentSlide);  
+  
+}  
+  
+/* ===========================  
+Dot Navigation  
+=========================== */  
+  
+dots.forEach(function(dot,index){  
+  
+    dot.addEventListener("click",function(){  
+  
+        currentSlide = index;  
+  
+        showSlide(currentSlide);  
+  
+    });  
+  
+});  
+  
+/* ===========================  
+Auto Slide  
+=========================== */  
+  
+setInterval(function(){  
+  
+    nextSlide();  
+  
+},5000);  
+  
+/* ===========================  
+Start  
+=========================== */  
+  
+showSlide(0);  
+  
+/* =========================================================  
+END OF SECTION 02 JAVA SCRIPT JAVA JAVA JAVA  
+========================================================= */  
+/* =========================================================  
+SECTION 03  
+QUIZ CATEGORY SCROLLER JAVASCRIPT  
+========================================================= */  
+  
+/* ===========================  
+Variables  
+=========================== */  
+  
+const categoryCards =  
+document.querySelectorAll(".category-card");  
+  
+/* ===========================  
+Category Click  
+=========================== */  
+  
+categoryCards.forEach(function(card){  
+  
+    card.addEventListener("click",function(){  
+  
+        /* Remove Active */  
+  
+        categoryCards.forEach(function(item){  
+  
+            item.classList.remove("active");  
+  
+        });  
+  
+        /* Active Current */  
+  
+        this.classList.add("active");  
+  
+        /* Get Category */  
+  
+        const selectedCategory =  
+        this.getAttribute("data-category");  
+  
+        /* Show Section 04 */  
+  
+        loadCategory(selectedCategory);  
+  
+    });  
+  
+});  
+  
+/* ===========================  
+Load Category  
+=========================== */  
+  
+function loadCategory(category){  
+  
+    /*  
+    SECTION 04 WILL USE THIS VALUE.  
+  
+    Example values:  
+  
+    general  
+    sports  
+    movies  
+    science  
+    history  
+    music  
+    technology  
+    animals  
+    geography  
+    football  
+  
+    */  
+  
+    console.log("Selected Category:",category);  
+  
+}  
+  
+/* ===========================  
+Default Category  
+=========================== */  
+  
+if(categoryCards.length>0){  
+  
+    categoryCards[0].classList.add("active");  
+  
+    loadCategory(  
+  
+        categoryCards[0].getAttribute("data-category")  
+  
+    );  
+  
+}  
+  
+/* =========================================================  
+END OF SECTION 03 JAVASCRIPT  
+========================================================= */  
 
-/* ===========================
-Variables
-=========================== */
-
-const track = document.getElementById("carouselTrack");
-
-const slides = document.querySelectorAll(".carousel-item");
-
-const dots = document.querySelectorAll(".dot");
-
-let currentSlide = 0;
-
-const totalSlides = slides.length;
-
-/* ===========================
-Show Slide
-=========================== */
-
-function showSlide(index){
-
-    track.style.transform =
-    "translateX(-" + (index * 100) + "%)";
-
-    dots.forEach(function(dot){
-
-        dot.classList.remove("active");
-
-    });
-
-    dots[index].classList.add("active");
-
-}
-
-/* ===========================
-Next Slide
-=========================== */
-
-function nextSlide(){
-
-    currentSlide++;
-
-    if(currentSlide >= totalSlides){
-
-        currentSlide = 0;
-
-    }
-
-    showSlide(currentSlide);
-
-}
-
-/* ===========================
-Previous Slide
-=========================== */
-
-function previousSlide(){
-
-    currentSlide--;
-
-    if(currentSlide < 0){
-
-        currentSlide = totalSlides - 1;
-
-    }
-
-    showSlide(currentSlide);
-
-}
-
-/* ===========================
-Dot Navigation
-=========================== */
-
-dots.forEach(function(dot,index){
-
-    dot.addEventListener("click",function(){
-
-        currentSlide = index;
-
-        showSlide(currentSlide);
-
-    });
-
-});
-
-/* ===========================
-Auto Slide
-=========================== */
-
-setInterval(function(){
-
-    nextSlide();
-
-},5000);
-
-/* ===========================
-Start
-=========================== */
-
-showSlide(0);
-
-/* =========================================================
-END OF SECTION 02 JAVA SCRIPT JAVA JAVA JAVA
-========================================================= */
-/* =========================================================
-SECTION 03
-QUIZ CATEGORY SCROLLER JAVASCRIPT
-========================================================= */
-
-/* ===========================
-Variables
-=========================== */
-
-const categoryCards =
-document.querySelectorAll(".category-card");
-
-/* ===========================
-Category Click
-=========================== */
-
-categoryCards.forEach(function(card){
-
-    card.addEventListener("click",function(){
-
-        /* Remove Active */
-
-        categoryCards.forEach(function(item){
-
-            item.classList.remove("active");
-
-        });
-
-        /* Active Current */
-
-        this.classList.add("active");
-
-        /* Get Category */
-
-        const selectedCategory =
-        this.getAttribute("data-category");
-
-        /* Show Section 04 */
-
-        loadCategory(selectedCategory);
-
-    });
-
-});
-
-/* ===========================
-Load Category
-=========================== */
-
-function loadCategory(category){
-
-    /*
-    SECTION 04 WILL USE THIS VALUE.
-
-    Example values:
-
-    general
-    sports
-    movies
-    science
-    history
-    music
-    technology
-    animals
-    geography
-    football
-
-    */
-
-    console.log("Selected Category:",category);
-
-}
-
-/* ===========================
-Default Category
-=========================== */
-
-if(categoryCards.length>0){
-
-    categoryCards[0].classList.add("active");
-
-    loadCategory(
-
-        categoryCards[0].getAttribute("data-category")
-
-    );
-
-}
-
-/* =========================================================
-END OF SECTION 03 JAVASCRIPT
-========================================================= */
-/* =========================================================
-SECTION 04
-QUIZ BANNER LIST JAVASCRIPT
-========================================================= */
-
-/* ===========================
-Quiz Banner Variables
-=========================== */
-
-const quizBannerCards =
-document.querySelectorAll(".quiz-banner-card");
-
-/* ===========================
-Banner Click Event
-=========================== */
-
-quizBannerCards.forEach(function(card){
-
-    card.addEventListener("click",function(event){
-
-        event.preventDefault();
-
-        /* ===========================
-        Get Selected Category
-        =========================== */
-
-        const category =
-
-        card.dataset.category;
-
-        console.log(
-
-            "Selected Category:",
-
-            category
-
-        );
-
-        /* ===========================
-        Open Quiz Page
-        =========================== */
-
-        window.location.href =
-
-        "quiz.html?category=" +
-
-        encodeURIComponent(category);
-
-    });
-
-});
-
-/* =========================================================
-END OF SECTION 04 JAVASCRIPT
-========================================================= */
 /* =========================================================
 HIDDEN ADMIN LOGIN
-QUIZCANO LOGO (7 CLICKS)
 ========================================================= */
 
-/* ===========================
-Logo Element
-=========================== */
-
-const gameIcon =
-document.getElementById("gameIcon");
-
-/* ===========================
-Click Counter
-=========================== */
-
-let adminClickCount = 0;
-
-let adminClickTimer = null;
-
-/* ===========================
-Hidden Admin Login
-=========================== */
-
-gameIcon.addEventListener("click",function(){
+gameIcon.addEventListener("click", function () {
 
     adminClickCount++;
 
     clearTimeout(adminClickTimer);
 
-    adminClickTimer = setTimeout(function(){
+    adminClickTimer = setTimeout(function () {
+        adminClickCount = 0;
+    }, 3000);
+
+    if (adminClickCount === 7) {
 
         adminClickCount = 0;
 
-    },3000);
-
-    if(adminClickCount === 7){
-
-        adminClickCount = 0;
-
-        window.location.href =
-        "login.html";
+        window.location.href = "login.html";
 
     }
 
@@ -1336,9 +1425,22 @@ gameIcon.addEventListener("click",function(){
 END OF HIDDEN ADMIN LOGIN
 ========================================================= */
 
-     
- </script>
 
-</body>
+/* =========================================================
+PAGE INITIALIZATION
+========================================================= */
 
-</html>
+document.addEventListener("DOMContentLoaded", function () {
+
+    showSlide(0);
+
+    if (categoryCards.length > 0) {
+        categoryCards[0].classList.add("active");
+        loadCategory(categoryCards[0].getAttribute("data-category"));
+    }
+
+});
+
+</script>
+ </body>  
+</html> 
