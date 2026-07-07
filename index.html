@@ -2166,6 +2166,23 @@ SECTION 10
 LOAD DAILY CHALLENGE
 ========================================================= */
 
+/* ===========================
+Open Category
+=========================== */
+
+window.openCategory = function(category){
+
+    window.location.href =
+    "category.html?category=" +
+    encodeURIComponent(category);
+
+};
+
+
+/* ===========================
+Load Daily Challenge
+=========================== */
+
 async function loadDailyChallenge(){
 
     const track =
@@ -2189,7 +2206,8 @@ async function loadDailyChallenge(){
             }
 
             track.innerHTML += `
-                <div class="carousel-item">
+                <div class="carousel-item"
+                     onclick="openCategory('${data.name}')">
 
                     <img
                     src="${data.banner}"
@@ -2220,6 +2238,11 @@ async function loadDailyChallenge(){
     }
 
 }
+
+
+/* ===========================
+Start Loading
+=========================== */
 
 loadDailyChallenge();
 
