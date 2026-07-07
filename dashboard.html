@@ -942,7 +942,38 @@ END OF SECTION 13 CSS
 /* =========================================================
 END OF SECTION 13 CSS
 ========================================================= */
-        
+/* =========================================================
+SECTION 14
+EDIT QUIZ CSS
+========================================================= */
+
+/* ===========================
+Edit Mode Button
+=========================== */
+
+.save-quiz-update{
+
+    background:#2563EB !important;
+
+}
+
+
+/* ===========================
+Disabled Button
+=========================== */
+
+#saveQuizButton:disabled{
+
+    opacity:.7;
+
+    cursor:not-allowed;
+
+}
+
+
+/* =========================================================
+END OF SECTION 14 CSS
+========================================================= */        
         
 
     </style>
@@ -3068,7 +3099,123 @@ async(event)=>{
 /* =========================================================
 END OF SECTION 13 JAVASCRIPT
 ========================================================= */
+/* =========================================================
+SECTION 14
+EDIT QUIZ JAVASCRIPT
+========================================================= */
 
+/* ===========================
+Open Quiz For Editing
+=========================== */
+
+document.addEventListener(
+"click",
+async(event)=>{
+
+    if(
+        !event.target.classList.contains(
+            "edit-quiz-btn"
+        )
+    ){
+        return;
+    }
+
+    try{
+
+        const quizId =
+        event.target.dataset.id;
+
+        const snapshot =
+        await getDoc(
+
+            doc(
+                db,
+                "quizzes",
+                quizId
+            )
+
+        );
+
+        if(!snapshot.exists()){
+
+            alert("Quiz not found.");
+
+            return;
+
+        }
+
+        const quiz =
+        snapshot.data();
+
+        editingQuizId =
+        quizId;
+
+        quizTitle.value =
+        quiz.quizTitle || "";
+
+        questionNumber.value =
+        quiz.questionNumber || "";
+
+        quizCategory.value =
+        quiz.categoryId || "";
+
+        optionA.value =
+        quiz.options.A;
+
+        optionB.value =
+        quiz.options.B;
+
+        optionC.value =
+        quiz.options.C;
+
+        optionD.value =
+        quiz.options.D;
+
+        correctAnswer.value =
+        quiz.correctAnswer;
+
+        createQuizSection.classList.add("show");
+
+        manageQuizSection.classList.remove("show");
+
+        saveQuizButton.textContent =
+        "Update Question";
+
+        saveQuizButton.classList.add(
+        "save-quiz-update"
+        );
+
+        loadQuizCategories();
+
+        window.scrollTo({
+
+            top:0,
+
+            behavior:"smooth"
+
+        });
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+        "Unable to load quiz."
+        );
+
+    }
+
+});
+
+/* =========================================================
+CONTINUE IN NEXT PART
+========================================================= */
+
+
+
+    
     
 </script>
 
