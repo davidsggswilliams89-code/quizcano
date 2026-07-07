@@ -1530,7 +1530,77 @@ manageCategoryButton.addEventListener(
 
 /* =========================================================
 END OF SECTION 09
-========================================================= */    
+========================================================= */  
+/* =========================================================
+SECTION 10
+DELETE CATEGORY
+========================================================= */
+
+/* ===========================
+Delete Category
+=========================== */
+
+document.addEventListener(
+"click",
+async(event)=>{
+
+    if(
+        !event.target.classList.contains(
+            "delete-category-btn"
+        )
+    ){
+
+        return;
+
+    }
+
+    const confirmDelete =
+    confirm(
+        "Are you sure you want to delete this category?"
+    );
+
+    if(!confirmDelete){
+
+        return;
+
+    }
+
+    try{
+
+        await deleteDoc(
+
+            doc(
+                db,
+                "categories",
+                event.target.dataset.id
+            )
+
+        );
+
+        alert(
+            "Category deleted successfully."
+        );
+
+        loadCategories();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "Failed to delete category."
+        );
+
+    }
+
+});
+
+/* =========================================================
+END OF SECTION 10
+========================================================= */
+    
 </script>
 
 </body>
