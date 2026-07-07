@@ -1288,98 +1288,219 @@ showSlide(0);
 /* =========================================================  
 END OF SECTION 02 JAVA SCRIPT JAVA JAVA JAVA  
 ========================================================= */  
-/* =========================================================  
-SECTION 03  
-QUIZ CATEGORY SCROLLER JAVASCRIPT  
-========================================================= */  
-  
-/* ===========================  
-Variables  
-=========================== */  
-  
-const categoryCards =  
-document.querySelectorAll(".category-card");  
-  
-/* ===========================  
-Category Click  
-=========================== */  
-  
-categoryCards.forEach(function(card){  
-  
-    card.addEventListener("click",function(){  
-  
-        /* Remove Active */  
-  
-        categoryCards.forEach(function(item){  
-  
-            item.classList.remove("active");  
-  
-        });  
-  
-        /* Active Current */  
-  
-        this.classList.add("active");  
-  
-        /* Get Category */  
-  
-        const selectedCategory =  
-        this.getAttribute("data-category");  
-  
-        /* Show Section 04 */  
-  
-        loadCategory(selectedCategory);  
-  
-    });  
-  
-});  
-  
-/* ===========================  
-Load Category  
-=========================== */  
-  
-function loadCategory(category){  
-  
-    /*  
-    SECTION 04 WILL USE THIS VALUE.  
-  
-    Example values:  
-  
-    general  
-    sports  
-    movies  
-    science  
-    history  
-    music  
-    technology  
-    animals  
-    geography  
-    football  
-  
-    */  
-  
-    console.log("Selected Category:",category);  
-  
-}  
-  
-/* ===========================  
-Default Category  
-=========================== */  
-  
-if(categoryCards.length>0){  
-  
-    categoryCards[0].classList.add("active");  
-  
-    loadCategory(  
-  
-        categoryCards[0].getAttribute("data-category")  
-  
-    );  
-  
-}  
-  
-/* =========================================================  
-END OF SECTION 03 JAVASCRIPT  
-========================================================= */  
+/* =========================================================
+SECTION 03
+QUIZ CATEGORY SCROLLER JAVASCRIPT
+FIREBASE READY VERSION
+========================================================= */
+
+
+/* ===========================
+Category Container
+=========================== */
+
+const categoryContainer =
+document.getElementById("categoryScroll");
+
+
+
+/* ===========================
+Load Category Function
+=========================== */
+
+function loadCategory(category){
+
+    console.log(
+        "Selected Category:",
+        category
+    );
+
+
+    /*
+    SECTION 04 WILL USE THIS VALUE
+
+    Example:
+
+    general
+    sports
+    movies
+    science
+    history
+    music
+    technology
+    animals
+    geography
+    football
+
+    */
+
+}
+
+
+
+/* ===========================
+Activate Category Cards
+=========================== */
+
+function activateCategoryCards(){
+
+
+    const categoryCards =
+    document.querySelectorAll(".category-card");
+
+
+
+    categoryCards.forEach(function(card){
+
+
+        card.addEventListener("click",function(){
+
+
+            categoryCards.forEach(function(item){
+
+                item.classList.remove("active");
+
+            });
+
+
+
+            this.classList.add("active");
+
+
+
+            const selectedCategory =
+            this.getAttribute(
+                "data-category"
+            );
+
+
+
+            loadCategory(
+                selectedCategory
+            );
+
+
+        });
+
+
+    });
+
+
+
+    /* ===========================
+    Default Active Category
+    =========================== */
+
+
+    if(categoryCards.length > 0){
+
+
+        categoryCards[0]
+        .classList.add("active");
+
+
+
+        loadCategory(
+
+            categoryCards[0]
+            .getAttribute("data-category")
+
+        );
+
+
+    }
+
+
+}
+
+
+
+/* ===========================
+Firebase Category Loader
+=========================== */
+
+
+async function loadCategoriesFromFirebase(){
+
+
+    try{
+
+
+        const snapshot =
+        await getDocs(
+            collection(
+                db,
+                "categories"
+            )
+        );
+
+
+
+        categoryContainer.innerHTML = "";
+
+
+
+        snapshot.forEach(function(doc){
+
+
+            const data =
+            doc.data();
+
+
+
+            categoryContainer.innerHTML += `
+
+            <div class="category-card"
+                 data-category="${data.slug}">
+
+
+                <img src="${data.image}"
+                     alt="${data.name}">
+
+
+            </div>
+
+
+            `;
+
+
+        });
+
+
+
+        activateCategoryCards();
+
+
+
+    }
+    catch(error){
+
+
+        console.log(
+            "Category Error:",
+            error
+        );
+
+
+    }
+
+
+}
+
+
+
+/* ===========================
+Start Loading Categories
+=========================== */
+
+
+loadCategoriesFromFirebase();
+
+
+
+/* =========================================================
+END OF SECTION 03 JAVASCRIPT
+========================================================= */
 
 /* =========================================================
 HIDDEN ADMIN LOGIN
