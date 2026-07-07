@@ -992,8 +992,63 @@ QUIZ NEXT BUTTON HTML
 END OF SECTION 05 HTML
 ========================================================= -->
     
-<script>
+<script type="module">
 
+/* =========================================================
+SECTION 12
+FIREBASE SETUP
+========================================================= */
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    getDocs
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+/* ===========================
+Firebase Configuration
+=========================== */
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyAnMxqDpdzgKEW1vkRSrLysT-0nu_vEf8Q",
+
+    authDomain: "quizcano.firebaseapp.com",
+
+    projectId: "quizcano",
+
+    storageBucket: "quizcano.firebasestorage.app",
+
+    messagingSenderId: "834135771491",
+
+    appId: "1:834135771491:web:c9998944df72d14a7b2b56"
+
+};
+
+/* ===========================
+Initialize Firebase
+=========================== */
+
+const app =
+initializeApp(firebaseConfig);
+
+const db =
+getFirestore(app);
+
+/* ===========================
+Quiz Questions Array
+=========================== */
+
+let quizQuestions = [];
+
+/* =========================================================
+END OF SECTION 12
+========================================================= */
+    
 /* =========================================================
 SECTION 01
 QUIZ PAGE HEADER JAVASCRIPT
