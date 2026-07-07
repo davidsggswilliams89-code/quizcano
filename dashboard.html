@@ -2626,6 +2626,13 @@ saveQuizButton.addEventListener(
 "click",
 async()=>{
 
+if(editingQuizId){
+
+    await updateQuiz();
+
+    return;
+
+}
 
 const title =
 quizTitle.value.trim();
