@@ -1048,6 +1048,108 @@ let quizQuestions = [];
 /* =========================================================
 END OF SECTION 12
 ========================================================= */
+/* =========================================================
+SECTION 13
+LOAD QUIZ QUESTIONS FROM FIRESTORE
+========================================================= */
+
+/* ===========================
+Load Quiz Questions
+=========================== */
+
+async function loadQuizQuestions(){
+
+    try{
+
+        const snapshot =
+        await getDocs(
+            collection(db,"questions")
+        );
+
+        quizQuestions = [];
+
+        snapshot.forEach(function(document){
+
+            quizQuestions.push({
+
+                id:document.id,
+
+                ...document.data()
+
+            });
+
+        });
+
+        console.log(
+
+            "Questions Loaded:",
+            quizQuestions.length
+
+        );
+
+        if(quizQuestions.length > 0){
+
+            loadCurrentQuestion();
+
+        }
+
+        else{
+
+            alert(
+                "No quiz questions found."
+            );
+
+        }
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "Failed to load quiz questions."
+        );
+
+    }
+
+}
+
+/* ===========================
+Load Current Question
+=========================== */
+
+function loadCurrentQuestion(){
+
+    const question =
+    quizQuestions[currentQuizQuestion - 1];
+
+    if(!question){
+
+        return;
+
+    }
+
+    updateQuestionImage(
+        question.image
+    );
+
+    console.log(question);
+
+}
+
+/* ===========================
+Start Loading
+=========================== */
+
+loadQuizQuestions();
+
+/* =========================================================
+END OF SECTION 13
+========================================================= */
+
+
+
     
 /* =========================================================
 SECTION 01
@@ -1518,7 +1620,7 @@ nextQuestionBtn.addEventListener("click",function(){
 
     /* Quiz Finished */
 
-    if(currentQuizQuestion > quizTotalQuestions){
+    if(currentQuizQuestion > quizQuestions.length){
 
         window.location.href =
         "offer.html";
@@ -1545,26 +1647,18 @@ nextQuestionBtn.addEventListener("click",function(){
 
     resetCountdown();
 
+    /* Load Next Question */
+
+    loadCurrentQuestion();
+
     /* Update Progress Bar */
 
     const completed =
-    ((currentQuizQuestion - 1) /
-    quizTotalQuestions) * 100;
+    (currentQuizQuestion /
+    quizQuestions.length) * 100;
 
     progressBarFill.style.width =
     completed + "%";
-
-    /* ===========================
-    Load Next Question
-    (Firestore Section Later)
-    =========================== */
-
-    console.log(
-
-        "Loading Question",
-        currentQuizQuestion
-
-    );
 
 });
 
