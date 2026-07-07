@@ -3006,7 +3006,147 @@ async(event)=>{
 /* =========================================================
 END OF SECTION 13 PART 2
 ========================================================= */
-    
+/* =========================================================
+SECTION 13
+PART 3
+EDIT QUIZ
+========================================================= */
+
+/* ===========================
+Edit Quiz
+=========================== */
+
+document.addEventListener(
+"click",
+async(event)=>{
+
+    if(
+        !event.target.classList.contains(
+            "edit-quiz-btn"
+        )
+    ){
+        return;
+    }
+
+    try{
+
+        const quizId =
+        event.target.dataset.id;
+
+        const snapshot =
+        await getDoc(
+            doc(
+                db,
+                "quizzes",
+                quizId
+            )
+        );
+
+        if(!snapshot.exists()){
+
+            alert("Quiz not found.");
+
+            return;
+
+        }
+
+        const quiz =
+        snapshot.data();
+
+        editingQuizId =
+        quizId;
+
+        await loadQuizCategories();
+
+        createQuizSection.classList.add("show");
+
+        manageQuizSection.classList.remove("show");
+
+        quizTitle.value =
+        quiz.quizTitle;
+
+        totalQuestions.value =
+        quiz.totalQuestions;
+
+        quizCategory.value =
+        quiz.categoryId;
+
+        quizQuestions =
+        [...quiz.questions];
+
+        currentQuestion = 1;
+
+        loadQuestionToForm(1);
+
+        saveQuizButton.textContent =
+        "Update Quiz";
+
+        saveQuizButton.style.display =
+        "none";
+
+        nextQuestionButton.style.display =
+        "block";
+
+        previousQuestionButton.style.display =
+        "none";
+
+        window.scrollTo({
+
+            top:0,
+
+            behavior:"smooth"
+
+        });
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+        "Unable to load quiz."
+        );
+
+    }
+
+});
+
+
+/* ===========================
+Load Question To Form
+=========================== */
+
+function loadQuestionToForm(index){
+
+    const question =
+    quizQuestions[index-1];
+
+    currentQuestionLabel.textContent =
+    "Question " + index;
+
+    optionA.value =
+    question.options.A;
+
+    optionB.value =
+    question.options.B;
+
+    optionC.value =
+    question.options.C;
+
+    optionD.value =
+    question.options.D;
+
+    correctAnswer.value =
+    question.correctAnswer;
+
+    questionImage.value = "";
+
+}
+
+/* =========================================================
+END OF SECTION 13 PART 3
+========================================================= */    
 
     
 
