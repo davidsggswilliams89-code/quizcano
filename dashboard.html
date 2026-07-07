@@ -3212,7 +3212,164 @@ async(event)=>{
 /* =========================================================
 CONTINUE IN NEXT PART
 ========================================================= */
+/* =========================================================
+SECTION 14 PART 2
+UPDATE QUIZ
+========================================================= */
 
+/* ===========================
+Update Quiz
+=========================== */
+
+async function updateQuiz(){
+
+    try{
+
+        saveQuizButton.disabled = true;
+
+        saveQuizButton.textContent =
+        "Updating...";
+
+        let imageUrl = "";
+
+        const image =
+        questionImage.files[0];
+
+        if(image){
+
+            imageUrl =
+            await uploadQuestionImage(image);
+
+        }
+
+        else{
+
+            const snapshot =
+            await getDoc(
+
+                doc(
+                    db,
+                    "quizzes",
+                    editingQuizId
+                )
+
+            );
+
+            imageUrl =
+            snapshot.data().questionImage;
+
+        }
+
+        await updateDoc(
+
+            doc(
+                db,
+                "quizzes",
+                editingQuizId
+            ),
+
+            {
+
+                quizTitle:
+                quizTitle.value.trim(),
+
+                questionNumber:
+                questionNumber.value,
+
+                categoryId:
+                quizCategory.value,
+
+                questionImage:
+                imageUrl,
+
+                options:{
+
+                    A:
+                    optionA.value.trim(),
+
+                    B:
+                    optionB.value.trim(),
+
+                    C:
+                    optionC.value.trim(),
+
+                    D:
+                    optionD.value.trim()
+
+                },
+
+                correctAnswer:
+                correctAnswer.value
+
+            }
+
+        );
+
+        alert(
+        "Quiz updated successfully."
+        );
+
+        editingQuizId = null;
+
+        quizTitle.value = "";
+
+        questionNumber.value = "";
+
+        quizCategory.value = "";
+
+        questionImage.value = "";
+
+        optionA.value = "";
+
+        optionB.value = "";
+
+        optionC.value = "";
+
+        optionD.value = "";
+
+        correctAnswer.value = "";
+
+        saveQuizButton.textContent =
+        "Save Question";
+
+        saveQuizButton.classList.remove(
+        "save-quiz-update"
+        );
+
+        createQuizSection.classList.remove(
+        "show"
+        );
+
+        manageQuizSection.classList.add(
+        "show"
+        );
+
+        loadQuizzes();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+        "Failed to update quiz."
+        );
+
+    }
+
+    finally{
+
+        saveQuizButton.disabled =
+        false;
+
+    }
+
+}
+
+/* =========================================================
+END OF SECTION 14 PART 2
+========================================================= */
 
 
     
