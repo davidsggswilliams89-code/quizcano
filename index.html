@@ -1897,115 +1897,145 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
 });
-/* =========================================================  
-SECTION 02  
-FEATURED CAROUSEL JAVASCRIPT  
-========================================================= */  
-  
-/* ===========================  
-Variables  
-=========================== */  
-  
-const track = document.getElementById("carouselTrack");  
-  
-const slides = document.querySelectorAll(".carousel-item");  
-  
-const dots = document.querySelectorAll(".dot");  
-  
-let currentSlide = 0;  
-  
-const totalSlides = slides.length;  
-  
-/* ===========================  
-Show Slide  
-=========================== */  
-  
-function showSlide(index){  
-  
-    track.style.transform =  
-    "translateX(-" + (index * 100) + "%)";  
-  
-    dots.forEach(function(dot){  
-  
-        dot.classList.remove("active");  
-  
-    });  
-  
-    dots[index].classList.add("active");  
-  
-}  
-  
-/* ===========================  
-Next Slide  
-=========================== */  
-  
-function nextSlide(){  
-  
-    currentSlide++;  
-  
-    if(currentSlide >= totalSlides){  
-  
-        currentSlide = 0;  
-  
-    }  
-  
-    showSlide(currentSlide);  
-  
-}  
-  
-/* ===========================  
-Previous Slide  
-=========================== */  
-  
-function previousSlide(){  
-  
-    currentSlide--;  
-  
-    if(currentSlide < 0){  
-  
-        currentSlide = totalSlides - 1;  
-  
-    }  
-  
-    showSlide(currentSlide);  
-  
-}  
-  
-/* ===========================  
-Dot Navigation  
-=========================== */  
-  
-dots.forEach(function(dot,index){  
-  
-    dot.addEventListener("click",function(){  
-  
-        currentSlide = index;  
-  
-        showSlide(currentSlide);  
-  
-    });  
-  
-});  
-  
-/* ===========================  
-Auto Slide  
-=========================== */  
-  
-setInterval(function(){  
-  
-    nextSlide();  
-  
-},5000);  
-  
-/* ===========================  
-Start  
-=========================== */  
-  
-showSlide(0);  
-  
-/* =========================================================  
-END OF SECTION 02 JAVA SCRIPT JAVA JAVA JAVA  
-========================================================= */  
+
+/* =========================================================
+SECTION 02
+FEATURED CAROUSEL JAVASCRIPT
+========================================================= */
+
+/* ===========================
+Variables
+=========================== */
+
+const track = document.getElementById("carouselTrack");
+
+let slides = [];
+
+const dots = document.querySelectorAll(".dot");
+
+let currentSlide = 0;
+
+
+/* ===========================
+Show Slide
+=========================== */
+
+function showSlide(index){
+
+    slides = document.querySelectorAll(".carousel-item");
+
+    const totalSlides = slides.length;
+
+    if(totalSlides === 0){
+        return;
+    }
+
+    if(index >= totalSlides){
+        index = 0;
+    }
+
+    if(index < 0){
+        index = totalSlides - 1;
+    }
+
+    currentSlide = index;
+
+    track.style.transform =
+    "translateX(-" + (currentSlide * 100) + "%)";
+
+    dots.forEach(function(dot){
+        dot.classList.remove("active");
+    });
+
+    if(dots[currentSlide]){
+        dots[currentSlide].classList.add("active");
+    }
+
+}
+
+
+/* ===========================
+Next Slide
+=========================== */
+
+function nextSlide(){
+
+    slides = document.querySelectorAll(".carousel-item");
+
+    const totalSlides = slides.length;
+
+    if(totalSlides === 0){
+        return;
+    }
+
+    currentSlide++;
+
+    if(currentSlide >= totalSlides){
+        currentSlide = 0;
+    }
+
+    showSlide(currentSlide);
+
+}
+
+
+/* ===========================
+Previous Slide
+=========================== */
+
+function previousSlide(){
+
+    slides = document.querySelectorAll(".carousel-item");
+
+    const totalSlides = slides.length;
+
+    if(totalSlides === 0){
+        return;
+    }
+
+    currentSlide--;
+
+    if(currentSlide < 0){
+        currentSlide = totalSlides - 1;
+    }
+
+    showSlide(currentSlide);
+
+}
+
+
+/* ===========================
+Dot Navigation
+=========================== */
+
+dots.forEach(function(dot,index){
+
+    dot.addEventListener("click",function(){
+
+        currentSlide = index;
+
+        showSlide(currentSlide);
+
+    });
+
+});
+
+
+/* ===========================
+Auto Slide
+=========================== */
+
+setInterval(function(){
+
+    nextSlide();
+
+},5000);
+
+
+/* =========================================================
+END OF SECTION 02 JAVASCRIPT
+========================================================= */
+      
 /* =========================================================
 SECTION 03
 QUIZ CATEGORY SCROLLER JAVASCRIPT
@@ -2197,6 +2227,7 @@ loadCategoriesFromFirebase();
 /* =========================================================
 END OF SECTION 03 JAVASCRIPT
 ========================================================= */
+
 /* =========================================================
 SECTION 10
 LOAD DAILY CHALLENGE
@@ -2236,11 +2267,22 @@ async function loadDailyChallenge(){
 
         });
 
+        /* ===========================
+        Restart Carousel
+        =========================== */
+
+        currentSlide = 0;
+
+        showSlide(currentSlide);
+
     }
 
     catch(error){
 
-        console.log(error);
+        console.log(
+            "Daily Challenge Error:",
+            error
+        );
 
     }
 
