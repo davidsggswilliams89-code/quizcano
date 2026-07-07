@@ -994,7 +994,182 @@ Play Button
 /* =========================================================
 END OF SECTION 05 CSS
 ========================================================= */
-  
+/* =========================================================
+SECTION 06
+POPULAR QUIZZES SLIDER CSS
+========================================================= */
+
+
+/* ===========================
+Popular Quiz Section
+=========================== */
+
+.popular-quiz-section{
+
+    width:100%;
+
+    padding:16px 15px 30px;
+
+}
+
+
+/* ===========================
+Header
+=========================== */
+
+.popular-quiz-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:14px;
+
+}
+
+
+.popular-quiz-header h2{
+
+    font-size:16px;
+
+    font-weight:800;
+
+    color:#FFFFFF;
+
+}
+
+
+.popular-quiz-header a{
+
+    color:#F59E0B;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    font-weight:700;
+
+}
+
+
+
+/* ===========================
+Horizontal Slider
+=========================== */
+
+.popular-slider{
+
+    display:flex;
+
+    gap:14px;
+
+    overflow-x:auto;
+
+    scrollbar-width:none;
+
+    scroll-behavior:smooth;
+
+}
+
+
+.popular-slider::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+
+/* ===========================
+Popular Card
+=========================== */
+
+.popular-card{
+
+    flex:0 0 150px;
+
+    background:#171C2F;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    cursor:pointer;
+
+    transition:.25s ease;
+
+}
+
+
+.popular-card:hover{
+
+    transform:translateY(-3px);
+
+    background:#1E2744;
+
+}
+
+
+
+/* ===========================
+Image
+=========================== */
+
+.popular-card img{
+
+    width:100%;
+
+    height:110px;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+
+
+/* ===========================
+Info
+=========================== */
+
+.popular-info{
+
+    padding:10px;
+
+}
+
+
+.popular-info h3{
+
+    font-size:13px;
+
+    color:#FFFFFF;
+
+    font-weight:700;
+
+    margin-bottom:6px;
+
+}
+
+
+.popular-info span{
+
+    font-size:11px;
+
+    color:#9CA3AF;
+
+}
+
+
+
+/* =========================================================
+END OF SECTION 06 CSS
+========================================================= */  
   
 </style>  
 </head>  
@@ -1384,7 +1559,45 @@ View All
 <!-- =========================================================
 END OF SECTION 05 HTML
 ========================================================= -->
+<!-- =========================================================
+SECTION 06
+POPULAR QUIZZES SLIDER HTML
+========================================================= -->
 
+
+<section class="popular-quiz-section">
+
+
+<div class="popular-quiz-header">
+
+
+<h2>
+🔥 Popular Quizzes
+</h2>
+
+
+<a href="#">
+View All
+</a>
+
+
+</div>
+
+
+
+<div class="popular-slider" id="popularQuizSlider">
+
+
+</div>
+
+
+
+</section>
+
+
+<!-- =========================================================
+END OF SECTION 06 HTML
+========================================================= -->
 
 <script type="module">  
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
@@ -1860,6 +2073,124 @@ loadFeaturedQuizzes();
 
 /* =========================================================
 END OF SECTION 05 JAVASCRIPT
+========================================================= */
+/* =========================================================
+SECTION 06
+POPULAR QUIZZES SLIDER JAVASCRIPT
+FIREBASE READY VERSION
+========================================================= */
+
+
+/* ===========================
+Container
+=========================== */
+
+const popularQuizSlider =
+document.getElementById(
+"popularQuizSlider"
+);
+
+
+
+/* ===========================
+Load Popular Quizzes
+=========================== */
+
+
+async function loadPopularQuizzes(){
+
+
+try{
+
+
+const snapshot =
+await getDocs(
+collection(
+db,
+"popularQuizzes"
+)
+);
+
+
+
+popularQuizSlider.innerHTML = "";
+
+
+
+snapshot.forEach(function(doc){
+
+
+const data =
+doc.data();
+
+
+
+popularQuizSlider.innerHTML += `
+
+
+<div class="popular-card"
+onclick="window.location.href='quiz.html?category=${data.slug}'">
+
+
+<img src="${data.image}"
+alt="${data.title}">
+
+
+
+<div class="popular-info">
+
+
+<h3>
+${data.title}
+</h3>
+
+
+<span>
+👥 ${data.players} Players
+</span>
+
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+}
+catch(error){
+
+
+console.log(
+"Popular Quiz Error:",
+error
+);
+
+
+}
+
+
+}
+
+
+
+/* ===========================
+Start Section 06
+=========================== */
+
+
+loadPopularQuizzes();
+
+
+
+/* =========================================================
+END OF SECTION 06 JAVASCRIPT
 ========================================================= */
       
 /* =========================================================
