@@ -1884,8 +1884,43 @@ appId: "1:834135771491:web:c9998944df72d14a7b2b56"
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
+const app = initializeApp(firebaseConfig);
 
-      
+const db = getFirestore(app);
+
+
+/* =========================================================
+HIDDEN ADMIN LOGIN
+QUIZCANO LOGO (7 CLICKS)
+========================================================= */
+
+const gameIcon = document.getElementById("gameIcon");
+
+let adminClickCount = 0;
+let adminClickTimer;
+
+
+gameIcon.addEventListener("click", function(){
+
+    adminClickCount++;
+
+    clearTimeout(adminClickTimer);
+
+    adminClickTimer = setTimeout(function(){
+
+        adminClickCount = 0;
+
+    },3000);
+
+
+    if(adminClickCount === 7){
+
+        window.location.href = "login.html";
+
+    }
+
+});
+   
 /* =========================================================  
 SECTION 02  
 FEATURED CAROUSEL JAVASCRIPT  
@@ -2569,57 +2604,6 @@ loadRecentQuizzes();
 END OF SECTION 07 JAVASCRIPT
 ========================================================= */
 
-      
-/* =========================================================
-HIDDEN ADMIN LOGIN
-QUIZCANO LOGO (7 CLICKS)
-========================================================= */
-
-/* ===========================
-Logo Element
-=========================== */
-
-const gameIcon =
-document.getElementById("gameIcon");
-
-/* ===========================
-Click Counter
-=========================== */
-
-let adminClickCount = 0;
-
-let adminClickTimer = null;
-
-/* ===========================
-Hidden Admin Login
-=========================== */
-
-gameIcon.addEventListener("click",function(){
-
-    adminClickCount++;
-
-    clearTimeout(adminClickTimer);
-
-    adminClickTimer = setTimeout(function(){
-
-        adminClickCount = 0;
-
-    },3000);
-
-    if(adminClickCount >= 7){
-
-        adminClickCount = 0;
-
-        window.location.href =
-        "login.html";
-
-    }
-
-});
-
-/* =========================================================
-END OF HIDDEN ADMIN LOGIN
-========================================================= */
 
 /* =========================================================
 PAGE INITIALIZATION
@@ -2640,7 +2624,8 @@ if (categoryCards.length > 0) {
         categoryCards[0].getAttribute("data-category")
     );
 
-} });
+} 
+});
 
 </script>
  </body>  
