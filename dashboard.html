@@ -2366,6 +2366,7 @@ SECTION 12
 CREATE QUIZ JAVASCRIPT
 ========================================================= */
 
+
 /* ===========================
 Quiz DOM Elements
 =========================== */
@@ -2373,29 +2374,46 @@ Quiz DOM Elements
 const createQuizSection =
 document.getElementById("createQuizSection");
 
+
+const quizTitle =
+document.getElementById("quizTitle");
+
+
+const questionNumber =
+document.getElementById("questionNumber");
+
+
 const quizCategory =
 document.getElementById("quizCategory");
+
 
 const questionImage =
 document.getElementById("questionImage");
 
+
 const optionA =
 document.getElementById("optionA");
+
 
 const optionB =
 document.getElementById("optionB");
 
+
 const optionC =
 document.getElementById("optionC");
+
 
 const optionD =
 document.getElementById("optionD");
 
+
 const correctAnswer =
 document.getElementById("correctAnswer");
 
+
 const saveQuizButton =
 document.getElementById("saveQuizButton");
+
 
 
 /* ===========================
@@ -2404,15 +2422,24 @@ Open Create Quiz
 
 createQuizButton.addEventListener("click",()=>{
 
+
     createQuizSection.classList.add("show");
+
 
     createCategorySection.classList.remove("show");
 
+
     manageCategorySection.classList.remove("show");
+
+
+    manageQuizSection.classList.remove("show");
+
 
     loadQuizCategories();
 
+
 });
+
 
 
 /* ===========================
@@ -2420,6 +2447,7 @@ Load Categories To Dropdown
 =========================== */
 
 async function loadQuizCategories(){
+
 
     quizCategory.innerHTML = `
 
@@ -2430,16 +2458,22 @@ async function loadQuizCategories(){
     `;
 
 
+
     const snapshot =
     await getDocs(
+
         collection(db,"categories")
+
     );
+
 
 
     snapshot.forEach((item)=>{
 
+
         const data =
         item.data();
+
 
 
         quizCategory.innerHTML += `
@@ -2457,11 +2491,13 @@ async function loadQuizCategories(){
 }
 
 
+
 /* ===========================
 Upload Question Image
 =========================== */
 
 async function uploadQuestionImage(file){
+
 
     if(!file){
 
@@ -2470,8 +2506,10 @@ async function uploadQuestionImage(file){
     }
 
 
+
     const formData =
     new FormData();
+
 
 
     formData.append(
@@ -2480,10 +2518,12 @@ async function uploadQuestionImage(file){
     );
 
 
+
     formData.append(
         "upload_preset",
         CLOUDINARY_UPLOAD_PRESET
     );
+
 
 
     const response =
@@ -2502,14 +2542,17 @@ async function uploadQuestionImage(file){
     );
 
 
+
     const data =
     await response.json();
+
 
 
     return data.secure_url;
 
 
 }
+
 
 
 /* ===========================
@@ -2521,21 +2564,42 @@ saveQuizButton.addEventListener(
 async()=>{
 
 
+const title =
+quizTitle.value.trim();
+
+
+const number =
+questionNumber.value;
+
+
 const categoryId =
 quizCategory.value.trim();
+
 
 
 const image =
 questionImage.files[0];
 
 
+
 if(
+
+!title ||
+
+!number ||
+
 !categoryId ||
+
 !optionA.value ||
+
 !optionB.value ||
+
 !optionC.value ||
+
 !optionD.value ||
+
 !correctAnswer.value
+
 ){
 
 alert(
@@ -2547,24 +2611,31 @@ return;
 }
 
 
+
 try{
 
 
 saveQuizButton.disabled = true;
 
+
 saveQuizButton.textContent =
 "Saving...";
+
 
 
 let imageUrl = "";
 
 
+
 if(image){
+
 
 imageUrl =
 await uploadQuestionImage(image);
 
+
 }
+
 
 
 
@@ -2574,27 +2645,47 @@ collection(db,"quizzes"),
 
 {
 
+
+quizTitle:title,
+
+
+questionNumber:number,
+
+
 categoryId:categoryId,
+
 
 questionImage:imageUrl,
 
+
+
 options:{
+
 
 A:optionA.value.trim(),
 
+
 B:optionB.value.trim(),
+
 
 C:optionC.value.trim(),
 
+
 D:optionD.value.trim()
 
+
 },
+
+
 
 correctAnswer:
 correctAnswer.value,
 
+
+
 createdAt:
 serverTimestamp()
+
 
 }
 
@@ -2608,40 +2699,61 @@ alert(
 
 
 
+
+quizTitle.value="";
+
+
+questionNumber.value="";
+
+
 questionImage.value="";
+
 
 optionA.value="";
 
+
 optionB.value="";
+
 
 optionC.value="";
 
+
 optionD.value="";
+
 
 correctAnswer.value="";
 
+
 quizCategory.value="";
+
 
 
 }
 
 
+
 catch(error){
 
+
 console.error(error);
+
+
 
 alert(
 "Failed to save quiz."
 );
 
 
+
 }
+
 
 
 finally{
 
 
 saveQuizButton.disabled=false;
+
 
 saveQuizButton.textContent=
 "Save Question";
@@ -2650,17 +2762,17 @@ saveQuizButton.textContent=
 }
 
 
+
 });
+
 
 
 /* =========================================================
 END OF SECTION 12 JAVASCRIPT
-========================================================= */    
-
+========================================================= */
     
 /* =========================================================
-SECTION 13
-MANAGE QUIZ JAVASCRIPT
+Begginin OF SECTION 13 JAVASCRIPT
 ========================================================= */
 
 
