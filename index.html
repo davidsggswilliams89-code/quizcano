@@ -1894,33 +1894,47 @@ HIDDEN ADMIN LOGIN
 QUIZCANO LOGO (7 CLICKS)
 ========================================================= */
 
-const gameIcon = document.getElementById("gameIcon");
+document.addEventListener("DOMContentLoaded", function(){
 
-let adminClickCount = 0;
-let adminClickTimer;
+    const gameIcon = document.getElementById("gameIcon");
 
-
-gameIcon.addEventListener("click", function(){
-
-    adminClickCount++;
-
-    clearTimeout(adminClickTimer);
-
-    adminClickTimer = setTimeout(function(){
-
-        adminClickCount = 0;
-
-    },3000);
+    let adminClickCount = 0;
+    let adminClickTimer = null;
 
 
-    if(adminClickCount === 7){
+    if(gameIcon){
 
-        window.location.href = "login.html";
+        gameIcon.addEventListener("click", function(){
+
+            adminClickCount++;
+
+            clearTimeout(adminClickTimer);
+
+            adminClickTimer = setTimeout(function(){
+
+                adminClickCount = 0;
+
+            },3000);
+
+
+            console.log("Logo clicks:", adminClickCount);
+
+
+            if(adminClickCount === 7){
+
+                window.location.href = "login.html";
+
+            }
+
+        });
+
+    } else {
+
+        console.log("Logo not found");
 
     }
 
 });
-   
 /* =========================================================  
 SECTION 02  
 FEATURED CAROUSEL JAVASCRIPT  
