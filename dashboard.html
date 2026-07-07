@@ -702,6 +702,227 @@ CREATE QUIZ CSS
 /* =========================================================
 END OF SECTION 12 CSS
 ========================================================= */
+/* =========================================================
+SECTION 13
+MANAGE QUIZ CSS
+========================================================= */
+
+
+/* ===========================
+Manage Quiz Section
+=========================== */
+
+.manage-quiz-section{
+
+    display:none;
+
+    width:100%;
+
+    max-width:950px;
+
+    margin:30px auto;
+
+    padding:25px;
+
+    background:#111827;
+
+    border:2px solid #1F2937;
+
+    border-radius:22px;
+
+}
+
+
+/* ===========================
+Show Section
+=========================== */
+
+.manage-quiz-section.show{
+
+    display:block;
+
+}
+
+
+/* ===========================
+Title
+=========================== */
+
+.manage-quiz-title{
+
+    font-size:28px;
+
+    font-weight:800;
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+
+/* ===========================
+Quiz List
+=========================== */
+
+.quiz-list{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+
+    gap:20px;
+
+}
+
+
+/* ===========================
+Quiz Card
+=========================== */
+
+.quiz-card{
+
+    background:#0B1120;
+
+    border:2px solid #1F2937;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+}
+
+
+/* ===========================
+Question Image
+=========================== */
+
+.quiz-card img{
+
+    width:100%;
+
+    height:180px;
+
+    object-fit:cover;
+
+}
+
+
+/* ===========================
+Quiz Content
+=========================== */
+
+.quiz-card-content{
+
+    padding:16px;
+
+}
+
+
+/* ===========================
+Options
+=========================== */
+
+.quiz-option{
+
+    background:#111827;
+
+    border:1px solid #1F2937;
+
+    padding:10px;
+
+    border-radius:10px;
+
+    margin-bottom:8px;
+
+    font-size:14px;
+
+}
+
+
+/* ===========================
+Correct Answer
+=========================== */
+
+.quiz-correct-answer{
+
+    margin-top:12px;
+
+    color:#F59E0B;
+
+    font-weight:800;
+
+}
+
+
+/* ===========================
+Buttons
+=========================== */
+
+.quiz-card-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:15px;
+
+}
+
+
+/* ===========================
+Edit Button
+=========================== */
+
+.edit-quiz-btn{
+
+    flex:1;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#2563EB;
+
+    color:#FFFFFF;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+
+/* ===========================
+Delete Button
+=========================== */
+
+.delete-quiz-btn{
+
+    flex:1;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#DC2626;
+
+    color:#FFFFFF;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+
+/* =========================================================
+END OF SECTION 13 CSS
+========================================================= */
         
         
 
@@ -1239,7 +1460,35 @@ id="createQuizSection">
 <!-- =========================================================
 END OF SECTION 12 HTML
 ========================================================= -->
+/* =========================================================
+SECTION 13
+MANAGE QUIZ HTML
+========================================================= */
 
+<section
+class="manage-quiz-section"
+id="manageQuizSection">
+
+    <h2 class="manage-quiz-title">
+
+        Manage Quizzes
+
+    </h2>
+
+
+    <div
+    id="quizList"
+    class="quiz-list">
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================================================
+END OF SECTION 13 HTML
+========================================================= -->
 
     
 
@@ -2340,7 +2589,280 @@ saveQuizButton.textContent=
 /* =========================================================
 END OF SECTION 12 JAVASCRIPT
 ========================================================= */    
+/* =========================================================
+SECTION 13
+MANAGE QUIZ JAVASCRIPT
+========================================================= */
 
+
+/* ===========================
+Manage Quiz DOM Elements
+=========================== */
+
+const manageQuizSection =
+document.getElementById("manageQuizSection");
+
+
+const quizList =
+document.getElementById("quizList");
+
+
+
+/* ===========================
+Open Manage Quiz
+=========================== */
+
+manageQuizButton.addEventListener("click",()=>{
+
+
+    manageQuizSection.classList.add("show");
+
+
+    createCategorySection.classList.remove("show");
+
+
+    manageCategorySection.classList.remove("show");
+
+
+    createQuizSection.classList.remove("show");
+
+
+    loadQuizzes();
+
+
+});
+
+
+
+/* ===========================
+Load Quizzes
+=========================== */
+
+async function loadQuizzes(){
+
+
+    quizList.innerHTML = "";
+
+
+    const snapshot =
+    await getDocs(
+
+        collection(
+            db,
+            "quizzes"
+        )
+
+    );
+
+
+
+    snapshot.forEach((document)=>{
+
+
+        const quiz =
+        document.data();
+
+
+
+        quizList.innerHTML += `
+
+
+        <div class="quiz-card">
+
+
+            ${
+            quiz.questionImage
+
+            ?
+
+            `<img src="${quiz.questionImage}">`
+
+            :
+
+            ""
+
+            }
+
+
+
+            <div class="quiz-card-content">
+
+
+                <div class="quiz-option">
+
+                    A: ${quiz.options.A}
+
+                </div>
+
+
+                <div class="quiz-option">
+
+                    B: ${quiz.options.B}
+
+                </div>
+
+
+                <div class="quiz-option">
+
+                    C: ${quiz.options.C}
+
+                </div>
+
+
+                <div class="quiz-option">
+
+                    D: ${quiz.options.D}
+
+                </div>
+
+
+
+                <div class="quiz-correct-answer">
+
+                    Correct Answer: ${quiz.correctAnswer}
+
+                </div>
+
+
+
+                <div class="quiz-card-buttons">
+
+
+                    <button
+
+                    class="edit-quiz-btn"
+
+                    data-id="${document.id}">
+
+                    Edit
+
+                    </button>
+
+
+
+                    <button
+
+                    class="delete-quiz-btn"
+
+                    data-id="${document.id}">
+
+                    Delete
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        `;
+
+
+
+    });
+
+
+}
+
+
+
+/* ===========================
+Delete Quiz
+=========================== */
+
+document.addEventListener(
+"click",
+async(event)=>{
+
+
+    if(
+
+    !event.target.classList.contains(
+        "delete-quiz-btn"
+    )
+
+    ){
+
+        return;
+
+    }
+
+
+
+    const confirmDelete =
+    confirm(
+        "Are you sure you want to delete this quiz?"
+    );
+
+
+
+    if(!confirmDelete){
+
+        return;
+
+    }
+
+
+
+    try{
+
+
+        await deleteDoc(
+
+            doc(
+
+                db,
+
+                "quizzes",
+
+                event.target.dataset.id
+
+            )
+
+        );
+
+
+
+        alert(
+            "Quiz deleted successfully."
+        );
+
+
+
+        loadQuizzes();
+
+
+
+    }
+
+
+    catch(error){
+
+
+        console.error(error);
+
+
+        alert(
+            "Failed to delete quiz."
+        );
+
+
+    }
+
+
+
+});
+
+
+
+/* =========================================================
+END OF SECTION 13 JAVASCRIPT
+========================================================= */
 
     
 </script>
