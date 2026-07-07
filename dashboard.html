@@ -661,6 +661,18 @@ END OF SECTION 07 CSS
 SECTION 11
 EDIT CATEGORY CSS
 ========================================================= */
+
+
+        
+/* =========================================================
+SECTION 11
+EDIT CATEGORY CSS
+========================================================= */       
+/* =========================================================
+SECTION 12
+CREATE QUIZ CSS
+========================================================= */
+
 .create-quiz-section{
 
     display:none;
@@ -686,10 +698,12 @@ EDIT CATEGORY CSS
     display:block;
 
 }
+
 /* =========================================================
-SECTION 11
-EDIT CATEGORY CSS
-========================================================= */        
+END OF SECTION 12 CSS
+========================================================= */
+        
+        
 
     </style>
 
@@ -1373,7 +1387,10 @@ createCategoryButton.addEventListener("click", () => {
 
     manageCategorySection.classList.remove("show");
 
+    createQuizSection.classList.remove("show");
+
 });
+
 
 /* ===========================
 Manage Categories
@@ -1385,17 +1402,10 @@ manageCategoryButton.addEventListener("click", () => {
 
     createCategorySection.classList.remove("show");
 
-});
-
-/* ===========================
-Create Quiz
-=========================== */
-
-createQuizButton.addEventListener("click", () => {
-
-    alert("Create Quiz section coming in Section 12.");
+    createQuizSection.classList.remove("show");
 
 });
+
 
 /* ===========================
 Manage Quiz
@@ -1406,6 +1416,7 @@ manageQuizButton.addEventListener("click", () => {
     alert("Manage Quiz section coming in Section 13.");
 
 });
+
 
 /* =========================================================
 END OF SECTION 05
