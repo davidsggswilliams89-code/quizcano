@@ -657,7 +657,17 @@ Delete
 /* =========================================================
 END OF SECTION 07 CSS
 ========================================================= */    
+/* =========================================================
+SECTION 11
+EDIT CATEGORY CSS
+========================================================= */
 
+/* Edit mode uses existing styles.
+No additional CSS required. */
+
+/* =========================================================
+END OF SECTION 11 CSS
+========================================================= */
     
     </style>
 
@@ -1339,14 +1349,27 @@ async()=>{
     const file =
     categoryBanner.files[0];
 
+    /* ===========================
+    Validation
+    =========================== */
+
+    if(!location || !name){
+
+        alert(
+        "Please complete all fields."
+        );
+
+        return;
+
+    }
+
     if(
-        !location ||
-        !name ||
+        !editingCategoryId &&
         !file
     ){
 
         alert(
-        "Please complete all fields."
+        "Please select a banner."
         );
 
         return;
@@ -1360,6 +1383,22 @@ async()=>{
 
         saveCategoryButton.textContent =
         "Saving...";
+
+        /* ===========================
+        Update Category
+        =========================== */
+
+        if(editingCategoryId){
+
+            await updateCategory();
+
+            return;
+
+        }
+
+        /* ===========================
+        Create New Category
+        =========================== */
 
         const bannerUrl =
         await uploadCategoryBanner(file);
@@ -1390,40 +1429,49 @@ async()=>{
         "Category created successfully."
         );
 
-        categoryLocation.value="";
+        categoryLocation.value = "";
 
-        categoryName.value="";
+        categoryName.value = "";
 
-        categoryBanner.value="";
+        categoryBanner.value = "";
 
-        categoryPreview.src="";
+        categoryPreview.src = "";
 
-        categoryPreview.style.display=
+        categoryPreview.style.display =
         "none";
 
-        categoryPreviewText.style.display=
+        categoryPreviewText.style.display =
         "block";
 
-        categoryPreviewText.textContent=
+        categoryPreviewText.textContent =
         "No banner selected.";
 
     }
 
     catch(error){
 
-    console.error(error);
+        console.error(error);
 
-    alert(error.message);
+        alert(error.message);
 
-}
+    }
 
     finally{
 
-        saveCategoryButton.disabled=
+        saveCategoryButton.disabled =
         false;
 
-        saveCategoryButton.textContent=
-        "Save Category";
+        if(editingCategoryId){
+
+            saveCategoryButton.textContent =
+            "Update Category";
+
+        }else{
+
+            saveCategoryButton.textContent =
+            "Save Category";
+
+        }
 
     }
 
@@ -1599,6 +1647,189 @@ async(event)=>{
 
 /* =========================================================
 END OF SECTION 10
+========================================================= */
+ /* =========================================================
+SECTION 11
+EDIT CATEGORY
+========================================================= */
+
+/* ===========================
+Open Category For Editing
+=========================== */
+
+document.addEventListener(
+"click",
+async(event)=>{
+
+    if(
+        !event.target.classList.contains(
+            "edit-category-btn"
+        )
+    ){
+        return;
+    }
+
+    try{
+
+        const categoryId =
+        event.target.dataset.id;
+
+        const snapshot =
+        await getDoc(
+            doc(
+                db,
+                "categories",
+                categoryId
+            )
+        );
+
+        if(!snapshot.exists()){
+
+            alert("Category not found.");
+
+            return;
+
+        }
+
+        const category =
+        snapshot.data();
+
+        editingCategoryId =
+        categoryId;
+
+        currentBannerUrl =
+        category.banner;
+
+        categoryLocation.value =
+        category.location;
+
+        categoryName.value =
+        category.name;
+
+        categoryPreview.src =
+        category.banner;
+
+        categoryPreview.style.display =
+        "block";
+
+        categoryPreviewText.style.display =
+        "none";
+
+        saveCategoryButton.textContent =
+        "Update Category";
+
+        createCategorySection.classList.add(
+            "show"
+        );
+
+        manageCategorySection.classList.remove(
+            "show"
+        );
+
+        window.scrollTo({
+
+            top:0,
+
+            behavior:"smooth"
+
+        });
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+        alert(
+        "Unable to load category."
+        );
+
+    }
+
+});
+
+/* ===========================
+Update Category
+=========================== */
+
+async function updateCategory(){
+
+    let bannerUrl =
+    currentBannerUrl;
+
+    const file =
+    categoryBanner.files[0];
+
+    if(file){
+
+        bannerUrl =
+        await uploadCategoryBanner(file);
+
+    }
+
+    await updateDoc(
+
+        doc(
+            db,
+            "categories",
+            editingCategoryId
+        ),
+
+        {
+
+            location:
+            categoryLocation.value.trim(),
+
+            name:
+            categoryName.value.trim(),
+
+            banner:
+            bannerUrl
+
+        }
+
+    );
+
+    alert(
+    "Category updated successfully."
+    );
+
+    editingCategoryId =
+    null;
+
+    currentBannerUrl =
+    "";
+
+    categoryLocation.value =
+    "";
+
+    categoryName.value =
+    "";
+
+    categoryBanner.value =
+    "";
+
+    categoryPreview.src =
+    "";
+
+    categoryPreview.style.display =
+    "none";
+
+    categoryPreviewText.style.display =
+    "block";
+
+    categoryPreviewText.textContent =
+    "No banner selected.";
+
+    saveCategoryButton.textContent =
+    "Save Category";
+
+    loadCategories();
+
+}
+
+/* =========================================================
+END OF SECTION 11
 ========================================================= */
     
 </script>
