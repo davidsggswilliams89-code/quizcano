@@ -1856,7 +1856,6 @@ END OF SECTION 07 HTML
        
 <script type="module">  
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-
 import {
 getFirestore,
 collection,
@@ -1885,6 +1884,8 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
+console.log("Script loaded");
+      
 /* =========================================================
 HIDDEN ADMIN LOGIN
 QUIZCANO LOGO (7 CLICKS)
