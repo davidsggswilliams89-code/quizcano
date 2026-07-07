@@ -1341,85 +1341,56 @@ class="create-quiz-section"
 id="createQuizSection">
 
     <h2 class="create-category-title">
-
         Create Quiz
-
     </h2>
-<!-- Quiz Title -->
 
-<label
-class="create-category-label">
+    <!-- Quiz Title -->
 
-    Quiz Title
+    <label class="create-category-label">
+        Quiz Title
+    </label>
 
-</label>
+    <input
+    type="text"
+    id="quizTitle"
+    class="create-category-input"
+    placeholder="Example: Football World Cup Quiz">
 
-<input
+    <!-- Total Questions -->
 
-type="text"
+    <label class="create-category-label">
+        Total Questions
+    </label>
 
-id="quizTitle"
+    <select
+    id="totalQuestions"
+    class="create-category-input">
 
-class="create-category-input"
+        <option value="">
+            Select Total Questions
+        </option>
 
-placeholder="Example: Football World Cup Quiz">
+        <option value="5">5 Questions</option>
+        <option value="10">10 Questions</option>
+        <option value="15">15 Questions</option>
+        <option value="20">20 Questions</option>
 
+    </select>
 
-<!-- Question Number -->
+    <!-- Current Question -->
 
-<label
-class="create-category-label">
+    <h3
+    id="currentQuestionLabel"
+    style="margin-bottom:20px;color:#F59E0B;text-align:center;">
 
-    Question Number
+        Question 1
 
-</label>
-
-<select
-
-id="questionNumber"
-
-class="create-category-input">
-
-
-<option value="">
-
-    Select Question Number
-
-</option>
-
-
-<option value="1">Question 1</option>
-<option value="2">Question 2</option>
-<option value="3">Question 3</option>
-<option value="4">Question 4</option>
-<option value="5">Question 5</option>
-<option value="6">Question 6</option>
-<option value="7">Question 7</option>
-<option value="8">Question 8</option>
-<option value="9">Question 9</option>
-<option value="10">Question 10</option>
-<option value="11">Question 11</option>
-<option value="12">Question 12</option>
-<option value="13">Question 13</option>
-<option value="14">Question 14</option>
-<option value="15">Question 15</option>
-<option value="16">Question 16</option>
-<option value="17">Question 17</option>
-<option value="18">Question 18</option>
-<option value="19">Question 19</option>
-<option value="20">Question 20</option>
-
-
-</select>
-    
+    </h3>
 
     <!-- Category -->
 
-    <label
-    class="create-category-label">
-
+    <label class="create-category-label">
         Select Category
-
     </label>
 
     <select
@@ -1427,148 +1398,110 @@ class="create-category-input">
     class="create-category-input">
 
         <option value="">
-
             Select Category
-
         </option>
 
     </select>
 
     <!-- Question Image -->
 
-    <label
-    class="create-category-label">
-
+    <label class="create-category-label">
         Question Image
-
     </label>
 
     <input
-
     type="file"
-
     id="questionImage"
-
     class="create-category-input"
-
     accept="image/*">
 
     <!-- Option A -->
 
-    <label
-    class="create-category-label">
-
+    <label class="create-category-label">
         Option A
-
     </label>
 
     <input
-
     type="text"
-
     id="optionA"
-
     class="create-category-input"
-
     placeholder="Enter Option A">
 
     <!-- Option B -->
 
-    <label
-    class="create-category-label">
-
+    <label class="create-category-label">
         Option B
-
     </label>
 
     <input
-
     type="text"
-
     id="optionB"
-
     class="create-category-input"
-
     placeholder="Enter Option B">
 
     <!-- Option C -->
 
-    <label
-    class="create-category-label">
-
+    <label class="create-category-label">
         Option C
-
     </label>
 
     <input
-
     type="text"
-
     id="optionC"
-
     class="create-category-input"
-
     placeholder="Enter Option C">
 
     <!-- Option D -->
 
-    <label
-    class="create-category-label">
-
+    <label class="create-category-label">
         Option D
-
     </label>
 
     <input
-
     type="text"
-
     id="optionD"
-
     class="create-category-input"
-
     placeholder="Enter Option D">
 
     <!-- Correct Answer -->
 
-    <label
-    class="create-category-label">
-
+    <label class="create-category-label">
         Correct Answer
-
     </label>
 
     <select
-
     id="correctAnswer"
-
     class="create-category-input">
 
         <option value="">
-
             Select Correct Answer
-
         </option>
 
         <option value="A">A</option>
-
         <option value="B">B</option>
-
         <option value="C">C</option>
-
         <option value="D">D</option>
 
     </select>
 
-    <!-- Save -->
+    <!-- Next Question -->
 
     <button
-
-    id="saveQuizButton"
-
+    id="nextQuestionButton"
     class="save-category-button">
 
-        Save Question
+        Next Question
+
+    </button>
+
+    <!-- Save Quiz -->
+
+    <button
+    id="saveQuizButton"
+    class="save-category-button"
+    style="display:none;margin-top:15px;">
+
+        Save Quiz
 
     </button>
 
@@ -1577,6 +1510,7 @@ class="create-category-input">
 <!-- =========================================================
 END OF SECTION 12 HTML
 ========================================================= -->
+
 <!-- =========================================================
 Begining OF SECTION 13 HTML
 ========================================================= -->
@@ -2427,8 +2361,8 @@ END OF SECTION 11
 /* =========================================================
 SECTION 12
 CREATE QUIZ JAVASCRIPT
+PART 1
 ========================================================= */
-
 
 /* ===========================
 Quiz DOM Elements
@@ -2437,46 +2371,52 @@ Quiz DOM Elements
 const createQuizSection =
 document.getElementById("createQuizSection");
 
-
 const quizTitle =
 document.getElementById("quizTitle");
 
+const totalQuestions =
+document.getElementById("totalQuestions");
 
-const questionNumber =
-document.getElementById("questionNumber");
-
+const currentQuestionLabel =
+document.getElementById("currentQuestionLabel");
 
 const quizCategory =
 document.getElementById("quizCategory");
 
-
 const questionImage =
 document.getElementById("questionImage");
-
 
 const optionA =
 document.getElementById("optionA");
 
-
 const optionB =
 document.getElementById("optionB");
-
 
 const optionC =
 document.getElementById("optionC");
 
-
 const optionD =
 document.getElementById("optionD");
-
 
 const correctAnswer =
 document.getElementById("correctAnswer");
 
+const nextQuestionButton =
+document.getElementById("nextQuestionButton");
 
 const saveQuizButton =
 document.getElementById("saveQuizButton");
 
+
+/* ===========================
+Variables
+=========================== */
+
+let editingQuizId = null;
+
+let currentQuestion = 1;
+
+let quizQuestions = [];
 
 
 /* ===========================
@@ -2485,74 +2425,74 @@ Open Create Quiz
 
 createQuizButton.addEventListener("click",()=>{
 
-
     createQuizSection.classList.add("show");
-
 
     createCategorySection.classList.remove("show");
 
-
     manageCategorySection.classList.remove("show");
-
 
     manageQuizSection.classList.remove("show");
 
-
     loadQuizCategories();
 
+    resetQuizBuilder();
 
 });
 
 
+/* ===========================
+Reset Quiz Builder
+=========================== */
+
+function resetQuizBuilder(){
+
+    currentQuestion = 1;
+
+    quizQuestions = [];
+
+    currentQuestionLabel.textContent =
+    "Question 1";
+
+    nextQuestionButton.style.display =
+    "block";
+
+    saveQuizButton.style.display =
+    "none";
+
+}
+
 
 /* ===========================
-Load Categories To Dropdown
+Load Categories
 =========================== */
 
 async function loadQuizCategories(){
 
-
     quizCategory.innerHTML = `
-
-    <option value="">
-        Select Category
-    </option>
-
+        <option value="">
+            Select Category
+        </option>
     `;
-
-
 
     const snapshot =
     await getDocs(
-
         collection(db,"categories")
-
     );
 
-
-
     snapshot.forEach((item)=>{
-
 
         const data =
         item.data();
 
-
-
         quizCategory.innerHTML += `
-
-        <option value="${item.id}">
-            ${data.name}
-        </option>
-
+            <option value="${item.id}">
+                ${data.name}
+            </option>
         `;
-
 
     });
 
-
 }
-
 
 
 /* ===========================
@@ -2561,288 +2501,272 @@ Upload Question Image
 
 async function uploadQuestionImage(file){
 
-
     if(!file){
 
         return "";
 
     }
 
-
-
     const formData =
     new FormData();
-
-
 
     formData.append(
         "file",
         file
     );
 
-
-
     formData.append(
         "upload_preset",
         CLOUDINARY_UPLOAD_PRESET
     );
 
-
-
     const response =
     await fetch(
-
-    "https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
-
-    {
-
-        method:"POST",
-
-        body:formData
-
-    }
-
+        "https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
+        {
+            method:"POST",
+            body:formData
+        }
     );
-
-
 
     const data =
     await response.json();
 
-
-
     return data.secure_url;
-
 
 }
 
 
-
 /* ===========================
-Save Quiz Question
+Next Question
 =========================== */
+
+nextQuestionButton.addEventListener(
+"click",
+async()=>{
+
+    if(
+
+        !quizTitle.value ||
+
+        !totalQuestions.value ||
+
+        !quizCategory.value ||
+
+        !optionA.value ||
+
+        !optionB.value ||
+
+        !optionC.value ||
+
+        !optionD.value ||
+
+        !correctAnswer.value
+
+    ){
+
+        alert("Please complete all fields.");
+
+        return;
+
+    }
+
+    let imageUrl = "";
+
+    if(questionImage.files.length > 0){
+
+        imageUrl =
+        await uploadQuestionImage(
+            questionImage.files[0]
+        );
+
+    }
+
+    quizQuestions.push({
+
+        questionNumber:currentQuestion,
+
+        questionImage:imageUrl,
+
+        options:{
+
+            A:optionA.value.trim(),
+
+            B:optionB.value.trim(),
+
+            C:optionC.value.trim(),
+
+            D:optionD.value.trim()
+
+        },
+
+        correctAnswer:
+        correctAnswer.value
+
+    });
+
+    currentQuestion++;
+
+    optionA.value="";
+
+    optionB.value="";
+
+    optionC.value="";
+
+    optionD.value="";
+
+    correctAnswer.value="";
+
+    questionImage.value="";
+
+    currentQuestionLabel.textContent =
+    "Question " + currentQuestion;
+
+    if(
+        currentQuestion >
+        parseInt(totalQuestions.value)
+    ){
+
+        nextQuestionButton.style.display =
+        "none";
+
+        saveQuizButton.style.display =
+        "block";
+
+    }
+
+});
+
+/* =========================================================
+END OF SECTION 12 PART 1
+========================================================= */
+/* =========================================================
+SECTION 12
+PART 2
+SAVE COMPLETE QUIZ
+========================================================= */
 
 saveQuizButton.addEventListener(
 "click",
 async()=>{
 
-if(editingQuizId){
+    if(editingQuizId){
 
-    await updateQuiz();
+        await updateQuiz();
 
-    return;
+        return;
 
-}
+    }
 
-const title =
-quizTitle.value.trim();
+    if(quizQuestions.length !== parseInt(totalQuestions.value)){
 
+        alert("Please complete all questions.");
 
-const number =
-questionNumber.value;
+        return;
 
+    }
 
-const categoryId =
-quizCategory.value.trim();
+    try{
 
+        saveQuizButton.disabled = true;
 
+        saveQuizButton.textContent =
+        "Saving Quiz...";
 
-const image =
-questionImage.files[0];
+        await addDoc(
 
+            collection(db,"quizzes"),
 
+            {
 
-if(
+                quizTitle:
+                quizTitle.value.trim(),
 
-!title ||
+                categoryId:
+                quizCategory.value,
 
-!number ||
+                totalQuestions:
+                parseInt(totalQuestions.value),
 
-!categoryId ||
+                questions:
+                quizQuestions,
 
-!optionA.value ||
+                createdAt:
+                serverTimestamp()
 
-!optionB.value ||
+            }
 
-!optionC.value ||
+        );
 
-!optionD.value ||
+        alert(
+        "Quiz saved successfully."
+        );
 
-!correctAnswer.value
+        /* ===========================
+        Reset Form
+        =========================== */
 
-){
+        quizTitle.value = "";
 
-alert(
-"Please complete all quiz fields."
-);
+        totalQuestions.value = "";
 
-return;
+        quizCategory.value = "";
 
-}
+        optionA.value = "";
 
+        optionB.value = "";
 
+        optionC.value = "";
 
-try{
+        optionD.value = "";
 
+        correctAnswer.value = "";
 
-saveQuizButton.disabled = true;
+        questionImage.value = "";
 
+        quizQuestions = [];
 
-saveQuizButton.textContent =
-"Saving...";
+        currentQuestion = 1;
 
+        currentQuestionLabel.textContent =
+        "Question 1";
 
+        nextQuestionButton.style.display =
+        "block";
 
-let imageUrl = "";
+        saveQuizButton.style.display =
+        "none";
 
+    }
 
+    catch(error){
 
-if(image){
+        console.error(error);
 
+        alert(
+        "Failed to save quiz."
+        );
 
-imageUrl =
-await uploadQuestionImage(image);
+    }
 
+    finally{
 
-}
+        saveQuizButton.disabled = false;
 
+        saveQuizButton.textContent =
+        "Save Quiz";
 
-
-
-await addDoc(
-
-collection(db,"quizzes"),
-
-{
-
-
-quizTitle:title,
-
-
-questionNumber:number,
-
-
-categoryId:categoryId,
-
-
-questionImage:imageUrl,
-
-
-
-options:{
-
-
-A:optionA.value.trim(),
-
-
-B:optionB.value.trim(),
-
-
-C:optionC.value.trim(),
-
-
-D:optionD.value.trim()
-
-
-},
-
-
-
-correctAnswer:
-correctAnswer.value,
-
-
-
-createdAt:
-serverTimestamp()
-
-
-}
-
-);
-
-
-
-alert(
-"Quiz question saved successfully."
-);
-
-
-
-
-quizTitle.value="";
-
-
-questionNumber.value="";
-
-
-questionImage.value="";
-
-
-optionA.value="";
-
-
-optionB.value="";
-
-
-optionC.value="";
-
-
-optionD.value="";
-
-
-correctAnswer.value="";
-
-
-quizCategory.value="";
-
-
-
-}
-
-
-
-catch(error){
-
-
-console.error(error);
-
-
-
-alert(
-"Failed to save quiz."
-);
-
-
-
-}
-
-
-
-finally{
-
-
-saveQuizButton.disabled=false;
-
-
-saveQuizButton.textContent=
-"Save Question";
-
-
-}
-
-
+    }
 
 });
-
-
 
 /* =========================================================
 END OF SECTION 12 JAVASCRIPT
 ========================================================= */
-    
 /* =========================================================
-Begginin OF SECTION 13 JAVASCRIPT
+SECTION 13
+MANAGE QUIZ JAVASCRIPT
+PART 1
 ========================================================= */
 
 /* ===========================
@@ -2851,24 +2775,17 @@ Open Manage Quiz
 
 manageQuizButton.addEventListener("click",()=>{
 
-
     manageQuizSection.classList.add("show");
-
 
     createCategorySection.classList.remove("show");
 
-
     manageCategorySection.classList.remove("show");
-
 
     createQuizSection.classList.remove("show");
 
-
     loadQuizzes();
 
-
 });
-
 
 
 /* ===========================
@@ -2877,142 +2794,146 @@ Load Quizzes
 
 async function loadQuizzes(){
 
-
     quizList.innerHTML = "";
 
+    try{
 
-    const snapshot =
-    await getDocs(
+        const snapshot =
+        await getDocs(
+            collection(db,"quizzes")
+        );
 
-        collection(
-            db,
-            "quizzes"
-        )
+        if(snapshot.empty){
 
-    );
+            quizList.innerHTML = `
+                <h3 style="
+                text-align:center;
+                color:#9CA3AF;
+                grid-column:1/-1;">
+                    No quizzes found.
+                </h3>
+            `;
 
+            return;
 
+        }
 
-    snapshot.forEach((document)=>{
+        for(const document of snapshot.docs){
 
+            const quiz =
+            document.data();
 
-        const quiz =
-        document.data();
+            let categoryName = "Unknown";
 
+            try{
 
+                const categorySnapshot =
+                await getDoc(
+                    doc(
+                        db,
+                        "categories",
+                        quiz.categoryId
+                    )
+                );
 
-        quizList.innerHTML += `
+                if(categorySnapshot.exists()){
 
+                    categoryName =
+                    categorySnapshot.data().name;
 
-        <div class="quiz-card">
-
-
-            ${
-            quiz.questionImage
-
-            ?
-
-            `<img src="${quiz.questionImage}">`
-
-            :
-
-            ""
+                }
 
             }
 
+            catch(error){
 
+                console.log(error);
 
-            <div class="quiz-card-content">
+            }
 
-<h3 class="quiz-card-title">
+            quizList.innerHTML += `
 
-${quiz.quizTitle}
+            <div class="quiz-card">
 
-</h3>
+                <div class="quiz-card-content">
 
+                    <h3 class="quiz-card-title">
 
-                <div class="quiz-option">
+                        ${quiz.quizTitle}
 
-                    A: ${quiz.options.A}
+                    </h3>
 
-                </div>
+                    <div class="quiz-option">
 
+                        Category:
+                        ${categoryName}
 
-                <div class="quiz-option">
+                    </div>
 
-                    B: ${quiz.options.B}
+                    <div class="quiz-option">
 
-                </div>
+                        Total Questions:
+                        ${quiz.totalQuestions}
 
+                    </div>
 
-                <div class="quiz-option">
+                    <div class="quiz-option">
 
-                    C: ${quiz.options.C}
+                        Saved Questions:
+                        ${quiz.questions.length}
 
-                </div>
+                    </div>
 
+                    <div class="quiz-card-buttons">
 
-                <div class="quiz-option">
+                        <button
+                        class="edit-quiz-btn"
+                        data-id="${document.id}">
 
-                    D: ${quiz.options.D}
+                            Edit
 
-                </div>
+                        </button>
 
+                        <button
+                        class="delete-quiz-btn"
+                        data-id="${document.id}">
 
+                            Delete
 
-                <div class="quiz-correct-answer">
+                        </button>
 
-                    Correct Answer: ${quiz.correctAnswer}
-
-                </div>
-
-
-
-                <div class="quiz-card-buttons">
-
-
-                    <button
-
-                    class="edit-quiz-btn"
-
-                    data-id="${document.id}">
-
-                    Edit
-
-                    </button>
-
-
-
-                    <button
-
-                    class="delete-quiz-btn"
-
-                    data-id="${document.id}">
-
-                    Delete
-
-                    </button>
-
+                    </div>
 
                 </div>
-
 
             </div>
 
+            `;
 
-        </div>
+        }
 
+    }
 
-        `;
+    catch(error){
 
+        console.error(error);
 
+        alert(
+        "Failed to load quizzes."
+        );
 
-    });
-
+    }
 
 }
 
-
+/* =========================================================
+END OF SECTION 13 PART 1
+========================================================= */
+/* =========================================================
+SECTION 13
+PART 2
+DELETE QUIZ
+========================================================= */
 
 /* ===========================
 Delete Quiz
@@ -3022,90 +2943,62 @@ document.addEventListener(
 "click",
 async(event)=>{
 
-
     if(
-
-    !event.target.classList.contains(
-        "delete-quiz-btn"
-    )
-
+        !event.target.classList.contains(
+            "delete-quiz-btn"
+        )
     ){
-
         return;
-
     }
-
-
 
     const confirmDelete =
     confirm(
         "Are you sure you want to delete this quiz?"
     );
 
-
-
     if(!confirmDelete){
-
         return;
-
     }
 
-
-
     try{
-
 
         await deleteDoc(
 
             doc(
-
                 db,
-
                 "quizzes",
-
                 event.target.dataset.id
-
             )
 
         );
-
-
 
         alert(
             "Quiz deleted successfully."
         );
 
-
-
         loadQuizzes();
-
-
 
     }
 
-
     catch(error){
 
-
         console.error(error);
-
 
         alert(
             "Failed to delete quiz."
         );
 
-
     }
-
-
 
 });
 
-
-
 /* =========================================================
-END OF SECTION 13 JAVASCRIPT
+END OF SECTION 13 PART 2
 ========================================================= */
+    
+
+    
+
 /* =========================================================
 SECTION 14
 EDIT QUIZ JAVASCRIPT
