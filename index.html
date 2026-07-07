@@ -2173,81 +2173,56 @@ Firebase Category Loader
 =========================== */
 
 
-async function loadCategoriesFromFirebase(){
-
-
-    try{
-
-
-        const snapshot =
-        await getDocs(
-            collection(
-                db,
-                "categories"
-            )
-        );
-
-
-
-        categoryContainer.innerHTML = "";
-
-
-
-        snapshot.forEach(function(doc){
-
-
-            const data =
-            doc.data();
-
-
-
-            categoryContainer.innerHTML += `
-
-            <div class="category-card"
-                 data-category="${data.slug}">
-
-
-                <img src="${data.banner}"
-                     alt="${data.name}">
-
-
-            </div>
-
-
-            `;
-
-
-        });
-
-
-
-        activateCategoryCards();
-
-
-
-    }
-    catch(error){
-
-
-        console.log(
-            "Category Error:",
-            error
-        );
-
-
-    }
-
-
-}
 
 
 
 /* ===========================
 Start Loading Categories
 =========================== */
+      
+async function loadCategoriesFromFirebase(){
 
+    try{
 
-loadCategoriesFromFirebase();
+        const snapshot = await getDocs(
+            collection(db,"categories")
+        );
+
+        categoryContainer.innerHTML = "";
+
+        snapshot.forEach(function(doc){
+
+            const data = doc.data();
+
+            // Only show Quiz Category items
+            if(data.location !== "quizCategory"){
+                return;
+            }
+
+            categoryContainer.innerHTML += `
+                <div class="category-card"
+                     data-category="${data.name}">
+
+                    <img src="${data.banner}"
+                         alt="${data.name}">
+
+                </div>
+            `;
+
+        });
+
+        activateCategoryCards();
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+    }
+
+}
+
 
 
 
