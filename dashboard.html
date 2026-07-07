@@ -3163,6 +3163,10 @@ async(event)=>{
         questionNumber.value =
         quiz.questionNumber || "";
 
+        /* Load categories first */
+        await loadQuizCategories();
+
+        /* Then select the saved category */
         quizCategory.value =
         quiz.categoryId || "";
 
@@ -3192,9 +3196,6 @@ async(event)=>{
         "save-quiz-update"
         );
 
-        await loadQuizCategories();
-
-
         window.scrollTo({
 
             top:0,
@@ -3220,6 +3221,7 @@ async(event)=>{
 /* =========================================================
 CONTINUE IN NEXT PART
 ========================================================= */
+
 /* =========================================================
 SECTION 14 PART 2
 UPDATE QUIZ
@@ -3378,6 +3380,7 @@ async function updateQuiz(){
 /* =========================================================
 END OF SECTION 14 PART 2
 ========================================================= */
+
 
 
     
