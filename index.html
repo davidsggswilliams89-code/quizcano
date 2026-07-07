@@ -1346,7 +1346,44 @@ TRENDING QUIZZES
 <!-- =========================================================
 END OF SECTION 04
 ========================================================= -->
+<!-- =========================================================
+SECTION 05
+FEATURED QUIZ GRID HTML
+========================================================= -->
 
+
+<section class="featured-quiz-section">
+
+
+<div class="featured-quiz-header">
+
+
+<h2>
+⭐ Featured Quizzes
+</h2>
+
+
+<a href="#">
+View All
+</a>
+
+
+</div>
+
+
+
+<div class="quiz-grid" id="featuredQuizGrid">
+
+
+</div>
+
+
+</section>
+
+
+<!-- =========================================================
+END OF SECTION 05 HTML
+========================================================= -->
 
 
 <script type="module">  
@@ -1703,7 +1740,128 @@ loadCategoriesFromFirebase();
 /* =========================================================
 END OF SECTION 03 JAVASCRIPT
 ========================================================= */
+/* =========================================================
+SECTION 05
+FEATURED QUIZ GRID JAVASCRIPT
+FIREBASE READY VERSION
+========================================================= */
 
+
+/* ===========================
+Quiz Container
+=========================== */
+
+const featuredQuizGrid =
+document.getElementById(
+    "featuredQuizGrid"
+);
+
+
+/* ===========================
+Load Featured Quizzes
+=========================== */
+
+
+async function loadFeaturedQuizzes(){
+
+
+try{
+
+
+const snapshot =
+await getDocs(
+collection(
+db,
+"featuredQuizzes"
+)
+);
+
+
+
+featuredQuizGrid.innerHTML = "";
+
+
+
+snapshot.forEach(function(doc){
+
+
+const data =
+doc.data();
+
+
+
+featuredQuizGrid.innerHTML += `
+
+
+<div class="featured-quiz-card"
+onclick="window.location.href='quiz.html?category=${data.slug}'">
+
+
+<img src="${data.image}"
+alt="${data.title}">
+
+
+<div class="featured-quiz-info">
+
+
+<h3>
+${data.title}
+</h3>
+
+
+<span>
+👥 ${data.players} Players
+</span>
+
+
+
+<button class="featured-play">
+PLAY
+</button>
+
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+});
+
+
+}
+catch(error){
+
+
+console.log(
+"Featured Quiz Error:",
+error
+);
+
+
+}
+
+
+}
+
+
+
+/* ===========================
+Start Section 05
+=========================== */
+
+
+loadFeaturedQuizzes();
+
+
+
+/* =========================================================
+END OF SECTION 05 JAVASCRIPT
+========================================================= */
+      
 /* =========================================================
 HIDDEN ADMIN LOGIN
 QUIZCANO LOGO (7 CLICKS)
