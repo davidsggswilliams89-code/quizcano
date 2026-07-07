@@ -260,7 +260,141 @@ id="quizContainer">
 <!-- =========================================================
 END OF SECTION 01 HTML
 ========================================================= -->
+<script type="module">
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+query,
+where,
+getDocs
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+/* =========================================================
+SECTION 02
+FIREBASE CONFIG
+========================================================= */
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyAnMxqDpdzgKEW1vkRSrLysT-0nu_vEf8Q",
+
+authDomain: "quizcano.firebaseapp.com",
+
+projectId: "quizcano",
+
+storageBucket: "quizcano.firebasestorage.app",
+
+messagingSenderId: "834135771491",
+
+appId: "1:834135771491:web:c9998944df72d14a7b2b56"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+/* =========================================================
+SECTION 02
+GET CATEGORY ID
+========================================================= */
+
+const params = new URLSearchParams(window.location.search);
+
+const categoryId = params.get("categoryId");
+
+const categoryName = params.get("name");
+
+document.getElementById("categoryTitle").textContent =
+categoryName || "Quizzes";
+
+/* =========================================================
+SECTION 02
+LOAD QUIZZES
+========================================================= */
+
+async function loadQuizzes(){
+
+const quizContainer =
+document.getElementById("quizContainer");
+
+quizContainer.innerHTML = "";
+
+const q = query(
+collection(db,"quizzes"),
+where("categoryId","==",categoryId)
+);
+
+const snapshot = await getDocs(q);
+
+const quizMap = {};
+
+snapshot.forEach(doc=>{
+
+const data = doc.data();
+
+if(!quizMap[data.quizTitle]){
+
+quizMap[data.quizTitle]={
+
+title:data.quizTitle,
+
+image:data.questionImage,
+
+total:0
+
+};
+
+}
+
+quizMap[data.quizTitle].total++;
+
+});
+
+Object.values(quizMap).forEach(quiz=>{
+
+quizContainer.innerHTML += `
+
+<div class="quiz-card"
+onclick="window.location.href='quiz.html?categoryId=${categoryId}&quizTitle=${encodeURIComponent(quiz.title)}'">
+
+<img
+class="quiz-image"
+src="${quiz.image}"
+alt="${quiz.title}">
+
+<div class="quiz-info">
+
+<h3>${quiz.title}</h3>
+
+<p>${quiz.total} Questions</p>
+
+</div>
+
+<button class="play-btn">
+
+PLAY
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+loadQuizzes();
+
+/* =========================================================
+END OF SECTION 02
+========================================================= */
+
+</script>
 </body>
 
 </html>
