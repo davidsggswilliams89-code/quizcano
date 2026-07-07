@@ -1921,12 +1921,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     showSlide(0);
 
-    if (categoryCards.length > 0) {
-        categoryCards[0].classList.add("active");
-        loadCategory(categoryCards[0].getAttribute("data-category"));
-    }
+    const categoryCards =
+document.querySelectorAll(".category-card");
 
-});
+if (categoryCards.length > 0) {
+
+    categoryCards[0].classList.add("active");
+
+    loadCategory(
+        categoryCards[0].getAttribute("data-category")
+    );
+
+}
 
 </script>
  </body>  
