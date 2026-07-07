@@ -2042,7 +2042,6 @@ QUIZ CATEGORY SCROLLER JAVASCRIPT
 FIREBASE READY VERSION
 ========================================================= */
 
-
 /* ===========================
 Category Container
 =========================== */
@@ -2051,58 +2050,18 @@ const categoryContainer =
 document.getElementById("categoryScroll");
 
 
-
-/* ===========================
-Load Category Function
-=========================== */
-
-function loadCategory(category){
-
-    console.log(
-        "Selected Category:",
-        category
-    );
-
-
-    /*
-    SECTION 04 WILL USE THIS VALUE
-
-    Example:
-
-    general
-    sports
-    movies
-    science
-    history
-    music
-    technology
-    animals
-    geography
-    football
-
-    */
-
-}
-
-
-
 /* ===========================
 Activate Category Cards
 =========================== */
 
 function activateCategoryCards(){
 
-
     const categoryCards =
     document.querySelectorAll(".category-card");
 
-
-
     categoryCards.forEach(function(card){
 
-
         card.addEventListener("click",function(){
-
 
             categoryCards.forEach(function(item){
 
@@ -2110,71 +2069,39 @@ function activateCategoryCards(){
 
             });
 
-
-
             this.classList.add("active");
 
+            const categoryId =
+            this.getAttribute("data-id");
 
+            const categoryName =
+            this.getAttribute("data-name");
 
-            const selectedCategory =
-            this.getAttribute(
-                "data-category"
-            );
-
-
-
-            loadCategory(
-                selectedCategory
-            );
-
+            window.location.href =
+            `category.html?categoryId=${categoryId}&name=${encodeURIComponent(categoryName)}`;
 
         });
 
-
     });
-
-
 
     /* ===========================
     Default Active Category
     =========================== */
 
-
     if(categoryCards.length > 0){
-
 
         categoryCards[0]
         .classList.add("active");
 
-
-
-        loadCategory(
-
-            categoryCards[0]
-            .getAttribute("data-category")
-
-        );
-
-
     }
 
-
 }
-
 
 
 /* ===========================
 Firebase Category Loader
 =========================== */
 
-
-
-
-
-/* ===========================
-Start Loading Categories
-=========================== */
-      
 async function loadCategoriesFromFirebase(){
 
     try{
@@ -2195,13 +2122,16 @@ async function loadCategoriesFromFirebase(){
             }
 
             categoryContainer.innerHTML += `
+
                 <div class="category-card"
-                     data-category="${data.name}">
+                     data-id="${doc.id}"
+                     data-name="${data.name}">
 
                     <img src="${data.banner}"
                          alt="${data.name}">
 
                 </div>
+
             `;
 
         });
@@ -2212,7 +2142,10 @@ async function loadCategoriesFromFirebase(){
 
     catch(error){
 
-        console.log(error);
+        console.log(
+            "Category Error:",
+            error
+        );
 
     }
 
@@ -2223,7 +2156,7 @@ Start Loading
 =========================== */
 
 loadCategoriesFromFirebase();
-      
+
 /* =========================================================
 END OF SECTION 03 JAVASCRIPT
 ========================================================= */
