@@ -1211,7 +1211,7 @@ function loadCurrentQuestion(){
 
     }
 
-    /* Update Counter */
+    /* Question Counter */
 
     currentQuestion.textContent =
     currentQuizQuestion + 1;
@@ -1219,7 +1219,7 @@ function loadCurrentQuestion(){
     totalQuestions.textContent =
     quizQuestions.length;
 
-    /* Question Number */
+    /* Question Label */
 
     const questionLabel =
     document.querySelector(".question-label");
@@ -1232,30 +1232,34 @@ function loadCurrentQuestion(){
 
     }
 
+    /* Question Image */
+
+    updateQuestionImage(
+        question.questionImage
+    );
+
     /* Question Text */
 
     questionText.textContent =
     question.questionText || "";
 
-    /* Question Image */
-
-    updateQuestionImage(
-        question.questionImage || ""
-    );
-
     /* Options */
 
-    optionA.textContent =
-    question.optionA || "A";
+    if(question.options){
 
-    optionB.textContent =
-    question.optionB || "B";
+        optionA.textContent =
+        question.options.A || "A";
 
-    optionC.textContent =
-    question.optionC || "C";
+        optionB.textContent =
+        question.options.B || "B";
 
-    optionD.textContent =
-    question.optionD || "D";
+        optionC.textContent =
+        question.options.C || "C";
+
+        optionD.textContent =
+        question.options.D || "D";
+
+    }
 
     /* Reset Answers */
 
@@ -1272,7 +1276,7 @@ function loadCurrentQuestion(){
     startCountdown();
 
     console.log(
-        "Question Loaded:",
+        "Loaded Question",
         currentQuizQuestion + 1
     );
 
