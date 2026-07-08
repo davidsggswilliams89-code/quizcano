@@ -265,11 +265,11 @@ END OF SECTION 01 HTML
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
 import {
-getFirestore,
-collection,
-query,
-where,
-getDocs
+    getFirestore,
+    collection,
+    query,
+    where,
+    getDocs
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 /* =========================================================
@@ -279,17 +279,17 @@ FIREBASE CONFIG
 
 const firebaseConfig = {
 
-apiKey: "AIzaSyAnMxqDpdzgKEW1vkRSrLysT-0nu_vEf8Q",
+    apiKey: "AIzaSyAnMxqDpdzgKEW1vkRSrLysT-0nu_vEf8Q",
 
-authDomain: "quizcano.firebaseapp.com",
+    authDomain: "quizcano.firebaseapp.com",
 
-projectId: "quizcano",
+    projectId: "quizcano",
 
-storageBucket: "quizcano.firebasestorage.app",
+    storageBucket: "quizcano.firebasestorage.app",
 
-messagingSenderId: "834135771491",
+    messagingSenderId: "834135771491",
 
-appId: "1:834135771491:web:c9998944df72d14a7b2b56"
+    appId: "1:834135771491:web:c9998944df72d14a7b2b56"
 
 };
 
@@ -316,68 +316,88 @@ LOAD QUIZZES
 
 async function loadQuizzes(){
 
-const quizContainer =
-document.getElementById("quizContainer");
+    const quizContainer =
+    document.getElementById("quizContainer");
 
-quizContainer.innerHTML = "";
+    quizContainer.innerHTML = "";
 
-const q = query(
-collection(db,"quizzes"),
-where("categoryId","==",categoryId)
-);
+    try{
 
-const snapshot = await getDocs(q);
+        const q = query(
+            collection(db,"quizzes"),
+            where("categoryId","==",categoryId)
+        );
 
-if(snapshot.empty){
+        const snapshot = await getDocs(q);
 
-quizContainer.innerHTML =
-"<p style='text-align:center;padding:30px;'>No quizzes found.</p>";
+        if(snapshot.empty){
 
-return;
+            quizContainer.innerHTML =
+            "<p style='text-align:center;padding:30px;'>No quizzes found.</p>";
 
-}
+            return;
 
-snapshot.forEach(doc=>{
+        }
 
-const data = doc.data();
+        snapshot.forEach((doc)=>{
 
-quizContainer.innerHTML += `
+            const data = doc.data();
 
-<div class="quiz-card"
-onclick="window.location.href='quiz.html?id=${doc.id}'">
+            const image =
+            data.questions &&
+            data.questions.length > 0
+            ? data.questions[0].questionImage
+            : "question-placeholder.jpg";
 
-<img
-class="quiz-image"
-src="${data.questionImage}"
-alt="${data.quizTitle}">
+            const total =
+            data.questions
+            ? data.questions.length
+            : 0;
 
-<div class="quiz-info">
+            quizContainer.innerHTML += `
 
-<h3>${data.quizTitle}</h3>
+            <div class="quiz-card"
+            onclick="window.location.href='quiz.html?id=${doc.id}'">
 
-<p>${data.totalQuestions || data.questions?.length || 0} Questions</p>
+                <img
+                class="quiz-image"
+                src="${image}"
+                alt="${data.quizTitle}">
 
-</div>
+                <div class="quiz-info">
 
-<button class="play-btn">
+                    <h3>${data.quizTitle}</h3>
 
-PLAY
+                    <p>${total} Questions</p>
 
-</button>
+                </div>
 
-</div>
+                <button class="play-btn">
 
-`;
+                    PLAY
 
-});
+                </button>
+
+            </div>
+
+            `;
+
+        });
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+        quizContainer.innerHTML =
+        "<p style='text-align:center;padding:30px;'>Failed to load quizzes.</p>";
+
+    }
 
 }
 
 loadQuizzes();
-
-/* =========================================================
-END OF SECTION 02
-========================================================= */
 
 </script>
 
