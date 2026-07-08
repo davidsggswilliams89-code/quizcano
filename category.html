@@ -260,6 +260,9 @@ id="quizContainer">
 <!-- =========================================================
 END OF SECTION 01 HTML
 ========================================================= -->
+
+
+    
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
@@ -357,7 +360,7 @@ async function loadQuizzes(){
             quizContainer.innerHTML += `
 
             <div class="quiz-card"
-            onclick="window.location.href='quiz.html?id=${doc.id}'">
+            onclick="window.location.href='quiz.html?quizTitle=${encodeURIComponent(data.quizTitle)}'">
 
                 <img
                 class="quiz-image"
