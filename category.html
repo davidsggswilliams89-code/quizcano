@@ -298,8 +298,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 /* =========================================================
-SECTION 02
-GET CATEGORY ID
+GET CATEGORY
 ========================================================= */
 
 const params = new URLSearchParams(window.location.search);
@@ -312,7 +311,6 @@ document.getElementById("categoryTitle").textContent =
 categoryName || "Quizzes";
 
 /* =========================================================
-SECTION 02
 LOAD QUIZZES
 ========================================================= */
 
@@ -330,47 +328,34 @@ where("categoryId","==",categoryId)
 
 const snapshot = await getDocs(q);
 
-const quizMap = {};
+if(snapshot.empty){
+
+quizContainer.innerHTML =
+"<p style='text-align:center;padding:30px;'>No quizzes found.</p>";
+
+return;
+
+}
 
 snapshot.forEach(doc=>{
 
 const data = doc.data();
 
-if(!quizMap[data.quizTitle]){
-
-quizMap[data.quizTitle]={
-
-title:data.quizTitle,
-
-image:data.questionImage,
-
-total:0
-
-};
-
-}
-
-quizMap[data.quizTitle].total++;
-
-});
-
-Object.values(quizMap).forEach(quiz=>{
-
 quizContainer.innerHTML += `
 
 <div class="quiz-card"
-onclick="window.location.href='quiz.html?id=${categoryId}&quizTitle=${encodeURIComponent(quiz.title)}'">
+onclick="window.location.href='quiz.html?id=${doc.id}'">
 
 <img
 class="quiz-image"
-src="${quiz.image}"
-alt="${quiz.title}">
+src="${data.questionImage}"
+alt="${data.quizTitle}">
 
 <div class="quiz-info">
 
-<h3>${quiz.title}</h3>
+<h3>${data.quizTitle}</h3>
 
-<p>${quiz.total} Questions</p>
+<p>${data.totalQuestions || data.questions?.length || 0} Questions</p>
 
 </div>
 
@@ -395,6 +380,8 @@ END OF SECTION 02
 ========================================================= */
 
 </script>
+
+  
 </body>
 
 </html>
