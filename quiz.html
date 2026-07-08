@@ -1043,6 +1043,7 @@ getFirestore(app);
 /* =========================================================
 END OF SECTION 12
 ========================================================= */
+
 /* =========================================================
 SECTION 13
 LOAD SELECTED QUIZ
@@ -1063,7 +1064,6 @@ let quizQuestions = [];
 
 let selectedQuiz = null;
 
-
 /* ===========================
 Get Quiz ID From URL
 Example:
@@ -1075,7 +1075,6 @@ new URLSearchParams(window.location.search);
 
 const quizId =
 urlParams.get("id");
-
 
 /* ===========================
 Load Selected Quiz
@@ -1116,10 +1115,7 @@ async function loadQuizQuestions(){
         snapshot.data();
 
         quizQuestions =
-        selectedQuiz.questions;
-
-        totalQuestions.textContent =
-        selectedQuiz.totalQuestions;
+        selectedQuiz.questions || [];
 
         currentQuizQuestion = 1;
 
@@ -1147,7 +1143,6 @@ async function loadQuizQuestions(){
 /* =========================================================
 END OF SECTION 13 PART 1
 ========================================================= */
-
 /* =========================================================
 SECTION 13
 PART 2
@@ -1196,6 +1191,7 @@ function loadCurrentQuestion(){
     /* Restart Timer */
 
     startCountdown();
+
     console.log(
         "Question Loaded:",
         question.questionNumber
@@ -1219,7 +1215,6 @@ Next Button Element
 const nextQuestionBtn =
 document.getElementById("nextQuestionBtn");
 
-
 /* ===========================
 Next Question
 =========================== */
@@ -1238,14 +1233,10 @@ function(){
 
     currentQuizQuestion++;
 
-    /* ===========================
-    Quiz Finished
-    =========================== */
+    /* Quiz Finished */
 
-    if(
-        currentQuizQuestion >
-        quizQuestions.length
-    ){
+    if(currentQuizQuestion >
+       quizQuestions.length){
 
         alert("Quiz Completed!");
 
@@ -1256,9 +1247,7 @@ function(){
 
     }
 
-    /* ===========================
-    Load Next Question
-    =========================== */
+    /* Load Next Question */
 
     loadCurrentQuestion();
 
@@ -1272,10 +1261,8 @@ function autoNextQuestion(){
 
     currentQuizQuestion++;
 
-    if(
-        currentQuizQuestion >
-        quizQuestions.length
-    ){
+    if(currentQuizQuestion >
+       quizQuestions.length){
 
         alert("Quiz Completed!");
 
@@ -1290,11 +1277,15 @@ function autoNextQuestion(){
 
 }
 
+/* ===========================
+Start Loading Quiz
+=========================== */
+
+loadQuizQuestions();
+
 /* =========================================================
 END OF SECTION 13 PART 3
-========================================================= */
-
-   
+========================================================= */   
     
 /* =========================================================
 SECTION 01
