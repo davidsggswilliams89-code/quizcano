@@ -1057,7 +1057,6 @@ getFirestore(app);
 /* =========================================================
 END OF SECTION 12
 ========================================================= */
-
 /* =========================================================
 SECTION 13
 LOAD SELECTED QUIZ
@@ -1074,14 +1073,14 @@ from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 Quiz Variables
 =========================== */
 
-let quizQuestions = [];
-
 let selectedQuiz = null;
 
+let quizQuestions = [];
+
+let currentQuizQuestion = 0;
+
 /* ===========================
-Get Quiz ID From URL
-Example:
-quiz.html?id=abc123
+Get Quiz ID
 =========================== */
 
 const urlParams =
@@ -1091,7 +1090,29 @@ const quizId =
 urlParams.get("id");
 
 /* ===========================
-Load Selected Quiz
+Quiz Elements
+=========================== */
+
+const questionText =
+document.getElementById("questionText");
+
+const questionImage =
+document.getElementById("questionImage");
+
+const optionA =
+document.getElementById("optionA");
+
+const optionB =
+document.getElementById("optionB");
+
+const optionC =
+document.getElementById("optionC");
+
+const optionD =
+document.getElementById("optionD");
+
+/* ===========================
+Load Quiz
 =========================== */
 
 async function loadQuizQuestions(){
@@ -1100,7 +1121,7 @@ async function loadQuizQuestions(){
 
         if(!quizId){
 
-            alert("Quiz not found.");
+            alert("Quiz ID not found.");
 
             return;
 
@@ -1108,13 +1129,11 @@ async function loadQuizQuestions(){
 
         const snapshot =
         await getDoc(
-
             doc(
                 db,
                 "quizzes",
                 quizId
             )
-
         );
 
         if(!snapshot.exists()){
@@ -1131,13 +1150,23 @@ async function loadQuizQuestions(){
         quizQuestions =
         selectedQuiz.questions || [];
 
-        currentQuizQuestion = 1;
+        if(quizQuestions.length === 0){
+
+            alert("This quiz has no questions.");
+
+            return;
+
+        }
+
+        totalQuestions.textContent =
+        quizQuestions.length;
+
+        currentQuizQuestion = 0;
 
         loadCurrentQuestion();
 
         console.log(
-            "Quiz Loaded:",
-            selectedQuiz.quizTitle
+            "Quiz Loaded Successfully"
         );
 
     }
@@ -1170,7 +1199,7 @@ Load Current Question
 function loadCurrentQuestion(){
 
     const question =
-    quizQuestions[currentQuizQuestion - 1];
+    quizQuestions[currentQuizQuestion];
 
     if(!question){
 
@@ -1181,18 +1210,50 @@ function loadCurrentQuestion(){
     /* Update Counter */
 
     currentQuestion.textContent =
-    currentQuizQuestion;
+    currentQuizQuestion + 1;
 
     totalQuestions.textContent =
     quizQuestions.length;
 
-    /* Load Question Image */
+    /* Question Number */
+
+    const questionLabel =
+    document.querySelector(".question-label");
+
+    if(questionLabel){
+
+        questionLabel.textContent =
+        "Question " +
+        (currentQuizQuestion + 1);
+
+    }
+
+    /* Question Text */
+
+    questionText.textContent =
+    question.questionText || "";
+
+    /* Question Image */
 
     updateQuestionImage(
-        question.questionImage
+        question.questionImage || ""
     );
 
-    /* Reset Answer Selection */
+    /* Options */
+
+    optionA.textContent =
+    question.optionA || "A";
+
+    optionB.textContent =
+    question.optionB || "B";
+
+    optionC.textContent =
+    question.optionC || "C";
+
+    optionD.textContent =
+    question.optionD || "D";
+
+    /* Reset Answers */
 
     resetAnswers();
 
@@ -1208,7 +1269,7 @@ function loadCurrentQuestion(){
 
     console.log(
         "Question Loaded:",
-        question.questionNumber
+        currentQuizQuestion + 1
     );
 
 }
@@ -1230,7 +1291,7 @@ const nextQuestionBtn =
 document.getElementById("nextQuestionBtn");
 
 /* ===========================
-Next Question
+Next Button
 =========================== */
 
 nextQuestionBtn.addEventListener(
@@ -1249,8 +1310,10 @@ function(){
 
     /* Quiz Finished */
 
-    if(currentQuizQuestion >
-       quizQuestions.length){
+    if(
+        currentQuizQuestion >=
+        quizQuestions.length
+    ){
 
         alert("Quiz Completed!");
 
@@ -1268,15 +1331,17 @@ function(){
 });
 
 /* ===========================
-Timer Auto Next
+Auto Next
 =========================== */
 
 function autoNextQuestion(){
 
     currentQuizQuestion++;
 
-    if(currentQuizQuestion >
-       quizQuestions.length){
+    if(
+        currentQuizQuestion >=
+        quizQuestions.length
+    ){
 
         alert("Quiz Completed!");
 
@@ -1292,6 +1357,46 @@ function autoNextQuestion(){
 }
 
 /* ===========================
+Answer Selection
+=========================== */
+
+answerCircles.forEach(function(circle){
+
+    circle.addEventListener("click",function(){
+
+        if(selectedAnswer !== null){
+
+            return;
+
+        }
+
+        selectedAnswer =
+        this.dataset.option;
+
+        answerTime =
+        20 - countdownTime;
+
+        answerCircles.forEach(function(btn){
+
+            btn.classList.remove("selected");
+
+        });
+
+        this.classList.add("selected");
+
+        stopCountdown();
+
+        disableAnswers();
+
+        nextQuestionBtn.disabled = false;
+
+        nextQuestionBtn.classList.add("enabled");
+
+    });
+
+});
+
+/* ===========================
 Start Loading Quiz
 =========================== */
 
@@ -1299,7 +1404,7 @@ loadQuizQuestions();
 
 /* =========================================================
 END OF SECTION 13 PART 3
-========================================================= */   
+========================================================= */
     
 /* =========================================================
 SECTION 01
