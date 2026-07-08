@@ -1059,13 +1059,15 @@ END OF SECTION 12
 ========================================================= */
 /* =========================================================
 SECTION 13
-LOAD SELECTED QUIZ
+LOAD QUIZ QUESTIONS
 PART 1
 ========================================================= */
 
 import {
-    doc,
-    getDoc
+    query,
+    where,
+    orderBy,
+    getDocs
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
@@ -1073,21 +1075,21 @@ from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 Quiz Variables
 =========================== */
 
-let selectedQuiz = null;
-
 let quizQuestions = [];
 
 let currentQuizQuestion = 0;
 
+let selectedAnswer = null;
+
 /* ===========================
-Get Quiz ID
+Get Quiz Title
 =========================== */
 
 const urlParams =
 new URLSearchParams(window.location.search);
 
-const quizId =
-urlParams.get("id");
+const quizTitle =
+urlParams.get("quizTitle");
 
 /* ===========================
 Quiz Elements
@@ -1112,31 +1114,14 @@ const optionD =
 document.getElementById("optionD");
 
 /* ===========================
-Load Quiz
+Load Quiz Questions
 =========================== */
 
 async function loadQuizQuestions(){
 
     try{
 
-        if(!quizId){
-
-            alert("Quiz ID not found.");
-
-            return;
-
-        }
-
-        const snapshot =
-        await getDoc(
-            doc(
-                db,
-                "quizzes",
-                quizId
-            )
-        );
-
-        if(!snapshot.exists()){
+        if(!quizTitle){
 
             alert("Quiz not found.");
 
@@ -1144,29 +1129,48 @@ async function loadQuizQuestions(){
 
         }
 
-        selectedQuiz =
-        snapshot.data();
+        const q =
+        query(
+            collection(db,"quizzes"),
+            where(
+                "quizTitle",
+                "==",
+                quizTitle
+            ),
+            orderBy(
+                "questionNumber"
+            )
+        );
 
-        quizQuestions =
-        selectedQuiz.questions || [];
+        const snapshot =
+        await getDocs(q);
 
-        if(quizQuestions.length === 0){
+        if(snapshot.empty){
 
-            alert("This quiz has no questions.");
+            alert("No questions found.");
 
             return;
 
         }
 
-        totalQuestions.textContent =
-        quizQuestions.length;
+        quizQuestions = [];
+
+        snapshot.forEach(function(doc){
+
+            quizQuestions.push(doc.data());
+
+        });
 
         currentQuizQuestion = 0;
+
+        totalQuestions.textContent =
+        quizQuestions.length;
 
         loadCurrentQuestion();
 
         console.log(
-            "Quiz Loaded Successfully"
+            "Questions Loaded:",
+            quizQuestions.length
         );
 
     }
