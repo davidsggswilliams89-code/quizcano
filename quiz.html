@@ -1039,16 +1039,10 @@ initializeApp(firebaseConfig);
 const db =
 getFirestore(app);
 
-/* ===========================
-Quiz Questions Array
-=========================== */
-
-let quizQuestions = [];
 
 /* =========================================================
 END OF SECTION 12
 ========================================================= */
-
 /* =========================================================
 SECTION 13
 LOAD SELECTED QUIZ
@@ -1153,6 +1147,7 @@ async function loadQuizQuestions(){
 /* =========================================================
 END OF SECTION 13 PART 1
 ========================================================= */
+
 /* =========================================================
 SECTION 13
 PART 2
@@ -1499,18 +1494,6 @@ function autoNextQuestion(){
 }
 
 /* ===========================
-Reset Timer
-=========================== */
-
-function resetCountdown(){
-
-    timerText.classList.remove("timer-warning");
-
-    startCountdown();
-
-}
-
-/* ===========================
 Start First Question
 =========================== */
 
@@ -1743,13 +1726,6 @@ END OF SECTION 04 JAVASCRIPT
 SECTION 05
 QUIZ NEXT BUTTON JAVASCRIPT
 ========================================================= */
-
-/* ===========================
-Next Button Element
-=========================== */
-
-const nextQuestionBtn =
-document.getElementById("nextQuestionBtn");
 
 /* ===========================
 Next Question
