@@ -1476,10 +1476,19 @@ Auto Next Question
 
 function autoNextQuestion(){
 
-    console.log("Time Out");
+    currentQuizQuestion++;
 
-    /* Section 05 will control
-       loading the next question */
+    if(currentQuizQuestion > quizQuestions.length){
+
+        alert("Quiz Completed!");
+
+        window.location.href = "offer.html";
+
+        return;
+
+    }
+
+    loadCurrentQuestion();
 
 }
 
