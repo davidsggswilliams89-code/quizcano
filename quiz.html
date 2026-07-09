@@ -5,197 +5,693 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
+<meta
+name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Quiz Test</title>
+<title>QUIZCANO - Quiz</title>
 
+</head>
 <style>
+/* =========================================================
+SECTION 01
+QUIZ PAGE CSS
+========================================================= */
+
+/* ===========================
+Reset
+=========================== */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
 
 body{
 
-background:#111827;
+    background:#0B1120;
 
-color:white;
+    font-family:Arial,Helvetica,sans-serif;
 
-font-family:Arial,sans-serif;
-
-padding:20px;
+    color:#FFFFFF;
 
 }
 
-img{
+/* ===========================
+Quiz Header
+=========================== */
 
-width:300px;
+.quiz-header{
 
-max-width:100%;
+    width:100%;
 
-border-radius:10px;
+    height:82px;
 
-margin-top:20px;
+    background:#0B1120;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:10px 15px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
 
 }
 
-h2{
+/* ===========================
+Back Button
+=========================== */
 
-color:#F59E0B;
+.back-button{
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#1A2138;
+
+    color:#FFFFFF;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.25s;
 
 }
 
+.back-button:hover{
+
+    background:#232C48;
+
+}
+
+.back-button:active{
+
+    transform:scale(.95);
+
+}
+
+/* ===========================
+Logo Area
+=========================== */
+
+.logo-area{
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+/* ===========================
+Logo
+=========================== */
+
+.logo{
+
+    font-size:32px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    line-height:1;
+
+}
+
+.logo span:first-child{
+
+    color:#FFFFFF;
+
+}
+
+.logo span:last-child{
+
+    color:#F59E0B;
+
+}
+
+/* ===========================
+Tagline
+=========================== */
+
+.logo-area p{
+
+    margin-top:4px;
+
+    font-size:11px;
+
+    color:#8B93A7;
+
+}
+
+/* ===========================
+Question Counter
+=========================== */
+
+.question-counter{
+
+    min-width:58px;
+
+    height:48px;
+
+    padding:0 12px;
+
+    border-radius:24px;
+
+    background:#1A2138;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:4px;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Progress Section
+=========================== */
+
+.progress-section{
+
+    width:100%;
+
+    padding:12px 15px 20px;
+
+}
+
+/* ===========================
+Progress Header
+=========================== */
+
+.progress-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:12px;
+
+}
+
+.progress-header h2{
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Timer
+=========================== */
+
+.timer{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:4px;
+
+    padding:8px 14px;
+
+    background:#1A2138;
+
+    border-radius:50px;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    color:#F59E0B;
+
+}
+
+#timer{
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Progress Bar
+=========================== */
+
+.progress-bar{
+
+    width:100%;
+
+    height:12px;
+
+    background:#1A2138;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+}
+
+#progressFill{
+
+    width:5%;
+
+    height:100%;
+
+    background:linear-gradient(
+
+        90deg,
+
+        #F59E0B,
+
+        #FFD166
+
+    );
+
+    border-radius:50px;
+
+}
+
+/* ===========================
+Question Section
+=========================== */
+
+.question-section{
+
+    width:100%;
+
+    padding:0 15px 10px;
+
+}
+
+/* ===========================
+Question Card
+=========================== */
+
+.question-card{
+
+    width:100%;
+
+    background:#111827;
+
+    border-radius:5px;
+
+    overflow:hidden;
+
+}
+
+/* ===========================
+Question Title
+=========================== */
+
+.question-title{
+
+    padding:14px 18px;
+
+    font-size:16px;
+
+    font-weight:800;
+
+    background:#1A2138;
+
+}
+
+/* ===========================
+Question Image
+=========================== */
+
+#questionImage{
+
+    width:100%;
+
+    height:320px;
+
+    object-fit:cover;
+
+    display:block;
+
+    background:#0F172A;
+
+}
+
+/* ===========================
+Question Text
+=========================== */
+
+#questionText{
+
+    padding:20px;
+
+    font-size:28px;
+
+    font-weight:800;
+
+    color:#FFFFFF;
+
+}
+
+/* ===========================
+Answer Section
+=========================== */
+
+.answer-section{
+
+    width:70%;
+
+    margin:0 auto;
+
+    padding:8px 0 20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+}
+
+/* ===========================
+Answer Button
+=========================== */
+
+.answer-button{
+
+    width:52px;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#1A2138;
+
+    color:#FFFFFF;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.answer-button:hover{
+
+    background:#232C48;
+
+}
+
+/* ===========================
+Next Section
+=========================== */
+
+.next-section{
+
+    width:100%;
+
+    padding:0 15px 20px;
+
+}
+
+/* ===========================
+Next Button
+=========================== */
+
+#nextButton{
+
+    width:100%;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#F59E0B;
+
+    color:#FFFFFF;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+}
+
+
+    
 </style>
-
-</head>
-
 <body>
 
-<h2>Quiz Test Page</h2>
+<!-- =========================================================
+SECTION 01
+QUIZ PAGE HTML
+========================================================= -->
 
-<p id="status">
+<!-- ===========================
+Quiz Header
+=========================== -->
 
-Loading...
+<header
+class="quiz-header">
 
-</p>
+    <!-- Back Button -->
 
-<h3 id="quizTitle"></h3>
+    <button
+    id="backButton"
+    class="back-button">
 
-<p id="questionCount"></p>
+        ←
 
-<p id="questionNumber"></p>
+    </button>
 
-<img id="questionImage">
+    <!-- Logo -->
 
-<script type="module">
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+    <div
+    class="logo-area">
 
-import {
-    getFirestore,
-    doc,
-    getDoc
-}
-from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+        <h1
+        class="logo">
 
-/* =========================================================
-FIREBASE CONFIG
-========================================================= */
+            <span>QUIZ</span><span>CANO</span>
 
-const firebaseConfig = {
+        </h1>
 
-    apiKey: "AIzaSyAnMxqDpdzgKEW1vkRSrLysT-0nu_vEf8Q",
+        <p>
 
-    authDomain: "quizcano.firebaseapp.com",
+            Play • Learn • Win
 
-    projectId: "quizcano",
+        </p>
 
-    storageBucket: "quizcano.firebasestorage.app",
+    </div>
 
-    messagingSenderId: "834135771491",
+    <!-- Question Counter -->
 
-    appId: "1:834135771491:web:c9998944df72d14a7b2b56"
+    <div
+    class="question-counter">
 
-};
+        <span
+        id="currentQuestion">
 
-const app =
-initializeApp(firebaseConfig);
+            1
 
-const db =
-getFirestore(app);
+        </span>
 
-/* =========================================================
-GET QUIZ ID
-========================================================= */
+        /
 
-const params =
-new URLSearchParams(window.location.search);
+        <span
+        id="totalQuestions">
 
-const quizId =
-params.get("id");
-/* =========================================================
-LOAD QUIZ
-========================================================= */
+            0
 
-const status =
-document.getElementById("status");
+        </span>
 
-const quizTitle =
-document.getElementById("quizTitle");
+    </div>
 
-const questionCount =
-document.getElementById("questionCount");
+</header>
 
-const questionNumber =
-document.getElementById("questionNumber");
+<!-- ===========================
+Progress Section
+=========================== -->
 
-const questionImage =
-document.getElementById("questionImage");
+<section
+class="progress-section">
 
-async function loadQuiz(){
+    <div
+    class="progress-header">
 
-    if(!quizId){
+        <h2>
 
-        status.textContent =
-        "❌ No quiz ID found in URL.";
+            Quiz Progress
 
-        return;
+        </h2>
 
-    }
+        <div
+        class="timer">
 
-    try{
+            ⏱️
 
-        const snapshot =
-        await getDoc(
-            doc(db,"quizzes",quizId)
-        );
+            <span
+            id="timer">
 
-        if(!snapshot.exists()){
+                20
 
-            status.textContent =
-            "❌ Quiz document not found.";
+            </span>
 
-            return;
+            s
 
-        }
+        </div>
 
-        const quiz =
-        snapshot.data();
+    </div>
 
-        status.textContent =
-        "✅ Quiz Loaded Successfully";
+    <div
+    class="progress-bar">
 
-        quizTitle.textContent =
-        "Title: " + quiz.quizTitle;
+        <div
+        id="progressFill">
 
-        questionCount.textContent =
-        "Questions: " + quiz.questions.length;
+        </div>
 
-        const firstQuestion =
-        quiz.questions[0];
+    </div>
 
-        questionNumber.textContent =
-        "First Question: " +
-        firstQuestion.questionNumber;
+</section>
 
-        questionImage.src =
-        firstQuestion.questionImage;
+<!-- ===========================
+Question Card
+=========================== -->
 
-        console.log(quiz);
+<section
+class="question-section">
 
-    }
+    <div
+    class="question-card">
 
-    catch(error){
+        <div
+        class="question-title">
 
-        console.error(error);
+            Question
 
-        status.textContent =
-        "❌ " + error.message;
+        </div>
 
-    }
+        <img
 
-}
+        id="questionImage"
 
-loadQuiz();
+        src=""
 
-</script>
+        alt="Question Image">
+
+        <h2
+        id="questionText">
+
+            Loading Question...
+
+        </h2>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+Answer Section
+=========================== -->
+
+<section
+class="answer-section">
+
+    <button
+    class="answer-button"
+    data-answer="A">
+
+        A
+
+    </button>
+
+    <button
+    class="answer-button"
+    data-answer="B">
+
+        B
+
+    </button>
+
+    <button
+    class="answer-button"
+    data-answer="C">
+
+        C
+
+    </button>
+
+    <button
+    class="answer-button"
+    data-answer="D">
+
+        D
+
+    </button>
+
+</section>
+
+<!-- ===========================
+Next Button
+=========================== -->
+
+<section
+class="next-section">
+
+    <button
+    id="nextButton">
+
+        Next Question →
+
+    </button>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 01
+========================================================= -->
 
 </body>
 
