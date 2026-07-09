@@ -818,6 +818,12 @@ snapshot.forEach((doc)=>{
 
             quizData =
             doc.data();
+            alert("Quiz Title: " + quizData.quizTitle);
+
+alert("Questions field:");
+alert(JSON.stringify(quizData.questions));
+
+alert("Questions length: " + quizData.questions.length);
 
         });
 
