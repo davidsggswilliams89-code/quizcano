@@ -1130,17 +1130,14 @@ async function loadQuizQuestions(){
         }
 
         const q =
-        query(
-            collection(db,"quizzes"),
-            where(
-                "quizTitle",
-                "==",
-                quizTitle
-            ),
-            orderBy(
-                "questionNumber"
-            )
-        );
+query(
+    collection(db,"quizzes"),
+    where(
+        "quizTitle",
+        "==",
+        quizTitle
+    )
+);
 
         const snapshot =
         await getDocs(q);
