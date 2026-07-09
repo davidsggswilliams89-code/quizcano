@@ -692,7 +692,169 @@ class="next-section">
 <!-- =========================================================
 END OF SECTION 01
 ========================================================= -->
+<script>
+/* =========================================================
+SECTION 02
+FIREBASE & LOAD QUIZ
+========================================================= */
 
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+import {
+
+    getFirestore,
+
+    collection,
+
+    query,
+
+    where,
+
+    getDocs
+
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+/* ===========================
+Firebase Config
+=========================== */
+
+const firebaseConfig = {
+
+    apiKey:"AIzaSyAnMxqDpdzgKEW1vkRSrLysT-0nu_vEf8Q",
+
+    authDomain:"quizcano.firebaseapp.com",
+
+    projectId:"quizcano",
+
+    storageBucket:"quizcano.firebasestorage.app",
+
+    messagingSenderId:"834135771491",
+
+    appId:"1:834135771491:web:c9998944df72d14a7b2b56"
+
+};
+
+/* ===========================
+Initialize Firebase
+=========================== */
+
+const app =
+initializeApp(firebaseConfig);
+
+const db =
+getFirestore(app);
+
+/* ===========================
+Quiz Variables
+=========================== */
+
+let quizData = null;
+
+let quizQuestions = [];
+
+let currentQuestionIndex = 0;
+
+/* ===========================
+Read URL
+=========================== */
+
+const params =
+new URLSearchParams(window.location.search);
+
+const quizTitle =
+params.get("quizTitle");
+
+/* ===========================
+Validate URL
+=========================== */
+
+if(!quizTitle){
+
+    alert("Quiz not found.");
+
+    throw new Error("Missing quizTitle");
+
+}
+
+/* ===========================
+Load Quiz
+=========================== */
+
+async function loadQuiz(){
+
+    try{
+
+        const q =
+        query(
+
+            collection(db,"quizzes"),
+
+            where(
+                "quizTitle",
+                "==",
+                quizTitle
+            )
+
+        );
+
+        const snapshot =
+        await getDocs(q);
+
+        if(snapshot.empty){
+
+            alert("Quiz not found.");
+
+            return;
+
+        }
+
+        snapshot.forEach((doc)=>{
+
+            quizData =
+            doc.data();
+
+        });
+
+        quizQuestions =
+        quizData.questions || [];
+
+        console.log("Quiz Loaded");
+
+        console.log(quizData);
+
+        console.log(
+            "Questions:",
+            quizQuestions.length
+        );
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "Failed to load quiz."
+        );
+
+    }
+
+}
+
+/* ===========================
+Start
+=========================== */
+
+loadQuiz();
+
+/* =========================================================
+END OF SECTION 02
+========================================================= */
+
+    
+</script>
 </body>
 
 </html>
