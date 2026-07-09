@@ -316,7 +316,6 @@ categoryName || "Quizzes";
 /* =========================================================
 LOAD QUIZZES
 ========================================================= */
-
 async function loadQuizzes(){
 
     const quizContainer =
@@ -342,36 +341,52 @@ async function loadQuizzes(){
 
         }
 
+        // Store one card per quiz
+        const quizzes = {};
+
         snapshot.forEach((doc)=>{
 
             const data = doc.data();
 
-            const image =
-            data.questions &&
-            data.questions.length > 0
-            ? data.questions[0].questionImage
-            : "question-placeholder.jpg";
+            if(!quizzes[data.quizTitle]){
 
-            const total =
-            data.questions
-            ? data.questions.length
-            : 0;
+                quizzes[data.quizTitle] = {
+
+                    quizTitle: data.quizTitle,
+
+                    image: data.questionImage,
+
+                    total: 1
+
+                };
+
+            }else{
+
+                quizzes[data.quizTitle].total++;
+
+            }
+
+        });
+
+        quizContainer.innerHTML = "";
+
+        Object.values(quizzes).forEach((quiz)=>{
 
             quizContainer.innerHTML += `
 
             <div class="quiz-card"
-            onclick="window.location.href='quiz.html?quizTitle=${encodeURIComponent(data.quizTitle)}'">
+            onclick="window.location.href='quiz.html?quizTitle=${encodeURIComponent(quiz.quizTitle)}'">
 
                 <img
                 class="quiz-image"
-                src="${image}"
-                alt="${data.quizTitle}">
+                src="${quiz.image}"
+                alt="${quiz.quizTitle}">
 
                 <div class="quiz-info">
 
-                    <h3>${data.quizTitle}</h3>
+                    <h3>${quiz.quizTitle}</h3>
 
-                    <p>${total} Questions</p>
+                    <p>${quiz.total} Questions</p>
 
                 </div>
 
