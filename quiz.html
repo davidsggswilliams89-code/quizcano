@@ -801,7 +801,11 @@ async function loadQuiz(){
 
         const snapshot =
         await getDocs(q);
+alert("Documents found: " + snapshot.size);
 
+snapshot.forEach((doc)=>{
+    alert(doc.data().quizTitle);
+});
         if(snapshot.empty){
 
             alert("Quiz not found.");
