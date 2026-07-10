@@ -692,12 +692,14 @@ class="next-section">
 <!-- =========================================================
 END OF SECTION 01
 ========================================================= -->
-<script type="module">
+
 /* =========================================================
 SECTION 02
 FIREBASE & LOAD QUIZ
 ========================================================= */
 
+    
+<script type="module">
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
@@ -801,11 +803,7 @@ async function loadQuiz(){
 
         const snapshot =
         await getDocs(q);
-alert("Documents found: " + snapshot.size);
 
-snapshot.forEach((doc)=>{
-    alert(doc.data().quizTitle);
-});
         if(snapshot.empty){
 
             alert("Quiz not found.");
@@ -818,63 +816,12 @@ snapshot.forEach((doc)=>{
 
             quizData =
             doc.data();
-            alert("Quiz Title: " + quizData.quizTitle);
-
-alert("Questions field:");
-alert(JSON.stringify(quizData.questions));
-
-alert("Questions length: " + quizData.questions.length);
-
+         
         });
 
         quizQuestions =
         quizData.questions || [];
-        /* =========================================================
-SECTION 03
-DISPLAY FIRST QUESTION
-========================================================= */
-
-displayQuestion();
-
-function displayQuestion(){
-
-    if(quizQuestions.length===0){
-
-        return;
-
-    }
-
-    const question =
-    quizQuestions[currentQuestionIndex];
-
-    document.getElementById("questionImage").src =
-    question.questionImage || "";
-
-    document.getElementById("questionText").textContent =
-    "Question " + question.questionNumber;
-
-    document.getElementById("currentQuestion").textContent =
-    currentQuestionIndex + 1;
-
-    document.getElementById("totalQuestions").textContent =
-    quizQuestions.length;
-
-    const buttons =
-    document.querySelectorAll(".answer-button");
-
-    buttons[0].textContent =
-    question.options.A;
-
-    buttons[1].textContent =
-    question.options.B;
-
-    buttons[2].textContent =
-    question.options.C;
-
-    buttons[3].textContent =
-    question.options.D;
-
-}
+        displayQuestion();
 
         console.log("Quiz Loaded");
 
@@ -909,6 +856,44 @@ loadQuiz();
 END OF SECTION 02
 ========================================================= */
 
+/* =========================================================
+SECTION 03
+DISPLAY FIRST QUESTION
+========================================================= */
+
+function displayQuestion(){
+
+    if(quizQuestions.length===0){
+        return;
+    }
+
+    const question = quizQuestions[currentQuestionIndex];
+
+    document.getElementById("questionImage").src =
+    question.questionImage || "";
+
+    document.getElementById("questionText").textContent = "";
+
+    document.getElementById("currentQuestion").textContent =
+    currentQuestionIndex + 1;
+
+    document.getElementById("totalQuestions").textContent =
+    quizQuestions.length;
+
+    const buttons =
+    document.querySelectorAll(".answer-button");
+
+    buttons[0].textContent = question.options.A;
+    buttons[1].textContent = question.options.B;
+    buttons[2].textContent = question.options.C;
+    buttons[3].textContent = question.options.D;
+
+}
+
+/* =========================================================
+END OF SECTION 03
+========================================================= */
+    
     
 </script>
 </body>
