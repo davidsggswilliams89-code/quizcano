@@ -266,7 +266,69 @@ id="reviewSection">
 <!-- =========================================================
 END OF SECTION 01
 ========================================================= -->
+<script>
+/* =========================================================
+SECTION 02
+LOAD QUIZ RESULT
+========================================================= */
 
+/* ===========================
+Load Saved Result
+=========================== */
+
+const quizResult =
+JSON.parse(
+localStorage.getItem("quizResult")
+);
+
+/* ===========================
+Check Result
+=========================== */
+
+if(!quizResult){
+
+    alert("No quiz result found.");
+
+    window.location.href = "index.html";
+
+}
+
+/* ===========================
+Display Score
+=========================== */
+
+document.getElementById("scoreText").textContent =
+quizResult.score + " / " + quizResult.total;
+
+/* ===========================
+Display Summary
+=========================== */
+
+document.getElementById("summaryText").innerHTML =
+
+"Percentage: <b>" +
+
+quizResult.percentage +
+
+"%</b><br><br>" +
+
+"Correct Answers: <b>" +
+
+quizResult.score +
+
+"</b><br>" +
+
+"Wrong Answers: <b>" +
+
+(quizResult.total - quizResult.score) +
+
+"</b>";
+
+/* =========================================================
+END OF SECTION 02
+========================================================= */
+
+</script>
 </body>
 
 </html>
