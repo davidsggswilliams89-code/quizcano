@@ -820,7 +820,6 @@ loadQuiz();
 /* =========================================================
 END OF SECTION 02
 ========================================================= */
-
 /* =========================================================
 SECTION 03
 DISPLAY FIRST QUESTION
@@ -828,7 +827,7 @@ DISPLAY FIRST QUESTION
 
 function displayQuestion(){
 
-    if(quizQuestions.length===0){
+    if(quizQuestions.length === 0){
         return;
     }
 
@@ -837,8 +836,6 @@ function displayQuestion(){
     document.getElementById("questionImage").src =
     question.questionImage || "";
 
-    document.getElementById("questionText").textContent = "";
-
     document.getElementById("currentQuestion").textContent =
     currentQuestionIndex + 1;
 
@@ -846,28 +843,29 @@ function displayQuestion(){
     quizQuestions.length;
 
     const buttons =
-document.querySelectorAll(".answer-button");
+    document.querySelectorAll(".answer-button");
 
-buttons[0].textContent = question.options.A;
-buttons[1].textContent = question.options.B;
-buttons[2].textContent = question.options.C;
-buttons[3].textContent = question.options.D;
+    buttons[0].textContent = question.options.A;
+    buttons[1].textContent = question.options.B;
+    buttons[2].textContent = question.options.C;
+    buttons[3].textContent = question.options.D;
 
-/* Reset Buttons */
+    buttons.forEach(btn=>{
 
-buttons.forEach(btn=>{
+        btn.disabled = false;
+        btn.style.background = "#1A2138";
+        btn.style.color = "#FFFFFF";
 
-    btn.disabled = false;
+    });
 
-    btn.style.background = "#1A2138";
+    startTimer();
 
-});
+}
 
-startTimer();
-    }
 /* =========================================================
 END OF SECTION 03
 ========================================================= */
+
  /* =========================================================
 SECTION 04
 NEXT QUESTION BUTTON
