@@ -115,6 +115,14 @@ Back Button
     transform:scale(.95);
 
 }
+.answer-button.active{
+
+    background:#22C55E !important;
+
+    color:#FFFFFF;
+
+}
+    
 
 /* ===========================
 Logo Area
@@ -1021,8 +1029,7 @@ String(question.correctAnswer).trim().toUpperCase();
 
 if(selected === correct){
 
-    button.style.background = "#22C55E";
-    button.style.color = "#FFFFFF";
+    button.classList.add("active");
 
 }
 
