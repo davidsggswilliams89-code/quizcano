@@ -890,7 +890,6 @@ function displayQuestion(){
 /* =========================================================
 END OF SECTION 03
 ========================================================= */
-
 /* =========================================================
 SECTION 04
 NEXT QUESTION BUTTON
@@ -905,7 +904,9 @@ nextButton.addEventListener("click",()=>{
 
     if(currentQuestionIndex >= quizQuestions.length - 1){
 
-        alert("Quiz Completed!");
+        /* Go To Offer Page */
+
+        window.location.href = "offer.html";
 
         return;
 
