@@ -968,46 +968,44 @@ function startTimer(){
     timer = 20;
 
     document.getElementById("timer").textContent = timer;
-    document.getElementById("progressFill").style.width = "100%";
+    /* Reset Progress Bar */
 
-    timerInterval = setInterval(()=>{
+document.getElementById("progressFill").style.width = "100%";
 
-        timer--;
+timerInterval = setInterval(()=>{
 
-        document.getElementById("timer").textContent = timer;
-        const percent = (timer / 20) * 100;
+    timer--;
 
-document.getElementById("progressFill").style.width =
-percent + "%";
+    document.getElementById("timer").textContent = timer;
 
-        /* Time Finished */
+    /* Update Progress Bar */
 
-        if(timer <= 0){
+    const percent = (timer / 20) * 100;
 
-            clearInterval(timerInterval);
+    document.getElementById("progressFill").style.width =
+    percent + "%";
 
-            /* Auto Next */
+    if(timer <= 0){
 
-            if(currentQuestionIndex < quizQuestions.length - 1){
+        clearInterval(timerInterval);
 
-                currentQuestionIndex++;
+        document.getElementById("progressFill").style.width = "0%";
 
-                displayQuestion();
+        if(currentQuestionIndex < quizQuestions.length - 1){
 
-                startTimer();
+            currentQuestionIndex++;
 
-            }
+            displayQuestion();
 
-            else{
+        }else{
 
-                alert("Quiz Completed!");
-
-            }
+            alert("Quiz Completed!");
 
         }
 
-    },1000);
+    }
 
+},1000);
 }
 
 /* =========================================================
