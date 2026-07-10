@@ -945,6 +945,72 @@ nextButton.addEventListener("click",()=>{
 /* =========================================================
 END OF SECTION 04
 ========================================================= */   
+/* =========================================================
+SECTION 05
+QUIZ TIMER
+========================================================= */
+
+/* ===========================
+Timer Variables
+=========================== */
+
+let timer = 20;
+
+let timerInterval = null;
+
+/* ===========================
+Start Timer
+=========================== */
+
+function startTimer(){
+
+    clearInterval(timerInterval);
+
+    timer = 20;
+
+    document.getElementById("timer").textContent = timer;
+
+    timerInterval = setInterval(()=>{
+
+        timer--;
+
+        document.getElementById("timer").textContent = timer;
+
+        /* Time Finished */
+
+        if(timer <= 0){
+
+            clearInterval(timerInterval);
+
+            /* Auto Next */
+
+            if(currentQuestionIndex < quizQuestions.length - 1){
+
+                currentQuestionIndex++;
+
+                displayQuestion();
+
+                startTimer();
+
+            }
+
+            else{
+
+                alert("Quiz Completed!");
+
+            }
+
+        }
+
+    },1000);
+
+}
+
+/* =========================================================
+END OF SECTION 05
+========================================================= */
+
+
     
 </script>
 </body>
