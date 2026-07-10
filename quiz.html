@@ -894,7 +894,56 @@ function displayQuestion(){
 /* =========================================================
 END OF SECTION 03
 ========================================================= */
-    
+ /* =========================================================
+SECTION 04
+NEXT QUESTION BUTTON
+========================================================= */
+
+/* ===========================
+Next Button
+=========================== */
+
+const nextButton =
+document.getElementById("nextButton");
+
+/* ===========================
+Next Button Click
+=========================== */
+
+nextButton.addEventListener("click",()=>{
+
+    /* Last Question */
+
+    if(currentQuestionIndex >= quizQuestions.length - 1){
+
+        alert("Quiz Completed!");
+
+        return;
+
+    }
+
+    /* Next Question */
+
+    currentQuestionIndex++;
+
+    /* Display Question */
+
+    displayQuestion();
+
+    /* Progress Bar */
+
+    const progress =
+    ((currentQuestionIndex + 1) /
+    quizQuestions.length) * 100;
+
+    document.getElementById("progressFill").style.width =
+    progress + "%";
+
+});
+
+/* =========================================================
+END OF SECTION 04
+========================================================= */   
     
 </script>
 </body>
