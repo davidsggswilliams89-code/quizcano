@@ -1025,6 +1025,14 @@ Quiz Score
 
 let quizScore = 0;
 
+/* ===========================
+Performance Tracking
+=========================== */
+
+let questionTimes = [];
+
+let totalQuizTime = 0;
+
 const answerButtons =
 document.querySelectorAll(".answer-button");
 
@@ -1036,11 +1044,20 @@ answerButtons.forEach(button=>{
 
         clearInterval(timerInterval);
 
+        /* Save Time Used */
+
+        const timeUsed = 20 - timer;
+
+        questionTimes.push(timeUsed);
+
+        totalQuizTime += timeUsed;
+
         /* Reset all buttons */
 
         answerButtons.forEach(btn=>{
 
             btn.style.background = "#1A2138";
+            btn.style.color = "#FFFFFF";
             btn.disabled = true;
 
         });
