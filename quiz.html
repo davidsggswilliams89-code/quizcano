@@ -1035,6 +1035,16 @@ answerButtons.forEach(button=>{
         button.dataset.answer;
 
     });
+
+    /* Check Correct Answer */
+
+if(button.dataset.answer ===
+quizQuestions[currentQuestionIndex].correctAnswer){
+
+    quizScore++;
+
+}
+
     
 });
 
