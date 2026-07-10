@@ -1004,7 +1004,92 @@ percent + "%";
 /* =========================================================
 END OF SECTION 05
 ========================================================= */
+/* =========================================================
+SECTION 06
+ANSWER BUTTONS
+========================================================= */
 
+/* ===========================
+Answer Buttons
+=========================== */
+
+const answerButtons =
+document.querySelectorAll(".answer-button");
+
+/* ===========================
+Button Click
+=========================== */
+
+answerButtons.forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        /* Stop Timer */
+
+        clearInterval(timerInterval);
+
+        /* Disable All Buttons */
+
+        answerButtons.forEach(btn=>{
+
+            btn.disabled = true;
+
+        });
+
+        const question =
+        quizQuestions[currentQuestionIndex];
+
+        const selected =
+        button.dataset.answer;
+
+        const correct =
+        question.correctAnswer;
+
+        /* Correct Answer */
+
+        if(selected===correct){
+
+            button.style.background =
+            "#22C55E";
+
+        }
+
+        /* Wrong Answer */
+
+        else{
+
+            button.style.background =
+            "#EF4444";
+
+            answerButtons.forEach(btn=>{
+
+                if(btn.dataset.answer===correct){
+
+                    btn.style.background =
+                    "#22C55E";
+
+                }
+
+            });
+
+        }
+
+    });
+
+});
+    
+/* Reset Buttons */
+
+answerButtons.forEach(btn=>{
+
+    btn.disabled = false;
+
+    btn.style.background = "#1A2138";
+
+});
+/* =========================================================
+END OF SECTION 06
+========================================================= */
 
     
 </script>
