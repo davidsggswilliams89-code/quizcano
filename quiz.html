@@ -885,11 +885,18 @@ function displayQuestion(){
     buttons[1].textContent = question.options.B;
     buttons[2].textContent = question.options.C;
     buttons[3].textContent = question.options.D;
-    
-    startTimer();
-}
-    
+    /* Reset Buttons */
 
+answerButtons.forEach(btn=>{
+
+    btn.disabled = false;
+
+    btn.style.background = "#1A2138";
+
+});
+  
+}
+ 
 /* =========================================================
 END OF SECTION 03
 ========================================================= */
@@ -924,6 +931,7 @@ nextButton.addEventListener("click",()=>{
     /* Next Question */
 
     currentQuestionIndex++;
+    clearInterval(timerInterval);
 
     /* Display Question */
 
@@ -1056,23 +1064,14 @@ answerButtons.forEach(button=>{
 
         /* Wrong Answer */
 
-        else{
+        /* Wrong Answer */
 
-            button.style.background =
-            "#EF4444";
+else{
 
-            answerButtons.forEach(btn=>{
+    button.style.background =
+    "#EF4444";
 
-                if(btn.dataset.answer===correct){
-
-                    btn.style.background =
-                    "#22C55E";
-
-                }
-
-            });
-
-        }
+}
 
     });
 
