@@ -891,21 +891,13 @@ function displayQuestion(){
 END OF SECTION 03
 ========================================================= */
 
- /* =========================================================
+/* =========================================================
 SECTION 04
 NEXT QUESTION BUTTON
 ========================================================= */
 
-/* ===========================
-Next Button
-=========================== */
-
 const nextButton =
 document.getElementById("nextButton");
-
-/* ===========================
-Next Button Click
-=========================== */
 
 nextButton.addEventListener("click",()=>{
 
@@ -913,7 +905,32 @@ nextButton.addEventListener("click",()=>{
 
     if(currentQuestionIndex >= quizQuestions.length - 1){
 
-        alert("Quiz Completed!");
+        /* Save Result */
+
+        sessionStorage.setItem(
+
+            "quizResult",
+
+            JSON.stringify({
+
+                score:score,
+
+                total:quizQuestions.length,
+
+                userAnswers:userAnswers,
+
+                questions:quizQuestions,
+
+                quizTitle:quizTitle
+
+            })
+
+        );
+
+        /* Go To Offer Page */
+
+        window.location.href =
+        "offer.html";
 
         return;
 
@@ -922,18 +939,16 @@ nextButton.addEventListener("click",()=>{
     /* Next Question */
 
     currentQuestionIndex++;
-    clearInterval(timerInterval);
 
-    /* Display Question */
+    clearInterval(timerInterval);
 
     displayQuestion();
 
-    /* Progress Bar */
 });
 
 /* =========================================================
 END OF SECTION 04
-========================================================= */   
+========================================================= */
 /* =========================================================
 SECTION 05
 QUIZ TIMER
@@ -1007,6 +1022,7 @@ ANSWER BUTTONS
 ========================================================= */
 
 let userAnswers = [];
+let score = 0;   
 
 const answerButtons =
 document.querySelectorAll(".answer-button");
@@ -1039,6 +1055,14 @@ answerButtons.forEach(button=>{
         button.dataset.answer;
 
     });
+    /* Calculate Score */
+
+if(button.dataset.answer ===
+quizQuestions[currentQuestionIndex].correctAnswer){
+
+    score++;
+
+}
 
 });
 
