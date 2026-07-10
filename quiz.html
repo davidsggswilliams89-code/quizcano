@@ -997,7 +997,6 @@ ANSWER BUTTONS
 ========================================================= */
 
 let userAnswers = [];
-let score = 0;   
 
 const answerButtons =
 document.querySelectorAll(".answer-button");
@@ -1030,15 +1029,7 @@ answerButtons.forEach(button=>{
         button.dataset.answer;
 
     });
-    /* Calculate Score */
-
-if(button.dataset.answer ===
-quizQuestions[currentQuestionIndex].correctAnswer){
-
-    score++;
-
-}
-
+    
 });
 
 /* =========================================================
