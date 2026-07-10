@@ -561,11 +561,8 @@ class="progress-section">
     class="progress-header">
 
         <h2>
-
-            Quiz Progress
-
-        </h2>
-
+    Time Remaining
+      </h2>
         <div
         class="timer">
 
@@ -934,14 +931,6 @@ nextButton.addEventListener("click",()=>{
     displayQuestion();
 
     /* Progress Bar */
-
-    const progress =
-    ((currentQuestionIndex + 1) /
-    quizQuestions.length) * 100;
-
-    document.getElementById("progressFill").style.width =
-    progress + "%";
-
 });
 
 /* =========================================================
@@ -971,12 +960,17 @@ function startTimer(){
     timer = 20;
 
     document.getElementById("timer").textContent = timer;
+    document.getElementById("progressFill").style.width = "100%";
 
     timerInterval = setInterval(()=>{
 
         timer--;
 
         document.getElementById("timer").textContent = timer;
+        const percent = (timer / 20) * 100;
+
+document.getElementById("progressFill").style.width =
+percent + "%";
 
         /* Time Finished */
 
