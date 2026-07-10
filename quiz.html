@@ -905,32 +905,7 @@ nextButton.addEventListener("click",()=>{
 
     if(currentQuestionIndex >= quizQuestions.length - 1){
 
-        /* Save Result */
-
-        sessionStorage.setItem(
-
-            "quizResult",
-
-            JSON.stringify({
-
-                score:score,
-
-                total:quizQuestions.length,
-
-                userAnswers:userAnswers,
-
-                questions:quizQuestions,
-
-                quizTitle:quizTitle
-
-            })
-
-        );
-
-        /* Go To Offer Page */
-
-        window.location.href =
-        "offer.html";
+        alert("Quiz Completed!");
 
         return;
 
