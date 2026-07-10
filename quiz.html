@@ -839,10 +839,15 @@ function displayQuestion(){
         return;
     }
 
-    const question = quizQuestions[currentQuestionIndex];
+    const question =
+    quizQuestions[currentQuestionIndex];
+
+    /* Question Image */
 
     document.getElementById("questionImage").src =
     question.questionImage || "";
+
+    /* Question Counter */
 
     document.getElementById("currentQuestion").textContent =
     currentQuestionIndex + 1;
@@ -850,21 +855,33 @@ function displayQuestion(){
     document.getElementById("totalQuestions").textContent =
     quizQuestions.length;
 
-    const buttons =
-    document.querySelectorAll(".answer-button");
+    /* Answer Buttons */
 
-    buttons[0].textContent = question.options.A;
-    buttons[1].textContent = question.options.B;
-    buttons[2].textContent = question.options.C;
-    buttons[3].textContent = question.options.D;
+    answerButtons[0].textContent =
+    question.options.A;
 
-    buttons.forEach(btn=>{
+    answerButtons[1].textContent =
+    question.options.B;
+
+    answerButtons[2].textContent =
+    question.options.C;
+
+    answerButtons[3].textContent =
+    question.options.D;
+
+    /* Reset Buttons */
+
+    answerButtons.forEach(btn=>{
 
         btn.disabled = false;
+
         btn.style.background = "#1A2138";
+
         btn.style.color = "#FFFFFF";
 
     });
+
+    /* Start Timer */
 
     startTimer();
 
