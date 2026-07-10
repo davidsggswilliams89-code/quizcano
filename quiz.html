@@ -998,12 +998,13 @@ ANSWER BUTTONS
 ========================================================= */
 
 let userAnswers = [];
+
 /* ===========================
 Quiz Score
 =========================== */
 
 let quizScore = 0;
-    
+
 const answerButtons =
 document.querySelectorAll(".answer-button");
 
@@ -1034,18 +1035,17 @@ answerButtons.forEach(button=>{
         userAnswers[currentQuestionIndex] =
         button.dataset.answer;
 
+        /* Check Correct Answer */
+
+        if(button.dataset.answer ===
+        quizQuestions[currentQuestionIndex].correctAnswer){
+
+            quizScore++;
+
+        }
+
     });
 
-    /* Check Correct Answer */
-
-if(button.dataset.answer ===
-quizQuestions[currentQuestionIndex].correctAnswer){
-
-    quizScore++;
-
-}
-
-    
 });
 
 /* =========================================================
