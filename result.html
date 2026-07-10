@@ -348,6 +348,7 @@ id="reviewSection">
 END OF SECTION 01
 ========================================================= -->
 <script>
+<script>
 /* =========================================================
 SECTION 02
 LOAD QUIZ RESULT
@@ -382,28 +383,129 @@ document.getElementById("scoreText").textContent =
 quizResult.score + " / " + quizResult.total;
 
 /* ===========================
-Display Summary
+Summary Message
 =========================== */
 
 document.getElementById("summaryText").innerHTML =
+"Great job completing this quiz!";
 
-"Percentage: <b>" +
+/* ===========================
+Statistics
+=========================== */
 
-quizResult.percentage +
+document.getElementById("accuracyValue").textContent =
+quizResult.percentage + "%";
 
-"%</b><br><br>" +
+document.getElementById("correctValue").textContent =
+quizResult.score;
 
-"Correct Answers: <b>" +
+document.getElementById("wrongValue").textContent =
+quizResult.total - quizResult.score;
 
-quizResult.score +
+/* ===========================
+Temporary Time Values
+(Will become dynamic later)
+=========================== */
 
-"</b><br>" +
+document.getElementById("averageTime").textContent =
+"0 sec";
 
-"Wrong Answers: <b>" +
+document.getElementById("fastestTime").textContent =
+"0 sec";
 
-(quizResult.total - quizResult.score) +
+document.getElementById("slowestTime").textContent =
+"0 sec";
 
-"</b>";
+document.getElementById("totalTime").textContent =
+"0 sec";
+
+/* ===========================
+Animated Progress Bar
+=========================== */
+
+setTimeout(()=>{
+
+    document.getElementById("resultProgressFill").style.width =
+    quizResult.percentage + "%";
+
+},300);
+
+/* ===========================
+Percentage Badge
+=========================== */
+
+document.getElementById("percentageBadge").textContent =
+quizResult.percentage + "%";
+
+/* ===========================
+Star Rating
+=========================== */
+
+let stars = "";
+
+if(quizResult.percentage >= 90){
+
+    stars = "★★★★★";
+
+}
+else if(quizResult.percentage >= 80){
+
+    stars = "★★★★☆";
+
+}
+else if(quizResult.percentage >= 60){
+
+    stars = "★★★☆☆";
+
+}
+else if(quizResult.percentage >= 40){
+
+    stars = "★★☆☆☆";
+
+}
+else{
+
+    stars = "★☆☆☆☆";
+
+}
+
+document.getElementById("starRating").textContent =
+stars;
+
+/* ===========================
+Achievement Badge
+=========================== */
+
+let badge = "";
+
+if(quizResult.percentage >= 90){
+
+    badge = "🏆 QUIZ MASTER";
+
+}
+else if(quizResult.percentage >= 80){
+
+    badge = "🥇 EXCELLENT";
+
+}
+else if(quizResult.percentage >= 60){
+
+    badge = "🎯 GREAT JOB";
+
+}
+else if(quizResult.percentage >= 40){
+
+    badge = "💪 KEEP PRACTICING";
+
+}
+else{
+
+    badge = "🔥 NEVER GIVE UP";
+
+}
+
+document.getElementById("achievementTitle").textContent =
+badge;
 
 /* =========================================================
 END OF SECTION 02
