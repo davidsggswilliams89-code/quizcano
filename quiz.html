@@ -904,26 +904,72 @@ nextButton.addEventListener("click",()=>{
 
     if(currentQuestionIndex >= quizQuestions.length - 1){
 
-        /* Save Quiz Result */
+      /* ===========================
+Performance Statistics
+=========================== */
 
-        localStorage.setItem(
-            "quizResult",
-            JSON.stringify({
+const averageTime =
+questionTimes.length > 0 ?
 
-                score: quizScore,
+(totalQuizTime / questionTimes.length).toFixed(1)
 
-                total: quizQuestions.length,
+:
 
-                percentage: Math.round(
-                    (quizScore / quizQuestions.length) * 100
-                ),
+0;
 
-                userAnswers: userAnswers,
+const fastestTime =
+questionTimes.length > 0 ?
 
-                questions: quizQuestions
+Math.min(...questionTimes)
 
-            })
-        );
+:
+
+0;
+
+const slowestTime =
+questionTimes.length > 0 ?
+
+Math.max(...questionTimes)
+
+:
+
+0;
+
+/* ===========================
+Save Quiz Result
+=========================== */
+
+localStorage.setItem(
+
+    "quizResult",
+
+    JSON.stringify({
+
+        score: quizScore,
+
+        total: quizQuestions.length,
+
+        percentage: Math.round(
+
+            (quizScore / quizQuestions.length) * 100
+
+        ),
+
+        userAnswers: userAnswers,
+
+        questions: quizQuestions,
+
+        averageTime: averageTime,
+
+        fastestTime: fastestTime,
+
+        slowestTime: slowestTime,
+
+        totalTime: totalQuizTime
+
+    })
+
+);
 
         /* Go To Offer Page */
 
