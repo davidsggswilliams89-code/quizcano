@@ -989,16 +989,10 @@ SECTION 06
 ANSWER BUTTONS
 ========================================================= */
 
-/* ===========================
-Answer Buttons
-=========================== */
+let userAnswers = [];
 
 const answerButtons =
 document.querySelectorAll(".answer-button");
-
-/* ===========================
-Button Click
-=========================== */
 
 answerButtons.forEach(button=>{
 
@@ -1008,47 +1002,32 @@ answerButtons.forEach(button=>{
 
         clearInterval(timerInterval);
 
-        /* Disable All Buttons */
+        /* Reset all buttons */
 
         answerButtons.forEach(btn=>{
 
+            btn.style.background = "#1A2138";
             btn.disabled = true;
 
         });
 
-        const question =
-        quizQuestions[currentQuestionIndex];
+        /* Make selected button green */
 
-        const selected =
-button.dataset.answer.trim().toUpperCase();
+        button.style.background = "#22C55E";
+        button.style.color = "#FFFFFF";
 
-const correct =
-String(question.correctAnswer).trim().toUpperCase();
+        /* Save user's answer */
 
-/* Correct Answer */
-
-if(selected === correct){
-
-    button.classList.add("active");
-
-}
-
-        /* Wrong Answer */
-else{
-
-    // Do nothing  
-
-}
+        userAnswers[currentQuestionIndex] =
+        button.dataset.answer;
 
     });
 
 });
-   
 
 /* =========================================================
 END OF SECTION 06
 ========================================================= */
-
     
 </script>
 </body>
