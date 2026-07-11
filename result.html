@@ -811,6 +811,57 @@ reviewHTML;
 /* =========================================================
 END OF SECTION 02
 ========================================================= */
+/* =========================================================
+SECTION 05
+SHARE SCORE
+========================================================= */
+
+const shareButton =
+document.getElementById("shareButton");
+
+shareButton.addEventListener("click",async()=>{
+
+    const shareText =
+
+`🏆 I scored ${quizResult.score}/${quizResult.total} (${quizResult.percentage}%)
+on QUIZCANO!
+
+Can you beat my score?
+
+Play now:
+https://yourwebsite.com`;
+
+    if(navigator.share){
+
+        try{
+
+            await navigator.share({
+
+                title:"QUIZCANO",
+
+                text:shareText
+
+            });
+
+        }catch(error){
+
+            console.log("Share cancelled.");
+
+        }
+
+    }else{
+
+        navigator.clipboard.writeText(shareText);
+
+        alert("Score copied to clipboard!");
+
+    }
+
+});
+
+/* =========================================================
+END OF SECTION 05
+========================================================= */ 
 
 </script>
 </body>
