@@ -490,22 +490,21 @@ document.getElementById("wrongValue").textContent =
 quizResult.total - quizResult.score;
 
 /* ===========================
-Temporary Time Values
-(Will become dynamic later)
+Performance Statistics
 =========================== */
 
 document.getElementById("averageTime").textContent =
-"0 sec";
+quizResult.averageTime + " sec";
 
 document.getElementById("fastestTime").textContent =
-"0 sec";
+quizResult.fastestTime + " sec";
 
 document.getElementById("slowestTime").textContent =
-"0 sec";
+quizResult.slowestTime + " sec";
 
 document.getElementById("totalTime").textContent =
-"0 sec";
-
+quizResult.totalTime + " sec";
+    
 /* ===========================
 Animated Progress Bar
 =========================== */
