@@ -632,10 +632,7 @@ Summary Message
 =========================== */
 
 document.getElementById("summaryText").innerHTML =
-
-`🎉 Congratulations, <b>${quizResult.playerName}</b>!
-
-Great job completing this quiz!`;
+"🎉 Great job completing this quiz!";
 
 /* ===========================
 Statistics
@@ -837,14 +834,14 @@ shareButton.addEventListener("click",async()=>{
 
     const shareText =
 
-`🏆 ${quizResult.playerName} scored ${quizResult.score}/${quizResult.total} (${quizResult.percentage}%)
+`🏆 I scored ${quizResult.score}/${quizResult.total} (${quizResult.percentage}%)
 with an average answer time of ${quizResult.averageTime} seconds
 on QUIZCANO!
 
-Can you beat this score?
+Can you beat my score?
 
 Play now:
-https://github.com/davidsggswilliams89-code/quizcano/blob/main/index.html`;
+https://github.com/davidsggswilliams89-code/quizcano`;
 
     if(navigator.share){
 
