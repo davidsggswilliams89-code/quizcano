@@ -890,93 +890,109 @@ function displayQuestion(){
 /* =========================================================
 END OF SECTION 03
 ========================================================= */
-/* =========================================================
-SECTION 04
-NEXT QUESTION BUTTON
-========================================================= */
 
-const nextButton =
-document.getElementById("nextButton");
-
-nextButton.addEventListener(() => {
-
-    /* Last Question */
-
-    if(currentQuestionIndex >= quizQuestions.length - 1){
-
-        /* ===========================
-        Performance Statistics
-        =========================== */
-
-        const averageTime =
-        questionTimes.length > 0 ?
-        (totalQuizTime / questionTimes.length).toFixed(1)
-        : 0;
-
-        const fastestTime =
-        questionTimes.length > 0 ?
-        Math.min(...questionTimes)
-        : 0;
-
-        const slowestTime =
-        questionTimes.length > 0 ?
-        Math.max(...questionTimes)
-        : 0;
-
-        /* ===========================
-        Save Quiz Result
-        =========================== */
-
-        localStorage.setItem(
-
-            "quizResult",
-
-            JSON.stringify({
-
-                score: quizScore,
-
-                total: quizQuestions.length,
-
-                percentage: Math.round(
-                    (quizScore / quizQuestions.length) * 100
-                ),
-
-                userAnswers: userAnswers,
-
-                questions: quizQuestions,
-
-                averageTime: averageTime,
-
-                fastestTime: fastestTime,
-
-                slowestTime: slowestTime,
-
-                totalTime: totalQuizTime,
-
-                questionTimes: questionTimes
-
-            })
-
-        );
-
-        window.location.href = "result.html";
-        return;
-
-    }
-
-    /* Next Question */
-
-    currentQuestionIndex++;
-
-    clearInterval(timerInterval);
-
-    displayQuestion();
-
-});
-
-/* =========================================================
-END OF SECTION 04
-========================================================= */
+/* =========================================================  
+SECTION 04  
+NEXT QUESTION BUTTON  
+========================================================= */  
+  
+const nextButton =  
+document.getElementById("nextButton");  
+  
+nextButton.addEventListener("click",()=>{  
+  
+    /* Last Question */  
+  
+    if(currentQuestionIndex >= quizQuestions.length - 1){  
+  
+/* ===========================  
+Performance Statistics  
+=========================== */  
+  
+const averageTime =  
+questionTimes.length > 0 ?  
+  
+(totalQuizTime / questionTimes.length).toFixed(1)  
+  
+:  
+  
+0;  
+  
+const fastestTime =  
+questionTimes.length > 0 ?  
+  
+Math.min(...questionTimes)  
+  
+:  
+  
+0;  
+  
+const slowestTime =  
+questionTimes.length > 0 ?  
+  
+Math.max(...questionTimes)  
+  
+:  
+  
+0;  
+  
+/* ===========================  
+Save Quiz Result  
+=========================== */  
+  
+localStorage.setItem(  
+  
+    "quizResult",  
+  
+    JSON.stringify({  
+  
+        score: quizScore,  
+  
+        total: quizQuestions.length,  
+  
+        percentage: Math.round(  
+  
+            (quizScore / quizQuestions.length) * 100  
+  
+        ),  
+  
+        userAnswers: userAnswers,  
+  
+        questions: quizQuestions,  
+  
+        averageTime: averageTime,  
+  
+        fastestTime: fastestTime,  
+  
+        slowestTime: slowestTime,  
+  
+        totalTime: totalQuizTime  
+  
+    })  
+  
+);  
+  
+        /* Go To Offer Page */  
+  
+        window.location.href = "result.html";  
+        return;  
+  
+    }  
+  
+    /* Next Question */  
+  
+    currentQuestionIndex++;  
+  
+    clearInterval(timerInterval);  
+  
+    displayQuestion();  
+  
+});  
+  
+/* =========================================================  
+END OF SECTION 04  
+========================================================= */  
+    
 /* =========================================================
 SECTION 05
 QUIZ TIMER
