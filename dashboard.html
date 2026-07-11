@@ -2821,11 +2821,37 @@ manageQuizButton.addEventListener("click",()=>{
 
     createQuizSection.classList.remove("show");
 
-    loadQuizzes();
+    loadManageQuizCategories();
 
 });
 
+async function loadManageQuizCategories(){
 
+    manageQuizCategory.innerHTML = `
+        <option value="">
+            Select Category
+        </option>
+    `;
+
+    const snapshot =
+    await getDocs(
+        collection(db,"categories")
+    );
+
+    snapshot.forEach((docItem)=>{
+
+        const category =
+        docItem.data();
+
+        manageQuizCategory.innerHTML += `
+            <option value="${docItem.id}">
+                ${category.name}
+            </option>
+        `;
+
+    });
+
+}
 /* ===========================
 Load Quizzes
 =========================== */
@@ -2950,19 +2976,7 @@ async function loadQuizzes(){
 
         }
 
-    }
 
-    catch(error){
-
-        console.error(error);
-
-        alert(
-        "Failed to load quizzes."
-        );
-
-    }
-
-}
 
 /* =========================================================
 END OF SECTION 13 PART 1
