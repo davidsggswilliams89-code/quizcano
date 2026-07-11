@@ -256,7 +256,93 @@ Responsive
     }
 
 }
+    
+/* ===========================
+Review Card
+=========================== */
 
+.review-card{
+
+    background:#111827;
+
+    border:2px solid #1F2937;
+
+    border-radius:14px;
+
+    padding:18px;
+
+    margin-bottom:20px;
+
+    transition:.3s;
+
+}
+
+.review-card:hover{
+
+    border-color:#F59E0B;
+
+}
+
+/* ===========================
+Review Title
+=========================== */
+
+.review-card h3{
+
+    font-size:20px;
+
+    color:#F59E0B;
+
+    margin-bottom:15px;
+
+}
+
+/* ===========================
+Review Image
+=========================== */
+
+.review-image{
+
+    width:100%;
+
+    border-radius:12px;
+
+    display:block;
+
+    margin-bottom:15px;
+
+    background:#1A2138;
+
+}
+
+/* ===========================
+Review Answer
+=========================== */
+
+.review-answer{
+
+    margin-top:10px;
+
+    padding:12px;
+
+    background:#1A2138;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    color:#FFFFFF;
+
+    line-height:1.6;
+
+}
+
+.review-answer strong{
+
+    color:#F59E0B;
+
+}
+    
 /* =========================================================
 END OF SECTION 01
 ========================================================= */
@@ -593,6 +679,64 @@ else{
 document.getElementById("achievementTitle").textContent =
 badge;
 
+/* ===========================
+Question Review
+=========================== */
+
+let reviewHTML = "";
+
+quizResult.questions.forEach((question,index)=>{
+
+    const userAnswer =
+    quizResult.userAnswers[index] || "Not Answered";
+
+    const correctAnswer =
+    question.correctAnswer;
+
+    const isCorrect =
+    userAnswer === correctAnswer;
+
+    reviewHTML += `
+
+    <div class="review-card">
+
+        <h3>
+
+            Question ${index+1}
+
+        </h3>
+
+        <img
+        src="${question.questionImage}"
+        class="review-image">
+
+        <div class="review-answer">
+
+            <strong>Your Answer:</strong>
+
+            ${userAnswer}
+
+            ${isCorrect ? "✅" : "❌"}
+
+        </div>
+
+        <div class="review-answer">
+
+            <strong>Correct Answer:</strong>
+
+            ${correctAnswer}
+
+        </div>
+
+    </div>
+
+    `;
+
+});
+
+document.getElementById("reviewSection").innerHTML =
+reviewHTML;
+    
 /* =========================================================
 END OF SECTION 02
 ========================================================= */
