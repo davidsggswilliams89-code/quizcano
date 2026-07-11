@@ -593,6 +593,7 @@ END OF SECTION 05
 
     
 <script>
+<script>
 /* =========================================================
 SECTION 02
 LOAD QUIZ RESULT
@@ -631,7 +632,10 @@ Summary Message
 =========================== */
 
 document.getElementById("summaryText").innerHTML =
-"Great job completing this quiz!";
+
+`🎉 Congratulations, <b>${quizResult.playerName}</b>!
+
+Great job completing this quiz!`;
 
 /* ===========================
 Statistics
@@ -661,7 +665,7 @@ quizResult.slowestTime + " sec";
 
 document.getElementById("totalTime").textContent =
 quizResult.totalTime + " sec";
-    
+
 /* ===========================
 Animated Progress Bar
 =========================== */
@@ -769,7 +773,7 @@ quizResult.questions.forEach((question,index)=>{
 
     reviewHTML += `
 
-    <div class="review-card">
+    <div class="review-card ${isCorrect ? 'correct-card' : 'wrong-card'}">
 
         <h3>
 
@@ -799,6 +803,14 @@ quizResult.questions.forEach((question,index)=>{
 
         </div>
 
+        <div class="review-answer">
+
+            <strong>⏱ Time Used:</strong>
+
+            ${quizResult.questionTimes ? quizResult.questionTimes[index] : 0} sec
+
+        </div>
+
     </div>
 
     `;
@@ -807,10 +819,12 @@ quizResult.questions.forEach((question,index)=>{
 
 document.getElementById("reviewSection").innerHTML =
 reviewHTML;
-    
+
 /* =========================================================
 END OF SECTION 02
 ========================================================= */
+
+
 /* =========================================================
 SECTION 05
 SHARE SCORE
@@ -823,11 +837,11 @@ shareButton.addEventListener("click",async()=>{
 
     const shareText =
 
-`🏆 I scored ${quizResult.score}/${quizResult.total} (${quizResult.percentage}%)
+`🏆 ${quizResult.playerName} scored ${quizResult.score}/${quizResult.total} (${quizResult.percentage}%)
 with an average answer time of ${quizResult.averageTime} seconds
 on QUIZCANO!
 
-Can you beat my score?
+Can you beat this score?
 
 Play now:
 https://github.com/davidsggswilliams89-code/quizcano/blob/main/index.html`;
@@ -862,8 +876,9 @@ https://github.com/davidsggswilliams89-code/quizcano/blob/main/index.html`;
 
 /* =========================================================
 END OF SECTION 05
-========================================================= */ 
+========================================================= */
 
+</script>
 </script>
 </body>
 
