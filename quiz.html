@@ -898,80 +898,66 @@ NEXT QUESTION BUTTON
 const nextButton =
 document.getElementById("nextButton");
 
-nextButton.addEventListener("click",()=>{
+nextButton.addEventListener(() => {
 
     /* Last Question */
 
     if(currentQuestionIndex >= quizQuestions.length - 1){
 
-/* ===========================
-Performance Statistics
-=========================== */
+        /* ===========================
+        Performance Statistics
+        =========================== */
 
-const averageTime =
-questionTimes.length > 0 ?
+        const averageTime =
+        questionTimes.length > 0 ?
+        (totalQuizTime / questionTimes.length).toFixed(1)
+        : 0;
 
-(totalQuizTime / questionTimes.length).toFixed(1)
+        const fastestTime =
+        questionTimes.length > 0 ?
+        Math.min(...questionTimes)
+        : 0;
 
-:
+        const slowestTime =
+        questionTimes.length > 0 ?
+        Math.max(...questionTimes)
+        : 0;
 
-0;
+        /* ===========================
+        Save Quiz Result
+        =========================== */
 
-const fastestTime =
-questionTimes.length > 0 ?
+        localStorage.setItem(
 
-Math.min(...questionTimes)
+            "quizResult",
 
-:
+            JSON.stringify({
 
-0;
+                score: quizScore,
 
-const slowestTime =
-questionTimes.length > 0 ?
+                total: quizQuestions.length,
 
-Math.max(...questionTimes)
+                percentage: Math.round(
+                    (quizScore / quizQuestions.length) * 100
+                ),
 
-:
+                userAnswers: userAnswers,
 
-0;
+                questions: quizQuestions,
 
-/* ===========================
-Save Quiz Result
-=========================== */
+                averageTime: averageTime,
 
-localStorage.setItem(
+                fastestTime: fastestTime,
 
-    "quizResult",
+                slowestTime: slowestTime,
 
-    JSON.stringify({
+                totalTime: totalQuizTime,
 
-        score: quizScore,
+                questionTimes: questionTimes
 
-        total: quizQuestions.length,
+            })
 
-        percentage: Math.round(
-
-            (quizScore / quizQuestions.length) * 100
-
-        ),
-
-        userAnswers: userAnswers,
-
-        questions: quizQuestions,
-
-        averageTime: averageTime,
-
-        fastestTime: fastestTime,
-
-        slowestTime: slowestTime,
-
-        totalTime: totalQuizTime
-
-    })
-
-);
-
-        /* Go To Offer Page */
+        );
 
         window.location.href = "result.html";
         return;
