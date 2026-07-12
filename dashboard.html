@@ -2481,15 +2481,13 @@ createQuizButton.addEventListener("click",()=>{
 
 });
 
-/* ===========================
-Reset Quiz Builder
-=========================== */
-
 function resetQuizBuilder(){
 
     currentQuestion = 1;
 
     quizQuestions = [];
+
+    editingQuizId = null;
 
     quizTitle.value = "";
 
@@ -2524,7 +2522,6 @@ function resetQuizBuilder(){
     saveQuizButton.textContent = "Save Quiz";
 
 }
-
 /* ===========================
 Load Categories
 =========================== */
@@ -2721,6 +2718,9 @@ async()=>{
 /* =========================================================
 SECTION 12
 PART 2
+/* =========================================================
+SECTION 12
+PART 1
 SAVE COMPLETE QUIZ
 ========================================================= */
 
@@ -2728,19 +2728,35 @@ saveQuizButton.addEventListener(
 "click",
 async()=>{
 
+    /* Editing Existing Quiz */
+
     if(editingQuizId){
 
-    await saveCurrentQuestion();
+        await saveCurrentQuestion();
 
-    await updateQuiz();
+        await updateQuiz();
 
-    return;
+        return;
 
-}
+    }
 
-    if(quizQuestions.length !== parseInt(totalQuestions.value)){
+    /* Validate Last Question */
 
-        alert("Please complete all questions.");
+    if(
+
+        !optionA.value.trim() ||
+
+        !optionB.value.trim() ||
+
+        !optionC.value.trim() ||
+
+        !optionD.value.trim() ||
+
+        !correctAnswer.value
+
+    ){
+
+        alert("Please complete the last question.");
 
         return;
 
@@ -2752,6 +2768,45 @@ async()=>{
 
         saveQuizButton.textContent =
         "Saving Quiz...";
+
+        /* Upload Last Image */
+
+        let imageUrl = "";
+
+        if(questionImage.files.length>0){
+
+            imageUrl =
+            await uploadQuestionImage(
+                questionImage.files[0]
+            );
+
+        }
+
+        /* Save Last Question */
+
+        quizQuestions.push({
+
+            questionNumber:currentQuestion,
+
+            questionImage:imageUrl,
+
+            options:{
+
+                A:optionA.value.trim(),
+
+                B:optionB.value.trim(),
+
+                C:optionC.value.trim(),
+
+                D:optionD.value.trim()
+
+            },
+
+            correctAnswer:correctAnswer.value
+
+        });
+
+        /* Save Quiz */
 
         await addDoc(
 
@@ -2778,44 +2833,9 @@ async()=>{
 
         );
 
-        alert(
-        "Quiz saved successfully."
-        );
+        alert("Quiz saved successfully.");
 
-        /* ===========================
-        Reset Form
-        =========================== */
-
-        quizTitle.value = "";
-
-        totalQuestions.value = "";
-
-        quizCategory.value = "";
-
-        optionA.value = "";
-
-        optionB.value = "";
-
-        optionC.value = "";
-
-        optionD.value = "";
-
-        correctAnswer.value = "";
-
-        questionImage.value = "";
-
-        quizQuestions = [];
-
-        currentQuestion = 1;
-
-        currentQuestionLabel.textContent =
-        "Question 1";
-
-        nextQuestionButton.style.display =
-        "block";
-
-        saveQuizButton.style.display =
-        "none";
+        resetQuizBuilder();
 
     }
 
@@ -2823,9 +2843,7 @@ async()=>{
 
         console.error(error);
 
-        alert(
-        "Failed to save quiz."
-        );
+        alert("Failed to save quiz.");
 
     }
 
@@ -2841,8 +2859,10 @@ async()=>{
 });
 
 /* =========================================================
-END OF SECTION 12 JAVASCRIPT
+END OF SECTION 12 PART 1
 ========================================================= */
+    
+
 /* =========================================================  
 SECTION 13  
 MANAGE QUIZ JAVASCRIPT  
