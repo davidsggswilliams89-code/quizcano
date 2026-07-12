@@ -2717,10 +2717,11 @@ async()=>{
     
 /* =========================================================
 SECTION 12
-PART 2
+PART 1
+/* =========================================================
 /* =========================================================
 SECTION 12
-PART 1
+PART 2
 SAVE COMPLETE QUIZ
 ========================================================= */
 
@@ -2728,7 +2729,7 @@ saveQuizButton.addEventListener(
 "click",
 async()=>{
 
-    /* Editing Existing Quiz */
+    /* EDIT QUIZ */
 
     if(editingQuizId){
 
@@ -2769,7 +2770,7 @@ async()=>{
         saveQuizButton.textContent =
         "Saving Quiz...";
 
-        /* Upload Last Image */
+        /* Save Final Question */
 
         let imageUrl = "";
 
@@ -2781,8 +2782,6 @@ async()=>{
             );
 
         }
-
-        /* Save Last Question */
 
         quizQuestions.push({
 
@@ -2805,8 +2804,6 @@ async()=>{
             correctAnswer:correctAnswer.value
 
         });
-
-        /* Save Quiz */
 
         await addDoc(
 
@@ -2859,9 +2856,9 @@ async()=>{
 });
 
 /* =========================================================
-END OF SECTION 12 PART 1
+END OF SECTION 12
 ========================================================= */
-    
+            
 
 /* =========================================================  
 SECTION 13  
