@@ -3216,25 +3216,23 @@ function loadQuestionToForm(index){
     question.correctAnswer;
 
     questionImage.value = "";
-    
-if(question.questionImage){
 
-    questionImagePreview.src =
-    question.questionImage;
+    if(question.questionImage){
 
-    questionImagePreview.style.display =
-    "block";
+        questionImagePreview.src =
+        question.questionImage;
 
-}else{
+        questionImagePreview.style.display =
+        "block";
 
-    questionImagePreview.src = "";
+    }else{
 
-    questionImagePreview.style.display =
-    "none";
+        questionImagePreview.src = "";
 
-}
+        questionImagePreview.style.display =
+        "none";
 
-    
+    }
 
     if(index==1){
 
@@ -3261,10 +3259,13 @@ if(question.questionImage){
     }
 
 }
-    
-previousQuestionButton.addEventListener("click",()=>{
 
-    saveCurrentQuestion();
+
+previousQuestionButton.addEventListener(
+"click",
+async()=>{
+
+    await saveCurrentQuestion();
 
     currentQuestion--;
 
@@ -3272,8 +3273,8 @@ previousQuestionButton.addEventListener("click",()=>{
 
 });
 
-    
-function saveCurrentQuestion(){
+
+async function saveCurrentQuestion(){
 
     quizQuestions[currentQuestion-1].options.A =
     optionA.value.trim();
@@ -3290,8 +3291,23 @@ function saveCurrentQuestion(){
     quizQuestions[currentQuestion-1].correctAnswer =
     correctAnswer.value;
 
+    if(questionImage.files.length>0){
+
+        const imageUrl =
+        await uploadQuestionImage(
+            questionImage.files[0]
+        );
+
+        quizQuestions[currentQuestion-1].questionImage =
+        imageUrl;
+
+    }
+
 }
-    
+
+/* =========================================================
+END OF SECTION 13 PART 3
+========================================================= */
     
 </script>
 
