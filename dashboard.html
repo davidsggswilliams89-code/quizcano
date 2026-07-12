@@ -2802,7 +2802,6 @@ async()=>{
 /* =========================================================
 END OF SECTION 12 JAVASCRIPT
 ========================================================= */
-
 /* =========================================================
 SECTION 13
 MANAGE QUIZ JAVASCRIPT
@@ -2824,6 +2823,15 @@ manageQuizButton.addEventListener("click",()=>{
     createQuizSection.classList.remove("show");
 
     loadManageQuizCategories();
+
+    quizList.innerHTML = `
+        <h3 style="
+        text-align:center;
+        color:#9CA3AF;
+        grid-column:1/-1;">
+            Select a category to load quizzes.
+        </h3>
+    `;
 
 });
 
@@ -2860,12 +2868,37 @@ async function loadManageQuizCategories(){
 }
 
 /* ===========================
+Load Quiz When Category Changes
+=========================== */
+
+manageQuizCategory.addEventListener("change",()=>{
+
+    loadQuizzes(manageQuizCategory.value);
+
+});
+
+/* ===========================
 Load Quizzes
 =========================== */
 
-async function loadQuizzes(){
+async function loadQuizzes(categoryId){
 
     quizList.innerHTML = "";
+
+    if(!categoryId){
+
+        quizList.innerHTML = `
+            <h3 style="
+            text-align:center;
+            color:#9CA3AF;
+            grid-column:1/-1;">
+                Select a category.
+            </h3>
+        `;
+
+        return;
+
+    }
 
     try{
 
@@ -2874,53 +2907,20 @@ async function loadQuizzes(){
             collection(db,"quizzes")
         );
 
-        if(snapshot.empty){
-
-            quizList.innerHTML = `
-                <h3 style="
-                text-align:center;
-                color:#9CA3AF;
-                grid-column:1/-1;">
-                    No quizzes found.
-                </h3>
-            `;
-
-            return;
-
-        }
+        let found = false;
 
         for(const document of snapshot.docs){
 
             const quiz =
             document.data();
 
-            let categoryName = "Unknown";
+            if(quiz.categoryId !== categoryId){
 
-            try{
-
-                const categorySnapshot =
-                await getDoc(
-                    doc(
-                        db,
-                        "categories",
-                        quiz.categoryId
-                    )
-                );
-
-                if(categorySnapshot.exists()){
-
-                    categoryName =
-                    categorySnapshot.data().name;
-
-                }
+                continue;
 
             }
 
-            catch(error){
-
-                console.log(error);
-
-            }
+            found = true;
 
             quizList.innerHTML += `
 
@@ -2933,13 +2933,6 @@ async function loadQuizzes(){
                         ${quiz.quizTitle}
 
                     </h3>
-
-                    <div class="quiz-option">
-
-                        Category:
-                        ${categoryName}
-
-                    </div>
 
                     <div class="quiz-option">
 
@@ -2983,15 +2976,25 @@ async function loadQuizzes(){
 
         }
 
+        if(!found){
+
+            quizList.innerHTML = `
+                <h3 style="
+                text-align:center;
+                color:#9CA3AF;
+                grid-column:1/-1;">
+                    No quizzes found in this category.
+                </h3>
+            `;
+        }
+
     }
 
     catch(error){
 
         console.error(error);
 
-        alert(
-        "Failed to load quizzes."
-        );
+        alert("Failed to load quizzes.");
 
     }
 
