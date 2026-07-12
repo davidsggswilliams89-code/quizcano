@@ -3355,6 +3355,51 @@ async function updateQuiz(){
         );
 
     }
+ editingQuizId = null;
+
+quizTitle.value = "";
+
+totalQuestions.value = "";
+
+quizCategory.value = "";
+
+questionImage.value = "";
+
+questionImagePreview.src = "";
+
+questionImagePreview.style.display = "none";
+
+optionA.value = "";
+
+optionB.value = "";
+
+optionC.value = "";
+
+optionD.value = "";
+
+correctAnswer.value = "";
+
+quizQuestions = [];
+
+currentQuestion = 1;
+
+currentQuestionLabel.textContent =
+"Question 1";
+
+previousQuestionButton.style.display =
+"none";
+
+nextQuestionButton.style.display =
+"block";
+
+saveQuizButton.style.display =
+"none";
+
+createQuizSection.classList.remove("show");
+
+manageQuizSection.classList.add("show");
+
+loadQuizzes(manageQuizCategory.value);       
 
     catch(error){
 
