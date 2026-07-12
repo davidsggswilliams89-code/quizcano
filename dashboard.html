@@ -3308,7 +3308,78 @@ async function saveCurrentQuestion(){
 /* =========================================================
 END OF SECTION 13 PART 3
 ========================================================= */
-    
+/* =========================================================
+SECTION 14
+UPDATE QUIZ
+========================================================= */
+
+async function updateQuiz(){
+
+    try{
+
+        saveQuizButton.disabled = true;
+
+        saveQuizButton.textContent =
+        "Updating Quiz...";
+
+        await saveCurrentQuestion();
+
+        await updateDoc(
+
+            doc(
+                db,
+                "quizzes",
+                editingQuizId
+            ),
+
+            {
+
+                quizTitle:
+                quizTitle.value.trim(),
+
+                categoryId:
+                quizCategory.value,
+
+                totalQuestions:
+                parseInt(totalQuestions.value),
+
+                questions:
+                quizQuestions
+
+            }
+
+        );
+
+        alert(
+        "Quiz updated successfully."
+        );
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+        "Failed to update quiz."
+        );
+
+    }
+
+    finally{
+
+        saveQuizButton.disabled = false;
+
+        saveQuizButton.textContent =
+        "Save Quiz";
+
+    }
+
+}
+
+/* =========================================================
+END OF SECTION 14
+========================================================= */    
 </script>
 
 </body>
