@@ -2802,6 +2802,7 @@ async()=>{
 /* =========================================================
 END OF SECTION 12 JAVASCRIPT
 ========================================================= */
+
 /* =========================================================
 SECTION 13
 MANAGE QUIZ JAVASCRIPT
@@ -2825,6 +2826,10 @@ manageQuizButton.addEventListener("click",()=>{
     loadManageQuizCategories();
 
 });
+
+/* ===========================
+Load Categories
+=========================== */
 
 async function loadManageQuizCategories(){
 
@@ -2853,6 +2858,7 @@ async function loadManageQuizCategories(){
     });
 
 }
+
 /* ===========================
 Load Quizzes
 =========================== */
@@ -2977,11 +2983,24 @@ async function loadQuizzes(){
 
         }
 
+    }
 
+    catch(error){
+
+        console.error(error);
+
+        alert(
+        "Failed to load quizzes."
+        );
+
+    }
+
+}
 
 /* =========================================================
 END OF SECTION 13 PART 1
 ========================================================= */
+
 /* =========================================================
 SECTION 13
 PART 2
