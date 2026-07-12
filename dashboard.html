@@ -3379,8 +3379,7 @@ async function updateQuiz(){
         "Quiz updated successfully."
         );
 
-    }
- editingQuizId = null;
+editingQuizId = null;
 
 quizTitle.value = "";
 
@@ -3423,36 +3422,39 @@ createQuizSection.classList.remove("show");
 manageQuizSection.classList.add("show");
 
 /* Reload current category */
+
 if(manageQuizCategory.value){
 
     await loadQuizzes(manageQuizCategory.value);
 
 }
 
-    catch(error){
+}
 
-        console.error(error);
+catch(error){
 
-        alert(
+    console.error(error);
+
+    alert(
         "Failed to update quiz."
-        );
+    );
 
-    }
+}
 
-    finally{
+finally{
 
-        saveQuizButton.disabled = false;
+    saveQuizButton.disabled = false;
 
-        saveQuizButton.textContent =
-        "Save Quiz";
+    saveQuizButton.textContent =
+    "Save Quiz";
 
-    }
+}
 
 }
 
 /* =========================================================
 END OF SECTION 14
-========================================================= */    
+========================================================= */
 </script>
 
 </body>
