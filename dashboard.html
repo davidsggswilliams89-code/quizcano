@@ -2426,7 +2426,7 @@ const questionImage =
 document.getElementById("questionImage");
 
 const questionImagePreview =
-document.getElementById("questionImagePreview");    
+document.getElementById("questionImagePreview");
 
 const optionA =
 document.getElementById("optionA");
@@ -2444,29 +2444,28 @@ const correctAnswer =
 document.getElementById("correctAnswer");
 
 const previousQuestionButton =
-document.getElementById("previousQuestionButton");    
-    
+document.getElementById("previousQuestionButton");
+
 const nextQuestionButton =
 document.getElementById("nextQuestionButton");
 
 const saveQuizButton =
 document.getElementById("saveQuizButton");
 
-
 /* ===========================
 Variables
 =========================== */
 
 let currentQuestion = 1;
-
 let quizQuestions = [];
-
 
 /* ===========================
 Open Create Quiz
 =========================== */
 
 createQuizButton.addEventListener("click",()=>{
+
+    editingQuizId = null;
 
     createQuizSection.classList.add("show");
 
@@ -2482,7 +2481,6 @@ createQuizButton.addEventListener("click",()=>{
 
 });
 
-
 /* ===========================
 Reset Quiz Builder
 =========================== */
@@ -2493,17 +2491,39 @@ function resetQuizBuilder(){
 
     quizQuestions = [];
 
-    currentQuestionLabel.textContent =
-    "Question 1";
+    quizTitle.value = "";
 
-    nextQuestionButton.style.display =
-    "block";
+    totalQuestions.value = "";
 
-    saveQuizButton.style.display =
-    "none";
+    quizCategory.value = "";
+
+    optionA.value = "";
+
+    optionB.value = "";
+
+    optionC.value = "";
+
+    optionD.value = "";
+
+    correctAnswer.value = "";
+
+    questionImage.value = "";
+
+    questionImagePreview.src = "";
+
+    questionImagePreview.style.display = "none";
+
+    currentQuestionLabel.textContent = "Question 1";
+
+    previousQuestionButton.style.display = "none";
+
+    nextQuestionButton.style.display = "block";
+
+    saveQuizButton.style.display = "none";
+
+    saveQuizButton.textContent = "Save Quiz";
 
 }
-
 
 /* ===========================
 Load Categories
@@ -2517,26 +2537,23 @@ async function loadQuizCategories(){
         </option>
     `;
 
-    const snapshot =
-    await getDocs(
+    const snapshot = await getDocs(
         collection(db,"categories")
     );
 
     snapshot.forEach((item)=>{
 
-        const data =
-        item.data();
+        const category = item.data();
 
         quizCategory.innerHTML += `
             <option value="${item.id}">
-                ${data.name}
+                ${category.name}
             </option>
         `;
 
     });
 
 }
-
 
 /* ===========================
 Upload Question Image
@@ -2550,35 +2567,40 @@ async function uploadQuestionImage(file){
 
     }
 
-    const formData =
-    new FormData();
+    const formData = new FormData();
 
-    formData.append(
-        "file",
-        file
-    );
+    formData.append("file",file);
 
     formData.append(
         "upload_preset",
         CLOUDINARY_UPLOAD_PRESET
     );
 
-    const response =
-    await fetch(
-        "https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
+    const response = await fetch(
+
+        `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+
         {
+
             method:"POST",
+
             body:formData
+
         }
+
     );
 
-    const data =
-    await response.json();
+    if(!response.ok){
+
+        throw new Error("Image upload failed.");
+
+    }
+
+    const data = await response.json();
 
     return data.secure_url;
 
 }
-
 
 /* ===========================
 Next Question
@@ -2590,19 +2612,19 @@ async()=>{
 
     if(
 
-        !quizTitle.value ||
+        !quizTitle.value.trim() ||
 
         !totalQuestions.value ||
 
         !quizCategory.value ||
 
-        !optionA.value ||
+        !optionA.value.trim() ||
 
-        !optionB.value ||
+        !optionB.value.trim() ||
 
-        !optionC.value ||
+        !optionC.value.trim() ||
 
-        !optionD.value ||
+        !optionD.value.trim() ||
 
         !correctAnswer.value
 
@@ -2614,9 +2636,21 @@ async()=>{
 
     }
 
+    if(editingQuizId){
+
+        await saveCurrentQuestion();
+
+        currentQuestion++;
+
+        loadQuestionToForm(currentQuestion);
+
+        return;
+
+    }
+
     let imageUrl = "";
 
-    if(questionImage.files.length > 0){
+    if(questionImage.files.length>0){
 
         imageUrl =
         await uploadQuestionImage(
@@ -2624,17 +2658,6 @@ async()=>{
         );
 
     }
-    if(editingQuizId){
-
-    saveCurrentQuestion();
-
-    currentQuestion++;
-
-    loadQuestionToForm(currentQuestion);
-
-    return;
-
-}
 
     quizQuestions.push({
 
@@ -2654,8 +2677,7 @@ async()=>{
 
         },
 
-        correctAnswer:
-        correctAnswer.value
+        correctAnswer:correctAnswer.value
 
     });
 
@@ -2673,27 +2695,29 @@ async()=>{
 
     questionImage.value="";
 
+    questionImagePreview.src="";
+
+    questionImagePreview.style.display="none";
+
     currentQuestionLabel.textContent =
     "Question " + currentQuestion;
 
-    if(
-        currentQuestion >
+    if(currentQuestion>
+
         parseInt(totalQuestions.value)
+
     ){
 
-        nextQuestionButton.style.display =
-        "none";
+        nextQuestionButton.style.display="none";
 
-        saveQuizButton.style.display =
-        "block";
+        saveQuizButton.style.display="block";
 
     }
 
 });
+    
 
-/* =========================================================
-END OF SECTION 12 PART 1
-========================================================= */
+    
 /* =========================================================
 SECTION 12
 PART 2
@@ -2706,11 +2730,13 @@ async()=>{
 
     if(editingQuizId){
 
-        await updateQuiz();
+    await saveCurrentQuestion();
 
-        return;
+    await updateQuiz();
 
-    }
+    return;
+
+}
 
     if(quizQuestions.length !== parseInt(totalQuestions.value)){
 
@@ -3065,7 +3091,7 @@ async(event)=>{
             "Quiz deleted successfully."
         );
 
-        loadQuizzes();
+        loadQuizzes(manageQuizCategory.value);
 
     }
 
@@ -3382,23 +3408,26 @@ quizQuestions = [];
 
 currentQuestion = 1;
 
-currentQuestionLabel.textContent =
-"Question 1";
+currentQuestionLabel.textContent = "Question 1";
 
-previousQuestionButton.style.display =
-"none";
+previousQuestionButton.style.display = "none";
 
-nextQuestionButton.style.display =
-"block";
+nextQuestionButton.style.display = "block";
 
-saveQuizButton.style.display =
-"none";
+saveQuizButton.style.display = "none";
+
+saveQuizButton.textContent = "Save Quiz";
 
 createQuizSection.classList.remove("show");
 
 manageQuizSection.classList.add("show");
 
-loadQuizzes(manageQuizCategory.value);       
+/* Reload current category */
+if(manageQuizCategory.value){
+
+    await loadQuizzes(manageQuizCategory.value);
+
+}
 
     catch(error){
 
