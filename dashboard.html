@@ -1414,6 +1414,18 @@ id="createQuizSection">
     id="questionImage"
     class="create-category-input"
     accept="image/*">
+    <img
+id="questionImagePreview"
+src=""
+style="
+width:100%;
+max-height:220px;
+object-fit:contain;
+border-radius:12px;
+margin-bottom:20px;
+display:none;
+background:#0B1120;
+border:2px solid #1F2937;">
 
     <!-- Option A -->
 
@@ -2413,6 +2425,9 @@ document.getElementById("quizCategory");
 const questionImage =
 document.getElementById("questionImage");
 
+const questionImagePreview =
+document.getElementById("questionImagePreview");    
+
 const optionA =
 document.getElementById("optionA");
 
@@ -3201,6 +3216,25 @@ function loadQuestionToForm(index){
     question.correctAnswer;
 
     questionImage.value = "";
+    
+if(question.questionImage){
+
+    questionImagePreview.src =
+    question.questionImage;
+
+    questionImagePreview.style.display =
+    "block";
+
+}else{
+
+    questionImagePreview.src = "";
+
+    questionImagePreview.style.display =
+    "none";
+
+}
+
+    
 
     if(index==1){
 
