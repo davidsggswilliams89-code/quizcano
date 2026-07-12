@@ -2921,124 +2921,112 @@ manageQuizCategory.addEventListener("change",()=>{
 /* ===========================  
 Load Quizzes  
 =========================== */  
-  
-async function loadQuizzes(categoryId){  
-  
-    quizList.innerHTML = "";  
-  
-    if(!categoryId){  
-  
-        quizList.innerHTML = `  
-            <h3 style="  
-            text-align:center;  
-            color:#9CA3AF;  
-            grid-column:1/-1;">  
-                Select a category.  
-            </h3>  
-        `;  
-  
-        return;  
-  
-    }  
-  
-    try{  
-  
-        const snapshot =  
-        await getDocs(  
-            collection(db,"quizzes")  
-        );  
-  
-        let found = false;  
-  
-        for(const document of snapshot.docs){  
-  
-            const quiz =  
-            document.data();  
-  
-            if(quiz.categoryId !== categoryId){  
-  
-                continue;  
-  
-            }  
-  
-            found = true;  
-  
-            quizList.innerHTML += `  
-  
-            <div class="quiz-card">  
-  
-                <div class="quiz-card-content">  
-  
-                    <h3 class="quiz-card-title">  
-  
-                        ${quiz.quizTitle}  
-  
-                    </h3>  
-  
-                    <div class="quiz-option">  
-  
-                        Total Questions:  
-                        ${quiz.totalQuestions}  
-  
-                    </div>  
-  
-                    <div class="quiz-option">  
-  
-                        Saved Questions:  
-                        ${quiz.questions.length}  
-  
-                    </div>  
-  
-                    <div class="quiz-card-buttons">  
-  
-                        <button  
-                        class="edit-quiz-btn"  
-                        data-id="${document.id}">  
-  
-                            Edit  
-  
-                        </button>  
-  
-                        <button  
-                        class="delete-quiz-btn"  
-                        data-id="${document.id}">  
-  
-                            Delete  
-  
-                        </button>  
-  
-                    </div>  
-  
-                </div>  
-  
-            </div>  
-  
-            `;  
-  
-        }  
-      if(!found){  
-  
-            quizList.innerHTML = `  
-                <h3 style="  
-                text-align:center;  
-                color:#9CA3AF;  
-                grid-column:1/-1;">  
-                    No quizzes found in this category.  
-                </h3>  
-            `;  
-        }  
-  
-    }  
-  
-    catch(error){  
-  
-        console.error(error);  
-  
-        alert("Failed to load quizzes.");  
-  
-    }  
-  
+async function loadQuizzes(categoryId){
+
+    quizList.innerHTML = "";
+
+    if(!categoryId){
+
+        quizList.innerHTML = `
+            <h3 style="
+            text-align:center;
+            color:#9CA3AF;
+            grid-column:1/-1;">
+                Select a category.
+            </h3>
+        `;
+
+        return;
+
+    }
+
+    try{
+
+        const snapshot = await getDocs(
+            collection(db,"quizzes")
+        );
+
+        let found = false;
+
+        snapshot.forEach((quizDoc)=>{
+
+            const quiz = quizDoc.data();
+
+            if(String(quiz.categoryId) === String(categoryId)){
+
+                found = true;
+
+                quizList.innerHTML += `
+
+                <div class="quiz-card">
+
+                    <div class="quiz-card-content">
+
+                        <h3 class="quiz-card-title">
+                            ${quiz.quizTitle}
+                        </h3>
+
+                        <div class="quiz-option">
+                            Total Questions:
+                            ${quiz.totalQuestions}
+                        </div>
+
+                        <div class="quiz-option">
+                            Saved Questions:
+                            ${quiz.questions.length}
+                        </div>
+
+                        <div class="quiz-card-buttons">
+
+                            <button
+                            class="edit-quiz-btn"
+                            data-id="${quizDoc.id}">
+                                Edit
+                            </button>
+
+                            <button
+                            class="delete-quiz-btn"
+                            data-id="${quizDoc.id}">
+                                Delete
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                `;
+
+            }
+
+        });
+
+        if(!found){
+
+            quizList.innerHTML = `
+                <h3 style="
+                text-align:center;
+                color:#9CA3AF;
+                grid-column:1/-1;">
+                    No quizzes found in this category.
+                </h3>
+            `;
+
+        }
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert("Failed to load quizzes.");
+
+    }
+
 }  
+        
   
 /* =========================================================  
 END OF SECTION 13 PART 1  
