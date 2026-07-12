@@ -3154,10 +3154,6 @@ async(event)=>{
 });
 
 
-/* ===========================
-Load Question To Form
-=========================== */
-
 function loadQuestionToForm(index){
 
     const question =
@@ -3183,15 +3179,61 @@ function loadQuestionToForm(index){
 
     questionImage.value = "";
 
-}
+    if(index==1){
 
-/* =========================================================
-END OF SECTION 13 PART 3
-========================================================= */    
+        previousQuestionButton.style.display="none";
+
+    }else{
+
+        previousQuestionButton.style.display="block";
+
+    }
+
+    if(index==quizQuestions.length){
+
+        nextQuestionButton.style.display="none";
+
+        saveQuizButton.style.display="block";
+
+    }else{
+
+        nextQuestionButton.style.display="block";
+
+        saveQuizButton.style.display="none";
+
+    }
+
+}
+    
+previousQuestionButton.addEventListener("click",()=>{
+
+    saveCurrentQuestion();
+
+    currentQuestion--;
+
+    loadQuestionToForm(currentQuestion);
+
+});
 
     
+function saveCurrentQuestion(){
 
+    quizQuestions[currentQuestion-1].options.A =
+    optionA.value.trim();
 
+    quizQuestions[currentQuestion-1].options.B =
+    optionB.value.trim();
+
+    quizQuestions[currentQuestion-1].options.C =
+    optionC.value.trim();
+
+    quizQuestions[currentQuestion-1].options.D =
+    optionD.value.trim();
+
+    quizQuestions[currentQuestion-1].correctAnswer =
+    correctAnswer.value;
+
+}
     
     
 </script>
