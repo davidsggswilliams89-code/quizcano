@@ -2619,6 +2619,17 @@ async()=>{
         );
 
     }
+    if(editingQuizId){
+
+    saveCurrentQuestion();
+
+    currentQuestion++;
+
+    loadQuestionToForm(currentQuestion);
+
+    return;
+
+}
 
     quizQuestions.push({
 
