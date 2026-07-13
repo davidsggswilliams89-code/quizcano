@@ -3344,6 +3344,8 @@ async function saveCurrentQuestion(){
 /* =========================================================
 END OF SECTION 13 PART 3
 ========================================================= */
+
+</script>
 /* =========================================================
 SECTION 14
 UPDATE QUIZ
@@ -3387,87 +3389,85 @@ async function updateQuiz(){
         );
 
         alert(
-        "Quiz updated successfully."
+            "Quiz updated successfully."
         );
 
-editingQuizId = null;
+        /* ===========================
+        Reset Form
+        =========================== */
 
-quizTitle.value = "";
+        editingQuizId = null;
 
-totalQuestions.value = "";
+        quizTitle.value = "";
 
-quizCategory.value = "";
+        totalQuestions.value = "";
 
-questionImage.value = "";
+        quizCategory.value = "";
 
-questionImagePreview.src = "";
+        questionImage.value = "";
 
-questionImagePreview.style.display = "none";
+        questionImagePreview.src = "";
 
-optionA.value = "";
+        questionImagePreview.style.display = "none";
 
-optionB.value = "";
+        optionA.value = "";
 
-optionC.value = "";
+        optionB.value = "";
 
-optionD.value = "";
+        optionC.value = "";
 
-correctAnswer.value = "";
+        optionD.value = "";
 
-quizQuestions = [];
+        correctAnswer.value = "";
 
-currentQuestion = 1;
+        quizQuestions = [];
 
-currentQuestionLabel.textContent = "Question 1";
+        currentQuestion = 1;
 
-previousQuestionButton.style.display = "none";
+        currentQuestionLabel.textContent =
+        "Question 1";
 
-nextQuestionButton.style.display = "block";
+        previousQuestionButton.style.display =
+        "none";
 
-saveQuizButton.style.display = "none";
+        nextQuestionButton.style.display =
+        "block";
 
-saveQuizButton.textContent = "Save Quiz";
+        saveQuizButton.style.display =
+        "none";
 
-createQuizSection.classList.remove("show");
+        createQuizSection.classList.remove("show");
 
-manageQuizSection.classList.add("show");
+        manageQuizSection.classList.add("show");
 
-/* Reload current category */
+        loadQuizzes(manageQuizCategory.value);
 
-if(manageQuizCategory.value){
+    }
 
-    await loadQuizzes(manageQuizCategory.value);
+    catch(error){
 
-}
+        console.error(error);
 
-}
+        alert(
+            "Failed to update quiz."
+        );
 
-catch(error){
+    }
 
-    console.error(error);
+    finally{
 
-    alert(
-        "Failed to update quiz."
-    );
+        saveQuizButton.disabled = false;
 
-}
+        saveQuizButton.textContent =
+        "Save Quiz";
 
-finally{
-
-    saveQuizButton.disabled = false;
-
-    saveQuizButton.textContent =
-    "Save Quiz";
-
-}
+    }
 
 }
 
 /* =========================================================
 END OF SECTION 14
 ========================================================= */
-</script>
-
 </body>
 
 </html>
