@@ -2930,6 +2930,8 @@ Load Quiz When Category Changes
 
 manageQuizCategory.onchange = function(){
 
+    alert("Selected Category ID: " + this.value);
+
     loadQuizzes(this.value);
 
 };
