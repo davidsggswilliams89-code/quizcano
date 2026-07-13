@@ -2859,90 +2859,91 @@ async()=>{
 END OF SECTION 12
 ========================================================= */
             
+/* =========================================================
+SECTION 13
+MANAGE QUIZ JAVASCRIPT
+PART 1
+========================================================= */
 
-/* =========================================================  
-SECTION 13  
-MANAGE QUIZ JAVASCRIPT  
-PART 1  
-========================================================= */  
-  
-/* ===========================  
-Open Manage Quiz  
-=========================== */  
-  
-manageQuizButton.addEventListener("click",()=>{  
-  
-    manageQuizSection.classList.add("show");  
-  
-    createCategorySection.classList.remove("show");  
-  
-    manageCategorySection.classList.remove("show");  
-  
-    createQuizSection.classList.remove("show");  
-  
-    loadManageQuizCategories();  
-  
-    quizList.innerHTML = `  
-        <h3 style="  
-        text-align:center;  
-        color:#9CA3AF;  
-        grid-column:1/-1;">  
-            Select a category to load quizzes.  
-        </h3>  
-    `;  
-  
-});  
-  
-/* ===========================  
-Load Categories  
-=========================== */  
-  
-async function loadManageQuizCategories(){  
-  
-    manageQuizCategory.innerHTML = `  
-        <option value="">  
-            Select Category  
-        </option>  
-    `;  
-  
-    const snapshot =  
-    await getDocs(  
-        collection(db,"categories")  
-    );  
-  
-    snapshot.forEach((docItem)=>{  
-  
-        const category =  
-        docItem.data();  
-  
-        manageQuizCategory.innerHTML += `  
-            <option value="${docItem.id}">  
-                ${category.name}  
-            </option>  
-        `;  
-  
-    });  
-  
-}  
-  
-/* ===========================  
-Load Quiz When Category Changes  
-=========================== */  
-  
-manageQuizCategory.addEventListener("change",()=>{  
-  
-    loadQuizzes(manageQuizCategory.value);  
-  
-});  
-  
-/* ===========================  
-Load Quizzes  
-=========================== */  
+/* ===========================
+Open Manage Quiz
+=========================== */
+
+manageQuizButton.addEventListener("click", async()=>{
+
+    manageQuizSection.classList.add("show");
+
+    createCategorySection.classList.remove("show");
+
+    manageCategorySection.classList.remove("show");
+
+    createQuizSection.classList.remove("show");
+
+    await loadManageQuizCategories();
+
+    quizList.innerHTML = `
+        <h3 style="
+        text-align:center;
+        color:#9CA3AF;
+        grid-column:1/-1;">
+            Select a category to load quizzes.
+        </h3>
+    `;
+
+});
+
+
+/* ===========================
+Load Categories
+=========================== */
+
+async function loadManageQuizCategories(){
+
+    manageQuizCategory.innerHTML = `
+        <option value="">
+            Select Category
+        </option>
+    `;
+
+    const snapshot = await getDocs(
+        collection(db,"categories")
+    );
+
+    snapshot.forEach((docItem)=>{
+
+        const category = docItem.data();
+
+        manageQuizCategory.innerHTML += `
+            <option value="${docItem.id}">
+                ${category.name}
+            </option>
+        `;
+
+    });
+
+}
+
+
+/* ===========================
+Load Quiz When Category Changes
+=========================== */
+
+manageQuizCategory.onchange = function(){
+
+    loadQuizzes(this.value);
+
+};
+
+
+/* ===========================
+Load Quizzes
+=========================== */
+
 async function loadQuizzes(categoryId){
 
     quizList.innerHTML = "";
 
-    if(!categoryId){
+    if(categoryId === ""){
 
         quizList.innerHTML = `
             <h3 style="
@@ -2952,9 +2953,7 @@ async function loadQuizzes(categoryId){
                 Select a category.
             </h3>
         `;
-
         return;
-
     }
 
     try{
@@ -2963,17 +2962,15 @@ async function loadQuizzes(categoryId){
             collection(db,"quizzes")
         );
 
-        let found = false;
+        let html = "";
 
         snapshot.forEach((quizDoc)=>{
 
             const quiz = quizDoc.data();
 
-            if(String(quiz.categoryId) === String(categoryId)){
+            if(quiz.categoryId == categoryId){
 
-                found = true;
-
-                quizList.innerHTML += `
+                html += `
 
                 <div class="quiz-card">
 
@@ -3019,7 +3016,7 @@ async function loadQuizzes(categoryId){
 
         });
 
-        if(!found){
+        if(html===""){
 
             quizList.innerHTML = `
                 <h3 style="
@@ -3029,6 +3026,10 @@ async function loadQuizzes(categoryId){
                     No quizzes found in this category.
                 </h3>
             `;
+
+        }else{
+
+            quizList.innerHTML = html;
 
         }
 
@@ -3042,12 +3043,11 @@ async function loadQuizzes(categoryId){
 
     }
 
-}  
-        
-  
-/* =========================================================  
-END OF SECTION 13 PART 1  
-========================================================= */  
+}
+
+/* =========================================================
+END OF SECTION 13 PART 1
+========================================================= */
 
 /* =========================================================
 SECTION 13
