@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+we<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -2969,6 +2969,11 @@ async function loadQuizzes(categoryId){
         snapshot.forEach((quizDoc)=>{
 
             const quiz = quizDoc.data();
+            alert(
+"Quiz: " + quiz.quizTitle +
+"\nSaved categoryId: " + quiz.categoryId +
+"\nSelected: " + categoryId
+);
 
             if(quiz.categoryId == categoryId){
 
