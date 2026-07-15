@@ -1803,39 +1803,6 @@ STEP 05
 LOAD SUB CATEGORIES FOR CREATE QUIZ
 ========================================================= */
 
-quizMotherCategory.addEventListener("change", async function(){
-
-quizSubCategory.innerHTML=`
-<option value="">
-Select Sub Category
-</option>
-`;
-
-const parent=this.value;
-
-if(parent==="") return;
-
-try{
-
-const snapshot=await getDocs(
-collection(db,"subCategories")
-);
-
-snapshot.forEach((docItem)=>{
-
-const item=docItem.data();
-
-if(item.parentCategory===parent){
-
-quizSubCategory.innerHTML+=`
-<option value="${docItem.id}">
-${item.name}
-</option>
-`;
-
-}
-
-});
 
 }
 catch(error){
@@ -2264,6 +2231,44 @@ document.getElementById("saveQuizButton");
 let currentQuestion=1;
 
 let quizQuestions=[];
+
+
+
+
+  quizMotherCategory.addEventListener("change", async function(){
+
+quizSubCategory.innerHTML=`
+<option value="">
+Select Sub Category
+</option>
+`;
+
+const parent=this.value;
+
+if(parent==="") return;
+
+try{
+
+const snapshot=await getDocs(
+collection(db,"subCategories")
+);
+
+snapshot.forEach((docItem)=>{
+
+const item=docItem.data();
+
+if(item.parentCategory===parent){
+
+quizSubCategory.innerHTML+=`
+<option value="${docItem.id}">
+${item.name}
+</option>
+`;
+
+}
+
+});
+
 
 /* Open */
 
