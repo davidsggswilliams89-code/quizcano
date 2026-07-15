@@ -116,7 +116,6 @@ color:#9CA3AF;
 /* =========================================================
 END OF SECTION 01 CSS
 ========================================================= */
-
 /* =========================================================
 SECTION 02
 ADMIN MENU CSS
@@ -1029,8 +1028,8 @@ cursor:pointer;
 /* =========================================================
 END OF SECTION 07 CSS
 ========================================================= */
-
   
+
 </style>
 
 </head>
@@ -1274,7 +1273,7 @@ Sub Category Name
 type="text"
 id="subCategoryName"
 class="formInput"
-placeholder="Example: Football">
+placeholder="Example : Football">
 
 <label class="formLabel">
 
@@ -1292,9 +1291,7 @@ accept="image/*">
 
 <img
 id="bannerPreviewImage"
-class="bannerPreviewImage"
-src=""
-style="display:none;">
+class="bannerPreviewImage">
 
 <p
 id="bannerPreviewText"
@@ -1319,7 +1316,6 @@ Save Sub Category
 <!-- =========================================================
 END OF SECTION 03 HTML
 ========================================================= -->
-
 <!-- =========================================================
 SECTION 04
 MANAGE SUB CATEGORIES HTML
@@ -1715,151 +1711,9 @@ Logout
 <!-- =========================================================
 END OF SECTION 07 HTML
 ========================================================= -->
-
-
   
 <script type="module">
-/* =========================================================
-STEP 04
-FIREBASE INITIALIZATION
-========================================================= */
 
-/* Firebase App */
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-
-/* Firestore */
-
-import {
-
-getFirestore,
-
-collection,
-
-addDoc,
-
-getDocs,
-
-doc,
-
-updateDoc,
-
-deleteDoc,
-
-serverTimestamp
-
-}
-
-from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-/* Authentication */
-
-import {
-
-getAuth,
-
-signOut
-
-}
-
-from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-
-/* Firebase Configuration */
-
-const firebaseConfig={
-
-apiKey:"AIzaSyAnMxqDpdzgKEW1vkRSrLysT-0nu_vEf8Q",
-
-authDomain:"quizcano.firebaseapp.com",
-
-projectId:"quizcano",
-
-storageBucket:"quizcano.firebasestorage.app",
-
-messagingSenderId:"834135771491",
-
-appId:"1:834135771491:web:c9998944df72d14a7b2b56"
-
-};
-
-/* Initialize Firebase */
-
-const app=initializeApp(firebaseConfig);
-
-/* Firestore */
-
-const db=getFirestore(app);
-
-/* Authentication */
-
-const auth=getAuth(app);
-
-/* =========================================================
-END OF STEP 04
-========================================================= */
-/* =========================================================
-STEP 05
-LOAD SUB CATEGORIES FOR CREATE QUIZ
-========================================================= */
-
-catch(error){
-
-console.error(error);
-
-alert(error.message);
-
-}
-
-});
-
-/* =========================================================
-END OF STEP 05
-========================================================= */
-/* =========================================================
-STEP 03
-CLOUDINARY IMAGE UPLOAD FUNCTION
-========================================================= */
-
-async function uploadImageToCloudinary(file){
-
-const formData=new FormData();
-
-formData.append("file",file);
-
-formData.append("upload_preset","Ummuhalti");
-
-const response=await fetch(
-
-"https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
-
-{
-
-method:"POST",
-
-body:formData
-
-}
-
-);
-
-if(!response.ok){
-
-throw new Error("Cloudinary Upload Failed");
-
-}
-
-const data=await response.json();
-
-return data.secure_url;
-
-}
-
-/* =========================================================
-END OF STEP 03
-========================================================= */
-
-  
 /* =========================================================
 SECTION 01
 HEADER JAVASCRIPT
@@ -1873,7 +1727,6 @@ Reserved for future header features.
 /* =========================================================
 END OF SECTION 01 JAVASCRIPT
 ========================================================= */
-
 /* =========================================================
 SECTION 02
 ADMIN MENU JAVASCRIPT
@@ -1968,117 +1821,12 @@ reader.readAsDataURL(file);
 
 };
 
-/* =========================================================
-SAVE SUB CATEGORY
-========================================================= */
+/*
+Save Sub Category
 
-saveSubCategoryButton.onclick=async()=>{
-
-const parent=motherCategory.value.trim();
-
-const name=subCategoryName.value.trim();
-
-const file=subCategoryBanner.files[0];
-
-if(parent===""){
-
-alert("Select Mother Category.");
-
-return;
-
-}
-
-if(name===""){
-
-alert("Enter Sub Category Name.");
-
-return;
-
-}
-
-if(!file){
-
-alert("Select Banner Image.");
-
-return;
-
-}
-
-try{
-
-saveSubCategoryButton.disabled=true;
-
-saveSubCategoryButton.innerText="Uploading...";
-
-/* Upload Banner */
-
-const bannerUrl=await uploadImageToCloudinary(file);
-
-/* Save Firestore */
-
-await addDoc(
-
-collection(db,"subCategories"),
-
-{
-
-parentCategory:parent,
-
-name:name,
-
-banner:bannerUrl,
-
-createdAt:serverTimestamp()
-
-}
-
-);
-
-/* Reset */
-
-motherCategory.value="";
-
-subCategoryName.value="";
-
-subCategoryBanner.value="";
-
-bannerPreviewImage.src="";
-
-bannerPreviewImage.style.display="none";
-
-bannerPreviewText.style.display="block";
-
-saveSubCategoryButton.disabled=false;
-
-saveSubCategoryButton.innerText="Save Sub Category";
-
-alert("Sub Category Created Successfully.");
-
-if(typeof loadSubCategories==="function"){
-
-loadSubCategories();
-
-}
-
-}
-
-catch(error){
-
-console.error(error);
-
-alert(error.message);
-
-saveSubCategoryButton.disabled=false;
-
-saveSubCategoryButton.innerText="Save Sub Category";
-
-}
-
-};
-
-/* =========================================================
-END SAVE SUB CATEGORY
-========================================================= */
+Cloudinary upload and Firebase save
+will be connected in the next part.
+*/
 
 /* =========================================================
 END OF SECTION 03 JAVASCRIPT
@@ -2229,44 +1977,6 @@ document.getElementById("saveQuizButton");
 let currentQuestion=1;
 
 let quizQuestions=[];
-
-
-
-
-  quizMotherCategory.addEventListener("change", async function(){
-
-quizSubCategory.innerHTML=`
-<option value="">
-Select Sub Category
-</option>
-`;
-
-const parent=this.value;
-
-if(parent==="") return;
-
-try{
-
-const snapshot=await getDocs(
-collection(db,"subCategories")
-);
-
-snapshot.forEach((docItem)=>{
-
-const item=docItem.data();
-
-if(item.parentCategory===parent){
-
-quizSubCategory.innerHTML+=`
-<option value="${docItem.id}">
-${item.name}
-</option>
-`;
-
-}
-
-});
-)
 
 /* Open */
 
@@ -2451,83 +2161,7 @@ console.error(error);
 
 /* =========================================================
 END OF SECTION 07 JAVASCRIPT
-========================================================= */
-/* =========================================================
-STEP 01
-DASHBOARD NAVIGATION
-========================================================= */
-
-function hideAllSections(){
-
-createSubCategorySection.classList.remove("show");
-
-manageSubCategorySection.classList.remove("show");
-
-createQuizSection.classList.remove("show");
-
-manageQuizSection.classList.remove("show");
-
-logoutSection.classList.remove("show");
-
-}
-
-/* Create Sub Category */
-
-createSubCategoryButton.onclick=()=>{
-
-hideAllSections();
-
-createSubCategorySection.classList.add("show");
-
-};
-
-/* Manage Sub Category */
-
-manageSubCategoryButton.onclick=()=>{
-
-hideAllSections();
-
-manageSubCategorySection.classList.add("show");
-
-loadSubCategories();
-
-};
-
-/* Create Quiz */
-
-createQuizButton.onclick=()=>{
-
-hideAllSections();
-
-createQuizSection.classList.add("show");
-
-};
-
-/* Manage Quiz */
-
-manageQuizButton.onclick=()=>{
-
-hideAllSections();
-
-manageQuizSection.classList.add("show");
-
-loadQuizList();
-
-};
-
-/* Logout */
-
-logoutButton.onclick=()=>{
-
-hideAllSections();
-
-logoutSection.classList.add("show");
-
-};
-
-/* =========================================================
-END OF STEP 01
-========================================================= */
+========================================================= */  
   
 </script>
 
