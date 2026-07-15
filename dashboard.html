@@ -116,7 +116,6 @@ color:#9CA3AF;
 /* =========================================================
 END OF SECTION 01 CSS
 ========================================================= */
-<style>
 
 /* =========================================================
 SECTION 02
@@ -212,10 +211,177 @@ color:#9CA3AF;
 /* =========================================================
 END OF SECTION 02 CSS
 ========================================================= */
+/* =========================================================
+SECTION 03
+CREATE SUB CATEGORY CSS
+========================================================= */
 
+.createSubCategorySection{
 
+display:none;
+
+width:100%;
+
+max-width:750px;
+
+margin:30px auto;
+
+padding:28px;
+
+background:#111827;
+
+border:2px solid #1F2937;
+
+border-radius:20px;
+
+}
+
+.createSubCategorySection.show{
+
+display:block;
+
+}
+
+.sectionTitle{
+
+font-size:28px;
+
+font-weight:800;
+
+text-align:center;
+
+margin-bottom:25px;
+
+}
+
+.formLabel{
+
+display:block;
+
+margin-bottom:10px;
+
+font-size:15px;
+
+font-weight:700;
+
+color:#FFFFFF;
+
+}
+
+.formInput{
+
+width:100%;
+
+height:56px;
+
+padding:0 16px;
+
+margin-bottom:20px;
+
+border:2px solid #1F2937;
+
+border-radius:12px;
+
+background:#0B1120;
+
+color:#FFFFFF;
+
+font-size:16px;
+
+outline:none;
+
+}
+
+.formInput:focus{
+
+border-color:#F59E0B;
+
+}
+
+input[type=file].formInput{
+
+height:auto;
+
+padding:14px;
+
+}
+
+.bannerPreviewContainer{
+
+width:100%;
+
+height:220px;
+
+border:2px dashed #374151;
+
+border-radius:14px;
+
+overflow:hidden;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:#0B1120;
+
+margin-bottom:22px;
+
+}
+
+.bannerPreviewImage{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+display:none;
+
+}
+
+.bannerPreviewText{
+
+color:#9CA3AF;
+
+font-size:15px;
+
+}
+
+.primaryButton{
+
+width:100%;
+
+height:58px;
+
+border:none;
+
+border-radius:14px;
+
+background:#F59E0B;
+
+color:#FFFFFF;
+
+font-size:18px;
+
+font-weight:800;
+
+cursor:pointer;
+
+}
+
+.primaryButton:hover{
+
+opacity:.95;
+
+}
+
+/* =========================================================
+END OF SECTION 03 CSS
+========================================================= */
   
-</style>
 </style>
 
 </head>
@@ -398,7 +564,110 @@ Securely sign out from the admin dashboard.
 <!-- =========================================================
 END OF SECTION 02 HTML
 ========================================================= -->
+<!-- =========================================================
+SECTION 03
+CREATE SUB CATEGORY HTML
+========================================================= -->
 
+<section
+id="createSubCategorySection"
+class="createSubCategorySection">
+
+<h2 class="sectionTitle">
+
+Create Sub Category
+
+</h2>
+
+<label class="formLabel">
+
+Mother Category
+
+</label>
+
+<select
+id="motherCategory"
+class="formInput">
+
+<option value="">
+
+Select Mother Category
+
+</option>
+
+<option value="dailyChallenge">
+
+Daily Challenges
+
+</option>
+
+<option value="quizCategory">
+
+Quiz Category
+
+</option>
+
+<option value="popularQuiz">
+
+Popular Quiz
+
+</option>
+
+</select>
+
+<label class="formLabel">
+
+Sub Category Name
+
+</label>
+
+<input
+type="text"
+id="subCategoryName"
+class="formInput"
+placeholder="Example : Football">
+
+<label class="formLabel">
+
+Banner Image
+
+</label>
+
+<input
+type="file"
+id="subCategoryBanner"
+class="formInput"
+accept="image/*">
+
+<div class="bannerPreviewContainer">
+
+<img
+id="bannerPreviewImage"
+class="bannerPreviewImage">
+
+<p
+id="bannerPreviewText"
+class="bannerPreviewText">
+
+No Banner Selected
+
+</p>
+
+</div>
+
+<button
+id="saveSubCategoryButton"
+class="primaryButton">
+
+Save Sub Category
+
+</button>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 03 HTML
+========================================================= -->
   
 <script type="module">
 
@@ -444,6 +713,83 @@ when each section is created.
 /* =========================================================
 END OF SECTION 02 JAVASCRIPT
 ========================================================= */
+/* =========================================================
+SECTION 03
+CREATE SUB CATEGORY JAVASCRIPT
+========================================================= */
+
+const createSubCategorySection=
+document.getElementById("createSubCategorySection");
+
+const motherCategory=
+document.getElementById("motherCategory");
+
+const subCategoryName=
+document.getElementById("subCategoryName");
+
+const subCategoryBanner=
+document.getElementById("subCategoryBanner");
+
+const bannerPreviewImage=
+document.getElementById("bannerPreviewImage");
+
+const bannerPreviewText=
+document.getElementById("bannerPreviewText");
+
+const saveSubCategoryButton=
+document.getElementById("saveSubCategoryButton");
+
+/* Open Section */
+
+createSubCategoryButton.onclick=()=>{
+
+createSubCategorySection.classList.add("show");
+
+};
+
+/* Banner Preview */
+
+subCategoryBanner.onchange=()=>{
+
+const file=subCategoryBanner.files[0];
+
+if(!file){
+
+bannerPreviewImage.style.display="none";
+
+bannerPreviewText.style.display="block";
+
+return;
+
+}
+
+const reader=new FileReader();
+
+reader.onload=(e)=>{
+
+bannerPreviewImage.src=e.target.result;
+
+bannerPreviewImage.style.display="block";
+
+bannerPreviewText.style.display="none";
+
+};
+
+reader.readAsDataURL(file);
+
+};
+
+/*
+Save Sub Category
+
+Cloudinary upload and Firebase save
+will be connected in the next part.
+*/
+
+/* =========================================================
+END OF SECTION 03 JAVASCRIPT
+========================================================= */
+
 
 </script>
 
