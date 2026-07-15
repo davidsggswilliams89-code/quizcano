@@ -2174,10 +2174,6 @@ STEP 01
 DASHBOARD NAVIGATION
 ========================================================= */
 
-/* ===========================
-All Sections
-=========================== */
-
 const createSubCategorySection =
 document.getElementById("createSubCategorySection");
 
@@ -2190,30 +2186,17 @@ document.getElementById("createQuizSection");
 const manageQuizSection =
 document.getElementById("manageQuizSection");
 
-const logoutSection =
-document.getElementById("logoutSection");
-
-/* ===========================
-Hide All Sections
-=========================== */
-
 function hideAllSections(){
 
-createSubCategorySection.classList.remove("show");
+createSubCategorySection?.classList.remove("show");
 
-manageSubCategorySection.classList.remove("show");
+manageSubCategorySection?.classList.remove("show");
 
-createQuizSection.classList.remove("show");
+createQuizSection?.classList.remove("show");
 
-manageQuizSection.classList.remove("show");
-
-logoutSection.classList.remove("show");
+manageQuizSection?.classList.remove("show");
 
 }
-
-/* ===========================
-Create Sub Category
-=========================== */
 
 createCategoryButton.onclick=()=>{
 
@@ -2221,39 +2204,15 @@ hideAllSections();
 
 createSubCategorySection.classList.add("show");
 
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
 };
 
-/* ===========================
-Manage Sub Categories
-=========================== */
-
-manageSubCategoryButton.onclick=()=>{
+manageCategoryButton.onclick=()=>{
 
 hideAllSections();
 
 manageSubCategorySection.classList.add("show");
 
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
 };
-
-/* ===========================
-Create Quiz
-=========================== */
 
 createQuizButton.onclick=()=>{
 
@@ -2261,53 +2220,13 @@ hideAllSections();
 
 createQuizSection.classList.add("show");
 
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
 };
-
-/* ===========================
-Manage Quiz
-=========================== */
 
 manageQuizButton.onclick=()=>{
 
 hideAllSections();
 
 manageQuizSection.classList.add("show");
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
-};
-
-/* ===========================
-Logout
-=========================== */
-
-logoutButton.onclick=()=>{
-
-hideAllSections();
-
-logoutSection.classList.add("show");
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
 
 };
 
