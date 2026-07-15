@@ -2166,8 +2166,305 @@ console.error(error);
 /* =========================================================
 END OF SECTION 07 JAVASCRIPT
 ========================================================= */
+/* =========================================================
+STEP 01
+DASHBOARD NAVIGATION
+========================================================= */
+
+/* ===========================
+All Sections
+=========================== */
+
+const createSubCategorySection =
+document.getElementById("createSubCategorySection");
+
+const manageSubCategorySection =
+document.getElementById("manageSubCategorySection");
+
+const createQuizSection =
+document.getElementById("createQuizSection");
+
+const manageQuizSection =
+document.getElementById("manageQuizSection");
+
+const logoutSection =
+document.getElementById("logoutSection");
+
+/* ===========================
+Hide All Sections
+=========================== */
+
+function hideAllSections(){
+
+createSubCategorySection.classList.remove("show");
+
+manageSubCategorySection.classList.remove("show");
+
+createQuizSection.classList.remove("show");
+
+manageQuizSection.classList.remove("show");
+
+logoutSection.classList.remove("show");
+
+}
+
+/* ===========================
+Create Sub Category
+=========================== */
+
+createCategoryButton.onclick=()=>{
+
+hideAllSections();
+
+createSubCategorySection.classList.add("show");
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+/* ===========================
+Manage Sub Categories
+=========================== */
+
+manageSubCategoryButton.onclick=()=>{
+
+hideAllSections();
+
+manageSubCategorySection.classList.add("show");
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+/* ===========================
+Create Quiz
+=========================== */
+
+createQuizButton.onclick=()=>{
+
+hideAllSections();
+
+createQuizSection.classList.add("show");
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+/* ===========================
+Manage Quiz
+=========================== */
+
+manageQuizButton.onclick=()=>{
+
+hideAllSections();
+
+manageQuizSection.classList.add("show");
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+/* ===========================
+Logout
+=========================== */
+
+logoutButton.onclick=()=>{
+
+hideAllSections();
+
+logoutSection.classList.add("show");
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+/* =========================================================
+END OF STEP 01
+========================================================= */
+/* =========================================================
+STEP 02
+SAVE SUB CATEGORY TO FIREBASE
+========================================================= */
+
+/* ===========================
+DOM ELEMENTS
+=========================== */
+
+const motherCategory =
+document.getElementById("motherCategory");
+
+const subCategoryName =
+document.getElementById("subCategoryName");
+
+const subCategoryBanner =
+document.getElementById("subCategoryBanner");
+
+const subCategoryBannerPreview =
+document.getElementById("subCategoryBannerPreview");
+
+const saveSubCategoryButton =
+document.getElementById("saveSubCategoryButton");
+
+/* ===========================
+Banner Preview
+=========================== */
+
+subCategoryBanner.onchange=()=>{
+
+const file=subCategoryBanner.files[0];
+
+if(!file){
+
+subCategoryBannerPreview.style.display="none";
+
+subCategoryBannerPreview.src="";
+
+return;
+
+}
+
+const reader=new FileReader();
+
+reader.onload=(e)=>{
+
+subCategoryBannerPreview.src=e.target.result;
+
+subCategoryBannerPreview.style.display="block";
+
+};
+
+reader.readAsDataURL(file);
+
+};
+
+/* ===========================
+Save Sub Category
+=========================== */
+
+saveSubCategoryButton.onclick=async()=>{
+
+const parent=
+motherCategory.value.trim();
+
+const name=
+subCategoryName.value.trim();
+
+const file=
+subCategoryBanner.files[0];
+
+if(parent===""||name===""){
+
+alert("Please complete all fields.");
+
+return;
+
+}
+
+if(!file){
+
+alert("Please select a banner.");
+
+return;
+
+}
+
+try{
+
+saveSubCategoryButton.disabled=true;
+
+saveSubCategoryButton.textContent=
+"Saving...";
+
+const bannerUrl=
+await uploadImageToCloudinary(file);
+
+await addDoc(
+
+collection(db,"subCategories"),
+
+{
+
+parentCategory:parent,
+
+name:name,
+
+banner:bannerUrl,
+
+createdAt:serverTimestamp()
+
+}
+
+);
+
+alert("Sub Category created successfully.");
+
+motherCategory.value="";
+
+subCategoryName.value="";
+
+subCategoryBanner.value="";
+
+subCategoryBannerPreview.src="";
+
+subCategoryBannerPreview.style.display="none";
+
+}
+
+catch(error){
+
+console.error(error);
+
+alert(error.message);
+
+}
+
+finally{
+
+saveSubCategoryButton.disabled=false;
+
+saveSubCategoryButton.textContent=
+"Save Sub Category";
+
+}
+
+};
+
+/* =========================================================
+END OF STEP 02
+========================================================= */
 
 
+  
   
 </script>
 
