@@ -198,7 +198,70 @@ ADMIN MENU CSS
 /* =========================================================
 END OF SECTION 03 CSS
 ========================================================= */
+/* =========================================================
+SECTION 03
+CREATE SUB CATEGORY
+========================================================= */
 
+.createSubCategorySection{
+display:none;
+max-width:700px;
+margin:30px auto;
+background:#111827;
+padding:25px;
+border-radius:18px;
+border:2px solid #1F2937;
+}
+
+.createSubCategorySection.show{
+display:block;
+}
+
+.sectionTitle{
+font-size:26px;
+font-weight:700;
+margin-bottom:20px;
+text-align:center;
+}
+
+.formLabel{
+display:block;
+margin-bottom:8px;
+font-size:15px;
+font-weight:600;
+}
+
+.formInput{
+width:100%;
+padding:14px;
+margin-bottom:18px;
+border-radius:10px;
+border:2px solid #1F2937;
+background:#0B1120;
+color:#fff;
+font-size:15px;
+outline:none;
+}
+
+.formInput:focus{
+border-color:#F59E0B;
+}
+
+.primaryButton{
+width:100%;
+padding:15px;
+background:#F59E0B;
+border:none;
+border-radius:12px;
+color:#fff;
+font-size:17px;
+font-weight:700;
+cursor:pointer;
+}
+
+.primaryButton:hover{
+opacity:.95;
+}
     
 </style>
 
@@ -366,7 +429,64 @@ Securely sign out from dashboard.
 <!-- =========================================================
 END OF SECTION 03 HTML
 ========================================================= -->
+<!-- =========================================================
+SECTION 03
+CREATE SUB CATEGORY
+========================================================= -->
 
+<section
+id="createSubCategorySection"
+class="createSubCategorySection">
+
+<h2 class="sectionTitle">
+Create Sub Category
+</h2>
+
+<label class="formLabel">
+Mother Category
+</label>
+
+<select
+id="motherCategory"
+class="formInput">
+
+<option value="">
+Select Mother Category
+</option>
+
+<option value="dailyChallenge">
+Daily Challenges
+</option>
+
+<option value="quizCategory">
+Quiz Category
+</option>
+
+<option value="popularQuiz">
+Popular Quiz
+</option>
+
+</select>
+
+<label class="formLabel">
+Sub Category Name
+</label>
+
+<input
+type="text"
+id="subCategoryName"
+class="formInput"
+placeholder="Example: Football">
+
+<button
+id="saveSubCategoryButton"
+class="primaryButton">
+
+Save Sub Category
+
+</button>
+
+</section>
 
     
 <script type="module">
@@ -418,7 +538,82 @@ document.getElementById("logoutButton");
 /* =========================================================
 END OF SECTION 03 JAVASCRIPT
 ========================================================= */
+/* =========================================================
+SECTION 03
+CREATE SUB CATEGORY
+========================================================= */
 
+const createSubCategorySection =
+document.getElementById(
+"createSubCategorySection"
+);
+
+const motherCategory =
+document.getElementById(
+"motherCategory"
+);
+
+const subCategoryName =
+document.getElementById(
+"subCategoryName"
+);
+
+const saveSubCategoryButton =
+document.getElementById(
+"saveSubCategoryButton"
+);
+
+/* Open Section */
+
+createCategoryButton.onclick=()=>{
+
+hideAllSections();
+
+createSubCategorySection.classList.add("show");
+
+};
+
+/* Save */
+
+saveSubCategoryButton.onclick=async()=>{
+
+const parent=
+motherCategory.value.trim();
+
+const name=
+subCategoryName.value.trim();
+
+if(parent===""||name===""){
+
+alert("Complete all fields.");
+
+return;
+
+}
+
+await addDoc(
+
+collection(db,"subCategories"),
+
+{
+
+parentCategory:parent,
+
+name:name,
+
+createdAt:serverTimestamp()
+
+}
+
+);
+
+alert("Sub Category Created.");
+
+motherCategory.value="";
+
+subCategoryName.value="";
+
+};
 
     
 </script>
