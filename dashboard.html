@@ -116,7 +116,106 @@ color:#9CA3AF;
 /* =========================================================
 END OF SECTION 01 CSS
 ========================================================= */
+<style>
 
+/* =========================================================
+SECTION 02
+ADMIN MENU CSS
+========================================================= */
+
+.dashboard-menu-section{
+
+width:100%;
+
+max-width:1000px;
+
+margin:0 auto;
+
+padding:0 20px 40px;
+
+}
+
+.dashboard-menu-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:20px;
+
+}
+
+.dashboard-menu-card{
+
+background:#111827;
+
+border:2px solid #1F2937;
+
+border-radius:20px;
+
+padding:28px 20px;
+
+text-align:center;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.dashboard-menu-card:hover{
+
+border-color:#F59E0B;
+
+transform:translateY(-5px);
+
+box-shadow:0 12px 28px rgba(245,158,11,.18);
+
+}
+
+.dashboard-menu-card:active{
+
+transform:scale(.98);
+
+}
+
+.dashboard-menu-icon{
+
+font-size:46px;
+
+margin-bottom:15px;
+
+}
+
+.dashboard-menu-title{
+
+font-size:20px;
+
+font-weight:800;
+
+margin-bottom:10px;
+
+color:#FFFFFF;
+
+}
+
+.dashboard-menu-description{
+
+font-size:15px;
+
+line-height:1.6;
+
+color:#9CA3AF;
+
+}
+
+/* =========================================================
+END OF SECTION 02 CSS
+========================================================= */
+
+
+  
+</style>
 </style>
 
 </head>
@@ -159,7 +258,148 @@ Create sub categories, quizzes and manage everything from one place.
 <!-- =========================================================
 END OF SECTION 01 HTML
 ========================================================= -->
+<!-- =========================================================
+SECTION 02
+ADMIN MENU HTML
+========================================================= -->
 
+<section class="dashboard-menu-section">
+
+<div class="dashboard-menu-grid">
+
+<button
+id="createSubCategoryButton"
+class="dashboard-menu-card">
+
+<div class="dashboard-menu-icon">
+
+📁
+
+</div>
+
+<h3 class="dashboard-menu-title">
+
+Create Sub Category
+
+</h3>
+
+<p class="dashboard-menu-description">
+
+Create a new sub category under Daily Challenges, Quiz Category or Popular Quiz.
+
+</p>
+
+</button>
+
+
+<button
+id="manageSubCategoryButton"
+class="dashboard-menu-card">
+
+<div class="dashboard-menu-icon">
+
+🗂️
+
+</div>
+
+<h3 class="dashboard-menu-title">
+
+Manage Sub Categories
+
+</h3>
+
+<p class="dashboard-menu-description">
+
+Edit banners, rename or delete existing sub categories.
+
+</p>
+
+</button>
+
+
+<button
+id="createQuizButton"
+class="dashboard-menu-card">
+
+<div class="dashboard-menu-icon">
+
+➕
+
+</div>
+
+<h3 class="dashboard-menu-title">
+
+Create Quiz
+
+</h3>
+
+<p class="dashboard-menu-description">
+
+Create quizzes inside any existing sub category.
+
+</p>
+
+</button>
+
+
+<button
+id="manageQuizButton"
+class="dashboard-menu-card">
+
+<div class="dashboard-menu-icon">
+
+📝
+
+</div>
+
+<h3 class="dashboard-menu-title">
+
+Manage Quizzes
+
+</h3>
+
+<p class="dashboard-menu-description">
+
+Filter quizzes by Mother Category then Sub Category.
+
+</p>
+
+</button>
+
+
+<button
+id="logoutButton"
+class="dashboard-menu-card">
+
+<div class="dashboard-menu-icon">
+
+🚪
+
+</div>
+
+<h3 class="dashboard-menu-title">
+
+Logout
+
+</h3>
+
+<p class="dashboard-menu-description">
+
+Securely sign out from the admin dashboard.
+
+</p>
+
+</button>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 02 HTML
+========================================================= -->
+
+  
 <script type="module">
 
 /* =========================================================
@@ -174,6 +414,35 @@ Reserved for future header features.
 
 /* =========================================================
 END OF SECTION 01 JAVASCRIPT
+========================================================= */
+
+/* =========================================================
+SECTION 02
+ADMIN MENU JAVASCRIPT
+========================================================= */
+
+const createSubCategoryButton =
+document.getElementById("createSubCategoryButton");
+
+const manageSubCategoryButton =
+document.getElementById("manageSubCategoryButton");
+
+const createQuizButton =
+document.getElementById("createQuizButton");
+
+const manageQuizButton =
+document.getElementById("manageQuizButton");
+
+const logoutButton =
+document.getElementById("logoutButton");
+
+/*
+Navigation will be connected
+when each section is created.
+*/
+
+/* =========================================================
+END OF SECTION 02 JAVASCRIPT
 ========================================================= */
 
 </script>
