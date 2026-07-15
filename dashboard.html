@@ -1828,12 +1828,117 @@ reader.readAsDataURL(file);
 
 };
 
-/*
-Save Sub Category
+/* =========================================================
+SAVE SUB CATEGORY
+========================================================= */
 
-Cloudinary upload and Firebase save
-will be connected in the next part.
-*/
+saveSubCategoryButton.onclick=async()=>{
+
+const parent=motherCategory.value.trim();
+
+const name=subCategoryName.value.trim();
+
+const file=subCategoryBanner.files[0];
+
+if(parent===""){
+
+alert("Select Mother Category.");
+
+return;
+
+}
+
+if(name===""){
+
+alert("Enter Sub Category Name.");
+
+return;
+
+}
+
+if(!file){
+
+alert("Select Banner Image.");
+
+return;
+
+}
+
+try{
+
+saveSubCategoryButton.disabled=true;
+
+saveSubCategoryButton.innerText="Uploading...";
+
+/* Upload Banner */
+
+const bannerUrl=await uploadImageToCloudinary(file);
+
+/* Save Firestore */
+
+await addDoc(
+
+collection(db,"subCategories"),
+
+{
+
+parentCategory:parent,
+
+name:name,
+
+banner:bannerUrl,
+
+createdAt:serverTimestamp()
+
+}
+
+);
+
+/* Reset */
+
+motherCategory.value="";
+
+subCategoryName.value="";
+
+subCategoryBanner.value="";
+
+bannerPreviewImage.src="";
+
+bannerPreviewImage.style.display="none";
+
+bannerPreviewText.style.display="block";
+
+saveSubCategoryButton.disabled=false;
+
+saveSubCategoryButton.innerText="Save Sub Category";
+
+alert("Sub Category Created Successfully.");
+
+if(typeof loadSubCategories==="function"){
+
+loadSubCategories();
+
+}
+
+}
+
+catch(error){
+
+console.error(error);
+
+alert("Failed to create Sub Category.");
+
+saveSubCategoryButton.disabled=false;
+
+saveSubCategoryButton.innerText="Save Sub Category";
+
+}
+
+};
+
+/* =========================================================
+END SAVE SUB CATEGORY
+========================================================= */
 
 /* =========================================================
 END OF SECTION 03 JAVASCRIPT
