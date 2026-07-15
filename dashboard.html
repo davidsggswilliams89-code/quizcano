@@ -2169,7 +2169,70 @@ console.error(error);
 /* =========================================================
 END OF SECTION 07 JAVASCRIPT
 ========================================================= */
-  
+/* =========================================================
+STEP 01
+DASHBOARD NAVIGATION
+========================================================= */
+
+const createSubCategorySection =
+document.getElementById("createSubCategorySection");
+
+const manageSubCategorySection =
+document.getElementById("manageSubCategorySection");
+
+const createQuizSection =
+document.getElementById("createQuizSection");
+
+const manageQuizSection =
+document.getElementById("manageQuizSection");
+
+function hideAllSections(){
+
+createSubCategorySection?.classList.remove("show");
+
+manageSubCategorySection?.classList.remove("show");
+
+createQuizSection?.classList.remove("show");
+
+manageQuizSection?.classList.remove("show");
+
+}
+
+createCategoryButton.onclick=()=>{
+
+hideAllSections();
+
+createSubCategorySection.classList.add("show");
+
+};
+
+manageCategoryButton.onclick=()=>{
+
+hideAllSections();
+
+manageSubCategorySection.classList.add("show");
+
+};
+
+createQuizButton.onclick=()=>{
+
+hideAllSections();
+
+createQuizSection.classList.add("show");
+
+};
+
+manageQuizButton.onclick=()=>{
+
+hideAllSections();
+
+manageQuizSection.classList.add("show");
+
+};
+
+/* =========================================================
+END OF STEP 01
+========================================================= */  
   
 </script>
 
