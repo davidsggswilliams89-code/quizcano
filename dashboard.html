@@ -1719,7 +1719,50 @@ END OF SECTION 07 HTML
 
   
 <script type="module">
+/* =========================================================
+STEP 03
+CLOUDINARY IMAGE UPLOAD FUNCTION
+========================================================= */
 
+async function uploadImageToCloudinary(file){
+
+const formData=new FormData();
+
+formData.append("file",file);
+
+formData.append("upload_preset","Ummuhalti");
+
+const response=await fetch(
+
+"https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
+
+{
+
+method:"POST",
+
+body:formData
+
+}
+
+);
+
+if(!response.ok){
+
+throw new Error("Cloudinary Upload Failed");
+
+}
+
+const data=await response.json();
+
+return data.secure_url;
+
+}
+
+/* =========================================================
+END OF STEP 03
+========================================================= */
+
+  
 /* =========================================================
 SECTION 01
 HEADER JAVASCRIPT
