@@ -2174,31 +2174,23 @@ STEP 01
 DASHBOARD NAVIGATION
 ========================================================= */
 
-const createSubCategorySection =
-document.getElementById("createSubCategorySection");
-
-const manageSubCategorySection =
-document.getElementById("manageSubCategorySection");
-
-const createQuizSection =
-document.getElementById("createQuizSection");
-
-const manageQuizSection =
-document.getElementById("manageQuizSection");
-
 function hideAllSections(){
 
-createSubCategorySection?.classList.remove("show");
+createSubCategorySection.classList.remove("show");
 
-manageSubCategorySection?.classList.remove("show");
+manageSubCategorySection.classList.remove("show");
 
-createQuizSection?.classList.remove("show");
+createQuizSection.classList.remove("show");
 
-manageQuizSection?.classList.remove("show");
+manageQuizSection.classList.remove("show");
+
+logoutSection.classList.remove("show");
 
 }
 
-createCategoryButton.onclick=()=>{
+/* Create Sub Category */
+
+createSubCategoryButton.onclick=()=>{
 
 hideAllSections();
 
@@ -2206,13 +2198,19 @@ createSubCategorySection.classList.add("show");
 
 };
 
-manageCategoryButton.onclick=()=>{
+/* Manage Sub Categories */
+
+manageSubCategoryButton.onclick=()=>{
 
 hideAllSections();
 
 manageSubCategorySection.classList.add("show");
 
+loadSubCategories();
+
 };
+
+/* Create Quiz */
 
 createQuizButton.onclick=()=>{
 
@@ -2222,6 +2220,8 @@ createQuizSection.classList.add("show");
 
 };
 
+/* Manage Quiz */
+
 manageQuizButton.onclick=()=>{
 
 hideAllSections();
@@ -2230,9 +2230,19 @@ manageQuizSection.classList.add("show");
 
 };
 
+/* Logout */
+
+logoutButton.onclick=()=>{
+
+hideAllSections();
+
+logoutSection.classList.add("show");
+
+};
+
 /* =========================================================
 END OF STEP 01
-========================================================= */  
+========================================================= */
   
 </script>
 
