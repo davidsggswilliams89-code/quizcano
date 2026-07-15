@@ -1798,7 +1798,48 @@ const auth=getAuth(app);
 /* =========================================================
 END OF STEP 04
 ========================================================= */
-  
+ /* =========================================================
+STEP 05
+LOAD SUB CATEGORIES FOR CREATE QUIZ
+========================================================= */
+
+quizMotherCategory.onchange = async () => {
+
+quizSubCategory.innerHTML = `
+<option value="">
+Select Sub Category
+</option>
+`;
+
+const parent = quizMotherCategory.value;
+
+if(parent==="") return;
+
+const snapshot = await getDocs(
+collection(db,"subCategories")
+);
+
+snapshot.forEach((docItem)=>{
+
+const item = docItem.data();
+
+if(item.parentCategory===parent){
+
+quizSubCategory.innerHTML += `
+<option value="${docItem.id}">
+${item.name}
+</option>
+`;
+
+}
+
+});
+
+};
+
+/* =========================================================
+END OF STEP 05
+========================================================= */ 
 /* =========================================================
 STEP 03
 CLOUDINARY IMAGE UPLOAD FUNCTION
