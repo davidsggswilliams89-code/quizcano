@@ -1895,13 +1895,41 @@ alert("Banner uploaded successfully.");
 
 console.log(bannerUrl);
 
-/*
-Next step:
-Save parent,
-name,
-bannerUrl
-to Firebase.
-*/
+/* Save to Firestore */
+
+await addDoc(
+
+collection(db,"subCategories"),
+
+{
+
+parentCategory:parent,
+
+name:name,
+
+banner:bannerUrl,
+
+createdAt:serverTimestamp()
+
+}
+
+);
+
+alert("Sub Category created successfully.");
+
+/* Reset Form */
+
+motherCategory.value="";
+
+subCategoryName.value="";
+
+subCategoryBanner.value="";
+
+bannerPreviewImage.src="";
+
+bannerPreviewImage.style.display="none";
+
+bannerPreviewText.style.display="block";
 
 }
 catch(error){
