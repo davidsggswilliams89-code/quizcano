@@ -2468,6 +2468,8 @@ logoutSection.classList.remove("show");
 
 }
 
+/* Create Sub Category */
+
 createSubCategoryButton.onclick=()=>{
 
 hideAllSections();
@@ -2475,6 +2477,8 @@ hideAllSections();
 createSubCategorySection.classList.add("show");
 
 };
+
+/* Manage Sub Category */
 
 manageSubCategoryButton.onclick=()=>{
 
@@ -2486,6 +2490,8 @@ loadSubCategories();
 
 };
 
+/* Create Quiz */
+
 createQuizButton.onclick=()=>{
 
 hideAllSections();
@@ -2494,13 +2500,19 @@ createQuizSection.classList.add("show");
 
 };
 
+/* Manage Quiz */
+
 manageQuizButton.onclick=()=>{
 
 hideAllSections();
 
 manageQuizSection.classList.add("show");
 
+loadQuizList();
+
 };
+
+/* Logout */
 
 logoutButton.onclick=()=>{
 
