@@ -1821,13 +1821,102 @@ reader.readAsDataURL(file);
 
 };
 
-/*
-Save Sub Category
+/* Save Sub Category */
 
-Cloudinary upload and Firebase save
-will be connected in the next part.
+saveSubCategoryButton.onclick = async () => {
+
+const parent = motherCategory.value.trim();
+
+const name = subCategoryName.value.trim();
+
+const file = subCategoryBanner.files[0];
+
+if(parent===""){
+
+alert("Select Mother Category.");
+
+return;
+
+}
+
+if(name===""){
+
+alert("Enter Sub Category Name.");
+
+return;
+
+}
+
+if(!file){
+
+alert("Select Banner Image.");
+
+return;
+
+}
+
+saveSubCategoryButton.disabled=true;
+
+saveSubCategoryButton.innerText="Uploading...";
+
+try{
+
+const formData=new FormData();
+
+formData.append("file",file);
+
+formData.append("upload_preset","Ummuhalti");
+
+const response=await fetch(
+
+"https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
+
+{
+
+method:"POST",
+
+body:formData
+
+}
+
+);
+
+const data=await response.json();
+
+if(!data.secure_url){
+
+throw new Error("Upload failed");
+
+}
+
+const bannerUrl=data.secure_url;
+
+alert("Banner uploaded successfully.");
+
+console.log(bannerUrl);
+
+/*
+Next step:
+Save parent,
+name,
+bannerUrl
+to Firebase.
 */
 
+}
+catch(error){
+
+alert("Upload failed.");
+
+console.error(error);
+
+}
+
+saveSubCategoryButton.disabled=false;
+
+saveSubCategoryButton.innerText="Save Sub Category";
+
+};
 /* =========================================================
 END OF SECTION 03 JAVASCRIPT
 ========================================================= */
