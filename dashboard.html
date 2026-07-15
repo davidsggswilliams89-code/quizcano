@@ -106,6 +106,100 @@ body{
 /* =========================================================
 END OF SECTION 01
 ========================================================= */
+/* =========================================================
+SECTION 03
+ADMIN MENU CSS
+========================================================= */
+
+.dashboard-menu-section{
+
+    width:100%;
+
+    max-width:1000px;
+
+    margin:0 auto;
+
+    padding:0 20px 40px;
+
+}
+
+.dashboard-menu-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:20px;
+
+}
+
+.dashboard-menu-card{
+
+    background:#111827;
+
+    border:2px solid #1F2937;
+
+    border-radius:20px;
+
+    padding:28px 20px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.dashboard-menu-card:hover{
+
+    border-color:#F59E0B;
+
+    transform:translateY(-5px);
+
+    box-shadow:0 12px 28px rgba(245,158,11,.18);
+
+}
+
+.dashboard-menu-card:active{
+
+    transform:scale(.98);
+
+}
+
+.dashboard-menu-icon{
+
+    font-size:44px;
+
+    margin-bottom:15px;
+
+}
+
+.dashboard-menu-title{
+
+    font-size:20px;
+
+    font-weight:800;
+
+    margin-bottom:10px;
+
+}
+
+.dashboard-menu-description{
+
+    color:#9CA3AF;
+
+    line-height:1.6;
+
+    font-size:15px;
+
+}
+
+/* =========================================================
+END OF SECTION 03 CSS
+========================================================= */
+
+    
 </style>
 
 </head>
@@ -145,6 +239,132 @@ ADMIN DASHBOARD HEADER
 
 <!-- =========================================================
 END OF SECTION 01
+========================================================= -->  
+<!-- =========================================================
+SECTION 03
+ADMIN MENU HTML
+========================================================= -->
+
+<section class="dashboard-menu-section">
+
+<div class="dashboard-menu-grid">
+
+<button
+class="dashboard-menu-card"
+id="createCategoryButton">
+
+<div class="dashboard-menu-icon">
+📁
+</div>
+
+<h3 class="dashboard-menu-title">
+
+Create Category
+
+</h3>
+
+<p class="dashboard-menu-description">
+
+Create Parent Categories and Sub Categories.
+
+</p>
+
+</button>
+
+<button
+class="dashboard-menu-card"
+id="manageCategoryButton">
+
+<div class="dashboard-menu-icon">
+🗂
+</div>
+
+<h3 class="dashboard-menu-title">
+
+Manage Categories
+
+</h3>
+
+<p class="dashboard-menu-description">
+
+Edit or delete categories and sub categories.
+
+</p>
+
+</button>
+
+<button
+class="dashboard-menu-card"
+id="createQuizButton">
+
+<div class="dashboard-menu-icon">
+➕
+</div>
+
+<h3 class="dashboard-menu-title">
+
+Create Quiz
+
+</h3>
+
+<p class="dashboard-menu-description">
+
+Create quizzes inside any sub category.
+
+</p>
+
+</button>
+
+<button
+class="dashboard-menu-card"
+id="manageQuizButton">
+
+<div class="dashboard-menu-icon">
+📝
+</div>
+
+<h3 class="dashboard-menu-title">
+
+Manage Quizzes
+
+</h3>
+
+<p class="dashboard-menu-description">
+
+Filter quizzes by Category and Sub Category.
+
+</p>
+
+</button>
+
+<button
+class="dashboard-menu-card"
+id="logoutButton">
+
+<div class="dashboard-menu-icon">
+🚪
+</div>
+
+<h3 class="dashboard-menu-title">
+
+Logout
+
+</h3>
+
+<p class="dashboard-menu-description">
+
+Securely sign out from dashboard.
+
+</p>
+
+</button>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 03 HTML
 ========================================================= -->
 
 
@@ -171,6 +391,35 @@ HEADER INITIALIZATION
 /* =========================================================
 END OF SECTION 02
 ========================================================= */
+/* =========================================================
+SECTION 03
+ADMIN MENU JAVASCRIPT
+========================================================= */
+
+/* Dashboard Buttons */
+
+const createCategoryButton =
+document.getElementById("createCategoryButton");
+
+const manageCategoryButton =
+document.getElementById("manageCategoryButton");
+
+const createQuizButton =
+document.getElementById("createQuizButton");
+
+const manageQuizButton =
+document.getElementById("manageQuizButton");
+
+const logoutButton =
+document.getElementById("logoutButton");
+
+/* Navigation will be connected in later sections. */
+
+/* =========================================================
+END OF SECTION 03 JAVASCRIPT
+========================================================= */
+
+
     
 </script>
 
