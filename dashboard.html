@@ -537,7 +537,192 @@ cursor:pointer;
 /* =========================================================
 END OF SECTION 04 CSS
 ========================================================= */
+/* =========================================================
+SECTION 05
+CREATE QUIZ CSS
+========================================================= */
 
+.createQuizSection{
+
+display:none;
+
+width:100%;
+
+max-width:800px;
+
+margin:30px auto;
+
+padding:28px;
+
+background:#111827;
+
+border:2px solid #1F2937;
+
+border-radius:20px;
+
+}
+
+.createQuizSection.show{
+
+display:block;
+
+}
+
+.quizSectionTitle{
+
+font-size:28px;
+
+font-weight:800;
+
+text-align:center;
+
+margin-bottom:25px;
+
+}
+
+.quizLabel{
+
+display:block;
+
+margin-bottom:10px;
+
+font-size:15px;
+
+font-weight:700;
+
+color:#FFFFFF;
+
+}
+
+.quizInput{
+
+width:100%;
+
+height:56px;
+
+padding:0 16px;
+
+margin-bottom:20px;
+
+border:2px solid #1F2937;
+
+border-radius:12px;
+
+background:#0B1120;
+
+color:#FFFFFF;
+
+font-size:16px;
+
+outline:none;
+
+}
+
+.quizInput:focus{
+
+border-color:#F59E0B;
+
+}
+
+input[type=file].quizInput{
+
+height:auto;
+
+padding:14px;
+
+}
+
+.questionTitle{
+
+font-size:22px;
+
+font-weight:800;
+
+text-align:center;
+
+margin-bottom:25px;
+
+color:#F59E0B;
+
+}
+
+.questionPreviewContainer{
+
+width:100%;
+
+height:260px;
+
+border:2px dashed #374151;
+
+border-radius:16px;
+
+background:#0B1120;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+overflow:hidden;
+
+margin-bottom:22px;
+
+}
+
+.questionPreviewImage{
+
+width:100%;
+
+height:100%;
+
+object-fit:contain;
+
+display:none;
+
+}
+
+.questionPreviewText{
+
+font-size:15px;
+
+color:#9CA3AF;
+
+}
+
+.quizButton{
+
+width:100%;
+
+height:58px;
+
+border:none;
+
+border-radius:14px;
+
+background:#F59E0B;
+
+color:#FFFFFF;
+
+font-size:18px;
+
+font-weight:800;
+
+cursor:pointer;
+
+margin-top:10px;
+
+}
+
+.quizButton:hover{
+
+opacity:.95;
+
+}
+
+/* =========================================================
+END OF SECTION 05 CSS
+========================================================= */
   
 </style>
 
@@ -851,7 +1036,257 @@ class="manageGrid">
 <!-- =========================================================
 END OF SECTION 04 HTML
 ========================================================= -->
+<!-- =========================================================
+SECTION 05
+CREATE QUIZ HTML
+========================================================= -->
 
+<section
+id="createQuizSection"
+class="createQuizSection">
+
+<h2 class="quizSectionTitle">
+
+Create Quiz
+
+</h2>
+
+<label class="quizLabel">
+
+Mother Category
+
+</label>
+
+<select
+id="quizMotherCategory"
+class="quizInput">
+
+<option value="">
+
+Select Mother Category
+
+</option>
+
+<option value="dailyChallenge">
+
+Daily Challenges
+
+</option>
+
+<option value="quizCategory">
+
+Quiz Category
+
+</option>
+
+<option value="popularQuiz">
+
+Popular Quiz
+
+</option>
+
+</select>
+
+<label class="quizLabel">
+
+Sub Category
+
+</label>
+
+<select
+id="quizSubCategory"
+class="quizInput">
+
+<option value="">
+
+Select Sub Category
+
+</option>
+
+</select>
+
+<label class="quizLabel">
+
+Quiz Title
+
+</label>
+
+<input
+type="text"
+id="quizTitle"
+class="quizInput"
+placeholder="Example : Football Legends Quiz">
+
+<label class="quizLabel">
+
+Total Questions
+
+</label>
+
+<select
+id="totalQuestions"
+class="quizInput">
+
+<option value="">
+
+Select Total Questions
+
+</option>
+
+<option value="5">5</option>
+
+<option value="10">10</option>
+
+<option value="15">15</option>
+
+<option value="20">20</option>
+
+</select>
+
+<h3
+id="questionNumber"
+class="questionTitle">
+
+Question 1
+
+</h3>
+
+<label class="quizLabel">
+
+Question Image
+
+</label>
+
+<input
+type="file"
+id="questionImage"
+class="quizInput"
+accept="image/*">
+
+<div class="questionPreviewContainer">
+
+<img
+id="questionPreviewImage"
+class="questionPreviewImage">
+
+<p
+id="questionPreviewText"
+class="questionPreviewText">
+
+No Question Image Selected
+
+</p>
+
+</div>
+
+<label class="quizLabel">
+
+Option A
+
+</label>
+
+<input
+type="text"
+id="optionA"
+class="quizInput">
+
+<label class="quizLabel">
+
+Option B
+
+</label>
+
+<input
+type="text"
+id="optionB"
+class="quizInput">
+
+<label class="quizLabel">
+
+Option C
+
+</label>
+
+<input
+type="text"
+id="optionC"
+class="quizInput">
+
+<label class="quizLabel">
+
+Option D
+
+</label>
+
+<input
+type="text"
+id="optionD"
+class="quizInput">
+
+<label class="quizLabel">
+
+Correct Answer
+
+</label>
+
+<select
+id="correctAnswer"
+class="quizInput">
+
+<option value="">
+
+Select Correct Answer
+
+</option>
+
+<option value="A">
+
+A
+
+</option>
+
+<option value="B">
+
+B
+
+</option>
+
+<option value="C">
+
+C
+
+</option>
+
+<option value="D">
+
+D
+
+</option>
+
+</select>
+
+<button
+id="nextQuestionButton"
+class="quizButton">
+
+Next Question
+
+</button>
+
+<button
+id="saveQuizButton"
+class="quizButton"
+style="display:none;">
+
+Save Quiz
+
+</button>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 05 HTML
+========================================================= -->
 
   
 <script type="module">
@@ -1064,7 +1499,115 @@ Delete
 /* =========================================================
 END OF SECTION 04 JAVASCRIPT
 ========================================================= */
+/* =========================================================
+SECTION 05
+CREATE QUIZ JAVASCRIPT
+========================================================= */
 
+const createQuizSection=
+document.getElementById("createQuizSection");
+
+const quizMotherCategory=
+document.getElementById("quizMotherCategory");
+
+const quizSubCategory=
+document.getElementById("quizSubCategory");
+
+const quizTitle=
+document.getElementById("quizTitle");
+
+const totalQuestions=
+document.getElementById("totalQuestions");
+
+const questionNumber=
+document.getElementById("questionNumber");
+
+const questionImage=
+document.getElementById("questionImage");
+
+const questionPreviewImage=
+document.getElementById("questionPreviewImage");
+
+const questionPreviewText=
+document.getElementById("questionPreviewText");
+
+const optionA=
+document.getElementById("optionA");
+
+const optionB=
+document.getElementById("optionB");
+
+const optionC=
+document.getElementById("optionC");
+
+const optionD=
+document.getElementById("optionD");
+
+const correctAnswer=
+document.getElementById("correctAnswer");
+
+const nextQuestionButton=
+document.getElementById("nextQuestionButton");
+
+const saveQuizButton=
+document.getElementById("saveQuizButton");
+
+let currentQuestion=1;
+
+let quizQuestions=[];
+
+/* Open */
+
+createQuizButton.onclick=()=>{
+
+createQuizSection.classList.add("show");
+
+};
+
+/* Question Preview */
+
+questionImage.onchange=()=>{
+
+const file=questionImage.files[0];
+
+if(!file){
+
+questionPreviewImage.style.display="none";
+
+questionPreviewText.style.display="block";
+
+return;
+
+}
+
+const reader=new FileReader();
+
+reader.onload=(e)=>{
+
+questionPreviewImage.src=e.target.result;
+
+questionPreviewImage.style.display="block";
+
+questionPreviewText.style.display="none";
+
+};
+
+reader.readAsDataURL(file);
+
+};
+
+/*
+Saving to Cloudinary,
+Firebase,
+Question Navigation,
+Edit Quiz,
+and Loading Sub Categories
+will be connected in the next sections.
+*/
+
+/* =========================================================
+END OF SECTION 05 JAVASCRIPT
+========================================================= */
 
   
 </script>
