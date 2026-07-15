@@ -917,7 +917,118 @@ cursor:pointer;
 /* =========================================================
 END OF SECTION 06 CSS
 ========================================================= */
+/* =========================================================
+SECTION 07
+LOGOUT CSS
+========================================================= */
 
+.logoutSection{
+
+display:none;
+
+width:100%;
+
+max-width:600px;
+
+margin:40px auto;
+
+padding:30px;
+
+background:#111827;
+
+border:2px solid #1F2937;
+
+border-radius:20px;
+
+text-align:center;
+
+}
+
+.logoutSection.show{
+
+display:block;
+
+}
+
+.logoutTitle{
+
+font-size:28px;
+
+font-weight:800;
+
+margin-bottom:15px;
+
+}
+
+.logoutDescription{
+
+font-size:16px;
+
+line-height:1.7;
+
+color:#9CA3AF;
+
+margin-bottom:30px;
+
+}
+
+.logoutButtons{
+
+display:flex;
+
+gap:15px;
+
+justify-content:center;
+
+}
+
+.cancelLogoutButton{
+
+flex:1;
+
+height:56px;
+
+border:none;
+
+border-radius:12px;
+
+background:#374151;
+
+color:#FFFFFF;
+
+font-size:17px;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+.confirmLogoutButton{
+
+flex:1;
+
+height:56px;
+
+border:none;
+
+border-radius:12px;
+
+background:#DC2626;
+
+color:#FFFFFF;
+
+font-size:17px;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+/* =========================================================
+END OF SECTION 07 CSS
+========================================================= */
 
   
 </style>
@@ -1555,7 +1666,52 @@ class="quizGrid">
 <!-- =========================================================
 END OF SECTION 06 HTML
 ========================================================= -->
+<!-- =========================================================
+SECTION 07
+LOGOUT HTML
+========================================================= -->
 
+<section
+id="logoutSection"
+class="logoutSection">
+
+<h2 class="logoutTitle">
+
+Logout
+
+</h2>
+
+<p class="logoutDescription">
+
+Are you sure you want to logout from the Quizcano Admin Dashboard?
+
+</p>
+
+<div class="logoutButtons">
+
+<button
+id="cancelLogoutButton"
+class="cancelLogoutButton">
+
+Cancel
+
+</button>
+
+<button
+id="confirmLogoutButton"
+class="confirmLogoutButton">
+
+Logout
+
+</button>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+END OF SECTION 07 HTML
+========================================================= -->
 
 
   
@@ -1955,6 +2111,63 @@ are completed.
 /* =========================================================
 END OF SECTION 06 JAVASCRIPT
 ========================================================= */
+/* =========================================================
+SECTION 07
+LOGOUT JAVASCRIPT
+========================================================= */
+
+const logoutSection=
+document.getElementById("logoutSection");
+
+const cancelLogoutButton=
+document.getElementById("cancelLogoutButton");
+
+const confirmLogoutButton=
+document.getElementById("confirmLogoutButton");
+
+/* Open Logout */
+
+logoutButton.onclick=()=>{
+
+logoutSection.classList.add("show");
+
+};
+
+/* Cancel */
+
+cancelLogoutButton.onclick=()=>{
+
+logoutSection.classList.remove("show");
+
+};
+
+/* Logout */
+
+confirmLogoutButton.onclick=async()=>{
+
+try{
+
+await signOut(auth);
+
+window.location.href="index.html";
+
+}
+
+catch(error){
+
+alert("Logout failed.");
+
+console.error(error);
+
+}
+
+};
+
+/* =========================================================
+END OF SECTION 07 JAVASCRIPT
+========================================================= */
+
+
   
 </script>
 
