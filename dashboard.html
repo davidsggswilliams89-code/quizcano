@@ -1713,7 +1713,56 @@ END OF SECTION 07 HTML
 ========================================================= -->
   
 <script type="module">
+/* =========================================================
+SECTION 00
+FIREBASE CONFIGURATION
+========================================================= */
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+import {
+getAuth,
+signOut
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+import {
+getFirestore,
+collection,
+addDoc,
+getDocs,
+deleteDoc,
+doc,
+updateDoc,
+query,
+where,
+serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey:"AIzaSyAnMxqDpdzgKEW1vkRSrLysT-0nu_vEf8Q",
+
+authDomain:"quizcano.firebaseapp.com",
+
+projectId:"quizcano",
+
+storageBucket:"quizcano.firebasestorage.app",
+
+messagingSenderId:"834135771491",
+
+appId:"1:834135771491:web:c9998944df72d14a7b2b56"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+/* =========================================================
+END OF SECTION 00
+========================================================= */
 /* =========================================================
 SECTION 01
 HEADER JAVASCRIPT
