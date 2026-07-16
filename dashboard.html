@@ -1,4 +1,4 @@
-aa<!DOCTYPE html>
+taa<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -2887,7 +2887,7 @@ quizGrid.innerHTML+=`
 src="${firstImage}"
 class="quizCardImage">
 
-<div class="quizCardBody">
+<div class="quizCardBody">use
 
 <div class="quizCardTitle">
 
@@ -3007,6 +3007,7 @@ const quiz=snapshot.data();
 /* Remember document id for updating later */
 
 saveQuizButton.dataset.editId=id;
+isEditingQuiz = true;
 
 /* Open Create Quiz */
 
@@ -3055,7 +3056,8 @@ totalQuestions.value=quiz.totalQuestions;
 /* Prepare Questions */
 
 quizQuestions=quiz.questions;
-
+questionImage.value = "";
+  
 currentQuestion=1;
 
 questionNumber.innerText="Question 1";
