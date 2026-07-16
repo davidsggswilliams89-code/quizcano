@@ -3010,10 +3010,109 @@ alert("Delete failed.");
 
 async function editQuiz(id){
 
-alert("Edit Quiz will be implemented in the next step.");
+try{
+
+const snapshot=await getDoc(doc(db,"quizzes",id));
+
+if(!snapshot.exists()){
+
+alert("Quiz not found.");
+
+return;
 
 }
 
+const quiz=snapshot.data();
+
+/* Remember document id for updating later */
+
+saveQuizButton.dataset.editId=id;
+
+/* Open Create Quiz */
+
+createQuizSection.classList.add("show");
+
+manageQuizSection.classList.remove("show");
+
+/* Fill Quiz Information */
+
+quizMotherCategory.value=quiz.motherCategory;
+
+/* Load Sub Categories */
+
+const q=query(
+
+collection(db,"subCategories"),
+
+where("parentCategory","==",quiz.motherCategory)
+
+);
+
+const subSnapshot=await getDocs(q);
+
+quizSubCategory.innerHTML="";
+
+subSnapshot.forEach((docItem)=>{
+
+const item=docItem.data();
+
+quizSubCategory.innerHTML+=`
+
+<option value="${docItem.id}">
+${item.name}
+</option>
+
+`;
+
+});
+
+quizSubCategory.value=quiz.subCategoryId;
+
+quizTitle.value=quiz.title;
+
+totalQuestions.value=quiz.totalQuestions;
+
+/* Prepare Questions */
+
+quizQuestions=quiz.questions;
+
+currentQuestion=1;
+
+questionNumber.innerText="Question 1";
+
+/* Load First Question */
+
+const firstQuestion=quizQuestions[0];
+
+questionPreviewImage.src=firstQuestion.image;
+
+questionPreviewImage.style.display="block";
+
+questionPreviewText.style.display="none";
+
+optionA.value=firstQuestion.optionA;
+
+optionB.value=firstQuestion.optionB;
+
+optionC.value=firstQuestion.optionC;
+
+optionD.value=firstQuestion.optionD;
+
+correctAnswer.value=firstQuestion.correctAnswer;
+
+nextQuestionButton.style.display="block";
+
+saveQuizButton.style.display="none";
+
+}catch(error){
+
+console.error(error);
+
+alert("Failed to load quiz.");
+
+}
+
+}
 /* =========================================================
 END OF SECTION 06 JAVASCRIPT
 ========================================================= */
