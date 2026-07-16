@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+see<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -1730,6 +1730,7 @@ getFirestore,
 collection,
 addDoc,
 getDocs,
+getDoc,  
 deleteDoc,
 doc,
 updateDoc,
@@ -2068,7 +2069,7 @@ ${item.name}
 
 <button
 class="editSubCategoryButton"
-data-id="${docItem.id}">
+onclick="editSubCategory('${docItem.id}')">
 
 Edit
 
@@ -2101,6 +2102,47 @@ manageGrid.innerHTML="<p style='text-align:center;color:red;'>Failed to load sub
 }
 
 }
+
+async function editSubCategory(id){
+
+const documentRef = doc(db,"subCategories",id);
+
+const snapshot = await getDoc(documentRef);
+
+if(!snapshot.exists()){
+
+alert("Sub Category not found.");
+
+return;
+
+}
+
+const item = snapshot.data();
+
+/* Open Create Section */
+
+createSubCategorySection.classList.add("show");
+
+/* Fill Form */
+
+motherCategory.value = item.parentCategory;
+
+subCategoryName.value = item.name;
+
+bannerPreviewImage.src = item.banner;
+
+bannerPreviewImage.style.display = "block";
+
+bannerPreviewText.style.display = "none";
+
+/* Remember document id */
+
+saveSubCategoryButton.dataset.editId = id;
+
+saveSubCategoryButton.innerText = "Update Sub Category";
+
+}
+  
 /* =========================================================
 END OF SECTION 04 JAVASCRIPT
 ========================================================= */
