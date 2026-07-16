@@ -2022,11 +2022,21 @@ loadSubCategories();
 
 async function loadSubCategories(){
 
+manageGrid.innerHTML="Loading...";
+
+try{
+
+const snapshot=await getDocs(collection(db,"subCategories"));
+
 manageGrid.innerHTML="";
 
-const snapshot=await getDocs(
-collection(db,"subCategories")
-);
+if(snapshot.empty){
+
+manageGrid.innerHTML="<p style='text-align:center;'>No Sub Categories Found.</p>";
+
+return;
+
+}
 
 snapshot.forEach((docItem)=>{
 
@@ -2082,8 +2092,15 @@ Delete
 
 });
 
+}catch(error){
+
+console.error(error);
+
+manageGrid.innerHTML="<p style='text-align:center;color:red;'>Failed to load sub categories.</p>";
+
 }
 
+}
 /* =========================================================
 END OF SECTION 04 JAVASCRIPT
 ========================================================= */
