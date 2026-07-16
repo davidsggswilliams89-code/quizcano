@@ -2728,382 +2728,378 @@ saveQuizButton.innerText="Save Quiz";
 /* =========================================================
 END OF SECTION 05 JAVASCRIPT
 ========================================================= */
-/* =========================================================
-SECTION 06
-MANAGE QUIZZES JAVASCRIPT
-========================================================= */
-
-const manageQuizSection=
-document.getElementById("manageQuizSection");
-
-const filterMotherCategory=
-document.getElementById("filterMotherCategory");
-
-const filterSubCategory=
-document.getElementById("filterSubCategory");
-
-const quizGrid=
-document.getElementById("quizGrid");
-
-/* Open */
-
-manageQuizButton.onclick=()=>{
-
-manageQuizSection.classList.add("show");
-
-quizGrid.innerHTML="";
-
-filterMotherCategory.value="";
-
-filterSubCategory.innerHTML=`
-<option value="">
-Select Sub Category
-</option>
-`;
-
-};
-
-/* Load Sub Categories */
-
-filterMotherCategory.onchange=async()=>{
-
-quizGrid.innerHTML="";
-
-filterSubCategory.innerHTML=`
-<option value="">
-Loading...
-</option>
-`;
-
-if(filterMotherCategory.value===""){
-
-filterSubCategory.innerHTML=`
-<option value="">
-Select Sub Category
-</option>
-`;
-
-return;
-
-}
-
-try{
-
-const q=query(
-
-collection(db,"subCategories"),
-
-where("parentCategory","==",filterMotherCategory.value)
-
-);
-
-const snapshot=await getDocs(q);
-
-filterSubCategory.innerHTML=`
-<option value="">
-Select Sub Category
-</option>
-`;
-
-if(snapshot.empty){
-
-filterSubCategory.innerHTML=`
-<option value="">
-No Sub Category Found
-</option>
-`;
-
-return;
-
-}
-
-snapshot.forEach((docItem)=>{
-
-const item=docItem.data();
-
-filterSubCategory.innerHTML+=`
-
-<option value="${docItem.id}">
-${item.name}
-</option>
-
-`;
-
-});
-
-}catch(error){
-
-console.error(error);
-
-filterSubCategory.innerHTML=`
-<option value="">
-Failed To Load
-</option>
-`;
-
-}
-
-};
-
-/* Load Quiz List */
-
-filterSubCategory.onchange=()=>{
-
-loadQuizList();
-
-};
-
-async function loadQuizList(){
-
-quizGrid.innerHTML="Loading...";
-
-try{
-
-const q=query(
-
-collection(db,"quizzes"),
-
-where("subCategoryId","==",filterSubCategory.value)
-
-);
-
-const snapshot=await getDocs(q);
-
-quizGrid.innerHTML="";
-
-if(snapshot.empty){
-
-quizGrid.innerHTML="<p style='text-align:center;'>No Quiz Found.</p>";
-
-return;
-
-}
-
-snapshot.forEach((docItem)=>{
-
-const quiz=docItem.data();
-
-const firstImage=quiz.questions[0].image;
-
-quizGrid.innerHTML+=`
-
-<div class="quizCard">
-
-<img
-src="${firstImage}"
-class="quizCardImage">
-
-<div class="quizCardBody">use
-
-<div class="quizCardTitle">
-
-${quiz.title}
-
-</div>
-
-<div class="quizCardInfo">
-
-Questions : ${quiz.totalQuestions}
-
-</div>
-
-<div class="quizCardButtons">
-
-<button
-class="editQuizButton"
-data-id="${docItem.id}">
-
-Edit
-
-</button>
-
-<button
-class="deleteQuizButton"
-data-id="${docItem.id}">
-
-Delete
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-/* Edit Button */
-
-document.querySelectorAll(".editQuizButton").forEach(button=>{
-
-button.onclick=()=>{
-
-editQuiz(button.dataset.id);
-
-};
-
-});
-
-/* Delete Button */
-
-document.querySelectorAll(".deleteQuizButton").forEach(button=>{
-
-button.onclick=()=>{
-
-deleteQuiz(button.dataset.id);
-
-};
-
-});
-
-}catch(error){
-
-console.error(error);
-
-quizGrid.innerHTML="<p style='color:red;text-align:center;'>Failed to load quizzes.</p>";
-
-}
-
-}
-
-/* Delete Quiz */
-
-async function deleteQuiz(id){
-
-if(!confirm("Delete this quiz?")) return;
-
-try{
-
-await deleteDoc(doc(db,"quizzes",id));
-
-alert("Quiz deleted successfully.");
-
-loadQuizList();
-
-}catch(error){
-
-console.error(error);
-
-alert("Delete failed.");
-
-}
-}
-
-/* Edit Quiz */
-
-async function editQuiz(id){
-
-try{
-
-const snapshot=await getDoc(doc(db,"quizzes",id));
-
-if(!snapshot.exists()){
-
-alert("Quiz not found.");
-
-return;
-
-}
-
-const quiz=snapshot.data();
-
-/* Remember document id for updating later */
-
-saveQuizButton.dataset.editId=id;
-isEditingQuiz = true;
-
-/* Open Create Quiz */
-
-createQuizSection.classList.add("show");
-
-manageQuizSection.classList.remove("show");
-
-/* Fill Quiz Information */
-
-quizMotherCategory.value=quiz.motherCategory;
-
-/* Load Sub Categories */
-
-const q=query(
-
-collection(db,"subCategories"),
-
-where("parentCategory","==",quiz.motherCategory)
-
-);
-
-const subSnapshot=await getDocs(q);
-
-quizSubCategory.innerHTML="";
-
-subSnapshot.forEach((docItem)=>{
-
-const item=docItem.data();
-
-quizSubCategory.innerHTML+=`
-
-<option value="${docItem.id}">
-${item.name}
-</option>
-
-`;
-
-});
-
-quizSubCategory.value=quiz.subCategoryId;
-
-quizTitle.value=quiz.title;
-
-totalQuestions.value=quiz.totalQuestions;
-
-/* Prepare Questions */
-
-quizQuestions=quiz.questions;
-questionImage.value = "";
+/* =========================================================  
+SECTION 06  
+MANAGE QUIZZES JAVASCRIPT  
+========================================================= */  
   
-currentQuestion=1;
+const manageQuizSection=  
+document.getElementById("manageQuizSection");  
+  
+const filterMotherCategory=  
+document.getElementById("filterMotherCategory");  
+  
+const filterSubCategory=  
+document.getElementById("filterSubCategory");  
+  
+const quizGrid=  
+document.getElementById("quizGrid");  
+  
+/* Open */  
+  
+manageQuizButton.onclick=()=>{  
+  
+manageQuizSection.classList.add("show");  
+  
+quizGrid.innerHTML="";  
+  
+filterMotherCategory.value="";  
+  
+filterSubCategory.innerHTML=`  
+<option value="">  
+Select Sub Category  
+</option>  
+`;  
+  
+};  
+  
+/* Load Sub Categories */  
+  
+filterMotherCategory.onchange=async()=>{  
+  
+quizGrid.innerHTML="";  
+  
+filterSubCategory.innerHTML=`  
+<option value="">  
+Loading...  
+</option>  
+`;  
+  
+if(filterMotherCategory.value===""){  
+  
+filterSubCategory.innerHTML=`  
+<option value="">  
+Select Sub Category  
+</option>  
+`;  
+  
+return;  
+  
+}  
+  
+try{  
+  
+const q=query(  
+  
+collection(db,"subCategories"),  
+  
+where("parentCategory","==",filterMotherCategory.value)  
+  
+);  
+  
+const snapshot=await getDocs(q);  
+  
+filterSubCategory.innerHTML=`  
+<option value="">  
+Select Sub Category  
+</option>  
+`;  
+  
+if(snapshot.empty){  
+  
+filterSubCategory.innerHTML=`  
+<option value="">  
+No Sub Category Found  
+</option>  
+`;  
+  
+return;  
+  
+}  
+  
+snapshot.forEach((docItem)=>{  
+  
+const item=docItem.data();  
+  
+filterSubCategory.innerHTML+=`  
+  
+<option value="${docItem.id}">  
+${item.name}  
+</option>  
+  
+`;  
+  
+});  
+  
+}catch(error){  
+  
+console.error(error);  
+  
+filterSubCategory.innerHTML=`  
+<option value="">  
+Failed To Load  
+</option>  
+`;  
+  
+}  
+  
+};  
+  
+/* Load Quiz List */  
+filterSubCategory.onchange=()=>{  
+  
+loadQuizList();  
+  
+};  
+  
+async function loadQuizList(){  
+  
+quizGrid.innerHTML="Loading...";  
+  
+try{  
+  
+const q=query(  
+  
+collection(db,"quizzes"),  
+  
+where("subCategoryId","==",filterSubCategory.value)  
+  
+);  
+  
+const snapshot=await getDocs(q);  
+  
+quizGrid.innerHTML="";  
+  
+if(snapshot.empty){  
+  
+quizGrid.innerHTML="<p style='text-align:center;'>No Quiz Found.</p>";  
+  
+return;  
+  
+}  
+  
+snapshot.forEach((docItem)=>{  
+  
+const quiz=docItem.data();  
+  
+const firstImage=quiz.questions[0].image;  
+  
+quizGrid.innerHTML+=`  
+  
+<div class="quizCard">  
+  
+<img  
+src="${firstImage}"  
+class="quizCardImage">  
+  
+<div class="quizCardBody">  
+  
+<div class="quizCardTitle">  
+  
+${quiz.title}  
+  
+</div>  
+  
+<div class="quizCardInfo">  
+  
+Questions : ${quiz.totalQuestions}  
+  
+</div>  
+  
+<div class="quizCardButtons">  
+  
+<button  
+class="editQuizButton"  
+data-id="${docItem.id}">  
+  
+Edit  
+  
+</button>  
+  
+<button  
+class="deleteQuizButton"  
+data-id="${docItem.id}">  
+  
+Delete  
+  
+</button>  
+  
+</div>  
+  
+</div>  
+  
+</div>  
+  
+`;  
+  
+});  
+  
+/* Edit Button */  
+document.querySelectorAll(".editQuizButton").forEach(button=>{  
+  
+button.onclick=()=>{  
+  
+editQuiz(button.dataset.id);  
+  
+};  
+  
+});  
+  
+/* Delete Button */  
+  
+document.querySelectorAll(".deleteQuizButton").forEach(button=>{  
+  
+button.onclick=()=>{  
+  
+deleteQuiz(button.dataset.id);  
+  
+};  
+  
+});  
+  
+}catch(error){  
+  
+console.error(error);  
+  
+quizGrid.innerHTML="<p style='color:red;text-align:center;'>Failed to load quizzes.</p>";  
+  
+}  
+  
+}  
+  
+/* Delete Quiz */  
+  
+async function deleteQuiz(id){  
+  
+if(!confirm("Delete this quiz?")) return;  
+  
+try{  
+  
+await deleteDoc(doc(db,"quizzes",id));  
+  
+alert("Quiz deleted successfully.");  
+  
+loadQuizList();  
+  
+}catch(error){  
+  
+console.error(error);  
+  
+alert("Delete failed.");  
+  
+}  
+}  
+  
+/* Edit Quiz */  
+async function editQuiz(id){  
+  
+try{  
+  
+const snapshot=await getDoc(doc(db,"quizzes",id));  
+  
+if(!snapshot.exists()){  
+  
+alert("Quiz not found.");  
+  
+return;  
+  
+}  
+  
+const quiz=snapshot.data();  
+  
+/* Remember document id for updating later */  
+  
+saveQuizButton.dataset.editId=id;  
+  
+/* Open Create Quiz */  
+  
+createQuizSection.classList.add("show");  
+  
+manageQuizSection.classList.remove("show");  
+  
+/* Fill Quiz Information */  
+  
+quizMotherCategory.value=quiz.motherCategory;  
+  
+/* Load Sub Categories */  
+  
+const q=query(  
+  
+collection(db,"subCategories"),  
+  
+where("parentCategory","==",quiz.motherCategory)  
+  
+);  
+  
+const subSnapshot=await getDocs(q);  
+  
+quizSubCategory.innerHTML="";  
+  
+subSnapshot.forEach((docItem)=>{  
+  
+const item=docItem.data();  
+  
+quizSubCategory.innerHTML+=`  
+  
+<option value="${docItem.id}">  
+${item.name}  
+</option>  
+  
+`;  
+  
+});  
+  
+quizSubCategory.value=quiz.subCategoryId;  
+  
+quizTitle.value=quiz.title;  
+  
+totalQuestions.value=quiz.totalQuestions;  
+  
+/* Prepare Questions */  
+  
+quizQuestions=quiz.questions;  
+  
+currentQuestion=1;  
+  
+questionNumber.innerText="Question 1";  
+  
+/* Load First Question */  
+  
+const firstQuestion=quizQuestions[0];  
+  
+questionPreviewImage.src=firstQuestion.image;  
+  
+questionPreviewImage.style.display="block";  
+  
+questionPreviewText.style.display="none";  
+  
+optionA.value=firstQuestion.optionA;  
+  
+optionB.value=firstQuestion.optionB;  
+  
+optionC.value=firstQuestion.optionC;  
+  
+optionD.value=firstQuestion.optionD;  
+  
+correctAnswer.value=firstQuestion.correctAnswer;  
+  
+nextQuestionButton.style.display="block";  
+  
+saveQuizButton.style.display="none";  
+  
+}catch(error){  
+  
+console.error(error);  
+  
+alert("Failed to load quiz.");  
+  
+}  
+  
+}  
+/* =========================================================  
+END OF SECTION 06 JAVASCRIPT  
+========================================================= */  
 
-questionNumber.innerText="Question 1";
-
-/* Load First Question */
-
-const firstQuestion=quizQuestions[0];
-
-questionPreviewImage.src=firstQuestion.image;
-
-questionPreviewImage.style.display="block";
-
-questionPreviewText.style.display="none";
-
-optionA.value=firstQuestion.optionA;
-
-optionB.value=firstQuestion.optionB;
-
-optionC.value=firstQuestion.optionC;
-
-optionD.value=firstQuestion.optionD;
-
-correctAnswer.value=firstQuestion.correctAnswer;
-
-nextQuestionButton.style.display="block";
-
-saveQuizButton.style.display="none";
-
-}catch(error){
-
-console.error(error);
-
-alert("Failed to load quiz.");
-
-}
-
-}
-/* =========================================================
-END OF SECTION 06 JAVASCRIPT
-========================================================= */
 /* =========================================================
 SECTION 07
 LOGOUT JAVASCRIPT
