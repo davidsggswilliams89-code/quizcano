@@ -2457,66 +2457,7 @@ quizGrid.innerHTML="";
 Load matching Sub Categories
 from Firebase.
 */
-quizMotherCategory.onchange = async () => {
 
-    quizSubCategory.innerHTML =
-    "<option value=''>Loading...</option>";
-
-    if (quizMotherCategory.value === "") {
-
-        quizSubCategory.innerHTML =
-        "<option value=''>Select Sub Category</option>";
-
-        return;
-
-    }
-
-    try {
-
-        const q = query(
-            collection(db, "subCategories"),
-            where("parentCategory", "==", quizMotherCategory.value)
-        );
-
-        const snapshot = await getDocs(q);
-
-        quizSubCategory.innerHTML =
-        "<option value=''>Select Sub Category</option>";
-
-        if (snapshot.empty) {
-
-            quizSubCategory.innerHTML =
-            "<option value=''>No Sub Category Found</option>";
-
-            return;
-
-        }
-
-        snapshot.forEach((docItem) => {
-
-            const item = docItem.data();
-
-            quizSubCategory.innerHTML += `
-                <option value="${item.name}">
-                    ${item.name}
-                </option>
-            `;
-
-        });
-
-    } catch (error) {
-
-        console.error(error);
-
-        quizSubCategory.innerHTML =
-        "<option value=''>Failed to Load</option>";
-
-    }
-
-};
-
-
-  
 };
 
 /* Sub Category Changed */
@@ -2543,6 +2484,7 @@ are completed.
 /* =========================================================
 END OF SECTION 06 JAVASCRIPT
 ========================================================= */
+
 /* =========================================================
 SECTION 07
 LOGOUT JAVASCRIPT
