@@ -2069,7 +2069,7 @@ ${item.name}
 
 <button
 class="editSubCategoryButton"
-onclick="editSubCategory('${docItem.id}')">
+data-id="${docItem.id}">
 
 Edit
 
@@ -2093,21 +2093,71 @@ Delete
 
 });
 
+/* EDIT BUTTON */
+
+document.querySelectorAll(".editSubCategoryButton").forEach(button=>{
+
+button.addEventListener("click",()=>{
+
+editSubCategory(button.dataset.id);
+
+});
+
+});
+
+/* DELETE BUTTON */
+
+document.querySelectorAll(".deleteSubCategoryButton").forEach(button=>{
+
+button.addEventListener("click",()=>{
+
+deleteSubCategory(button.dataset.id);
+
+});
+
+});
+
 }catch(error){
 
 console.error(error);
 
-manageGrid.innerHTML="<p style='text-align:center;color:red;'>Failed to load sub categories.</p>";
+manageGrid.innerHTML="<p style='color:red;text-align:center;'>Failed to load sub categories.</p>";
 
 }
 
 }
+
+/* Delete Sub Category */
+
+async function deleteSubCategory(id){
+
+if(!confirm("Delete this Sub Category?")) return;
+
+try{
+
+await deleteDoc(doc(db,"subCategories",id));
+
+alert("Sub Category deleted successfully.");
+
+loadSubCategories();
+
+}catch(error){
+
+console.error(error);
+
+alert("Delete failed.");
+
+}
+
+}
+
+/* Edit Sub Category */
 
 async function editSubCategory(id){
 
-const documentRef = doc(db,"subCategories",id);
+const documentRef=doc(db,"subCategories",id);
 
-const snapshot = await getDoc(documentRef);
+const snapshot=await getDoc(documentRef);
 
 if(!snapshot.exists()){
 
@@ -2117,7 +2167,7 @@ return;
 
 }
 
-const item = snapshot.data();
+const item=snapshot.data();
 
 /* Open Create Section */
 
@@ -2125,24 +2175,24 @@ createSubCategorySection.classList.add("show");
 
 /* Fill Form */
 
-motherCategory.value = item.parentCategory;
+motherCategory.value=item.parentCategory;
 
-subCategoryName.value = item.name;
+subCategoryName.value=item.name;
 
-bannerPreviewImage.src = item.banner;
+bannerPreviewImage.src=item.banner;
 
-bannerPreviewImage.style.display = "block";
+bannerPreviewImage.style.display="block";
 
-bannerPreviewText.style.display = "none";
+bannerPreviewText.style.display="none";
 
 /* Remember document id */
 
-saveSubCategoryButton.dataset.editId = id;
+saveSubCategoryButton.dataset.editId=id;
 
-saveSubCategoryButton.innerText = "Update Sub Category";
+saveSubCategoryButton.innerText="Update Sub Category";
 
 }
-  
+
 /* =========================================================
 END OF SECTION 04 JAVASCRIPT
 ========================================================= */
