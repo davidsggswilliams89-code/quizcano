@@ -1897,19 +1897,17 @@ return;
 
 }
 
-if(!file){
-
-alert("Select Banner Image.");
-
-return;
-
-}
-
 saveSubCategoryButton.disabled=true;
 
-saveSubCategoryButton.innerText="Uploading...";
+saveSubCategoryButton.innerText="Saving...";
 
 try{
+
+let bannerUrl = bannerPreviewImage.src;
+
+/* Upload new banner only if user selected one */
+
+if(file){
 
 const formData=new FormData();
 
@@ -1939,13 +1937,53 @@ throw new Error("Upload failed");
 
 }
 
-const bannerUrl=data.secure_url;
+bannerUrl=data.secure_url;
 
-alert("Banner uploaded successfully.");
+}
 
-console.log(bannerUrl);
+/* UPDATE */
 
-/* Save to Firestore */
+if(saveSubCategoryButton.dataset.editId){
+
+await updateDoc(
+
+doc(db,"subCategories",saveSubCategoryButton.dataset.editId),
+
+{
+
+parentCategory:parent,
+
+name:name,
+
+banner:bannerUrl
+
+}
+
+);
+
+alert("Sub Category updated successfully.");
+
+delete saveSubCategoryButton.dataset.editId;
+
+saveSubCategoryButton.innerText="Save Sub Category";
+
+}
+
+/* CREATE */
+
+else{
+
+if(!file){
+
+alert("Select Banner Image.");
+
+saveSubCategoryButton.disabled=false;
+
+saveSubCategoryButton.innerText="Save Sub Category";
+
+return;
+
+}
 
 await addDoc(
 
@@ -1967,6 +2005,8 @@ createdAt:serverTimestamp()
 
 alert("Sub Category created successfully.");
 
+}
+
 /* Reset Form */
 
 motherCategory.value="";
@@ -1981,12 +2021,14 @@ bannerPreviewImage.style.display="none";
 
 bannerPreviewText.style.display="block";
 
+loadSubCategories();
+
 }
 catch(error){
 
-alert("Upload failed.");
-
 console.error(error);
+
+alert("Operation failed.");
 
 }
 
