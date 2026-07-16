@@ -2431,6 +2431,122 @@ Failed To Load
 
 };
 
+/* Next Question */
+
+nextQuestionButton.onclick=()=>{
+
+if(optionA.value.trim()===""){
+
+alert("Enter Option A.");
+
+return;
+
+}
+
+if(optionB.value.trim()===""){
+
+alert("Enter Option B.");
+
+return;
+
+}
+
+if(optionC.value.trim()===""){
+
+alert("Enter Option C.");
+
+return;
+
+}
+
+if(optionD.value.trim()===""){
+
+alert("Enter Option D.");
+
+return;
+
+}
+
+if(correctAnswer.value===""){
+
+alert("Select Correct Answer.");
+
+return;
+
+}
+
+if(questionImage.files.length===0){
+
+alert("Select Question Image.");
+
+return;
+
+}
+
+/* Save Question Temporarily */
+
+quizQuestions.push({
+
+questionNumber:currentQuestion,
+
+optionA:optionA.value,
+
+optionB:optionB.value,
+
+optionC:optionC.value,
+
+optionD:optionD.value,
+
+correctAnswer:correctAnswer.value,
+
+image:questionImage.files[0]
+
+});
+
+/* Next Question */
+
+currentQuestion++;
+
+if(currentQuestion<=Number(totalQuestions.value)){
+
+questionNumber.innerText="Question "+currentQuestion;
+
+/* Clear Question Form */
+
+questionImage.value="";
+
+questionPreviewImage.src="";
+
+questionPreviewImage.style.display="none";
+
+questionPreviewText.style.display="block";
+
+optionA.value="";
+
+optionB.value="";
+
+optionC.value="";
+
+optionD.value="";
+
+correctAnswer.value="";
+
+}
+
+/* Last Question */
+
+if(currentQuestion>Number(totalQuestions.value)){
+
+questionNumber.innerText="All Questions Added";
+
+nextQuestionButton.style.display="none";
+
+saveQuizButton.style.display="block";
+
+}
+
+};
+  
 /* =========================================================
 END OF SECTION 05 JAVASCRIPT
 ========================================================= */
