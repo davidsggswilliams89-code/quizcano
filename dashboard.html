@@ -1,4 +1,4 @@
-see<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -2750,35 +2750,99 @@ manageQuizSection.classList.add("show");
 
 quizGrid.innerHTML="";
 
+filterMotherCategory.value="";
+
+filterSubCategory.innerHTML=`
+<option value="">
+Select Sub Category
+</option>
+`;
+
 };
 
-/* Load Quiz List */
+/* Load Sub Categories */
 
-async function loadQuizList(){
+filterMotherCategory.onchange=async()=>{
 
 quizGrid.innerHTML="";
 
-/*
-Firebase loading will be connected
-after Section 07.
-*/
+filterSubCategory.innerHTML=`
+<option value="">
+Loading...
+</option>
+`;
+
+if(filterMotherCategory.value===""){
+
+filterSubCategory.innerHTML=`
+<option value="">
+Select Sub Category
+</option>
+`;
+
+return;
 
 }
 
-/* Mother Category Changed */
+try{
 
-filterMotherCategory.onchange=()=>{
+const q=query(
 
-quizGrid.innerHTML="";
+collection(db,"subCategories"),
 
-/*
-Load matching Sub Categories
-from Firebase.
-*/
+where("parentCategory","==",filterMotherCategory.value)
+
+);
+
+const snapshot=await getDocs(q);
+
+filterSubCategory.innerHTML=`
+<option value="">
+Select Sub Category
+</option>
+`;
+
+if(snapshot.empty){
+
+filterSubCategory.innerHTML=`
+<option value="">
+No Sub Category Found
+</option>
+`;
+
+return;
+
+}
+
+snapshot.forEach((docItem)=>{
+
+const item=docItem.data();
+
+filterSubCategory.innerHTML+=`
+
+<option value="${docItem.id}">
+${item.name}
+</option>
+
+`;
+
+});
+
+}catch(error){
+
+console.error(error);
+
+filterSubCategory.innerHTML=`
+<option value="">
+Failed To Load
+</option>
+`;
+
+}
 
 };
 
-/* Sub Category Changed */
+/* Load Quiz List */
 
 filterSubCategory.onchange=()=>{
 
@@ -2786,18 +2850,11 @@ loadQuizList();
 
 };
 
-/*
-Edit Quiz
+async function loadQuizList(){
 
-Delete Quiz
+quizGrid.innerHTML="Loading...";
 
-Question Preview During Editing
-
-Update Quiz
-
-will be connected after all sections
-are completed.
-*/
+}
 
 /* =========================================================
 END OF SECTION 06 JAVASCRIPT
