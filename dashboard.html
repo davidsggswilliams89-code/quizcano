@@ -2546,6 +2546,180 @@ saveQuizButton.style.display="block";
 }
 
 };
+
+/* Save Quiz */
+
+saveQuizButton.onclick=async()=>{
+
+saveQuizButton.disabled=true;
+
+saveQuizButton.innerText="Saving Quiz...";
+
+try{
+
+/* Upload Last Question */
+
+const file=questionImage.files[0];
+
+const formData=new FormData();
+
+formData.append("file",file);
+
+formData.append("upload_preset","Ummuhalti");
+
+const response=await fetch(
+
+"https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
+
+{
+
+method:"POST",
+
+body:formData
+
+}
+
+);
+
+const imageData=await response.json();
+
+/* Save Last Question */
+
+quizQuestions.push({
+
+questionNumber:currentQuestion,
+
+image:imageData.secure_url,
+
+optionA:optionA.value,
+
+optionB:optionB.value,
+
+optionC:optionC.value,
+
+optionD:optionD.value,
+
+correctAnswer:correctAnswer.value
+
+});
+
+/* Upload Previous Question Images */
+
+for(let i=0;i<quizQuestions.length-1;i++){
+
+if(quizQuestions[i].image instanceof File){
+
+const data=new FormData();
+
+data.append("file",quizQuestions[i].image);
+
+data.append("upload_preset","Ummuhalti");
+
+const upload=await fetch(
+
+"https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
+
+{
+
+method:"POST",
+
+body:data
+
+}
+
+);
+
+const result=await upload.json();
+
+quizQuestions[i].image=result.secure_url;
+
+}
+
+}
+
+/* Save Quiz */
+
+await addDoc(
+
+collection(db,"quizzes"),
+
+{
+
+motherCategory:quizMotherCategory.value,
+
+subCategoryId:quizSubCategory.value,
+
+subCategoryName:
+
+quizSubCategory.options[quizSubCategory.selectedIndex].text,
+
+title:quizTitle.value,
+
+totalQuestions:Number(totalQuestions.value),
+
+questions:quizQuestions,
+
+createdAt:serverTimestamp()
+
+}
+
+);
+
+alert("Quiz saved successfully.");
+
+/* Reset */
+
+quizMotherCategory.value="";
+
+quizSubCategory.innerHTML="<option value=''>Select Sub Category</option>";
+
+quizTitle.value="";
+
+totalQuestions.value="";
+
+questionNumber.innerText="Question 1";
+
+currentQuestion=1;
+
+quizQuestions=[];
+
+questionImage.value="";
+
+questionPreviewImage.src="";
+
+questionPreviewImage.style.display="none";
+
+questionPreviewText.style.display="block";
+
+optionA.value="";
+
+optionB.value="";
+
+optionC.value="";
+
+optionD.value="";
+
+correctAnswer.value="";
+
+saveQuizButton.style.display="none";
+
+nextQuestionButton.style.display="block";
+
+createQuizSection.classList.remove("show");
+
+}catch(error){
+
+console.error(error);
+
+alert("Failed to save quiz.");
+
+}
+
+saveQuizButton.disabled=false;
+
+saveQuizButton.innerText="Save Quiz";
+
+};                        
   
 /* =========================================================
 END OF SECTION 05 JAVASCRIPT
