@@ -2473,9 +2473,22 @@ return;
 
 }
 
-if(questionImage.files.length===0 && !isEditingQuiz){
-    alert("Select Question Image");
-    return;
+let imageUrl = "";
+
+if(isEditingQuiz){
+
+    imageUrl = quizQuestions[currentQuestion-1].image;
+
+}else{
+
+    if(questionImage.files.length===0){
+
+        alert("Select Question Image.");
+
+        return;
+
+    }
+
 }
 
 /* Save Question Temporarily */
@@ -2553,6 +2566,8 @@ try{
 
 /* Upload Last Question */
 
+if(questionImage.files.length > 0){
+
 const file=questionImage.files[0];
 
 const formData=new FormData();
@@ -2562,17 +2577,11 @@ formData.append("file",file);
 formData.append("upload_preset","Ummuhalti");
 
 const response=await fetch(
-
 "https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
-
 {
-
 method:"POST",
-
 body:formData
-
 }
-
 );
 
 const imageData=await response.json();
