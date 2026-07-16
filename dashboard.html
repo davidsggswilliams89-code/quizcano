@@ -2308,6 +2308,14 @@ createQuizButton.onclick=()=>{
 
 createQuizSection.classList.add("show");
 
+quizMotherCategory.value="";
+
+quizSubCategory.innerHTML=`
+<option value="">
+Select Sub Category
+</option>
+`;
+
 };
 
 /* Question Preview */
@@ -2407,6 +2415,7 @@ quizSubCategory.innerHTML="<option value=''>Failed To Load</option>";
 /* =========================================================
 END OF SECTION 05 JAVASCRIPT
 ========================================================= */
+
 /* =========================================================
 SECTION 06
 MANAGE QUIZZES JAVASCRIPT
