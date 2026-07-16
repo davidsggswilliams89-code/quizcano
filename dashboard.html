@@ -2245,486 +2245,481 @@ saveSubCategoryButton.innerText="Update Sub Category";
 /* =========================================================
 END OF SECTION 04 JAVASCRIPT
 ========================================================= */
-/* =========================================================
-SECTION 05
-CREATE QUIZ JAVASCRIPT
-========================================================= */
-
-const createQuizSection=
-document.getElementById("createQuizSection");
-
-const quizMotherCategory=
-document.getElementById("quizMotherCategory");
-
-const quizSubCategory=
-document.getElementById("quizSubCategory");
-
-const quizTitle=
-document.getElementById("quizTitle");
-
-const totalQuestions=
-document.getElementById("totalQuestions");
-
-const questionNumber=
-document.getElementById("questionNumber");
-
-const questionImage=
-document.getElementById("questionImage");
-
-const questionPreviewImage=
-document.getElementById("questionPreviewImage");
-
-const questionPreviewText=
-document.getElementById("questionPreviewText");
-
-const optionA=
-document.getElementById("optionA");
-
-const optionB=
-document.getElementById("optionB");
-
-const optionC=
-document.getElementById("optionC");
-
-const optionD=
-document.getElementById("optionD");
-
-const correctAnswer=
-document.getElementById("correctAnswer");
-
-const nextQuestionButton=
-document.getElementById("nextQuestionButton");
-
-const saveQuizButton=
-document.getElementById("saveQuizButton");
-
-let currentQuestion=1;
-
-let quizQuestions=[];
-
-/* Open */
-
-createQuizButton.onclick=()=>{
-
-createQuizSection.classList.add("show");
-
-quizMotherCategory.value="";
-
-quizSubCategory.innerHTML=`
-<option value="">
-Select Sub Category
-</option>
-`;
-
-};
-
-/* Question Preview */
-
-questionImage.onchange=()=>{
-
-const file=questionImage.files[0];
-
-if(!file){
-
-questionPreviewImage.style.display="none";
-
-questionPreviewText.style.display="block";
-
-return;
-
-}
-
-const reader=new FileReader();
-
-reader.onload=(e)=>{
-
-questionPreviewImage.src=e.target.result;
-
-questionPreviewImage.style.display="block";
-
-questionPreviewText.style.display="none";
-
-};
-
-reader.readAsDataURL(file);
-
-};
-
-/* Load Sub Categories */
-
-quizMotherCategory.onchange=async()=>{
-
-quizSubCategory.innerHTML=`
-<option value="">
-Loading...
-</option>
-`;
-
-if(quizMotherCategory.value===""){
-
-quizSubCategory.innerHTML=`
-<option value="">
-Select Sub Category
-</option>
-`;
-
-return;
-
-}
-
-try{
-
-const q=query(
-
-collection(db,"subCategories"),
-
-where("parentCategory","==",quizMotherCategory.value)
-
-);
-
-const snapshot=await getDocs(q);
-
-quizSubCategory.innerHTML=`
-<option value="">
-Select Sub Category
-</option>
-`;
-
-if(snapshot.empty){
-
-quizSubCategory.innerHTML=`
-<option value="">
-No Sub Category Found
-</option>
-`;
-
-return;
-
-}
-
-snapshot.forEach((docItem)=>{
-
-const item=docItem.data();
-
-quizSubCategory.innerHTML+=`
-
-<option value="${docItem.id}">
-${item.name}
-</option>
-
-`;
-
-});
-
-}catch(error){
-
-console.error(error);
-
-quizSubCategory.innerHTML=`
-<option value="">
-Failed To Load
-</option>
-`;
-
-}
-
-};
-/* Next Question */
-
-nextQuestionButton.onclick=()=>{
-
-if(optionA.value.trim()===""){
-
-alert("Enter Option A.");
-
-return;
-
-}
-
-if(optionB.value.trim()===""){
-
-alert("Enter Option B.");
-
-return;
-
-}
-
-if(optionC.value.trim()===""){
-
-alert("Enter Option C.");
-
-return;
-
-}
-
-if(optionD.value.trim()===""){
-
-alert("Enter Option D.");
-
-return;
-
-}
-
-if(correctAnswer.value===""){
-
-alert("Select Correct Answer.");
-
-return;
-
-}
-
-let imageUrl = "";
-
-if(isEditingQuiz){
-
-    imageUrl = quizQuestions[currentQuestion-1].image;
-
-}else{
-
-    if(questionImage.files.length===0){
-
-        alert("Select Question Image.");
-
-        return;
-
-    }
-
-}
-
-/* Save Question Temporarily */
-
-quizQuestions.push({
-
-questionNumber:currentQuestion,
-
-optionA:optionA.value,
-
-optionB:optionB.value,
-
-optionC:optionC.value,
-
-optionD:optionD.value,
-
-correctAnswer:correctAnswer.value,
-
-image:questionImage.files[0]
-
-});
-
-/* Next Question */
-
-currentQuestion++;
-
-if(currentQuestion<=Number(totalQuestions.value)){
-
-questionNumber.innerText="Question "+currentQuestion;
-
-/* Clear Question Form */
-
-questionImage.value="";
-
-questionPreviewImage.src="";
-
-questionPreviewImage.style.display="none";
-
-questionPreviewText.style.display="block";
-
-optionA.value="";
-
-optionB.value="";
-
-optionC.value="";
-
-optionD.value="";
-
-correctAnswer.value="";
-
-}
-
-/* Last Question */
-
-if(currentQuestion>Number(totalQuestions.value)){
-
-questionNumber.innerText="All Questions Added";
-
-nextQuestionButton.style.display="none";
-
-saveQuizButton.style.display="block";
-
-}
-
-};
-/* Save Quiz */
-
-saveQuizButton.onclick=async()=>{
-
-saveQuizButton.disabled=true;
-
-saveQuizButton.innerText="Saving Quiz...";
-
-try{
-
-/* Upload Last Question */
-
-if(questionImage.files.length > 0){
-
-const file=questionImage.files[0];
-
-const formData=new FormData();
-
-formData.append("file",file);
-
-formData.append("upload_preset","Ummuhalti");
-
-const response=await fetch(
-"https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
-{
-method:"POST",
-body:formData
-}
-);
-
-const imageData=await response.json();
-
-/* Save Last Question */
-
-quizQuestions.push({
-
-questionNumber:currentQuestion,
-
-image:imageData.secure_url,
-
-optionA:optionA.value,
-
-optionB:optionB.value,
-
-optionC:optionC.value,
-
-optionD:optionD.value,
-
-correctAnswer:correctAnswer.value
-
-});
-
-/* Upload Previous Question Images */
-
-for(let i=0;i<quizQuestions.length-1;i++){
-
-if(quizQuestions[i].image instanceof File){
-
-const data=new FormData();
-
-data.append("file",quizQuestions[i].image);
-
-data.append("upload_preset","Ummuhalti");
-
-const upload=await fetch(
-
-"https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
-
-{
-
-method:"POST",
-
-body:data
-
-}
-
-);
-
-const result=await upload.json();
-
-quizQuestions[i].image=result.secure_url;
-
-}
-
-}
-
-/* Save Quiz */
-
-await addDoc(
-
-collection(db,"quizzes"),
-
-{
-
-motherCategory:quizMotherCategory.value,
-
-subCategoryId:quizSubCategory.value,
-
-subCategoryName:
-
-quizSubCategory.options[quizSubCategory.selectedIndex].text,
-
-title:quizTitle.value,
-
-totalQuestions:Number(totalQuestions.value),
-
-questions:quizQuestions,
-
-createdAt:serverTimestamp()
-
-}
-
-);
-
-alert("Quiz saved successfully.");
-
-/* Reset */
-
-quizMotherCategory.value="";
-
-quizSubCategory.innerHTML="<option value=''>Select Sub Category</option>";
-
-quizTitle.value="";
-
-totalQuestions.value="";
-
-questionNumber.innerText="Question 1";
-
-currentQuestion=1;
-
-quizQuestions=[];
-
-questionImage.value="";
-
-questionPreviewImage.src="";
-
-questionPreviewImage.style.display="none";
-
-questionPreviewText.style.display="block";
-
-optionA.value="";
-
-optionB.value="";
-
-optionC.value="";
-
-optionD.value="";
-
-correctAnswer.value="";
-
-saveQuizButton.style.display="none";
-
-nextQuestionButton.style.display="block";
-
-createQuizSection.classList.remove("show");
-
-}catch(error){
-
-console.error(error);
-
-alert("Failed to save quiz.");
-
-}
-
-saveQuizButton.disabled=false;
-
-saveQuizButton.innerText="Save Quiz";
-
-};
- 
   
+const createQuizSection=  
+document.getElementById("createQuizSection");  
+  
+const quizMotherCategory=  
+document.getElementById("quizMotherCategory");  
+  
+const quizSubCategory=  
+document.getElementById("quizSubCategory");  
+  
+const quizTitle=  
+document.getElementById("quizTitle");  
+  
+const totalQuestions=  
+document.getElementById("totalQuestions");  
+  
+const questionNumber=  
+document.getElementById("questionNumber");  
+  
+const questionImage=  
+document.getElementById("questionImage");  
+  
+const questionPreviewImage=  
+document.getElementById("questionPreviewImage");  
+  
+const questionPreviewText=  
+document.getElementById("questionPreviewText");  
+  
+const optionA=  
+document.getElementById("optionA");  
+  
+const optionB=  
+document.getElementById("optionB");  
+  
+const optionC=  
+document.getElementById("optionC");  
+  
+const optionD=  
+document.getElementById("optionD");  
+  
+const correctAnswer=  
+document.getElementById("correctAnswer");  
+  
+const nextQuestionButton=  
+document.getElementById("nextQuestionButton");  
+  
+const saveQuizButton=  
+document.getElementById("saveQuizButton");  
+  
+let currentQuestion=1;  
+  
+let quizQuestions=[];  
+  
+/* Open */  
+  
+createQuizButton.onclick=()=>{  
+  
+createQuizSection.classList.add("show");  
+  
+quizMotherCategory.value="";  
+  
+quizSubCategory.innerHTML=`  
+<option value="">  
+Select Sub Category  
+</option>  
+`;  
+  
+};  
+  
+/* Question Preview */  
+  
+questionImage.onchange=()=>{  
+  
+const file=questionImage.files[0];  
+  
+if(!file){  
+  
+questionPreviewImage.style.display="none";  
+  
+questionPreviewText.style.display="block";  
+  
+return;  
+  
+}  
+  
+const reader=new FileReader();  
+  
+reader.onload=(e)=>{  
+  
+questionPreviewImage.src=e.target.result;  
+  
+questionPreviewImage.style.display="block";  
+  
+questionPreviewText.style.display="none";  
+  
+};  
+  
+reader.readAsDataURL(file);  
+  
+};  
+  
+/* Load Sub Categories */  
+  
+quizMotherCategory.onchange=async()=>{  
+  
+quizSubCategory.innerHTML=`  
+<option value="">  
+Loading...  
+</option>  
+`;  
+  
+if(quizMotherCategory.value===""){  
+  
+quizSubCategory.innerHTML=`  
+<option value="">  
+Select Sub Category  
+</option>  
+`;  
+  
+return;  
+  
+}  
+  
+try{  
+  
+const q=query(  
+  
+collection(db,"subCategories"),  
+  
+where("parentCategory","==",quizMotherCategory.value)  
+  
+);  
+  
+const snapshot=await getDocs(q);  
+  
+quizSubCategory.innerHTML=`  
+<option value="">  
+Select Sub Category  
+</option>  
+`;  
+  
+if(snapshot.empty){  
+  
+quizSubCategory.innerHTML=`  
+<option value="">  
+No Sub Category Found  
+</option>  
+`;  
+  
+return;  
+  
+}  
+  
+snapshot.forEach((docItem)=>{  
+  
+const item=docItem.data();  
+  
+quizSubCategory.innerHTML+=`  
+  
+<option value="${docItem.id}">  
+${item.name}  
+</option>  
+  
+`;  
+  
+});  
+  
+}catch(error){  
+  
+console.error(error);  
+  
+quizSubCategory.innerHTML=`  
+<option value="">  
+Failed To Load  
+</option>  
+`;  
+  
+}  
+  
+};  
+/* Next Question */  
+  
+nextQuestionButton.onclick=()=>{  
+  
+if(optionA.value.trim()===""){  
+  
+alert("Enter Option A.");  
+  
+return;  
+  
+}  
+  
+if(optionB.value.trim()===""){  
+  
+alert("Enter Option B.");  
+  
+return;  
+  
+}  
+  
+if(optionC.value.trim()===""){  
+  
+alert("Enter Option C.");  
+  
+return;  
+  
+}  
+  
+if(optionD.value.trim()===""){  
+  
+alert("Enter Option D.");  
+  
+return;  
+  
+}  
+  
+if(correctAnswer.value===""){  
+  
+alert("Select Correct Answer.");  
+  
+return;  
+  
+}  
+  
+let imageUrl = "";  
+  
+if(isEditingQuiz){  
+  
+    imageUrl = quizQuestions[currentQuestion-1].image;  
+  
+}else{  
+  
+    if(questionImage.files.length===0){  
+  
+        alert("Select Question Image.");  
+  
+        return;  
+  
+    }  
+  
+}  
+  
+/* Save Question Temporarily */  
+  
+quizQuestions.push({  
+  
+questionNumber:currentQuestion,  
+  
+optionA:optionA.value,  
+  
+optionB:optionB.value,  
+  
+optionC:optionC.value,  
+  
+optionD:optionD.value,  
+  
+correctAnswer:correctAnswer.value,  
+  
+image:questionImage.files[0]  
+  
+});  
+  
+/* Next Question */  
+  
+currentQuestion++;  
+  
+if(currentQuestion<=Number(totalQuestions.value)){  
+  
+questionNumber.innerText="Question "+currentQuestion;  
+  
+/* Clear Question Form */  
+  
+questionImage.value="";  
+  
+questionPreviewImage.src="";  
+  
+questionPreviewImage.style.display="none";  
+  
+questionPreviewText.style.display="block";  
+  
+optionA.value="";  
+  
+optionB.value="";  
+  
+optionC.value="";  
+  
+optionD.value="";  
+  
+correctAnswer.value="";  
+  
+}  
+  
+/* Last Question */  
+  
+if(currentQuestion>Number(totalQuestions.value)){  
+  
+questionNumber.innerText="All Questions Added";  
+  
+nextQuestionButton.style.display="none";  
+  
+saveQuizButton.style.display="block";  
+  
+}  
+  
+};  
+/* Save Quiz */  
+  
+saveQuizButton.onclick=async()=>{  
+  
+saveQuizButton.disabled=true;  
+  
+saveQuizButton.innerText="Saving Quiz...";  
+  
+try{  
+  
+/* Upload Last Question */  
+  
+if(questionImage.files.length > 0){  
+  
+const file=questionImage.files[0];  
+  
+const formData=new FormData();  
+  
+formData.append("file",file);  
+  
+formData.append("upload_preset","Ummuhalti");  
+  
+const response=await fetch(  
+"https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",  
+{  
+method:"POST",  
+body:formData  
+}  
+);  
+  
+const imageData=await response.json();  
+  
+/* Save Last Question */  
+  
+quizQuestions.push({  
+  
+questionNumber:currentQuestion,  
+  
+image:imageData.secure_url,  
+  
+optionA:optionA.value,  
+  
+optionB:optionB.value,  
+  
+optionC:optionC.value,  
+  
+optionD:optionD.value,  
+  
+correctAnswer:correctAnswer.value  
+  
+});  
+  
+/* Upload Previous Question Images */  
+  
+for(let i=0;i<quizQuestions.length-1;i++){  
+  
+if(quizQuestions[i].image instanceof File){  
+  
+const data=new FormData();  
+  
+data.append("file",quizQuestions[i].image);  
+  
+data.append("upload_preset","Ummuhalti");  
+  
+const upload=await fetch(  
+  
+"https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",  
+  
+{  
+  
+method:"POST",  
+  
+body:data  
+  
+}  
+  
+);  
+  
+const result=await upload.json();  
+  
+quizQuestions[i].image=result.secure_url;  
+  
+}  
+  
+}  
+  
+/* Save Quiz */  
+  
+await addDoc(  
+  
+collection(db,"quizzes"),  
+  
+{  
+  
+motherCategory:quizMotherCategory.value,  
+  
+subCategoryId:quizSubCategory.value,  
+  
+subCategoryName:  
+  
+quizSubCategory.options[quizSubCategory.selectedIndex].text,  
+  
+title:quizTitle.value,  
+  
+totalQuestions:Number(totalQuestions.value),  
+  
+questions:quizQuestions,  
+  
+createdAt:serverTimestamp()  
+  
+}  
+  
+);  
+  
+alert("Quiz saved successfully.");  
+  
+/* Reset */  
+  
+quizMotherCategory.value="";  
+  
+quizSubCategory.innerHTML="<option value=''>Select Sub Category</option>";  
+  
+quizTitle.value="";  
+  
+totalQuestions.value="";  
+  
+questionNumber.innerText="Question 1";  
+  
+currentQuestion=1;  
+  
+quizQuestions=[];  
+  
+questionImage.value="";  
+  
+questionPreviewImage.src="";  
+  
+questionPreviewImage.style.display="none";  
+  
+questionPreviewText.style.display="block";  
+  
+optionA.value="";  
+  
+optionB.value="";  
+  
+optionC.value="";  
+  
+optionD.value="";  
+  
+correctAnswer.value="";  
+  
+saveQuizButton.style.display="none";  
+  
+nextQuestionButton.style.display="block";  
+  
+createQuizSection.classList.remove("show");  
+  
+}catch(error){  
+  
+console.error(error);  
+  
+alert("Failed to save quiz.");  
+  
+}  
+  
+saveQuizButton.disabled=false;  
+  
+saveQuizButton.innerText="Save Quiz";  
+  
+};  
+   
 /* =========================================================
 END OF SECTION 05 JAVASCRIPT
 ========================================================= */
