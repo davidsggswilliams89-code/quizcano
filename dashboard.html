@@ -2342,14 +2342,67 @@ reader.readAsDataURL(file);
 
 };
 
-/*
-Saving to Cloudinary,
-Firebase,
-Question Navigation,
-Edit Quiz,
-and Loading Sub Categories
-will be connected in the next sections.
-*/
+/* Load Sub Categories */
+
+quizMotherCategory.onchange=async()=>{
+
+quizSubCategory.innerHTML="<option value=''>Loading...</option>";
+
+if(quizMotherCategory.value===""){
+
+quizSubCategory.innerHTML="<option value=''>Select Sub Category</option>";
+
+return;
+
+}
+
+try{
+
+const q=query(
+
+collection(db,"subCategories"),
+
+where("parentCategory","==",quizMotherCategory.value)
+
+);
+
+const snapshot=await getDocs(q);
+
+quizSubCategory.innerHTML="<option value=''>Select Sub Category</option>";
+
+if(snapshot.empty){
+
+quizSubCategory.innerHTML="<option value=''>No Sub Category Found</option>";
+
+return;
+
+}
+
+snapshot.forEach((docItem)=>{
+
+const item=docItem.data();
+
+quizSubCategory.innerHTML+=`
+
+<option value="${docItem.id}">
+
+${item.name}
+
+</option>
+
+`;
+
+});
+
+}catch(error){
+
+console.error(error);
+
+quizSubCategory.innerHTML="<option value=''>Failed To Load</option>";
+
+}
+
+};
 
 /* =========================================================
 END OF SECTION 05 JAVASCRIPT
