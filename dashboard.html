@@ -2245,7 +2245,6 @@ saveSubCategoryButton.innerText="Update Sub Category";
 /* =========================================================
 END OF SECTION 04 JAVASCRIPT
 ========================================================= */
-
 /* =========================================================
 SECTION 05
 CREATE QUIZ JAVASCRIPT
@@ -2339,7 +2338,7 @@ const reader=new FileReader();
 
 reader.onload=(e)=>{
 
-image: imageUrl,;
+questionPreviewImage.src=e.target.result;
 
 questionPreviewImage.style.display="block";
 
@@ -2430,7 +2429,6 @@ Failed To Load
 }
 
 };
-
 /* Next Question */
 
 nextQuestionButton.onclick=()=>{
@@ -2475,6 +2473,13 @@ return;
 
 }
 
+if(questionImage.files.length===0){
+
+alert("Select Question Image.");
+
+return;
+
+}
 
 /* Save Question Temporarily */
 
@@ -2539,7 +2544,6 @@ saveQuizButton.style.display="block";
 }
 
 };
-
 /* Save Quiz */
 
 saveQuizButton.onclick=async()=>{
@@ -2596,30 +2600,6 @@ correctAnswer:correctAnswer.value
 
 });
 
-let imageUrl = "";
-
-if(questionImage.files.length > 0){
-
-    const formData = new FormData();
-
-    formData.append("file", questionImage.files[0]);
-
-    formData.append("upload_preset", "Ummuhalti");
-
-    const response = await fetch(
-        "https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
-        {
-            method: "POST",
-            body: formData
-        }
-    );
-
-    const data = await response.json();
-
-    imageUrl = data.secure_url;
-
-}
-  
 /* Upload Previous Question Images */
 
 for(let i=0;i<quizQuestions.length-1;i++){
@@ -2736,7 +2716,8 @@ saveQuizButton.disabled=false;
 
 saveQuizButton.innerText="Save Quiz";
 
-};                        
+};
+ 
   
 /* =========================================================
 END OF SECTION 05 JAVASCRIPT
@@ -3003,7 +2984,7 @@ console.error(error);
 alert("Delete failed.");
 
 }
-
+}
 
 /* Edit Quiz */
 
