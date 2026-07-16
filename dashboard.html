@@ -2855,8 +2855,148 @@ async function loadQuizList(){
 
 quizGrid.innerHTML="Loading...";
 
+try{
+
+const q=query(
+
+collection(db,"quizzes"),
+
+where("subCategoryId","==",filterSubCategory.value)
+
+);
+
+const snapshot=await getDocs(q);
+
+quizGrid.innerHTML="";
+
+if(snapshot.empty){
+
+quizGrid.innerHTML="<p style='text-align:center;'>No Quiz Found.</p>";
+
+return;
+
 }
 
+snapshot.forEach((docItem)=>{
+
+const quiz=docItem.data();
+
+const firstImage=quiz.questions[0].image;
+
+quizGrid.innerHTML+=`
+
+<div class="quizCard">
+
+<img
+src="${firstImage}"
+class="quizCardImage">
+
+<div class="quizCardBody">
+
+<div class="quizCardTitle">
+
+${quiz.title}
+
+</div>
+
+<div class="quizCardInfo">
+
+Questions : ${quiz.totalQuestions}
+
+</div>
+
+<div class="quizCardButtons">
+
+<button
+class="editQuizButton"
+data-id="${docItem.id}">
+
+Edit
+
+</button>
+
+<button
+class="deleteQuizButton"
+data-id="${docItem.id}">
+
+Delete
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+/* Edit Button */
+
+document.querySelectorAll(".editQuizButton").forEach(button=>{
+
+button.onclick=()=>{
+
+editQuiz(button.dataset.id);
+
+};
+
+});
+
+/* Delete Button */
+
+document.querySelectorAll(".deleteQuizButton").forEach(button=>{
+
+button.onclick=()=>{
+
+deleteQuiz(button.dataset.id);
+
+};
+
+});
+
+}catch(error){
+
+console.error(error);
+
+quizGrid.innerHTML="<p style='text-align:center;color:red;'>Failed to load quizzes.</p>";
+
+}
+
+}
+/* Delete Quiz */
+
+async function deleteQuiz(id){
+
+if(!confirm("Delete this quiz?")) return;
+
+try{
+
+await deleteDoc(doc(db,"quizzes",id));
+
+alert("Quiz deleted successfully.");
+
+loadQuizList();
+
+}catch(error){
+
+console.error(error);
+
+alert("Delete failed.");
+
+}
+
+}
+
+/* Edit Quiz */
+
+async function editQuiz(id){
+
+alert("Edit Quiz will be implemented in the next step.");
+
+}
 /* =========================================================
 END OF SECTION 06 JAVASCRIPT
 ========================================================= */
