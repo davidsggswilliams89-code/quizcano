@@ -2311,12 +2311,11 @@ createQuizSection.classList.add("show");
 quizMotherCategory.value="";
 
 quizSubCategory.innerHTML=`
-<option value="">
-Select Sub Category
-</option>
-`;
 
-};
+<option value="">  
+Select Sub Category  
+</option>  
+`;  };
 
 /* Question Preview */
 
@@ -2354,19 +2353,11 @@ reader.readAsDataURL(file);
 
 quizMotherCategory.onchange=async()=>{
 
-quizSubCategory.innerHTML=`
-<option value="">
-Loading...
-</option>
-`;
+quizSubCategory.innerHTML="<option value=''>Loading...</option>";
 
 if(quizMotherCategory.value===""){
 
-quizSubCategory.innerHTML=`
-<option value="">
-Select Sub Category
-</option>
-`;
+quizSubCategory.innerHTML="<option value=''>Select Sub Category</option>";
 
 return;
 
@@ -2384,19 +2375,11 @@ where("parentCategory","==",quizMotherCategory.value)
 
 const snapshot=await getDocs(q);
 
-quizSubCategory.innerHTML=`
-<option value="">
-Select Sub Category
-</option>
-`;
+quizSubCategory.innerHTML="<option value=''>Select Sub Category</option>";
 
 if(snapshot.empty){
 
-quizSubCategory.innerHTML=`
-<option value="">
-No Sub Category Found
-</option>
-`;
+quizSubCategory.innerHTML="<option value=''>No Sub Category Found</option>";
 
 return;
 
@@ -2408,11 +2391,9 @@ const item=docItem.data();
 
 quizSubCategory.innerHTML+=`
 
-<option value="${docItem.id}">
-${item.name}
-</option>
+<option value="${docItem.id}">  ${item.name}
 
-`;
+</option>  `;
 
 });
 
@@ -2420,11 +2401,7 @@ ${item.name}
 
 console.error(error);
 
-quizSubCategory.innerHTML=`
-<option value="">
-Failed To Load
-</option>
-`;
+quizSubCategory.innerHTML="<option value=''>Failed To Load</option>";
 
 }
 
@@ -2433,7 +2410,6 @@ Failed To Load
 /* =========================================================
 END OF SECTION 05 JAVASCRIPT
 ========================================================= */
-
 /* =========================================================
 SECTION 06
 MANAGE QUIZZES JAVASCRIPT
