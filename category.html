@@ -305,6 +305,7 @@ GET CATEGORY
 const params = new URLSearchParams(window.location.search);
 
 const categoryId = "subCategories/" + params.get("subcategoryId");
+console.log("Category ID =", categoryId);    
 
 const categoryName = params.get("name");
 
