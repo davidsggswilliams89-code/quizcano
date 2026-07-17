@@ -2120,10 +2120,9 @@ async function loadCategoriesFromFirebase(){
             const data = doc.data();
 
             // Only show Quiz Category items
-            if(data.location !== "quizCategory"){
-                return;
-            }
-
+            if(data.parentCategory !== "quizCategory"){
+    return;
+}
             categoryContainer.innerHTML += `
 
                 <div class="category-card"
