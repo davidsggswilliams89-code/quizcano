@@ -1820,11 +1820,14 @@ END OF SECTION 07 HTML
 
        
 <script type="module">  
+     
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 import {
 getFirestore,
 collection,
-getDocs
+getDocs,
+query,
+where
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 
@@ -2160,7 +2163,6 @@ loadCategoriesFromFirebase();
 /* =========================================================
 END OF SECTION 03 JAVASCRIPT
 ========================================================= */
-
 /* =========================================================
 SECTION 10
 LOAD DAILY CHALLENGE
@@ -2170,11 +2172,10 @@ LOAD DAILY CHALLENGE
 Open Category
 =========================== */
 
-window.openCategory = function(category){
+window.openCategory = function(subCategoryId, subCategoryName){
 
     window.location.href =
-    "category.html?category=" +
-    encodeURIComponent(category);
+    `category.html?subcategoryId=${subCategoryId}&name=${encodeURIComponent(subCategoryName)}`;
 
 };
 
@@ -2190,30 +2191,33 @@ async function loadDailyChallenge(){
 
     try{
 
-        const snapshot =
-        await getDocs(
-            collection(db,"categories")
+        const q = query(
+
+            collection(db,"subCategories"),
+
+            where("parentCategory","==","dailyChallenge")
+
         );
+
+        const snapshot = await getDocs(q);
 
         track.innerHTML = "";
 
-        snapshot.forEach(function(doc){
+        snapshot.forEach((docItem)=>{
 
-            const data = doc.data();
-
-            if(data.location !== "dailyChallenge"){
-                return;
-            }
+            const data = docItem.data();
 
             track.innerHTML += `
+
                 <div class="carousel-item"
-                     onclick="openCategory('${data.name}')">
+                onclick="openCategory('${docItem.id}','${data.name}')">
 
                     <img
                     src="${data.banner}"
                     alt="${data.name}">
 
                 </div>
+
             `;
 
         });
