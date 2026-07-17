@@ -326,7 +326,7 @@ async function loadQuizzes(){
 
         const q = query(
     collection(db,"quizzes"),
-    where("subCategoryId","==","/subCategories/" + categoryId)
+    where("subCategoryId","==", categoryId)
 );
 
         const snapshot = await getDocs(q);
