@@ -304,9 +304,7 @@ GET CATEGORY
 
 const params = new URLSearchParams(window.location.search);
 
-const categoryId = "subCategories/" + params.get("subcategoryId");
-console.log("Category ID =", categoryId);    
-
+const categoryId = params.get("subcategoryId");
 const categoryName = params.get("name");
 
 document.getElementById("categoryTitle").textContent =
@@ -325,9 +323,9 @@ async function loadQuizzes(){
 
     try{
 
-        const q = query(
+   const q = query(
     collection(db,"quizzes"),
-    where("subCategoryId","==", categoryId)
+    where("subCategoryId","==",categoryId)
 );
 
         const snapshot = await getDocs(q);
