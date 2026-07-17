@@ -2110,7 +2110,7 @@ async function loadCategoriesFromFirebase(){
     try{
 
         const snapshot = await getDocs(
-            collection(db,"categories")
+            collection(db,"subCategories")
         );
 
         categoryContainer.innerHTML = "";
