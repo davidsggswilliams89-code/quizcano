@@ -328,7 +328,7 @@ async function loadQuizzes(){
     where("subCategoryId","==",categoryId)
 );
 
-        const snapshot = await getDocs(q);
+        console.log("Quizzes found:", snapshot.size);
 
         if(snapshot.empty){
 
