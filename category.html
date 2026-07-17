@@ -261,8 +261,6 @@ id="quizContainer">
 END OF SECTION 01 HTML
 ========================================================= -->
 
-
-    
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
@@ -316,6 +314,7 @@ categoryName || "Quizzes";
 /* =========================================================
 LOAD QUIZZES
 ========================================================= */
+
 async function loadQuizzes(){
 
     const quizContainer =
@@ -327,7 +326,7 @@ async function loadQuizzes(){
 
         const q = query(
             collection(db,"quizzes"),
-            where("categoryId","==",categoryId)
+            where("subCategoryId","==",categoryId)
         );
 
         const snapshot = await getDocs(q);
@@ -341,52 +340,33 @@ async function loadQuizzes(){
 
         }
 
-        // Store one card per quiz
-        const quizzes = {};
-
-        snapshot.forEach((doc)=>{
-
-            const data = doc.data();
-
-            if(!quizzes[data.quizTitle]){
-
-                quizzes[data.quizTitle] = {
-
-                    quizTitle: data.quizTitle,
-
-                    image: data.questionImage,
-
-                    total: 1
-
-                };
-
-            }else{
-
-                quizzes[data.quizTitle].total++;
-
-            }
-
-        });
-
         quizContainer.innerHTML = "";
 
-        Object.values(quizzes).forEach((quiz)=>{
+        snapshot.forEach((docItem)=>{
+
+            const quiz = docItem.data();
+
+            const image =
+            quiz.questions &&
+            quiz.questions.length>0
+            ? quiz.questions[0].image
+            : "";
 
             quizContainer.innerHTML += `
 
             <div class="quiz-card"
-            onclick="window.location.href='quiz.html?quizTitle=${encodeURIComponent(quiz.quizTitle)}'">
+            onclick="window.location.href='quiz.html?id=${docItem.id}'">
 
                 <img
                 class="quiz-image"
-                src="${quiz.image}"
-                alt="${quiz.quizTitle}">
+                src="${image}"
+                alt="${quiz.title}">
 
                 <div class="quiz-info">
 
-                    <h3>${quiz.quizTitle}</h3>
+                    <h3>${quiz.title}</h3>
 
-                    <p>${quiz.total} Questions</p>
+                    <p>${quiz.totalQuestions} Questions</p>
 
                 </div>
 
@@ -406,7 +386,7 @@ async function loadQuizzes(){
 
     catch(error){
 
-        console.log(error);
+        console.error(error);
 
         quizContainer.innerHTML =
         "<p style='text-align:center;padding:30px;'>Failed to load quizzes.</p>";
@@ -418,7 +398,7 @@ async function loadQuizzes(){
 loadQuizzes();
 
 </script>
-
+   
   
 </body>
 
