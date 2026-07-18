@@ -2446,10 +2446,9 @@ async function loadTrendingQuizzes(){
 
             const data = docItem.data();
 
-            if(data.location !== "trendingQuizzes"){
-                return;
-            }
-
+            if(data.parentCategory !== "trendingQuizzes"){
+    return;
+}
             trendingQuizList.innerHTML += `
 
             <div class="quiz-card">
