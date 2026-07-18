@@ -2446,7 +2446,7 @@ async function loadTrendingQuizzes(){
 
             const data = docItem.data();
 
-            if(data.parentCategory !== "trendingQuizzes"){
+if(data.parentCategory !== "popularQuiz"){
     return;
 }
             trendingQuizList.innerHTML += `
