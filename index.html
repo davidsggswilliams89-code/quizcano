@@ -2425,7 +2425,69 @@ loadRecentQuizzes();
 /* =========================================================
 END OF SECTION 07 JAVASCRIPT
 ========================================================= */
+/* =========================================================
+TRENDING QUIZZES
+========================================================= */
 
+const trendingQuizList =
+document.getElementById("trendingQuizList");
+
+async function loadTrendingQuizzes(){
+
+    try{
+
+        const snapshot = await getDocs(
+            collection(db,"subCategories")
+        );
+
+        trendingQuizList.innerHTML = "";
+
+        snapshot.forEach((docItem)=>{
+
+            const data = docItem.data();
+
+            if(data.location !== "trendingQuizzes"){
+                return;
+            }
+
+            trendingQuizList.innerHTML += `
+
+            <div class="quiz-card">
+
+                <div class="quiz-number"></div>
+
+                <img
+                src="${data.banner}"
+                class="quiz-thumb">
+
+                <div class="quiz-details">
+
+                    <h3>${data.name}</h3>
+
+                </div>
+
+                <button class="play-btn"
+                onclick="window.location.href='category.html?subcategoryId=${docItem.id}&name=${encodeURIComponent(data.name)}'">
+
+                PLAY
+
+                </button>
+
+            </div>
+
+            `;
+
+        });
+
+    }catch(error){
+
+        console.log(error);
+
+    }
+
+}
+
+loadTrendingQuizzes();
 
 /* =========================================================
 PAGE INITIALIZATION
