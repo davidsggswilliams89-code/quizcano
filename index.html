@@ -2150,37 +2150,6 @@ if (categoryCards.length > 0) {
 
 } 
 });
-
-async function loadPrizeChallenge() {
-
-    try {
-
-        const snapshot = await getDocs(
-            collection(db, "prizeChallenges")
-        );
-
-        snapshot.forEach((doc) => {
-
-            const data = doc.data();
-
-            document.getElementById("prizeImage").src = data.image;
-
-            document.getElementById("prizeTitle").textContent = data.title;
-
-            document.getElementById("prizeDescription").textContent = data.description;
-
-        });
-
-    } catch (error) {
-
-        console.log(error);
-
-    }
-
-}
-
-loadPrizeChallenge();      
-
 /* =========================================================
 PRIZE CHALLENGE
 ========================================================= */
