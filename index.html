@@ -1426,31 +1426,71 @@ END OF SECTION 01  HTML HTML HTML
 SECTION 02 FEATURED CAROUSEL  
 ========================================================= -->
   <section class="featured-carousel">
-        <h2 class="featured-title">  
- DAILY CHALLENGE  
-</h2>  
+        <section class="featured-carousel">
 
-<div class="carousel-container">  
-<div class="carousel-track" id="carouselTrack">
+<h2 class="featured-title">
+🎁 WIN AMAZING PRIZES
+</h2>
+
+<div style="
+background:#171C2F;
+border-radius:20px;
+padding:20px;
+text-align:center;
+">
+
+<img
+src="images/iphone16.png"
+style="
+width:100%;
+max-width:320px;
+display:block;
+margin:auto;
+">
+
+<h2 style="
+margin-top:20px;
+font-size:28px;
+color:#F59E0B;
+">
+
+Win an iPhone 16 Pro Max
+
+</h2>
+
+<p style="
+margin-top:15px;
+font-size:16px;
+line-height:1.6;
+color:#9CA3AF;
+">
+
+Answer quiz questions correctly and qualify for our prize giveaway.
+
+</p>
+
+<button
+onclick="window.location.href='quiz.html'"
+style="
+margin-top:25px;
+width:220px;
+height:60px;
+background:#F59E0B;
+color:white;
+font-size:22px;
+font-weight:bold;
+border:none;
+border-radius:15px;
+cursor:pointer;
+">
+
+▶ PLAY NOW
+
+</button>
 
 </div>
 
-</div>  
-
-<div class="carousel-dots">  
-
-    <span class="dot active"></span>  
-    <span class="dot"></span>  
-    <span class="dot"></span>  
-    <span class="dot"></span>  
-    <span class="dot"></span>  
-    <span class="dot"></span>  
-    <span class="dot"></span>  
-    <span class="dot"></span>  
-    <span class="dot"></span>  
-
-</div>
-
+</section>
 </section> 
 <!-- =========================================================  
 END OF SECTION 02 HTML  
@@ -1969,95 +2009,7 @@ loadCategoriesFromFirebase();
 END OF SECTION 03 JAVASCRIPT
 ========================================================= */
 /* =========================================================
-SECTION 10
-LOAD DAILY CHALLENGE
-========================================================= */
 
-/* ===========================
-Open Category
-=========================== */
-
-window.openCategory = function(subCategoryId, subCategoryName){
-
-    window.location.href =
-    `category.html?subcategoryId=${subCategoryId}&name=${encodeURIComponent(subCategoryName)}`;
-
-};
-
-
-/* ===========================
-Load Daily Challenge
-=========================== */
-
-async function loadDailyChallenge(){
-
-    const track =
-    document.getElementById("carouselTrack");
-
-    try{
-
-        const q = query(
-
-            collection(db,"subCategories"),
-
-            where("parentCategory","==","dailyChallenge")
-
-        );
-
-        const snapshot = await getDocs(q);
-
-        track.innerHTML = "";
-
-        snapshot.forEach((docItem)=>{
-
-            const data = docItem.data();
-
-            track.innerHTML += `
-
-                <div class="carousel-item"
-                onclick="openCategory('${docItem.id}','${data.name}')">
-
-                    <img
-                    src="${data.banner}"
-                    alt="${data.name}">
-
-                </div>
-
-            `;
-
-        });
-
-        /* ===========================
-        Restart Carousel
-        =========================== */
-
-        currentSlide = 0;
-
-        showSlide(currentSlide);
-
-    }
-
-    catch(error){
-
-        console.log(
-            "Daily Challenge Error:",
-            error
-        );
-
-    }
-
-}
-
-
-/* ===========================
-Start Loading
-=========================== */
-
-loadDailyChallenge();
-
-/* =========================================================
-END OF SECTION 10
-========================================================= */
       
 /* =========================================================
 SECTION 05
