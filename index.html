@@ -2181,6 +2181,38 @@ async function loadPrizeChallenge() {
 
 loadPrizeChallenge();      
 
+/* =========================================================
+PRIZE CHALLENGE
+========================================================= */
+
+const prizeImage = document.getElementById("prizeImage");
+const prizeTitle = document.getElementById("prizeTitle");
+const prizeDescription = document.getElementById("prizeDescription");
+
+async function loadPrizeChallenge(){
+
+    try{
+
+        const snapshot = await getDocs(collection(db,"prizeChallenge"));
+
+        if(snapshot.empty) return;
+
+        const data = snapshot.docs[0].data();
+
+        prizeImage.src = data.image;
+        prizeTitle.innerText = data.title;
+        prizeDescription.innerText = data.description;
+
+    }catch(error){
+
+        console.log(error);
+
+    }
+
+}
+
+loadPrizeChallenge();
+      
 </script>
  </body>  
 </html> 
