@@ -3097,7 +3097,149 @@ console.error(error);
 /* =========================================================
 END OF SECTION 07 JAVASCRIPT
 ========================================================= */  
-  
+ /* =========================================================
+SECTION 08
+PRIZE CHALLENGE JAVASCRIPT
+========================================================= */
+
+const prizeTitle =
+document.getElementById("prizeTitle");
+
+const prizeDescription =
+document.getElementById("prizeDescription");
+
+const prizeImage =
+document.getElementById("prizeImage");
+
+const prizeQuiz =
+document.getElementById("prizeQuiz");
+
+const savePrize =
+document.getElementById("savePrize");
+
+
+/* ======================================
+Load Quizzes
+====================================== */
+
+async function loadPrizeQuizzes(){
+
+prizeQuiz.innerHTML =
+`<option value="">Select Quiz</option>`;
+
+const snapshot =
+await getDocs(collection(db,"quizzes"));
+
+snapshot.forEach((docItem)=>{
+
+const data = docItem.data();
+
+prizeQuiz.innerHTML += `
+
+<option value="${docItem.id}">
+${data.title}
+</option>
+
+`;
+
+});
+
+}
+
+loadPrizeQuizzes();
+
+
+/* ======================================
+Save Prize Challenge
+====================================== */
+
+savePrize.onclick = async ()=>{
+
+if(prizeTitle.value.trim()==""){
+
+alert("Enter Prize Title");
+
+return;
+
+}
+
+if(prizeDescription.value.trim()==""){
+
+alert("Enter Prize Description");
+
+return;
+
+}
+
+if(prizeImage.value.trim()==""){
+
+alert("Enter Prize Image URL");
+
+return;
+
+}
+
+if(prizeQuiz.value==""){
+
+alert("Select Quiz");
+
+return;
+
+}
+
+savePrize.disabled = true;
+
+savePrize.innerText = "Saving...";
+
+try{
+
+await addDoc(
+
+collection(db,"prizeChallenge"),
+
+{
+
+title:prizeTitle.value,
+
+description:prizeDescription.value,
+
+image:prizeImage.value,
+
+quizId:prizeQuiz.value,
+
+createdAt:serverTimestamp()
+
+}
+
+);
+
+alert("Prize Challenge Saved Successfully");
+
+prizeTitle.value="";
+
+prizeDescription.value="";
+
+prizeImage.value="";
+
+prizeQuiz.value="";
+
+}catch(error){
+
+console.log(error);
+
+alert("Failed to Save");
+
+}
+
+savePrize.disabled=false;
+
+savePrize.innerText="Save Prize Challenge";
+
+};
+
+/* =========================================================
+END OF SECTION 08 JAVASCRIPT
+========================================================= */ 
 </script>
 
 </body>
