@@ -1374,6 +1374,92 @@ Mobile
 
 }
 
+      
+/* =========================================================
+PRIZE CHALLENGE CONTAINER
+========================================================= */
+
+.prize-challenge-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.prize-challenge-card{
+
+    background:#171C2F;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    text-align:center;
+
+}
+
+.prize-challenge-card img{
+
+    width:100%;
+
+    max-width:320px;
+
+    display:block;
+
+    margin:auto;
+
+    border-radius:14px;
+
+}
+
+.prize-challenge-card h2{
+
+    margin-top:20px;
+
+    font-size:28px;
+
+    color:#F59E0B;
+
+}
+
+.prize-challenge-card p{
+
+    margin-top:15px;
+
+    font-size:16px;
+
+    line-height:1.6;
+
+    color:#9CA3AF;
+
+}
+
+.prize-challenge-card button{
+
+    margin-top:25px;
+
+    width:220px;
+
+    height:60px;
+
+    background:#F59E0B;
+
+    color:#FFFFFF;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    border:none;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+}
 
 /* =========================================================
 END OF SECTION 07 CSS
@@ -1432,67 +1518,13 @@ SECTION 02 FEATURED CAROUSEL
 🎁 WIN AMAZING PRIZES
 </h2>
 
-<div style="
-background:#171C2F;
-border-radius:20px;
-padding:20px;
-text-align:center;
-">
-
-<img
-id="prizeImage"
-src=""
-style="
-width:100%;
-max-width:320px;
-display:block;
-margin:auto;
-">
-
-<h2
-id="prizeTitle"
-style="
-margin-top:20px;
-font-size:28px;
-color:#F59E0B;
-">
-Loading...
-</h2>
-
-<p
-id="prizeDescription"
-style="
-margin-top:15px;
-font-size:16px;
-line-height:1.6;
-color:#9CA3AF;
-">
-Loading...
-</p>
-
-<button
-onclick="window.location.href='quiz.html'"
-style="
-margin-top:25px;
-width:220px;
-height:60px;
-background:#F59E0B;
-color:white;
-font-size:22px;
-font-weight:bold;
-border:none;
-border-radius:15px;
-cursor:pointer;
-">
-
-▶ PLAY QUIZ NOW
-
-</button>
+<div
+id="prizeChallengeContainer"
+class="prize-challenge-container">
 
 </div>
 
 </section>
-</section> 
 <!-- =========================================================  
 END OF SECTION 02 HTML  
 ========================================================= -->
@@ -2154,32 +2186,111 @@ if (categoryCards.length > 0) {
 /* =========================================================
 PRIZE CHALLENGE
 ========================================================= */
+/* =========================================================
+PRIZE CHALLENGE
+========================================================= */
 
-const prizeImage = document.getElementById("prizeImage");
-const prizeTitle = document.getElementById("prizeTitle");
-const prizeDescription = document.getElementById("prizeDescription");
+const prizeChallengeContainer =
+document.getElementById(
+    "prizeChallengeContainer"
+);
+
 
 async function loadPrizeChallenge(){
 
     try{
 
-        const snapshot = await getDocs(collection(db,"prizeChallenge"));
+        const snapshot =
+        await getDocs(
+            collection(
+                db,
+                "prizeChallenge"
+            )
+        );
 
-        if(snapshot.empty) return;
 
-        const data = snapshot.docs[0].data();
+        prizeChallengeContainer.innerHTML = "";
 
-        prizeImage.src = data.image;
-        prizeTitle.innerText = data.title;
-        prizeDescription.innerText = data.description;
+
+        if(snapshot.empty){
+
+            prizeChallengeContainer.innerHTML = `
+
+                <p style="
+                text-align:center;
+                color:#9CA3AF;
+                ">
+
+                No Prize Challenge Available
+
+                </p>
+
+            `;
+
+            return;
+
+        }
+
+
+        snapshot.forEach((docItem)=>{
+
+            const data =
+            docItem.data();
+
+
+            prizeChallengeContainer.innerHTML += `
+
+                <div
+                class="prize-challenge-card">
+
+
+                    <img
+                    src="${data.image}"
+                    alt="${data.title}">
+
+
+                    <h2>
+
+                    ${data.title}
+
+                    </h2>
+
+
+                    <p>
+
+                    ${data.description}
+
+                    </p>
+
+
+                    <button
+                    onclick="
+                    window.location.href='quiz.html?quizId=${data.quizId}'
+                    ">
+
+                    ▶ PLAY QUIZ NOW
+
+                    </button>
+
+
+                </div>
+
+            `;
+
+        });
+
 
     }catch(error){
 
-        console.log(error);
+        console.log(
+            "Prize Challenge Error:",
+            error
+        );
 
     }
 
 }
+
 
 loadPrizeChallenge();
       
