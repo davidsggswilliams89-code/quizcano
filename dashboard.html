@@ -3186,13 +3186,11 @@ loadPrizeQuizzes();
 /* ======================================
 Save Prize Challenge
 ====================================== */
-
 savePrize.onclick = async ()=>{
 
 if(prizeTitle.value.trim()==""){
 
 alert("Enter Prize Title");
-
 return;
 
 }
@@ -3200,15 +3198,6 @@ return;
 if(prizeDescription.value.trim()==""){
 
 alert("Enter Prize Description");
-
-return;
-
-}
-
-if(prizeImage.files.length===0){
-
-alert("Enter Prize Image URL");
-
 return;
 
 }
@@ -3216,37 +3205,54 @@ return;
 if(prizeQuiz.value==""){
 
 alert("Select Quiz");
-
 return;
 
 }
 
-savePrize.disabled = true;
-
-savePrize.innerText = "Saving...";
+savePrize.disabled=true;
+savePrize.innerText="Saving...";
 
 try{
 
-const file = prizeImage.files[0];
+let imageUrl="";
 
-const formData = new FormData();
-
-formData.append("file", file);
-
-formData.append("upload_preset", "Ummuhalti");
-
-const response = await fetch(
-"https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
-{
-method: "POST",
-body: formData
-});
-
-const result = await response.json();
-
-const imageUrl = result.secure_url;
+/* Edit Mode */
 
 if(savePrize.dataset.editId){
+
+const snapshot=await getDoc(
+doc(db,"prizeChallenge",savePrize.dataset.editId)
+);
+
+const oldData=snapshot.data();
+
+imageUrl=oldData.image;
+
+/* Upload new image only if selected */
+
+if(prizeImage.files.length>0){
+
+const file=prizeImage.files[0];
+
+const formData=new FormData();
+
+formData.append("file",file);
+
+formData.append("upload_preset","Ummuhalti");
+
+const response=await fetch(
+"https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
+{
+method:"POST",
+body:formData
+}
+);
+
+const result=await response.json();
+
+imageUrl=result.secure_url;
+
+}
 
 await updateDoc(
 
@@ -3254,13 +3260,13 @@ doc(db,"prizeChallenge",savePrize.dataset.editId),
 
 {
 
-title: prizeTitle.value,
+title:prizeTitle.value,
 
-description: prizeDescription.value,
+description:prizeDescription.value,
 
-image: imageUrl,
+image:imageUrl,
 
-quizId: prizeQuiz.value
+quizId:prizeQuiz.value
 
 }
 
@@ -3272,7 +3278,43 @@ delete savePrize.dataset.editId;
 
 savePrize.innerText="Save Prize Challenge";
 
-}else{
+}
+
+/* Create Mode */
+
+else{
+
+if(prizeImage.files.length===0){
+
+alert("Select Prize Image");
+
+savePrize.disabled=false;
+
+savePrize.innerText="Save Prize Challenge";
+
+return;
+
+}
+
+const file=prizeImage.files[0];
+
+const formData=new FormData();
+
+formData.append("file",file);
+
+formData.append("upload_preset","Ummuhalti");
+
+const response=await fetch(
+"https://api.cloudinary.com/v1_1/db92r6j9z/image/upload",
+{
+method:"POST",
+body:formData
+}
+);
+
+const result=await response.json();
+
+imageUrl=result.secure_url;
 
 await addDoc(
 
@@ -3280,15 +3322,15 @@ collection(db,"prizeChallenge"),
 
 {
 
-title: prizeTitle.value,
+title:prizeTitle.value,
 
-description: prizeDescription.value,
+description:prizeDescription.value,
 
-image: imageUrl,
+image:imageUrl,
 
-quizId: prizeQuiz.value,
+quizId:prizeQuiz.value,
 
-createdAt: serverTimestamp()
+createdAt:serverTimestamp()
 
 }
 
@@ -3297,6 +3339,9 @@ createdAt: serverTimestamp()
 alert("Prize Challenge Saved");
 
 }
+
+/* Reset Form */
+
 prizeTitle.value="";
 
 prizeDescription.value="";
@@ -3305,9 +3350,10 @@ prizeImage.value="";
 
 prizeQuiz.value="";
 
-}catch(error){
+}
+catch(error){
 
-console.log(error);
+console.error(error);
 
 alert("Failed to Save");
 
@@ -3318,6 +3364,7 @@ savePrize.disabled=false;
 savePrize.innerText="Save Prize Challenge";
 
 };
+
 
 /* =========================================================
 END OF SECTION 08 JAVASCRIPT
