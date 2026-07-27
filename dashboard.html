@@ -1208,7 +1208,25 @@ Securely sign out from the admin dashboard.
 </div>
 
 </section>
+<button
+id="managePrizeButton"
+class="dashboard-menu-card">
 
+<div class="dashboard-menu-icon">
+🎁
+</div>
+
+<h3 class="dashboard-menu-title">
+Manage Prize Challenges
+</h3>
+
+<p class="dashboard-menu-description">
+Edit or delete prize challenges.
+</p>
+
+</button>
+
+  
 <!-- =========================================================
 END OF SECTION 02 HTML
 ========================================================= -->
@@ -1749,6 +1767,21 @@ Select Quiz
 Save Prize Challenge
 
 </button>
+
+</section>
+  <section
+id="managePrizeSection"
+class="manageQuizSection">
+
+<h2 class="manageQuizTitle">
+Manage Prize Challenges
+</h2>
+
+<div
+id="prizeGrid"
+class="quizGrid">
+
+</div>
 
 </section>
 
@@ -3213,6 +3246,34 @@ const result = await response.json();
 
 const imageUrl = result.secure_url;
 
+if(savePrize.dataset.editId){
+
+await updateDoc(
+
+doc(db,"prizeChallenge",savePrize.dataset.editId),
+
+{
+
+title: prizeTitle.value,
+
+description: prizeDescription.value,
+
+image: imageUrl,
+
+quizId: prizeQuiz.value
+
+}
+
+);
+
+alert("Prize Challenge Updated");
+
+delete savePrize.dataset.editId;
+
+savePrize.innerText="Save Prize Challenge";
+
+}else{
+
 await addDoc(
 
 collection(db,"prizeChallenge"),
@@ -3233,8 +3294,9 @@ createdAt: serverTimestamp()
 
 );
 
-alert("Prize Challenge Saved Successfully");
+alert("Prize Challenge Saved");
 
+}
 prizeTitle.value="";
 
 prizeDescription.value="";
@@ -3260,6 +3322,135 @@ savePrize.innerText="Save Prize Challenge";
 /* =========================================================
 END OF SECTION 08 JAVASCRIPT
 ========================================================= */ 
+const managePrizeButton =
+document.getElementById("managePrizeButton");
+
+const managePrizeSection =
+document.getElementById("managePrizeSection");
+
+const prizeGrid =
+document.getElementById("prizeGrid");
+
+managePrizeButton.onclick = () => {
+
+managePrizeSection.classList.add("show");
+
+loadPrizeChallenges();
+
+};
+  
+async function loadPrizeChallenges(){
+
+prizeGrid.innerHTML="Loading...";
+
+const snapshot =
+await getDocs(collection(db,"prizeChallenge"));
+
+prizeGrid.innerHTML="";
+
+snapshot.forEach((docItem)=>{
+
+const data = docItem.data();
+
+prizeGrid.innerHTML += `
+
+<div class="quizCard">
+
+<img
+src="${data.image}"
+class="quizCardImage">
+
+<div class="quizCardBody">
+
+<div class="quizCardTitle">
+${data.title}
+</div>
+
+<div class="quizCardInfo">
+${data.description}
+</div>
+
+<div class="quizCardButtons">
+
+<button
+class="editPrizeButton"
+data-id="${docItem.id}">
+Edit
+</button>
+
+<button
+class="deletePrizeButton"
+data-id="${docItem.id}">
+Delete
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document.querySelectorAll(".deletePrizeButton")
+.forEach(button=>{
+
+button.onclick=()=>{
+
+deletePrize(button.dataset.id);
+
+};
+
+});
+
+document.querySelectorAll(".editPrizeButton")
+.forEach(button=>{
+
+button.onclick=()=>{
+
+editPrize(button.dataset.id);
+
+};
+
+});
+
+}
+async function deletePrize(id){
+
+if(!confirm("Delete this prize challenge?")) return;
+
+await deleteDoc(
+doc(db,"prizeChallenge",id)
+);
+
+alert("Deleted Successfully");
+
+loadPrizeChallenges();
+
+}
+async function editPrize(id){
+
+const snapshot =
+await getDoc(doc(db,"prizeChallenge",id));
+
+const data = snapshot.data();
+
+prizeTitle.value = data.title;
+
+prizeDescription.value = data.description;
+
+prizeQuiz.value = data.quizId;
+
+savePrize.dataset.editId = id;
+
+savePrize.innerText = "Update Prize Challenge";
+
+}
+  
+
+  
 </script>
 
 </body>
