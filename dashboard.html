@@ -2608,21 +2608,15 @@ collection(db,"quizzes"),
 
 {
 
-motherCategory:quizMotherCategory.value,
+prizeChallengeId: quizPrizeChallenge.value,
 
-subCategoryId:quizSubCategory.value,
+title: quizTitle.value,
 
-subCategoryName:
+totalQuestions: Number(totalQuestions.value),
 
-quizSubCategory.options[quizSubCategory.selectedIndex].text,
+questions: quizQuestions,
 
-title:quizTitle.value,
-
-totalQuestions:Number(totalQuestions.value),
-
-questions:quizQuestions,
-
-createdAt:serverTimestamp()
+createdAt: serverTimestamp()
 
 }
 
@@ -2632,10 +2626,7 @@ alert("Quiz saved successfully.");
 
 /* Reset */
 
-quizMotherCategory.value="";
-
-quizSubCategory.innerHTML="<option value=''>Select Sub Category</option>";
-
+quizPrizeChallenge.value="";
 quizTitle.value="";
 
 totalQuestions.value="";
