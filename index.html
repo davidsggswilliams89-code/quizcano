@@ -1044,11 +1044,101 @@ MOBILE
     }
 
 }
+/* =========================================================
+PRIZE CHALLENGE HOME CSS
+========================================================= */
 
-</style></head><body><!-- =========================================================
+#prizeChallengeContainer{
+
+width:100%;
+
+max-width:1200px;
+
+margin:40px auto;
+
+padding:20px;
+
+}
+
+.prizeChallengeGrid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:20px;
+
+}
+
+.prizeCard{
+
+background:#111827;
+
+border-radius:18px;
+
+overflow:hidden;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.prizeCard:hover{
+
+transform:translateY(-5px);
+
+}
+
+.prizeCard img{
+
+width:100%;
+
+height:180px;
+
+object-fit:cover;
+
+}
+
+.prizeBody{
+
+padding:18px;
+
+}
+
+.prizeTitle{
+
+font-size:22px;
+
+font-weight:bold;
+
+margin-bottom:10px;
+
+color:#fff;
+
+}
+
+.prizeDescription{
+
+font-size:15px;
+
+color:#bdbdbd;
+
+line-height:1.6;
+
+}
+    
+
+</style>
+
+</head><body>
+<!-- =========================================================
 SECTION 01
 QUIZCANO HEADER HTML
-========================================================= --><header class="top-header"><button
+========================================================= -->
+    
+<header class="top-header">
+<button
 class="menu-btn"
 id="menuBtn">
 
@@ -1064,87 +1154,35 @@ CANO
 
 </p></div><div class="header-right"><div class="profile-image">🧠
 
-</div></div></header><!-- =========================================================
-SECTION 02
-PRIZE CHALLENGE HTML
-========================================================= --><section
-class="featured-carousel"><h2
-class="featured-title">🎁 WIN AMAZING PRIZES
+</div></div>
 
-</h2><div
-id="prizeChallengeContainer"
-class="prize-challenge-container"></div></section><!-- =========================================================
-SECTION 03
-QUIZ CATEGORIES HTML
-========================================================= --><section
-class="category-section"><div
-class="category-header"><h2
-class="category-title">QUIZ CATEGORIES
+</header>
+    
+<!-- =========================================================
+SECTION
+PRIZE CHALLENGES
+========================================================= -->
 
-</h2><a
-href="categories.html"
-class="view-all">
+<section id="prizeChallengeContainer">
 
-VIEW ALL
+<h2 class="sectionTitle">
+Prize Challenges
+</h2>
 
-</a></div><div
-class="category-scroll"
-id="categoryScroll"></div></section><!-- =========================================================
-SECTION 04
-TRENDING QUIZZES HTML
-========================================================= --><section
-class="trending-quizzes"><div
-class="section-header"><h2>TRENDING QUIZZES
+<div
+id="prizeChallengeGrid"
+class="prizeChallengeGrid">
 
-</h2><a
-href="#">
+</div>
 
-VIEW ALL
+</section>
 
-</a></div><div
-id="trendingQuizList"></div></section><!-- =========================================================
-SECTION 05
-FEATURED QUIZZES HTML
-========================================================= --><section
-class="featured-quiz-section"><div
-class="featured-quiz-header"><h2>FEATURED QUIZZES
-
-</h2><a
-href="#">
-
-VIEW ALL
-
-</a></div><div
-class="quiz-grid"
-id="featuredQuizGrid"></div></section><!-- =========================================================
-SECTION 06
-POPULAR QUIZZES HTML
-========================================================= --><section
-class="popular-quiz-section"><div
-class="popular-quiz-header"><h2>POPULAR QUIZZES
-
-</h2><a
-href="#">
-
-VIEW ALL
-
-</a></div><div
-class="popular-slider"
-id="popularQuizSlider"></div></section><!-- =========================================================
-SECTION 07
-RECENT QUIZZES HTML
-========================================================= --><section
-class="recent-quiz-section"><div
-class="recent-quiz-header"><h2>RECENT QUIZZES
-
-</h2><a
-href="#">
-
-VIEW ALL
-
-</a></div><div
-class="recent-quiz-list"
-id="recentQuizList"></div></section><script type="module">
+<!-- =========================================================
+END SECTION
+========================================================= -->    
+    
+    
+<script type="module">
 
 
 /* =========================================================
