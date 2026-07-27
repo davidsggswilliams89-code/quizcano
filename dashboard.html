@@ -2334,16 +2334,10 @@ createQuizButton.onclick=()=>{
 
 createQuizSection.classList.add("show");
 
-quizMotherCategory.value="";
-
-quizSubCategory.innerHTML=`
-<option value="">
-Select Sub Category
-</option>
-`;
+loadQuizPrizeChallenges();
 
 };
-
+  
 /* Question Preview */
 
 questionImage.onchange=()=>{
