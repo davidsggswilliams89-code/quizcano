@@ -1771,53 +1771,72 @@ Category Container
 const categoryContainer =
 document.getElementById("categoryScroll");
 
-
 /* ===========================
 Activate Category Cards
 =========================== */
 
 function activateCategoryCards(){
 
-    const categoryCards =
-    document.querySelectorAll(".category-card");
+const categoryCards =
+document.querySelectorAll(".category-card");
 
-    categoryCards.forEach(function(card){
 
-        card.addEventListener("click",function(){
+categoryCards.forEach(function(card){
 
-            categoryCards.forEach(function(item){
+    card.addEventListener(
+        "click",
+        function(){
 
-                item.classList.remove("active");
+            categoryCards.forEach(
+                function(item){
 
-            });
+                    item.classList.remove(
+                        "active"
+                    );
 
-            this.classList.add("active");
+                }
+            );
+
+
+            this.classList.add(
+                "active"
+            );
+
 
             const categoryId =
-            this.getAttribute("data-id");
+            this.getAttribute(
+                "data-id"
+            );
+
 
             const categoryName =
-            this.getAttribute("data-name");
+            this.getAttribute(
+                "data-name"
+            );
+
 
             window.location.href =
-`category.html?subcategoryId=${categoryId}&name=${encodeURIComponent(categoryName)}`;
-        });
+            `category.html?subcategoryId=${categoryId}&name=${encodeURIComponent(categoryName)}`;
 
-    });
+        }
+    );
 
-    /* ===========================
-    Default Active Category
-    =========================== */
+});
 
-    if(categoryCards.length > 0){
 
-        categoryCards[0]
-        .classList.add("active");
+/* ===========================
+Default Active Category
+=========================== */
 
-    }
+if(categoryCards.length > 0){
+
+    categoryCards[0].classList.add(
+        "active"
+    );
 
 }
 
+}
 
 /* ===========================
 Firebase Category Loader
@@ -1825,49 +1844,93 @@ Firebase Category Loader
 
 async function loadCategoriesFromFirebase(){
 
-    try{
+try{
 
-        const snapshot = await getDocs(
-            collection(db,"subCategories")
-        );
 
-        categoryContainer.innerHTML = "";
+    const snapshot =
+    await getDocs(
+        collection(
+            db,
+            "subCategories"
+        )
+    );
 
-        snapshot.forEach(function(doc){
 
-            const data = doc.data();
+    categoryContainer.innerHTML =
+    "";
 
-            // Only show Quiz Category items
-            if(data.parentCategory !== "quizCategory"){
-    return;
-}
+
+    snapshot.forEach(
+        function(doc){
+
+            const data =
+            doc.data();
+
+
+            /* ===========================
+            Only Quiz Categories
+            =========================== */
+
+            if(
+                data.parentCategory !==
+                "quizCategory"
+            ){
+
+                return;
+
+            }
+
+
             categoryContainer.innerHTML += `
 
-                <div class="category-card"
-                     data-id="${doc.id}"
-                     data-name="${data.name}">
+                <div
+                class="category-card"
+                data-id="${doc.id}"
+                data-name="${data.name}">
 
-                    <img src="${data.banner}"
-                         alt="${data.name}">
+
+                    <img
+                    src="${data.banner}"
+                    alt="${data.name}">
+
 
                 </div>
 
             `;
 
-        });
+        }
+    );
 
-        activateCategoryCards();
 
-    }
+    activateCategoryCards();
 
-    catch(error){
 
-        console.log(
-            "Category Error:",
-            error
-        );
+}
 
-    }
+catch(error){
+
+    console.log(
+        "Category Error:",
+        error
+    );
+
+
+    categoryContainer.innerHTML = `
+
+        <p
+        style="
+        color:#9CA3AF;
+        padding:20px;
+        text-align:center;
+        ">
+
+        Failed to load categories.
+
+        </p>
+
+    `;
+
+}
 
 }
 
@@ -1880,7 +1943,6 @@ loadCategoriesFromFirebase();
 /* =========================================================
 END OF SECTION 03 JAVASCRIPT
 ========================================================= */
-/* =========================================================
 
       
 /* =========================================================
