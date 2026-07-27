@@ -1028,7 +1028,129 @@ cursor:pointer;
 /* =========================================================
 END OF SECTION 07 CSS
 ========================================================= */
-  
+/* =========================================================
+SECTION 08
+PRIZE CHALLENGE CSS
+========================================================= */
+
+#prizeChallengeSection{
+
+display:none;
+
+width:100%;
+
+max-width:750px;
+
+margin:30px auto;
+
+padding:28px;
+
+background:#111827;
+
+border:2px solid #1F2937;
+
+border-radius:20px;
+
+}
+
+#prizeChallengeSection.show{
+
+display:block;
+
+}
+
+#prizeChallengeSection h2{
+
+font-size:28px;
+
+font-weight:800;
+
+text-align:center;
+
+margin-bottom:25px;
+
+}
+
+#prizeTitle,
+#prizeDescription,
+#prizeQuiz,
+#prizeImage{
+
+width:100%;
+
+margin-bottom:20px;
+
+border:2px solid #1F2937;
+
+border-radius:12px;
+
+background:#0B1120;
+
+color:#FFFFFF;
+
+font-size:16px;
+
+outline:none;
+
+padding:16px;
+
+}
+
+#prizeTitle,
+#prizeQuiz{
+
+height:56px;
+
+}
+
+#prizeDescription{
+
+min-height:130px;
+
+resize:vertical;
+
+}
+
+#prizeTitle:focus,
+#prizeDescription:focus,
+#prizeQuiz:focus,
+#prizeImage:focus{
+
+border-color:#F59E0B;
+
+}
+
+#savePrize{
+
+width:100%;
+
+height:58px;
+
+border:none;
+
+border-radius:14px;
+
+background:#F59E0B;
+
+color:#FFFFFF;
+
+font-size:18px;
+
+font-weight:800;
+
+cursor:pointer;
+
+}
+
+#savePrize:hover{
+
+opacity:.95;
+
+}
+
+/* =========================================================
+END OF SECTION 08 CSS
+========================================================= */  
 
 </style>
 
@@ -1179,7 +1301,13 @@ Filter quizzes by Mother Category then Sub Category.
 </p>
 
 </button>
+<button
+id="managePrizeButton"
+class="dashboard-menu-card">
 
+<div class="dashboard-menu-icon">
+🎁
+</div>
 
 <button
 id="logoutButton"
@@ -1208,13 +1336,6 @@ Securely sign out from the admin dashboard.
 </div>
 
 </section>
-<button
-id="managePrizeButton"
-class="dashboard-menu-card">
-
-<div class="dashboard-menu-icon">
-🎁
-</div>
 
 <h3 class="dashboard-menu-title">
 Manage Prize Challenges
