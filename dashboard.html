@@ -1198,213 +1198,123 @@ END OF SECTION 01 HTML
 SECTION 02
 ADMIN MENU HTML
 ========================================================= -->
-<section class="dashboard-menu-section"><div class="dashboard-menu-grid"><button
-id="createSubCategoryButton"
-class="dashboard-menu-card">
 
-<div class="dashboard-menu-icon">
-📁
-</div><h3 class="dashboard-menu-title">
-Create Sub Category
-</h3><p class="dashboard-menu-description">
-Create a new sub category under Daily Challenges, Quiz Category or Popular Quiz.
-</p></button><button
-id="manageSubCategoryButton"
-class="dashboard-menu-card">
+<section class="dashboard-menu-section">
 
-<div class="dashboard-menu-icon">
-🗂️
-</div><h3 class="dashboard-menu-title">
-Manage Sub Categories
-</h3><p class="dashboard-menu-description">
-Edit banners, rename or delete existing sub categories.
-</p></button><button
-id="createQuizButton"
-class="dashboard-menu-card">
+<div class="dashboard-menu-grid">
 
-<div class="dashboard-menu-icon">
-➕
-</div><h3 class="dashboard-menu-title">
-Create Quiz
-</h3><p class="dashboard-menu-description">
-Create quizzes inside any existing sub category.
-</p></button><button
-id="manageQuizButton"
-class="dashboard-menu-card">
+<!-- CREATE PRIZE CHALLENGE -->
 
-<div class="dashboard-menu-icon">
-📝
-</div><h3 class="dashboard-menu-title">
-Manage Quizzes
-</h3><p class="dashboard-menu-description">
-Filter quizzes by Mother Category then Sub Category.
-</p></button><!-- CREATE PRIZE CHALLENGE --><button
+<button
 id="createPrizeButton"
 class="dashboard-menu-card">
 
 <div class="dashboard-menu-icon">
 🎁
-</div><h3 class="dashboard-menu-title">
+</div>
+
+<h3 class="dashboard-menu-title">
 Create Prize Challenge
-</h3><p class="dashboard-menu-description">
-Create a new prize challenge.
-</p></button><!-- MANAGE PRIZE CHALLENGE --><button
+</h3>
+
+<p class="dashboard-menu-description">
+Create a new prize challenge container.
+</p>
+
+</button>
+
+
+<!-- MANAGE PRIZE CHALLENGE -->
+
+<button
 id="managePrizeButton"
 class="dashboard-menu-card">
 
 <div class="dashboard-menu-icon">
 🏆
-</div><h3 class="dashboard-menu-title">
+</div>
+
+<h3 class="dashboard-menu-title">
 Manage Prize Challenges
-</h3><p class="dashboard-menu-description">
-Edit or delete prize challenges.
-</p></button><!-- LOGOUT --><button
+</h3>
+
+<p class="dashboard-menu-description">
+Edit or delete prize challenge containers.
+</p>
+
+</button>
+
+
+<!-- CREATE QUIZ -->
+
+<button
+id="createQuizButton"
+class="dashboard-menu-card">
+
+<div class="dashboard-menu-icon">
+➕
+</div>
+
+<h3 class="dashboard-menu-title">
+Create Quiz
+</h3>
+
+<p class="dashboard-menu-description">
+Create a quiz and attach it to a Prize Challenge.
+</p>
+
+</button>
+
+
+<!-- MANAGE QUIZ -->
+
+<button
+id="manageQuizButton"
+class="dashboard-menu-card">
+
+<div class="dashboard-menu-icon">
+📝
+</div>
+
+<h3 class="dashboard-menu-title">
+Manage Quiz
+</h3>
+
+<p class="dashboard-menu-description">
+Edit or delete quizzes attached to Prize Challenges.
+</p>
+
+</button>
+
+
+<!-- LOGOUT -->
+
+<button
 id="logoutButton"
 class="dashboard-menu-card">
 
 <div class="dashboard-menu-icon">
 🚪
-</div><h3 class="dashboard-menu-title">
-Logout
-</h3><p class="dashboard-menu-description">
-Securely sign out from the admin dashboard.
-</p></button></div>
-
-</section>
-  
-<!-- =========================================================
-END OF SECTION 02 HTML
-========================================================= -->
-<!-- =========================================================
-SECTION 03
-CREATE SUB CATEGORY HTML
-========================================================= -->
-
-<section
-id="createSubCategorySection"
-class="createSubCategorySection">
-
-<h2 class="sectionTitle">
-
-Create Sub Category
-
-</h2>
-
-<label class="formLabel">
-
-Mother Category
-
-</label>
-
-<select
-id="motherCategory"
-class="formInput">
-
-<option value="">
-
-Select Mother Category
-
-</option>
-
-<option value="dailyChallenge">
-
-Daily Challenges
-
-</option>
-
-<option value="quizCategory">
-
-Quiz Category
-
-</option>
-
-<option value="popularQuiz">
-
-Popular Quiz
-
-</option>
-
-</select>
-
-<label class="formLabel">
-
-Sub Category Name
-
-</label>
-
-<input
-type="text"
-id="subCategoryName"
-class="formInput"
-placeholder="Example : Football">
-
-<label class="formLabel">
-
-Banner Image
-
-</label>
-
-<input
-type="file"
-id="subCategoryBanner"
-class="formInput"
-accept="image/*">
-
-<div class="bannerPreviewContainer">
-
-<img
-id="bannerPreviewImage"
-class="bannerPreviewImage">
-
-<p
-id="bannerPreviewText"
-class="bannerPreviewText">
-
-No Banner Selected
-
-</p>
-
 </div>
 
-<button
-id="saveSubCategoryButton"
-class="primaryButton">
+<h3 class="dashboard-menu-title">
+Logout
+</h3>
 
-Save Sub Category
+<p class="dashboard-menu-description">
+Securely sign out from the Admin Dashboard.
+</p>
 
 </button>
 
-</section>
-
-<!-- =========================================================
-END OF SECTION 03 HTML
-========================================================= -->
-<!-- =========================================================
-SECTION 04
-MANAGE SUB CATEGORIES HTML
-========================================================= -->
-
-<section
-id="manageSubCategorySection"
-class="manageSubCategorySection">
-
-<h2 class="manageTitle">
-
-Manage Sub Categories
-
-</h2>
-
-<div
-id="manageGrid"
-class="manageGrid">
-
 </div>
 
 </section>
 
 <!-- =========================================================
-END OF SECTION 04 HTML
+END OF SECTION 02 HTML
 ========================================================= -->
+  
 <!-- =========================================================
 SECTION 05
 CREATE QUIZ HTML
