@@ -1,4 +1,4 @@
-aa<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -3588,20 +3588,64 @@ loadPrizeChallenges();
 }
 async function editPrize(id){
 
+try{
+
 const snapshot =
-await getDoc(doc(db,"prizeChallenge",id));
+await getDoc(
+doc(db,"prizeChallenge",id)
+);
+
+if(!snapshot.exists()){
+
+alert("Prize Challenge not found.");
+
+return;
+
+}
 
 const data = snapshot.data();
 
-prizeTitle.value = data.title;
+/* Open Create/Edit Form */
 
-prizeDescription.value = data.description;
+prizeChallengeSection.classList.add("show");
 
-prizeQuiz.value = data.quizId;
+managePrizeSection.classList.remove("show");
+
+/* Fill Form */
+
+prizeTitle.value =
+data.title || "";
+
+prizeDescription.value =
+data.description || "";
+
+prizeQuiz.value =
+data.quizId || "";
+
+/* Remember ID */
 
 savePrize.dataset.editId = id;
 
-savePrize.innerText = "Update Prize Challenge";
+savePrize.innerText =
+"Update Prize Challenge";
+
+/* Scroll to Form */
+
+prizeChallengeSection.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
+
+catch(error){
+
+console.error(error);
+
+alert("Failed to load Prize Challenge.");
+
+}
 
 }
   
