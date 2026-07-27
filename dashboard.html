@@ -1854,28 +1854,51 @@ END OF SECTION 07 HTML
 SECTION 08
 PRIZE CHALLENGE ADMIN
 ========================================================= -->
+<section
+id="prizeChallengeSection"
+class="createQuizSection">
 
-<section id="prizeChallengeSection">
+<h2 class="quizSectionTitle">
+Create Prize Challenge
+</h2>
 
-<h2>🏆 Prize Challenge</h2>
+<label class="quizLabel">
+Prize Title
+</label>
 
 <input
 type="text"
 id="prizeTitle"
-placeholder="Prize Title">
+class="quizInput"
+placeholder="Enter Prize Title">
+
+<label class="quizLabel">
+Prize Description
+</label>
 
 <textarea
 id="prizeDescription"
-placeholder="Prize Description">
-</textarea>
+class="quizInput"
+style="height:120px;padding:15px;resize:none;"
+placeholder="Enter Prize Description"></textarea>
+
+<label class="quizLabel">
+Prize Image
+</label>
 
 <input
 type="file"
 id="prizeImage"
-accept="image/*"
-class="quizInput">
+class="quizInput"
+accept="image/*">
 
-<select id="prizeQuiz">
+<label class="quizLabel">
+Select Quiz
+</label>
+
+<select
+id="prizeQuiz"
+class="quizInput">
 
 <option value="">
 Select Quiz
@@ -1883,28 +1906,16 @@ Select Quiz
 
 </select>
 
-<button id="savePrize">
+<button
+id="savePrize"
+class="quizButton">
 
 Save Prize Challenge
 
 </button>
 
 </section>
-  <section
-id="managePrizeSection"
-class="manageQuizSection">
 
-<h2 class="manageQuizTitle">
-Manage Prize Challenges
-</h2>
-
-<div
-id="prizeGrid"
-class="quizGrid">
-
-</div>
-
-</section>
 
 <!-- =========================================================
 END OF SECTION 08
