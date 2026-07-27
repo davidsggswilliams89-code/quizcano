@@ -1198,206 +1198,79 @@ END OF SECTION 01 HTML
 SECTION 02
 ADMIN MENU HTML
 ========================================================= -->
-
-<section class="dashboard-menu-section">
-
-<div class="dashboard-menu-grid">
-
-<button
+<section class="dashboard-menu-section"><div class="dashboard-menu-grid"><button
 id="createSubCategoryButton"
 class="dashboard-menu-card">
 
 <div class="dashboard-menu-icon">
-
 📁
-
-</div>
-
-<h3 class="dashboard-menu-title">
-
+</div><h3 class="dashboard-menu-title">
 Create Sub Category
-
-</h3>
-
-<p class="dashboard-menu-description">
-
+</h3><p class="dashboard-menu-description">
 Create a new sub category under Daily Challenges, Quiz Category or Popular Quiz.
-
-</p>
-
-</button>
-
-
-<button
+</p></button><button
 id="manageSubCategoryButton"
 class="dashboard-menu-card">
 
 <div class="dashboard-menu-icon">
-
 🗂️
-
-</div>
-
-<h3 class="dashboard-menu-title">
-
+</div><h3 class="dashboard-menu-title">
 Manage Sub Categories
-
-</h3>
-
-<p class="dashboard-menu-description">
-
+</h3><p class="dashboard-menu-description">
 Edit banners, rename or delete existing sub categories.
-
-</p>
-
-</button>
-
-
-<button
+</p></button><button
 id="createQuizButton"
 class="dashboard-menu-card">
 
 <div class="dashboard-menu-icon">
-
 ➕
-
-</div>
-
-<h3 class="dashboard-menu-title">
-
+</div><h3 class="dashboard-menu-title">
 Create Quiz
-
-</h3>
-
-<p class="dashboard-menu-description">
-
+</h3><p class="dashboard-menu-description">
 Create quizzes inside any existing sub category.
-
-</p>
-
-</button>
-
-
-<button
+</p></button><button
 id="manageQuizButton"
 class="dashboard-menu-card">
 
 <div class="dashboard-menu-icon">
-
 📝
-
-</div>
-
-<h3 class="dashboard-menu-title">
-
+</div><h3 class="dashboard-menu-title">
 Manage Quizzes
-
-</h3>
-
-<p class="dashboard-menu-description">
-
+</h3><p class="dashboard-menu-description">
 Filter quizzes by Mother Category then Sub Category.
-
-</p>
-
-</button>
-  
-<!-- Create Prize Challenge -->
-
-<button
+</p></button><!-- CREATE PRIZE CHALLENGE --><button
 id="createPrizeButton"
 class="dashboard-menu-card">
 
 <div class="dashboard-menu-icon">
 🎁
-</div>
-
-<h3 class="dashboard-menu-title">
+</div><h3 class="dashboard-menu-title">
 Create Prize Challenge
-</h3>
-
-<p class="dashboard-menu-description">
+</h3><p class="dashboard-menu-description">
 Create a new prize challenge.
-</p>
-
-</button>
-
-
-<!-- Manage Prize Challenge -->
-
-<button
+</p></button><!-- MANAGE PRIZE CHALLENGE --><button
 id="managePrizeButton"
 class="dashboard-menu-card">
 
 <div class="dashboard-menu-icon">
 🏆
-</div>
-
-<h3 class="dashboard-menu-title">
+</div><h3 class="dashboard-menu-title">
 Manage Prize Challenges
-</h3>
-
-<p class="dashboard-menu-description">
+</h3><p class="dashboard-menu-description">
 Edit or delete prize challenges.
-</p>
-
-</button>
-
-
-<!-- Logout -->
-
-<button
+</p></button><!-- LOGOUT --><button
 id="logoutButton"
 class="dashboard-menu-card">
 
 <div class="dashboard-menu-icon">
 🚪
-</div>
-
-<h3 class="dashboard-menu-title">
+</div><h3 class="dashboard-menu-title">
 Logout
-</h3>
-
-<p class="dashboard-menu-description">
+</h3><p class="dashboard-menu-description">
 Securely sign out from the admin dashboard.
-</p>
-
-</button>
-
-<div class="dashboard-menu-icon">
-
-🚪
-
-</div>
-
-<h3 class="dashboard-menu-title">
-
-Logout
-
-</h3>
-
-<p class="dashboard-menu-description">
-
-Securely sign out from the admin dashboard.
-
-</p>
-
-</button>
-
-</div>
+</p></button></div>
 
 </section>
-
-<h3 class="dashboard-menu-title">
-Manage Prize Challenges
-</h3>
-
-<p class="dashboard-menu-description">
-Edit or delete prize challenges.
-</p>
-
-</button>
-
   
 <!-- =========================================================
 END OF SECTION 02 HTML
@@ -3361,7 +3234,9 @@ document.getElementById("prizeQuiz");
 
 const savePrize =
 document.getElementById("savePrize");
-
+  
+const managePrizeButton =
+document.getElementById("managePrizeButton");
 
 /* ======================================
 Load Quizzes
@@ -3575,11 +3450,16 @@ savePrize.disabled=false;
 savePrize.innerText="Save Prize Challenge";
 
 };
-
-
+  
 /* =========================================================
 END OF SECTION 08 JAVASCRIPT
 ========================================================= */ 
+const createPrizeButton =
+document.getElementById("createPrizeButton");
+
+const prizeChallengeSection =
+document.getElementById("prizeChallengeSection");
+
 const managePrizeButton =
 document.getElementById("managePrizeButton");
 
@@ -3589,13 +3469,34 @@ document.getElementById("managePrizeSection");
 const prizeGrid =
 document.getElementById("prizeGrid");
 
+
+/* ======================================
+OPEN CREATE PRIZE CHALLENGE
+====================================== */
+
+createPrizeButton.onclick = () => {
+
+prizeChallengeSection.classList.add("show");
+
+managePrizeSection.classList.remove("show");
+
+};
+
+
+/* ======================================
+OPEN MANAGE PRIZE CHALLENGE
+====================================== */
+
 managePrizeButton.onclick = () => {
 
 managePrizeSection.classList.add("show");
 
+prizeChallengeSection.classList.remove("show");
+
 loadPrizeChallenges();
 
 };
+  
   
 async function loadPrizeChallenges(){
 
