@@ -1,2040 +1,2137 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>QUIZCANO</title><style>
-
-/* =========================================================
-SECTION 01
-QUIZCANO HEADER CSS
-========================================================= */
-
-*{
-
-    margin:0;
-
-    padding:0;
-
-    box-sizing:border-box;
-
-}
-
-body{
-
-    background:#F3F4F6;
-
-    font-family:Arial,Helvetica,sans-serif;
-
-    color:#111827;
-
-}
-
-.top-header{
-
-    width:100%;
-
-    height:82px;
-
-    background:#0B1120;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:10px 14px;
-
-    position:sticky;
-
-    top:0;
-
-    z-index:1000;
-
-}
-
-.menu-btn{
-
-    width:48px;
-
-    height:48px;
-
-    border:3px solid #F59E0B;
-
-    border-radius:50%;
-
-    background:#1A2138;
-
-    color:#FFFFFF;
-
-    font-size:24px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    cursor:pointer;
-
-    flex-shrink:0;
-
-}
-
-.logo-area{
-
-    flex:1;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
-}
-
-.logo{
-
-    font-size:34px;
-
-    font-weight:900;
-
-    letter-spacing:1px;
-
-    cursor:pointer;
-
-    user-select:none;
-
-}
-
-.logo-white{
-
-    color:#FFFFFF;
-
-}
-
-.logo-orange{
-
-    color:#F59E0B;
-
-}
-
-.logo-tagline{
-
-    margin-top:3px;
-
-    font-size:11px;
-
-    color:#8B93A7;
-
-}
-
-.header-right{
-
-    width:48px;
-
-    display:flex;
-
-    justify-content:flex-end;
-
-    align-items:center;
-
-    flex-shrink:0;
-
-}
-
-.profile-image{
-
-    width:48px;
-
-    height:48px;
-
-    border-radius:50%;
-
-    background:#1A2138;
-
-    border:3px solid #F59E0B;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:22px;
-
-    cursor:pointer;
-
-}
-
-
-/* =========================================================
-SECTION 02
-PRIZE CHALLENGE CSS
-========================================================= */
-
-.featured-carousel{
-
-    width:100%;
-
-    padding:6px 8px 10px;
-
-}
-
-.featured-title{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    margin-left:4px;
-
-    margin-bottom:10px;
-
-    font-size:16px;
-
-    font-weight:900;
-
-    color:#FFFFFF;
-
-    letter-spacing:1px;
-
-    text-transform:uppercase;
-
-    text-shadow:0 2px 8px rgba(0,0,0,.35);
-
-}
-
-.prize-challenge-container{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:20px;
-
-}
-
-.prize-challenge-card{
-
-    background:#171C2F;
-
-    border-radius:20px;
-
-    padding:20px;
-
-    text-align:center;
-
-}
-
-.prize-challenge-card img{
-
-    width:100%;
-
-    max-width:320px;
-
-    display:block;
-
-    margin:auto;
-
-    border-radius:14px;
-
-}
-
-.prize-challenge-card h2{
-
-    margin-top:20px;
-
-    font-size:28px;
-
-    color:#F59E0B;
-
-}
-
-.prize-challenge-card p{
-
-    margin-top:15px;
-
-    font-size:16px;
-
-    line-height:1.6;
-
-    color:#9CA3AF;
-
-}
-
-.prize-challenge-card button{
-
-    margin-top:25px;
-
-    width:220px;
-
-    height:60px;
-
-    background:#F59E0B;
-
-    color:#FFFFFF;
-
-    font-size:22px;
-
-    font-weight:bold;
-
-    border:none;
-
-    border-radius:15px;
-
-    cursor:pointer;
-
-}
-
-
-/* =========================================================
-SECTION 03
-QUIZ CATEGORY SCROLLER CSS
-========================================================= */
-
-.category-section{
-
-    width:100%;
-
-    padding:16px 15px 20px;
-
-}
-
-.category-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:10px;
-
-}
-
-.category-title{
-
-    font-size:14px;
-
-    font-weight:400;
-
-    color:#FFFFFF;
-
-    letter-spacing:.3px;
-
-}
-
-.view-all{
-
-    text-decoration:none;
-
-    color:#F59E0B;
-
-    font-size:14px;
-
-    font-weight:700;
-
-}
-
-.category-scroll{
-
-    display:flex;
-
-    gap:14px;
-
-    overflow-x:auto;
-
-    overflow-y:hidden;
-
-    scroll-behavior:smooth;
-
-    -webkit-overflow-scrolling:touch;
-
-    scrollbar-width:none;
-
-    padding:5px;
-
-}
-
-.category-scroll::-webkit-scrollbar{
-
-    display:none;
-
-}
-
-.category-card{
-
-    flex:0 0 72px;
-
-    width:72px;
-
-    height:72px;
-
-    padding:2px;
-
-    border-radius:16px;
-
-    border:1px solid rgba(255,255,255,.12);
-
-    background:#1A2138;
-
-    overflow:hidden;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    cursor:pointer;
-
-    transition:all .25s ease;
-
-}
-
-.category-card.active{
-
-    border:2px solid #F59E0B;
-
-}
-
-.category-card:hover{
-
-    transform:scale(1.05);
-
-}
-
-.category-card img{
-
-    width:110%;
-
-    height:110%;
-
-    display:block;
-
-    object-fit:cover;
-
-    user-select:none;
-
-    pointer-events:none;
-
-}
-
-
-/* =========================================================
-SECTION 04
-TRENDING QUIZZES CSS
-========================================================= */
-
-.trending-quizzes{
-
-    width:100%;
-
-    padding:16px 15px 30px;
-
-}
-
-.trending-quizzes .section-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:14px;
-
-}
-
-.trending-quizzes .section-header h2{
-
-    font-size:16px;
-
-    font-weight:800;
-
-    color:#FFFFFF;
-
-}
-
-.trending-quizzes .section-header a{
-
-    color:#F59E0B;
-
-    text-decoration:none;
-
-    font-size:13px;
-
-    font-weight:700;
-
-}
-
-.quiz-card{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    background:#171C2F;
-
-    border:1px solid rgba(255,255,255,.06);
-
-    border-radius:18px;
-
-    padding:12px;
-
-    margin-bottom:12px;
-
-    transition:.25s ease;
-
-}
-
-.quiz-card:hover{
-
-    transform:translateY(-2px);
-
-    background:#1E2744;
-
-}
-
-.quiz-number{
-
-    width:26px;
-
-    height:26px;
-
-    border-radius:50%;
-
-    background:#2D3656;
-
-    color:#FFFFFF;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:12px;
-
-    font-weight:bold;
-
-    flex-shrink:0;
-
-}
-
-.gold{
-
-    background:#F4B400;
-
-    color:#111111;
-
-}
-
-.silver{
-
-    background:#C0C0C0;
-
-    color:#111111;
-
-}
-
-.bronze{
-
-    background:#CD7F32;
-
-}
-
-.quiz-thumb{
-
-    width:62px;
-
-    height:62px;
-
-    border-radius:12px;
-
-    object-fit:cover;
-
-    flex-shrink:0;
-
-}
-
-.quiz-details{
-
-    flex:1;
-
-}
-
-.quiz-details h3{
-
-    color:#FFFFFF;
-
-    font-size:14px;
-
-    margin-bottom:5px;
-
-    font-weight:700;
-
-}
-
-.play-btn{
-
-    border:none;
-
-    border-radius:12px;
-
-    padding:10px 18px;
-
-    background:linear-gradient(135deg,#FF9D00,#FFB800);
-
-    color:#FFFFFF;
-
-    font-size:12px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-}
-
-
-/* =========================================================
-SECTION 05
-FEATURED QUIZ GRID CSS
-========================================================= */
-
-.featured-quiz-section{
-
-    width:100%;
-
-    padding:16px 15px 30px;
-
-}
-
-.featured-quiz-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:14px;
-
-}
-
-.featured-quiz-header h2{
-
-    font-size:16px;
-
-    font-weight:800;
-
-    color:#FFFFFF;
-
-}
-
-.featured-quiz-header a{
-
-    color:#F59E0B;
-
-    text-decoration:none;
-
-    font-size:13px;
-
-    font-weight:700;
-
-}
-
-.quiz-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:14px;
-
-}
-
-.featured-quiz-card{
-
-    background:#171C2F;
-
-    border-radius:18px;
-
-    overflow:hidden;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    cursor:pointer;
-
-    transition:.25s ease;
-
-}
-
-.featured-quiz-card:hover{
-
-    transform:translateY(-3px);
-
-    background:#1E2744;
-
-}
-
-.featured-quiz-card img{
-
-    width:100%;
-
-    height:180px;
-
-    object-fit:cover;
-
-    display:block;
-
-}
-
-.featured-quiz-info{
-
-    padding:10px;
-
-}
-
-.featured-quiz-info h3{
-
-    font-size:14px;
-
-    color:#FFFFFF;
-
-    margin-bottom:6px;
-
-    font-weight:700;
-
-}
-
-.featured-quiz-info span{
-
-    font-size:11px;
-
-    color:#9CA3AF;
-
-}
-
-.featured-play{
-
-    margin-top:10px;
-
-    width:100%;
-
-    padding:8px;
-
-    border:none;
-
-    border-radius:10px;
-
-    background:#F59E0B;
-
-    color:#111111;
-
-    font-size:12px;
-
-    font-weight:bold;
-
-}
-
-
-/* =========================================================
-SECTION 06
-POPULAR QUIZZES CSS
-========================================================= */
-
-.popular-quiz-section{
-
-    width:100%;
-
-    padding:16px 15px 30px;
-
-}
-
-.popular-quiz-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:14px;
-
-}
-
-.popular-quiz-header h2{
-
-    font-size:16px;
-
-    font-weight:800;
-
-    color:#FFFFFF;
-
-}
-
-.popular-quiz-header a{
-
-    color:#F59E0B;
-
-    text-decoration:none;
-
-    font-size:13px;
-
-    font-weight:700;
-
-}
-
-.popular-slider{
-
-    display:flex;
-
-    gap:14px;
-
-    overflow-x:auto;
-
-    scrollbar-width:none;
-
-    scroll-behavior:smooth;
-
-}
-
-.popular-slider::-webkit-scrollbar{
-
-    display:none;
-
-}
-
-.popular-card{
-
-    flex:0 0 150px;
-
-    background:#171C2F;
-
-    border-radius:18px;
-
-    overflow:hidden;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    cursor:pointer;
-
-}
-
-.popular-card img{
-
-    width:100%;
-
-    height:180px;
-
-    object-fit:cover;
-
-    display:block;
-
-}
-
-.popular-info{
-
-    padding:10px;
-
-}
-
-.popular-info h3{
-
-    font-size:13px;
-
-    color:#FFFFFF;
-
-    font-weight:700;
-
-    margin-bottom:6px;
-
-}
-
-.popular-info span{
-
-    font-size:11px;
-
-    color:#9CA3AF;
-
-}
-
-
-/* =========================================================
-SECTION 07
-RECENT QUIZZES CSS
-========================================================= */
-
-.recent-quiz-section{
-
-    width:100%;
-
-    padding:16px 15px 30px;
-
-}
-
-.recent-quiz-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:14px;
-
-}
-
-.recent-quiz-header h2{
-
-    font-size:16px;
-
-    font-weight:800;
-
-    color:#FFFFFF;
-
-}
-
-.recent-quiz-header a{
-
-    color:#F59E0B;
-
-    text-decoration:none;
-
-    font-size:13px;
-
-    font-weight:700;
-
-}
-
-.recent-quiz-list{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:12px;
-
-}
-
-.recent-quiz-card{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    background:#171C2F;
-
-    border-radius:18px;
-
-    padding:12px;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    cursor:pointer;
-
-}
-
-.recent-quiz-card img{
-
-    width:58px;
-
-    height:58px;
-
-    border-radius:12px;
-
-    object-fit:cover;
-
-}
-
-.recent-quiz-info{
-
-    flex:1;
-
-}
-
-.recent-quiz-info h3{
-
-    font-size:14px;
-
-    color:#FFFFFF;
-
-    font-weight:700;
-
-    margin-bottom:5px;
-
-}
-
-.recent-quiz-info span{
-
-    font-size:11px;
-
-    color:#9CA3AF;
-
-}
-
-.new-badge{
-
-    background:#F59E0B;
-
-    color:#111111;
-
-    font-size:10px;
-
-    font-weight:bold;
-
-    padding:5px 8px;
-
-    border-radius:20px;
-
-}
-
-
-/* =========================================================
-MOBILE
-========================================================= */
-
-@media(max-width:600px){
-
-    .quiz-card{
-
-        gap:10px;
-
-        padding:10px;
-
-    }
-
-    .quiz-thumb{
-
-        width:56px;
-
-        height:56px;
-
-    }
-
-    .play-btn{
-
-        padding:8px 14px;
-
-        font-size:11px;
-
-    }
-
-    .featured-quiz-card img{
-
-        height:105px;
-
-    }
-
-    .featured-quiz-info h3{
-
-        font-size:13px;
-
-    }
-
-}
-/* =========================================================
-PRIZE CHALLENGE HOME CSS
-========================================================= */
-
-#prizeChallengeContainer{
-
-width:100%;
-
-max-width:1200px;
-
-margin:40px auto;
-
-padding:20px;
-
-}
-
-.prizeChallengeGrid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-
-gap:20px;
-
-}
-
-.prizeCard{
-
-background:#111827;
-
-border-radius:18px;
-
-overflow:hidden;
-
-cursor:pointer;
-
-transition:.25s;
-
-}
-
-.prizeCard:hover{
-
-transform:translateY(-5px);
-
-}
-
-.prizeCard img{
-
-width:100%;
-
-height:180px;
-
-object-fit:cover;
-
-}
-
-.prizeBody{
-
-padding:18px;
-
-}
-
-.prizeTitle{
-
-font-size:22px;
-
-font-weight:bold;
-
-margin-bottom:10px;
-
-color:#fff;
-
-}
-
-.prizeDescription{
-
-font-size:15px;
-
-color:#bdbdbd;
-
-line-height:1.6;
-
-}
-    
-
-</style>
-
-</head><body>
-<!-- =========================================================
-SECTION 01
-QUIZCANO HEADER HTML
-========================================================= -->
-    
-<header class="top-header">
-<button
-class="menu-btn"
-id="menuBtn">
-
-☰
-
-</button><div class="logo-area"><h1
-class="logo"
-id="gameIcon"><span class="logo-white">
-QUIZ
-</span><span class="logo-orange">
-CANO
-</span></h1><p class="logo-tagline">Play • Learn • Win
-
-</p></div><div class="header-right"><div class="profile-image">🧠
-
-</div></div>
-
-</header>
-    
-<!-- =========================================================
-SECTION
-PRIZE CHALLENGES
-========================================================= -->
-
-<section id="prizeChallengeContainer">
-
-<h2 class="sectionTitle">
-Prize Challenges
-</h2>
-
-<div
-id="prizeChallengeGrid"
-class="prizeChallengeGrid">
-
-</div>
-
-</section>
-
-<!-- =========================================================
-END SECTION
-========================================================= -->    
-    
-    
-<script type="module">
-
-
-/* =========================================================
-FIREBASE CONFIGURATION
-========================================================= */
-
-import {
-
-initializeApp
-
-}
-
-from
-
-"https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-
-
-import {
-
-getFirestore,
-collection,
-getDocs
-
-}
-
-from
-
-"https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
-
-
-const firebaseConfig = {
-
-apiKey:
-"AIzaSyAnMxqDpdzgKEW1vkRSrLysT-0nu_vEf8Q",
-
-authDomain:
-"quizcano.firebaseapp.com",
-
-projectId:
-"quizcano",
-
-storageBucket:
-"quizcano.firebasestorage.app",
-
-messagingSenderId:
-"834135771491",
-
-appId:
-"1:834135771491:web:c9998944df72d14a7b2b56"
-
-};
-
-
-const app =
-initializeApp(firebaseConfig);
-
-
-const db =
-getFirestore(app);
-
-/* =========================================================
-SECTION 01
-GET PRIZE CHALLENGE ID
-========================================================= */
-
-const params = new URLSearchParams(window.location.search);
-
-const prizeId = params.get("prize");
-
-if(!prizeId){
-
-alert("Prize Challenge not found.");
-
-throw new Error("No Prize Challenge ID");
-
-}
-
-/* =========================================================
-END OF SECTION 01
-========================================================= */       
-
-
-
-
-/* =========================================================
-HIDDEN ADMIN LOGIN
-QUIZCANO LOGO 7 CLICKS
-========================================================= */
-
-const gameIcon =
-document.getElementById(
-"gameIcon"
-);
-
-
-let adminClickCount =
-0;
-
-
-let adminClickTimer =
-null;
-
-
-if(gameIcon){
-
-    gameIcon.addEventListener(
-        "click",
-        function(){
-
-            adminClickCount++;
-
-
-            clearTimeout(
-                adminClickTimer
-            );
-
-
-            adminClickTimer =
-            setTimeout(
-                function(){
-
-                    adminClickCount =
-                    0;
-
-                },
-                3000
-            );
-
-
-            if(
-                adminClickCount ===
-                7
-            ){
-
-                window.location.href =
-                "login.html";
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-SECTION 03
-QUIZ CATEGORY SCROLLER JAVASCRIPT
-========================================================= */
-
-const categoryContainer =
-document.getElementById(
-"categoryScroll"
-);
-
-
-function activateCategoryCards(){
-
-    const categoryCards =
-    document.querySelectorAll(
-        ".category-card"
-    );
-
-
-    categoryCards.forEach(
-        function(card){
-
-            card.addEventListener(
-                "click",
-                function(){
-
-                    categoryCards.forEach(
-                        function(item){
-
-                            item.classList.remove(
-                                "active"
-                            );
-
-                        }
-                    );
-
-
-                    this.classList.add(
-                        "active"
-                    );
-
-
-                    const categoryId =
-                    this.getAttribute(
-                        "data-id"
-                    );
-
-
-                    const categoryName =
-                    this.getAttribute(
-                        "data-name"
-                    );
-
-
-                    window.location.href =
-
-                    `category.html?subcategoryId=${categoryId}&name=${encodeURIComponent(categoryName)}`;
-
-                }
-            );
-
-        }
-    );
-
-
-    if(
-        categoryCards.length >
-        0
-    ){
-
-        categoryCards[0].classList.add(
-            "active"
-        );
-
-    }
-
-}
-
-
-async function loadCategoriesFromFirebase(){
-
-    try{
-
-        const snapshot =
-        await getDocs(
-            collection(
-                db,
-                "subCategories"
-            )
-        );
-
-
-        categoryContainer.innerHTML =
-        "";
-
-
-        snapshot.forEach(
-            function(docItem){
-
-                const data =
-                docItem.data();
-
-
-                if(
-                    data.parentCategory !==
-                    "quizCategory"
-                ){
-
-                    return;
-
-                }
-
-
-                categoryContainer.innerHTML += `
-
-                    <div
-                    class="category-card"
-                    data-id="${docItem.id}"
-                    data-name="${data.name}">
-
-                        <img
-                        src="${data.banner}"
-                        alt="${data.name}">
-
-                    </div>
-
-                `;
-
-            }
-        );
-
-
-        activateCategoryCards();
-
-    }
-
-    catch(error){
-
-        console.log(
-            "Category Error:",
-            error
-        );
-
-    }
-
-}
-
-
-loadCategoriesFromFirebase();
-
-
-/* =========================================================
-SECTION 04
-TRENDING QUIZZES JAVASCRIPT
-========================================================= */
-
-const trendingQuizList =
-document.getElementById(
-"trendingQuizList"
-);
-
-
-async function loadTrendingQuizzes(){
-
-    try{
-
-        const snapshot =
-        await getDocs(
-            collection(
-                db,
-                "subCategories"
-            )
-        );
-
-
-        trendingQuizList.innerHTML =
-        "";
-
-
-        let quizNumber =
-        1;
-
-
-        snapshot.forEach(
-            function(docItem){
-
-                const data =
-                docItem.data();
-
-
-                if(
-                    data.parentCategory !==
-                    "popularQuiz"
-                ){
-
-                    return;
-
-                }
-
-
-                let numberClass =
-                "";
-
-
-                if(
-                    quizNumber ===
-                    1
-                ){
-
-                    numberClass =
-                    "gold";
-
-                }
-
-                else if(
-                    quizNumber ===
-                    2
-                ){
-
-                    numberClass =
-                    "silver";
-
-                }
-
-                else if(
-                    quizNumber ===
-                    3
-                ){
-
-                    numberClass =
-                    "bronze";
-
-                }
-
-
-                trendingQuizList.innerHTML += `
-
-                    <div
-                    class="quiz-card">
-
-                        <div
-                        class="quiz-number ${numberClass}">
-
-                            ${quizNumber}
-
-                        </div>
-
-
-                        <img
-                        src="${data.banner}"
-                        class="quiz-thumb"
-                        alt="${data.name}">
-
-
-                        <div
-                        class="quiz-details">
-
-                            <h3>
-
-                                ${data.name}
-
-                            </h3>
-
-                        </div>
-
-
-                        <button
-                        class="play-btn"
-                        onclick="window.location.href='category.html?subcategoryId=${docItem.id}&name=${encodeURIComponent(data.name)}'">
-
-                            PLAY
-
-                        </button>
-
-                    </div>
-
-                `;
-
-
-                quizNumber++;
-
-            }
-        );
-
-    }
-
-    catch(error){
-
-        console.log(
-            "Trending Quiz Error:",
-            error
-        );
-
-    }
-
-}
-
-
-loadTrendingQuizzes();
-
-
-/* =========================================================
-SECTION 05
-FEATURED QUIZ GRID JAVASCRIPT
-========================================================= */
-
-const featuredQuizGrid =
-document.getElementById(
-"featuredQuizGrid"
-);
-
-
-async function loadFeaturedQuizzes(){
-
-    try{
-
-        const snapshot =
-        await getDocs(
-            collection(
-                db,
-                "featuredQuizzes"
-            )
-        );
-
-
-        featuredQuizGrid.innerHTML =
-        "";
-
-
-        snapshot.forEach(
-            function(docItem){
-
-                const data =
-                docItem.data();
-
-
-                featuredQuizGrid.innerHTML += `
-
-                    <div
-                    class="featured-quiz-card"
-                    onclick="window.location.href='quiz.html?quizId=${docItem.id}'">
-
-
-                        <img
-                        src="${data.image}"
-                        alt="${data.title}">
-
-
-                        <div
-                        class="featured-quiz-info">
-
-
-                            <h3>
-
-                                ${data.title}
-
-                            </h3>
-
-
-                            <span>
-
-                                👥 ${data.players || 0} Players
-
-                            </span>
-
-
-                            <button
-                            class="featured-play">
-
-                                PLAY
-
-                            </button>
-
-
-                        </div>
-
-
-                    </div>
-
-                `;
-
-            }
-        );
-
-    }
-
-    catch(error){
-
-        console.log(
-            "Featured Quiz Error:",
-            error
-        );
-
-    }
-
-}
-
-
-loadFeaturedQuizzes();
-
-
-/* =========================================================
-SECTION 06
-POPULAR QUIZZES JAVASCRIPT
-========================================================= */
-
-const popularQuizSlider =
-document.getElementById(
-"popularQuizSlider"
-);
-
-
-async function loadPopularQuizzes(){
-
-    try{
-
-        const snapshot =
-        await getDocs(
-            collection(
-                db,
-                "popularQuizzes"
-            )
-        );
-
-
-        popularQuizSlider.innerHTML =
-        "";
-
-
-        snapshot.forEach(
-            function(docItem){
-
-                const data =
-                docItem.data();
-
-
-                popularQuizSlider.innerHTML += `
-
-                    <div
-                    class="popular-card"
-                    onclick="window.location.href='quiz.html?quizId=${docItem.id}'">
-
-
-                        <img
-                        src="${data.image}"
-                        alt="${data.title}">
-
-
-                        <div
-                        class="popular-info">
-
-
-                            <h3>
-
-                                ${data.title}
-
-                            </h3>
-
-
-                            <span>
-
-                                👥 ${data.players || 0} Players
-
-                            </span>
-
-
-                        </div>
-
-
-                    </div>
-
-                `;
-
-            }
-        );
-
-    }
-
-    catch(error){
-
-        console.log(
-            "Popular Quiz Error:",
-            error
-        );
-
-    }
-
-}
-
-
-loadPopularQuizzes();
-
-
-/* =========================================================
-SECTION 07
-RECENT QUIZZES JAVASCRIPT
-========================================================= */
-
-const recentQuizList =
-document.getElementById(
-"recentQuizList"
-);
-
-
-async function loadRecentQuizzes(){
-
-    try{
-
-        const snapshot =
-        await getDocs(
-            collection(
-                db,
-                "recentQuizzes"
-            )
-        );
-
-
-        recentQuizList.innerHTML =
-        "";
-
-
-        snapshot.forEach(
-            function(docItem){
-
-                const data =
-                docItem.data();
-
-
-                recentQuizList.innerHTML += `
-
-                    <div
-                    class="recent-quiz-card"
-                    onclick="window.location.href='quiz.html?quizId=${docItem.id}'">
-
-
-                        <img
-                        src="${data.image}"
-                        alt="${data.title}">
-
-
-                        <div
-                        class="recent-quiz-info">
-
-
-                            <h3>
-
-                                ${data.title}
-
-                            </h3>
-
-
-                            <span>
-
-                                👥 ${data.players || 0} Players
-
-                            </span>
-
-
-                        </div>
-
-
-                        <div
-                        class="new-badge">
-
-                            NEW
-
-                        </div>
-
-
-                    </div>
-
-                `;
-
-            }
-        );
-
-    }
-
-    catch(error){
-
-        console.log(
-            "Recent Quiz Error:",
-            error
-        );
-
-    }
-
-}
-
-
-loadRecentQuizzes();
-
-
-/* =========================================================
-SECTION 02
-PRIZE CHALLENGE JAVASCRIPT
-========================================================= */
-
-const prizeChallengeContainer =
-document.getElementById(
-"prizeChallengeContainer"
-);
-
-
-async function loadPrizeChallenge(){
-
-    try{
-
-        const snapshot =
-        await getDocs(
-            collection(
-                db,
-                "prizeChallenge"
-            )
-        );
-
-
-        prizeChallengeContainer.innerHTML =
-        "";
-
-
-        if(
-            snapshot.empty
-        ){
-
-            prizeChallengeContainer.innerHTML = `
-
-                <p
-                style="
-                text-align:center;
-                color:#9CA3AF;
-                padding:20px;
-                ">
-
-                    No Prize Challenge Available
-
-                </p>
-
-            `;
-
-
-            return;
-
-        }
-
-
-        snapshot.forEach(
-            function(docItem){
-
-                const data =
-                docItem.data();
-
-
-                prizeChallengeContainer.innerHTML += `
-
-                    <div
-                    class="prize-challenge-card">
-
-
-                        <img
-                        src="${data.image}"
-                        alt="${data.title}">
-
-
-                        <h2>
-
-                            ${data.title}
-
-                        </h2>
-
-
-                        <p>
-
-                            ${data.description}
-
-                        </p>
-
-
-                        <button
-onclick="window.location.href='category.html?subcategoryId=${data.subcategoryId}&name=${encodeURIComponent(data.categoryName)}'">
-
-    ▶ PLAY QUIZ NOW
-
-</button>
-
-                    </div>
-
-                `;
-
-            }
-        );
-
-    }
-
-    catch(error){
-
-        console.log(
-            "Prize Challenge Error:",
-            error
-        );
-
-    }
-
-}
-
-
-loadPrizeChallenge();
-
-
-</script></body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport"  
+content="width=device-width, initial-scale=1.0">  
+  
+<title>QUIZCANO</title><style>  
+  
+/* =========================================================  
+SECTION 01  
+QUIZCANO HEADER CSS  
+========================================================= */  
+  
+*{  
+  
+    margin:0;  
+  
+    padding:0;  
+  
+    box-sizing:border-box;  
+  
+}  
+  
+body{  
+  
+    background:#F3F4F6;  
+  
+    font-family:Arial,Helvetica,sans-serif;  
+  
+    color:#111827;  
+  
+}  
+  
+.top-header{  
+  
+    width:100%;  
+  
+    height:82px;  
+  
+    background:#0B1120;  
+  
+    display:flex;  
+  
+    align-items:center;  
+  
+    justify-content:space-between;  
+  
+    padding:10px 14px;  
+  
+    position:sticky;  
+  
+    top:0;  
+  
+    z-index:1000;  
+  
+}  
+  
+.menu-btn{  
+  
+    width:48px;  
+  
+    height:48px;  
+  
+    border:3px solid #F59E0B;  
+  
+    border-radius:50%;  
+  
+    background:#1A2138;  
+  
+    color:#FFFFFF;  
+  
+    font-size:24px;  
+  
+    display:flex;  
+  
+    justify-content:center;  
+  
+    align-items:center;  
+  
+    cursor:pointer;  
+  
+    flex-shrink:0;  
+  
+}  
+  
+.logo-area{  
+  
+    flex:1;  
+  
+    display:flex;  
+  
+    flex-direction:column;  
+  
+    align-items:center;  
+  
+    justify-content:center;  
+  
+    text-align:center;  
+  
+}  
+  
+.logo{  
+  
+    font-size:34px;  
+  
+    font-weight:900;  
+  
+    letter-spacing:1px;  
+  
+    cursor:pointer;  
+  
+    user-select:none;  
+  
+}  
+  
+.logo-white{  
+  
+    color:#FFFFFF;  
+  
+}  
+  
+.logo-orange{  
+  
+    color:#F59E0B;  
+  
+}  
+  
+.logo-tagline{  
+  
+    margin-top:3px;  
+  
+    font-size:11px;  
+  
+    color:#8B93A7;  
+  
+}  
+  
+.header-right{  
+  
+    width:48px;  
+  
+    display:flex;  
+  
+    justify-content:flex-end;  
+  
+    align-items:center;  
+  
+    flex-shrink:0;  
+  
+}  
+  
+.profile-image{  
+  
+    width:48px;  
+  
+    height:48px;  
+  
+    border-radius:50%;  
+  
+    background:#1A2138;  
+  
+    border:3px solid #F59E0B;  
+  
+    display:flex;  
+  
+    justify-content:center;  
+  
+    align-items:center;  
+  
+    font-size:22px;  
+  
+    cursor:pointer;  
+  
+}  
+  
+  
+/* =========================================================  
+SECTION 02  
+PRIZE CHALLENGE CSS  
+========================================================= */  
+  
+.featured-carousel{  
+  
+    width:100%;  
+  
+    padding:6px 8px 10px;  
+  
+}  
+  
+.featured-title{  
+  
+    display:flex;  
+  
+    align-items:center;  
+  
+    gap:8px;  
+  
+    margin-left:4px;  
+  
+    margin-bottom:10px;  
+  
+    font-size:16px;  
+  
+    font-weight:900;  
+  
+    color:#FFFFFF;  
+  
+    letter-spacing:1px;  
+  
+    text-transform:uppercase;  
+  
+    text-shadow:0 2px 8px rgba(0,0,0,.35);  
+  
+}  
+  
+.prize-challenge-container{  
+  
+    display:flex;  
+  
+    flex-direction:column;  
+  
+    gap:20px;  
+  
+}  
+  
+.prize-challenge-card{  
+  
+    background:#171C2F;  
+  
+    border-radius:20px;  
+  
+    padding:20px;  
+  
+    text-align:center;  
+  
+}  
+  
+.prize-challenge-card img{  
+  
+    width:100%;  
+  
+    max-width:320px;  
+  
+    display:block;  
+  
+    margin:auto;  
+  
+    border-radius:14px;  
+  
+}  
+  
+.prize-challenge-card h2{  
+  
+    margin-top:20px;  
+  
+    font-size:28px;  
+  
+    color:#F59E0B;  
+  
+}  
+  
+.prize-challenge-card p{  
+  
+    margin-top:15px;  
+  
+    font-size:16px;  
+  
+    line-height:1.6;  
+  
+    color:#9CA3AF;  
+  
+}  
+  
+.prize-challenge-card button{  
+  
+    margin-top:25px;  
+  
+    width:220px;  
+  
+    height:60px;  
+  
+    background:#F59E0B;  
+  
+    color:#FFFFFF;  
+  
+    font-size:22px;  
+  
+    font-weight:bold;  
+  
+    border:none;  
+  
+    border-radius:15px;  
+  
+    cursor:pointer;  
+  
+}  
+  
+  
+/* =========================================================  
+SECTION 03  
+QUIZ CATEGORY SCROLLER CSS  
+========================================================= */  
+  
+.category-section{  
+  
+    width:100%;  
+  
+    padding:16px 15px 20px;  
+  
+}  
+  
+.category-header{  
+  
+    display:flex;  
+  
+    justify-content:space-between;  
+  
+    align-items:center;  
+  
+    margin-bottom:10px;  
+  
+}  
+  
+.category-title{  
+  
+    font-size:14px;  
+  
+    font-weight:400;  
+  
+    color:#FFFFFF;  
+  
+    letter-spacing:.3px;  
+  
+}  
+  
+.view-all{  
+  
+    text-decoration:none;  
+  
+    color:#F59E0B;  
+  
+    font-size:14px;  
+  
+    font-weight:700;  
+  
+}  
+  
+.category-scroll{  
+  
+    display:flex;  
+  
+    gap:14px;  
+  
+    overflow-x:auto;  
+  
+    overflow-y:hidden;  
+  
+    scroll-behavior:smooth;  
+  
+    -webkit-overflow-scrolling:touch;  
+  
+    scrollbar-width:none;  
+  
+    padding:5px;  
+  
+}  
+  
+.category-scroll::-webkit-scrollbar{  
+  
+    display:none;  
+  
+}  
+  
+.category-card{  
+  
+    flex:0 0 72px;  
+  
+    width:72px;  
+  
+    height:72px;  
+  
+    padding:2px;  
+  
+    border-radius:16px;  
+  
+    border:1px solid rgba(255,255,255,.12);  
+  
+    background:#1A2138;  
+  
+    overflow:hidden;  
+  
+    display:flex;  
+  
+    justify-content:center;  
+  
+    align-items:center;  
+  
+    cursor:pointer;  
+  
+    transition:all .25s ease;  
+  
+}  
+  
+.category-card.active{  
+  
+    border:2px solid #F59E0B;  
+  
+}  
+  
+.category-card:hover{  
+  
+    transform:scale(1.05);  
+  
+}  
+  
+.category-card img{  
+  
+    width:110%;  
+  
+    height:110%;  
+  
+    display:block;  
+  
+    object-fit:cover;  
+  
+    user-select:none;  
+  
+    pointer-events:none;  
+  
+}  
+  
+  
+/* =========================================================  
+SECTION 04  
+TRENDING QUIZZES CSS  
+========================================================= */  
+  
+.trending-quizzes{  
+  
+    width:100%;  
+  
+    padding:16px 15px 30px;  
+  
+}  
+  
+.trending-quizzes .section-header{  
+  
+    display:flex;  
+  
+    justify-content:space-between;  
+  
+    align-items:center;  
+  
+    margin-bottom:14px;  
+  
+}  
+  
+.trending-quizzes .section-header h2{  
+  
+    font-size:16px;  
+  
+    font-weight:800;  
+  
+    color:#FFFFFF;  
+  
+}  
+  
+.trending-quizzes .section-header a{  
+  
+    color:#F59E0B;  
+  
+    text-decoration:none;  
+  
+    font-size:13px;  
+  
+    font-weight:700;  
+  
+}  
+  
+.quiz-card{  
+  
+    display:flex;  
+  
+    align-items:center;  
+  
+    gap:12px;  
+  
+    background:#171C2F;  
+  
+    border:1px solid rgba(255,255,255,.06);  
+  
+    border-radius:18px;  
+  
+    padding:12px;  
+  
+    margin-bottom:12px;  
+  
+    transition:.25s ease;  
+  
+}  
+  
+.quiz-card:hover{  
+  
+    transform:translateY(-2px);  
+  
+    background:#1E2744;  
+  
+}  
+  
+.quiz-number{  
+  
+    width:26px;  
+  
+    height:26px;  
+  
+    border-radius:50%;  
+  
+    background:#2D3656;  
+  
+    color:#FFFFFF;  
+  
+    display:flex;  
+  
+    justify-content:center;  
+  
+    align-items:center;  
+  
+    font-size:12px;  
+  
+    font-weight:bold;  
+  
+    flex-shrink:0;  
+  
+}  
+  
+.gold{  
+  
+    background:#F4B400;  
+  
+    color:#111111;  
+  
+}  
+  
+.silver{  
+  
+    background:#C0C0C0;  
+  
+    color:#111111;  
+  
+}  
+  
+.bronze{  
+  
+    background:#CD7F32;  
+  
+}  
+  
+.quiz-thumb{  
+  
+    width:62px;  
+  
+    height:62px;  
+  
+    border-radius:12px;  
+  
+    object-fit:cover;  
+  
+    flex-shrink:0;  
+  
+}  
+  
+.quiz-details{  
+  
+    flex:1;  
+  
+}  
+  
+.quiz-details h3{  
+  
+    color:#FFFFFF;  
+  
+    font-size:14px;  
+  
+    margin-bottom:5px;  
+  
+    font-weight:700;  
+  
+}  
+  
+.play-btn{  
+  
+    border:none;  
+  
+    border-radius:12px;  
+  
+    padding:10px 18px;  
+  
+    background:linear-gradient(135deg,#FF9D00,#FFB800);  
+  
+    color:#FFFFFF;  
+  
+    font-size:12px;  
+  
+    font-weight:bold;  
+  
+    cursor:pointer;  
+  
+}  
+  
+  
+/* =========================================================  
+SECTION 05  
+FEATURED QUIZ GRID CSS  
+========================================================= */  
+  
+.featured-quiz-section{  
+  
+    width:100%;  
+  
+    padding:16px 15px 30px;  
+  
+}  
+  
+.featured-quiz-header{  
+  
+    display:flex;  
+  
+    justify-content:space-between;  
+  
+    align-items:center;  
+  
+    margin-bottom:14px;  
+  
+}  
+  
+.featured-quiz-header h2{  
+  
+    font-size:16px;  
+  
+    font-weight:800;  
+  
+    color:#FFFFFF;  
+  
+}  
+  
+.featured-quiz-header a{  
+  
+    color:#F59E0B;  
+  
+    text-decoration:none;  
+  
+    font-size:13px;  
+  
+    font-weight:700;  
+  
+}  
+  
+.quiz-grid{  
+  
+    display:grid;  
+  
+    grid-template-columns:repeat(2,1fr);  
+  
+    gap:14px;  
+  
+}  
+  
+.featured-quiz-card{  
+  
+    background:#171C2F;  
+  
+    border-radius:18px;  
+  
+    overflow:hidden;  
+  
+    border:1px solid rgba(255,255,255,.08);  
+  
+    cursor:pointer;  
+  
+    transition:.25s ease;  
+  
+}  
+  
+.featured-quiz-card:hover{  
+  
+    transform:translateY(-3px);  
+  
+    background:#1E2744;  
+  
+}  
+  
+.featured-quiz-card img{  
+  
+    width:100%;  
+  
+    height:180px;  
+  
+    object-fit:cover;  
+  
+    display:block;  
+  
+}  
+  
+.featured-quiz-info{  
+  
+    padding:10px;  
+  
+}  
+  
+.featured-quiz-info h3{  
+  
+    font-size:14px;  
+  
+    color:#FFFFFF;  
+  
+    margin-bottom:6px;  
+  
+    font-weight:700;  
+  
+}  
+  
+.featured-quiz-info span{  
+  
+    font-size:11px;  
+  
+    color:#9CA3AF;  
+  
+}  
+  
+.featured-play{  
+  
+    margin-top:10px;  
+  
+    width:100%;  
+  
+    padding:8px;  
+  
+    border:none;  
+  
+    border-radius:10px;  
+  
+    background:#F59E0B;  
+  
+    color:#111111;  
+  
+    font-size:12px;  
+  
+    font-weight:bold;  
+  
+}  
+  
+  
+/* =========================================================  
+SECTION 06  
+POPULAR QUIZZES CSS  
+========================================================= */  
+  
+.popular-quiz-section{  
+  
+    width:100%;  
+  
+    padding:16px 15px 30px;  
+  
+}  
+  
+.popular-quiz-header{  
+  
+    display:flex;  
+  
+    justify-content:space-between;  
+  
+    align-items:center;  
+  
+    margin-bottom:14px;  
+  
+}  
+  
+.popular-quiz-header h2{  
+  
+    font-size:16px;  
+  
+    font-weight:800;  
+  
+    color:#FFFFFF;  
+  
+}  
+  
+.popular-quiz-header a{  
+  
+    color:#F59E0B;  
+  
+    text-decoration:none;  
+  
+    font-size:13px;  
+  
+    font-weight:700;  
+  
+}  
+  
+.popular-slider{  
+  
+    display:flex;  
+  
+    gap:14px;  
+  
+    overflow-x:auto;  
+  
+    scrollbar-width:none;  
+  
+    scroll-behavior:smooth;  
+  
+}  
+  
+.popular-slider::-webkit-scrollbar{  
+  
+    display:none;  
+  
+}  
+  
+.popular-card{  
+  
+    flex:0 0 150px;  
+  
+    background:#171C2F;  
+  
+    border-radius:18px;  
+  
+    overflow:hidden;  
+  
+    border:1px solid rgba(255,255,255,.08);  
+  
+    cursor:pointer;  
+  
+}  
+  
+.popular-card img{  
+  
+    width:100%;  
+  
+    height:180px;  
+  
+    object-fit:cover;  
+  
+    display:block;  
+  
+}  
+  
+.popular-info{  
+  
+    padding:10px;  
+  
+}  
+  
+.popular-info h3{  
+  
+    font-size:13px;  
+  
+    color:#FFFFFF;  
+  
+    font-weight:700;  
+  
+    margin-bottom:6px;  
+  
+}  
+  
+.popular-info span{  
+  
+    font-size:11px;  
+  
+    color:#9CA3AF;  
+  
+}  
+  
+  
+/* =========================================================  
+SECTION 07  
+RECENT QUIZZES CSS  
+========================================================= */  
+  
+.recent-quiz-section{  
+  
+    width:100%;  
+  
+    padding:16px 15px 30px;  
+  
+}  
+  
+.recent-quiz-header{  
+  
+    display:flex;  
+  
+    justify-content:space-between;  
+  
+    align-items:center;  
+  
+    margin-bottom:14px;  
+  
+}  
+  
+.recent-quiz-header h2{  
+  
+    font-size:16px;  
+  
+    font-weight:800;  
+  
+    color:#FFFFFF;  
+  
+}  
+  
+.recent-quiz-header a{  
+  
+    color:#F59E0B;  
+  
+    text-decoration:none;  
+  
+    font-size:13px;  
+  
+    font-weight:700;  
+  
+}  
+  
+.recent-quiz-list{  
+  
+    display:flex;  
+  
+    flex-direction:column;  
+  
+    gap:12px;  
+  
+}  
+  
+.recent-quiz-card{  
+  
+    display:flex;  
+  
+    align-items:center;  
+  
+    gap:12px;  
+  
+    background:#171C2F;  
+  
+    border-radius:18px;  
+  
+    padding:12px;  
+  
+    border:1px solid rgba(255,255,255,.08);  
+  
+    cursor:pointer;  
+  
+}  
+  
+.recent-quiz-card img{  
+  
+    width:58px;  
+  
+    height:58px;  
+  
+    border-radius:12px;  
+  
+    object-fit:cover;  
+  
+}  
+  
+.recent-quiz-info{  
+  
+    flex:1;  
+  
+}  
+  
+.recent-quiz-info h3{  
+  
+    font-size:14px;  
+  
+    color:#FFFFFF;  
+  
+    font-weight:700;  
+  
+    margin-bottom:5px;  
+  
+}  
+  
+.recent-quiz-info span{  
+  
+    font-size:11px;  
+  
+    color:#9CA3AF;  
+  
+}  
+  
+.new-badge{  
+  
+    background:#F59E0B;  
+  
+    color:#111111;  
+  
+    font-size:10px;  
+  
+    font-weight:bold;  
+  
+    padding:5px 8px;  
+  
+    border-radius:20px;  
+  
+}  
+  
+  
+/* =========================================================  
+MOBILE  
+========================================================= */  
+  
+@media(max-width:600px){  
+  
+    .quiz-card{  
+  
+        gap:10px;  
+  
+        padding:10px;  
+  
+    }  
+  
+    .quiz-thumb{  
+  
+        width:56px;  
+  
+        height:56px;  
+  
+    }  
+  
+    .play-btn{  
+  
+        padding:8px 14px;  
+  
+        font-size:11px;  
+  
+    }  
+  
+    .featured-quiz-card img{  
+  
+        height:105px;  
+  
+    }  
+  
+    .featured-quiz-info h3{  
+  
+        font-size:13px;  
+  
+    }  
+  
+}  
+/* =========================================================  
+PRIZE CHALLENGE HOME CSS  
+========================================================= */  
+  
+#prizeChallengeContainer{  
+  
+width:100%;  
+  
+max-width:1200px;  
+  
+margin:40px auto;  
+  
+padding:20px;  
+  
+}  
+  
+.prizeChallengeGrid{  
+  
+display:grid;  
+  
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));  
+  
+gap:20px;  
+  
+}  
+  
+.prizeCard{  
+  
+background:#111827;  
+  
+border-radius:18px;  
+  
+overflow:hidden;  
+  
+cursor:pointer;  
+  
+transition:.25s;  
+  
+}  
+  
+.prizeCard:hover{  
+  
+transform:translateY(-5px);  
+  
+}  
+  
+.prizeCard img{  
+  
+width:100%;  
+  
+height:180px;  
+  
+object-fit:cover;  
+  
+}  
+  
+.prizeBody{  
+  
+padding:18px;  
+  
+}  
+  
+.prizeTitle{  
+  
+font-size:22px;  
+  
+font-weight:bold;  
+  
+margin-bottom:10px;  
+  
+color:#fff;  
+  
+}  
+  
+.prizeDescription{  
+  
+font-size:15px;  
+  
+color:#bdbdbd;  
+  
+line-height:1.6;  
+  
+}  
+      
+  
+</style>  
+  
+</head><body>  
+<!-- =========================================================  
+SECTION 01  
+QUIZCANO HEADER HTML  
+========================================================= -->  
+      
+<header class="top-header">  
+<button  
+class="menu-btn"  
+id="menuBtn">  
+  
+☰  
+  
+</button><div class="logo-area"><h1  
+class="logo"  
+id="gameIcon"><span class="logo-white">  
+QUIZ  
+</span><span class="logo-orange">  
+CANO  
+</span></h1><p class="logo-tagline">Play • Learn • Win  
+  
+</p></div><div class="header-right"><div class="profile-image">🧠  
+  
+</div></div>  
+  
+</header>  
+      
+<!-- =========================================================  
+SECTION  
+PRIZE CHALLENGES  
+========================================================= -->  
+  
+<section id="prizeChallengeContainer">  
+  
+<h2 class="sectionTitle">  
+Prize Challenges  
+</h2>  
+  
+<div  
+id="prizeChallengeGrid"  
+class="prizeChallengeGrid">  
+  
+</div>  
+  
+</section>  
+  
+<!-- =========================================================  
+END SECTION  
+========================================================= -->      
+      
+      
+<script type="module">  
+  
+  
+/* =========================================================  
+FIREBASE CONFIGURATION  
+========================================================= */  
+  
+import {  
+  
+initializeApp  
+  
+}  
+  
+from  
+  
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";  
+  
+  
+import {  
+  
+getFirestore,  
+collection,  
+getDocs  
+  
+}  
+  
+from  
+  
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";  
+  
+  
+const firebaseConfig = {  
+  
+apiKey:  
+"AIzaSyAnMxqDpdzgKEW1vkRSrLysT-0nu_vEf8Q",  
+  
+authDomain:  
+"quizcano.firebaseapp.com",  
+  
+projectId:  
+"quizcano",  
+  
+storageBucket:  
+"quizcano.firebasestorage.app",  
+  
+messagingSenderId:  
+"834135771491",  
+  
+appId:  
+"1:834135771491:web:c9998944df72d14a7b2b56"  
+  
+};  
+  
+  
+const app =  
+initializeApp(firebaseConfig);  
+  
+  
+const db =  
+getFirestore(app);  
+  
+/* =========================================================  
+SECTION 01  
+GET PRIZE CHALLENGE ID  
+========================================================= */  
+  
+const params = new URLSearchParams(window.location.search);  
+  
+const prizeId = params.get("prize");  
+  
+if(!prizeId){  
+  
+alert("Prize Challenge not found.");  
+  
+throw new Error("No Prize Challenge ID");  
+  
+}  
+  
+/* =========================================================  
+END OF SECTION 01  
+========================================================= */         
+  
+/* =========================================================  
+LOAD PRIZE CHALLENGES  
+========================================================= */  
+  
+const prizeChallengeGrid =  
+document.getElementById("prizeChallengeGrid");  
+  
+loadPrizeChallenges();  
+  
+async function loadPrizeChallenges(){  
+  
+prizeChallengeGrid.innerHTML="Loading...";  
+  
+try{  
+  
+const snapshot =  
+await getDocs(collection(db,"prizeChallenge"));  
+  
+prizeChallengeGrid.innerHTML="";  
+  
+if(snapshot.empty){  
+  
+prizeChallengeGrid.innerHTML=`  
+<p>No Prize Challenges Available.</p>  
+`;  
+  
+return;  
+  
+}  
+  
+snapshot.forEach((docItem)=>{  
+  
+const data=docItem.data();  
+  
+prizeChallengeGrid.innerHTML+=`  
+  
+<div  
+class="prizeCard"  
+data-id="${docItem.id}">  
+  
+<img  
+src="${data.image}"  
+alt="${data.title}">  
+  
+<div class="prizeBody">  
+  
+<div class="prizeTitle">  
+  
+${data.title}  
+  
+</div>  
+  
+<div class="prizeDescription">  
+  
+${data.description}  
+  
+</div>  
+  
+</div>  
+  
+</div>  
+  
+`;  
+  
+});  
+  
+/* Open Prize Challenge */  
+  
+document.querySelectorAll(".prizeCard")  
+.forEach(card=>{  
+  
+card.onclick=()=>{  
+  
+window.location.href=  
+"quiz.html?prize="+card.dataset.id;  
+  
+};  
+  
+});  
+  
+}  
+  
+catch(error){  
+  
+console.error(error);  
+  
+prizeChallengeGrid.innerHTML=  
+"<p>Failed to load Prize Challenges.</p>";  
+  
+}  
+  
+}  
+  
+/* =========================================================  
+END LOAD PRIZE CHALLENGES  
+========================================================= */  
+      
+  
+/* =========================================================  
+HIDDEN ADMIN LOGIN  
+QUIZCANO LOGO 7 CLICKS  
+========================================================= */  
+  
+const gameIcon =  
+document.getElementById(  
+"gameIcon"  
+);  
+  
+  
+let adminClickCount =  
+0;  
+  
+  
+let adminClickTimer =  
+null;  
+  
+  
+if(gameIcon){  
+  
+    gameIcon.addEventListener(  
+        "click",  
+        function(){  
+  
+            adminClickCount++;  
+  
+  
+            clearTimeout(  
+                adminClickTimer  
+            );  
+  
+  
+            adminClickTimer =  
+            setTimeout(  
+                function(){  
+  
+                    adminClickCount =  
+                    0;  
+  
+                },  
+                3000  
+            );  
+  
+  
+            if(  
+                adminClickCount ===  
+                7  
+            ){  
+  
+                window.location.href =  
+                "login.html";  
+  
+            }  
+  
+        }  
+    );  
+  
+}  
+  
+  
+/* =========================================================  
+SECTION 03  
+QUIZ CATEGORY SCROLLER JAVASCRIPT  
+========================================================= */  
+  
+const categoryContainer =  
+document.getElementById(  
+"categoryScroll"  
+);  
+  
+  
+function activateCategoryCards(){  
+  
+    const categoryCards =  
+    document.querySelectorAll(  
+        ".category-card"  
+    );  
+  
+  
+    categoryCards.forEach(  
+        function(card){  
+  
+            card.addEventListener(  
+                "click",  
+                function(){  
+  
+                    categoryCards.forEach(  
+                        function(item){  
+  
+                            item.classList.remove(  
+                                "active"  
+                            );  
+  
+                        }  
+                    );  
+  
+  
+                    this.classList.add(  
+                        "active"  
+                    );  
+  
+  
+                    const categoryId =  
+                    this.getAttribute(  
+                        "data-id"  
+                    );  
+  
+  
+                    const categoryName =  
+                    this.getAttribute(  
+                        "data-name"  
+                    );  
+  
+  
+                    window.location.href =  
+  
+                    `category.html?subcategoryId=${categoryId}&name=${encodeURIComponent(categoryName)}`;  
+  
+                }  
+            );  
+  
+        }  
+    );  
+  
+  
+    if(  
+        categoryCards.length >  
+        0  
+    ){  
+  
+        categoryCards[0].classList.add(  
+            "active"  
+        );  
+  
+    }  
+  
+}  
+  
+  
+async function loadCategoriesFromFirebase(){  
+  
+    try{  
+  
+        const snapshot =  
+        await getDocs(  
+            collection(  
+                db,  
+                "subCategories"  
+            )  
+        );  
+  
+  
+        categoryContainer.innerHTML =  
+        "";  
+  
+  
+        snapshot.forEach(  
+            function(docItem){  
+  
+                const data =  
+                docItem.data();  
+  
+  
+                if(  
+                    data.parentCategory !==  
+                    "quizCategory"  
+                ){  
+  
+                    return;  
+  
+                }  
+  
+  
+                categoryContainer.innerHTML += `  
+  
+                    <div  
+                    class="category-card"  
+                    data-id="${docItem.id}"  
+                    data-name="${data.name}">  
+  
+                        <img  
+                        src="${data.banner}"  
+                        alt="${data.name}">  
+  
+                    </div>  
+  
+                `;  
+  
+            }  
+        );  
+  
+  
+        activateCategoryCards();  
+  
+    }  
+  
+    catch(error){  
+  
+        console.log(  
+            "Category Error:",  
+            error  
+        );  
+  
+    }  
+  
+}  
+  
+  
+loadCategoriesFromFirebase();  
+  
+  
+/* =========================================================  
+SECTION 04  
+TRENDING QUIZZES JAVASCRIPT  
+========================================================= */  
+  
+const trendingQuizList =  
+document.getElementById(  
+"trendingQuizList"  
+);  
+  
+  
+async function loadTrendingQuizzes(){  
+  
+    try{  
+  
+        const snapshot =  
+        await getDocs(  
+            collection(  
+                db,  
+                "subCategories"  
+            )  
+        );  
+  
+  
+        trendingQuizList.innerHTML =  
+        "";  
+  
+  
+        let quizNumber =  
+        1;  
+  
+  
+        snapshot.forEach(  
+            function(docItem){  
+  
+                const data =  
+                docItem.data();  
+  
+  
+                if(  
+                    data.parentCategory !==  
+                    "popularQuiz"  
+                ){  
+  
+                    return;  
+  
+                }  
+  
+  
+                let numberClass =  
+                "";  
+  
+  
+                if(  
+                    quizNumber ===  
+                    1  
+                ){  
+  
+                    numberClass =  
+                    "gold";  
+  
+                }  
+  
+                else if(  
+                    quizNumber ===  
+                    2  
+                ){  
+  
+                    numberClass =  
+                    "silver";  
+  
+                }  
+  
+                else if(  
+                    quizNumber ===  
+                    3  
+                ){  
+  
+                    numberClass =  
+                    "bronze";  
+  
+                }  
+  
+  
+                trendingQuizList.innerHTML += `  
+  
+                    <div  
+                    class="quiz-card">  
+  
+                        <div  
+                        class="quiz-number ${numberClass}">  
+  
+                            ${quizNumber}  
+  
+                        </div>  
+  
+  
+                        <img  
+                        src="${data.banner}"  
+                        class="quiz-thumb"  
+                        alt="${data.name}">  
+  
+  
+                        <div  
+                        class="quiz-details">  
+  
+                            <h3>  
+  
+                                ${data.name}  
+  
+                            </h3>  
+  
+                        </div>  
+  
+  
+                        <button  
+                        class="play-btn"  
+                        onclick="window.location.href='category.html?subcategoryId=${docItem.id}&name=${encodeURIComponent(data.name)}'">  
+  
+                            PLAY  
+  
+                        </button>  
+  
+                    </div>  
+  
+                `;  
+  
+  
+                quizNumber++;  
+  
+            }  
+        );  
+  
+    }  
+  
+    catch(error){  
+  
+        console.log(  
+            "Trending Quiz Error:",  
+            error  
+        );  
+  
+    }  
+  
+}  
+  
+  
+loadTrendingQuizzes();  
+  
+  
+/* =========================================================  
+SECTION 05  
+FEATURED QUIZ GRID JAVASCRIPT  
+========================================================= */  
+  
+const featuredQuizGrid =  
+document.getElementById(  
+"featuredQuizGrid"  
+);  
+  
+  
+async function loadFeaturedQuizzes(){  
+  
+    try{  
+  
+        const snapshot =  
+        await getDocs(  
+            collection(  
+                db,  
+                "featuredQuizzes"  
+            )  
+        );  
+  
+  
+        featuredQuizGrid.innerHTML =  
+        "";  
+  
+  
+        snapshot.forEach(  
+            function(docItem){  
+  
+                const data =  
+                docItem.data();  
+  
+  
+                featuredQuizGrid.innerHTML += `  
+  
+                    <div  
+                    class="featured-quiz-card"  
+                    onclick="window.location.href='quiz.html?quizId=${docItem.id}'">  
+  
+  
+                        <img  
+                        src="${data.image}"  
+                        alt="${data.title}">  
+  
+  
+                        <div  
+                        class="featured-quiz-info">  
+  
+  
+                            <h3>  
+  
+                                ${data.title}  
+  
+                            </h3>  
+  
+  
+                            <span>  
+  
+                                👥 ${data.players || 0} Players  
+  
+                            </span>  
+  
+  
+                            <button  
+                            class="featured-play">  
+  
+                                PLAY  
+  
+                            </button>  
+  
+  
+                        </div>  
+  
+  
+                    </div>  
+  
+                `;  
+  
+            }  
+        );  
+  
+    }  
+  
+    catch(error){  
+  
+        console.log(  
+            "Featured Quiz Error:",  
+            error  
+        );  
+  
+    }  
+  
+}  
+  
+  
+loadFeaturedQuizzes();  
+  
+  
+/* =========================================================  
+SECTION 06  
+POPULAR QUIZZES JAVASCRIPT  
+========================================================= */  
+  
+const popularQuizSlider =  
+document.getElementById(  
+"popularQuizSlider"  
+);  
+  
+  
+async function loadPopularQuizzes(){  
+  
+    try{  
+  
+        const snapshot =  
+        await getDocs(  
+            collection(  
+                db,  
+                "popularQuizzes"  
+            )  
+        );  
+  
+  
+        popularQuizSlider.innerHTML =  
+        "";  
+  
+  
+        snapshot.forEach(  
+            function(docItem){  
+  
+                const data =  
+                docItem.data();  
+  
+  
+                popularQuizSlider.innerHTML += `  
+  
+                    <div  
+                    class="popular-card"  
+                    onclick="window.location.href='quiz.html?quizId=${docItem.id}'">  
+  
+  
+                        <img  
+                        src="${data.image}"  
+                        alt="${data.title}">  
+  
+  
+                        <div  
+                        class="popular-info">  
+  
+  
+                            <h3>  
+  
+                                ${data.title}  
+  
+                            </h3>  
+  
+  
+                            <span>  
+  
+                                👥 ${data.players || 0} Players  
+  
+                            </span>  
+  
+  
+                        </div>  
+  
+  
+                    </div>  
+  
+                `;  
+  
+            }  
+        );  
+  
+    }  
+  
+    catch(error){  
+  
+        console.log(  
+            "Popular Quiz Error:",  
+            error  
+        );  
+  
+    }  
+  
+}  
+  
+  
+loadPopularQuizzes();  
+  
+  
+/* =========================================================  
+SECTION 07  
+RECENT QUIZZES JAVASCRIPT  
+========================================================= */  
+  
+const recentQuizList =  
+document.getElementById(  
+"recentQuizList"  
+);  
+  
+  
+async function loadRecentQuizzes(){  
+  
+    try{  
+  
+        const snapshot =  
+        await getDocs(  
+            collection(  
+                db,  
+                "recentQuizzes"  
+            )  
+        );  
+  
+  
+        recentQuizList.innerHTML =  
+        "";  
+  
+  
+        snapshot.forEach(  
+            function(docItem){  
+  
+                const data =  
+                docItem.data();  
+  
+  
+                recentQuizList.innerHTML += `  
+  
+                    <div  
+                    class="recent-quiz-card"  
+                    onclick="window.location.href='quiz.html?quizId=${docItem.id}'">  
+  
+  
+                        <img  
+                        src="${data.image}"  
+                        alt="${data.title}">  
+  
+  
+                        <div  
+                        class="recent-quiz-info">  
+  
+  
+                            <h3>  
+  
+                                ${data.title}  
+  
+                            </h3>  
+  
+  
+                            <span>  
+  
+                                👥 ${data.players || 0} Players  
+  
+                            </span>  
+  
+  
+                        </div>  
+  
+  
+                        <div  
+                        class="new-badge">  
+  
+                            NEW  
+  
+                        </div>  
+  
+  
+                    </div>  
+  
+                `;  
+  
+            }  
+        );  
+  
+    }  
+  
+    catch(error){  
+  
+        console.log(  
+            "Recent Quiz Error:",  
+            error  
+        );  
+  
+    }  
+  
+}  
+  
+  
+loadRecentQuizzes();  
+  
+  
+/* =========================================================  
+SECTION 02  
+PRIZE CHALLENGE JAVASCRIPT  
+========================================================= */  
+  
+const prizeChallengeContainer =  
+document.getElementById(  
+"prizeChallengeContainer"  
+);  
+  
+  
+async function loadPrizeChallenge(){  
+  
+    try{  
+  
+        const snapshot =  
+        await getDocs(  
+            collection(  
+                db,  
+                "prizeChallenge"  
+            )  
+        );  
+  
+  
+        prizeChallengeContainer.innerHTML =  
+        "";  
+  
+  
+        if(  
+            snapshot.empty  
+        ){  
+  
+            prizeChallengeContainer.innerHTML = `  
+  
+                <p  
+                style="  
+                text-align:center;  
+                color:#9CA3AF;  
+                padding:20px;  
+                ">  
+  
+                    No Prize Challenge Available  
+  
+                </p>  
+  
+            `;  
+  
+  
+            return;  
+  
+        }  
+  
+  
+        snapshot.forEach(  
+            function(docItem){  
+  
+                const data =  
+                docItem.data();  
+  
+  
+                prizeChallengeContainer.innerHTML += `  
+  
+                    <div  
+                    class="prize-challenge-card">  
+  
+  
+                        <img  
+                        src="${data.image}"  
+                        alt="${data.title}">  
+  
+  
+                        <h2>  
+  
+                            ${data.title}  
+  
+                        </h2>  
+  
+  
+                        <p>  
+  
+                            ${data.description}  
+  
+                        </p>  
+  
+  
+                        <button  
+onclick="window.location.href='category.html?subcategoryId=${data.subcategoryId}&name=${encodeURIComponent(data.categoryName)}'">  
+  
+    ▶ PLAY QUIZ NOW  
+  
+</button>  
+  
+                    </div>  
+  
+                `;  
+  
+            }  
+        );  
+  
+    }  
+  
+    catch(error){  
+  
+        console.log(  
+            "Prize Challenge Error:",  
+            error  
+        );  
+  
+    }  
+  
+}  
+  
+  
+loadPrizeChallenge();  
+  
+  
+</script></body></html>  
+  
+  
