@@ -2717,8 +2717,9 @@ Select Sub Category
 };
 
 /* Load Sub Categories */
+/* Load Prize Challenges */
 
-filterMotherCategory.onchange=async()=>{
+filterMotherCategory.onchange = async ()=>{
 
 quizGrid.innerHTML="";
 
@@ -2728,58 +2729,25 @@ Loading...
 </option>
 `;
 
-if(filterMotherCategory.value===""){
-
-filterSubCategory.innerHTML=`
-<option value="">
-Select Sub Category
-</option>
-`;
-
-return;
-
-}
-
 try{
 
-const q=query(
-
-collection(db,"subCategories"),
-
-where("parentCategory","==",filterMotherCategory.value)
-
-);
-
-const snapshot=await getDocs(q);
+const snapshot =
+await getDocs(collection(db,"prizeChallenge"));
 
 filterSubCategory.innerHTML=`
 <option value="">
-Select Sub Category
+Select Prize Challenge
 </option>
 `;
-
-if(snapshot.empty){
-
-filterSubCategory.innerHTML=`
-<option value="">
-No Sub Category Found
-</option>
-`;
-
-return;
-
-}
 
 snapshot.forEach((docItem)=>{
 
-const item=docItem.data();
+const data = docItem.data();
 
-filterSubCategory.innerHTML+=`
-
+filterSubCategory.innerHTML += `
 <option value="${docItem.id}">
-${item.name}
+${data.title}
 </option>
-
 `;
 
 });
@@ -2798,6 +2766,8 @@ Failed To Load
 
 };
 
+
+
 /* Load Quiz List */
 
 filterSubCategory.onchange=()=>{
@@ -2805,28 +2775,25 @@ filterSubCategory.onchange=()=>{
 loadQuizList();
 
 };
-
 async function loadQuizList(){
 
 quizGrid.innerHTML="Loading...";
 
 try{
 
-const q=query(
-
+const q = query(
 collection(db,"quizzes"),
-
-where("subCategoryId","==",filterSubCategory.value)
-
+where("prizeChallengeId","==",filterSubCategory.value)
 );
 
-const snapshot=await getDocs(q);
+const snapshot = await getDocs(q);
 
 quizGrid.innerHTML="";
 
 if(snapshot.empty){
 
-quizGrid.innerHTML="<p style='text-align:center;'>No Quiz Found.</p>";
+quizGrid.innerHTML =
+"<p style='text-align:center;'>No Quiz Found.</p>";
 
 return;
 
@@ -2834,11 +2801,11 @@ return;
 
 snapshot.forEach((docItem)=>{
 
-const quiz=docItem.data();
+const quiz = docItem.data();
 
-const firstImage=quiz.questions[0].image;
+const firstImage = quiz.questions[0].image;
 
-quizGrid.innerHTML+=`
+quizGrid.innerHTML += `
 
 <div class="quizCard">
 
@@ -2888,8 +2855,6 @@ Delete
 
 });
 
-/* Edit Button */
-
 document.querySelectorAll(".editQuizButton").forEach(button=>{
 
 button.onclick=()=>{
@@ -2899,8 +2864,6 @@ editQuiz(button.dataset.id);
 };
 
 });
-
-/* Delete Button */
 
 document.querySelectorAll(".deleteQuizButton").forEach(button=>{
 
@@ -2912,15 +2875,20 @@ deleteQuiz(button.dataset.id);
 
 });
 
-}catch(error){
+}
+
+catch(error){
 
 console.error(error);
 
-quizGrid.innerHTML="<p style='text-align:center;color:red;'>Failed to load quizzes.</p>";
+quizGrid.innerHTML =
+"<p style='color:red;text-align:center;'>Failed to load quizzes.</p>";
 
 }
 
 }
+
+
 /* Delete Quiz */
 
 async function deleteQuiz(id){
