@@ -1808,6 +1808,12 @@ document.getElementById("manageQuizButton");
 
 const logoutButton =
 document.getElementById("logoutButton");
+function clearMenuFocus(){
+
+document.querySelectorAll(".dashboard-menu-card")
+.forEach(button=>button.blur());
+
+}  
 
 /*
 Navigation will be connected
@@ -2312,6 +2318,8 @@ let quizQuestions=[];
 /* Open */
 
 createQuizButton.onclick=()=>{
+
+clearMenuFocus();
 
 createQuizSection.classList.add("show");
 
@@ -3233,12 +3241,19 @@ OPEN CREATE PRIZE CHALLENGE
 
 createPrizeButton.onclick = () => {
 
+clearMenuFocus();
+
 prizeChallengeSection.classList.add("show");
+
+createQuizSection.classList.remove("show");
+
+manageQuizSection.classList.remove("show");
 
 managePrizeSection.classList.remove("show");
 
-};
+logoutSection.classList.remove("show");
 
+};
 
 /* ======================================
 OPEN MANAGE PRIZE CHALLENGE
@@ -3246,9 +3261,17 @@ OPEN MANAGE PRIZE CHALLENGE
 
 managePrizeButton.onclick = () => {
 
+clearMenuFocus();
+
 managePrizeSection.classList.add("show");
 
 prizeChallengeSection.classList.remove("show");
+
+createQuizSection.classList.remove("show");
+
+manageQuizSection.classList.remove("show");
+
+logoutSection.classList.remove("show");
 
 loadPrizeChallenges();
 
