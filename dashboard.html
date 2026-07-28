@@ -2621,51 +2621,7 @@ alert("Failed to load quiz.");
 
 }
 
-/* Open Create Quiz */
 
-createQuizSection.classList.add("show");
-
-manageQuizSection.classList.remove("show");
-
-/* Fill Basic Information */
-
-quizTitle.value = quiz.title;
-
-totalQuestions.value = quiz.totalQuestions;
-
-quizPrizeChallenge.value = quiz.prizeChallengeId;
-
-/* Remember Quiz ID */
-
-saveQuizButton.dataset.editId = id;
-
-/* Change Button */
-
-saveQuizButton.innerText = "Update Quiz";
-editingQuiz = true;
-
-editingQuizId = id;
-
-loadedQuestions = [...quiz.questions];
-  
-
-/* Disable Question Entry for now */
-
-nextQuestionButton.style.display = "none";
-
-saveQuizButton.style.display = "block";
-
-alert("Quiz loaded successfully. Saving updates will be connected in the next step.");
-
-}catch(error){
-
-console.error(error);
-
-alert("Failed to load quiz.");
-
-}
-
-}
 /* =========================================================
 END OF SECTION 06 JAVASCRIPT
 ========================================================= */
