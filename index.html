@@ -1965,121 +1965,109 @@ async function loadRecentQuizzes(){
   
 loadRecentQuizzes();  
   
-  
-/* =========================================================  
-SECTION 02  
-PRIZE CHALLENGE JAVASCRIPT  
+/* =========================================================
+SECTION 02
+PRIZE CHALLENGE JAVASCRIPT
+========================================================= */
+
+const prizeChallengeContainer =
+document.getElementById(
+"prizeChallengeContainer"
+);
+
+async function loadPrizeChallenge(){
+
+    try{
+
+        const snapshot =
+        await getDocs(
+            collection(
+                db,
+                "prizeChallenge"
+            )
+        );
+
+        prizeChallengeContainer.innerHTML = "";
+
+        if(snapshot.empty){
+
+            prizeChallengeContainer.innerHTML = `
+
+                <p
+                style="
+                text-align:center;
+                color:#9CA3AF;
+                padding:20px;
+                ">
+
+                    No Prize Challenge Available
+
+                </p>
+
+            `;
+
+            return;
+
+        }
+
+        snapshot.forEach(function(docItem){
+
+            const data = docItem.data();
+
+            prizeChallengeContainer.innerHTML += `
+
+                <div
+                class="prize-challenge-card">
+
+                    <img
+                    src="${data.image}"
+                    alt="${data.title}">
+
+                    <h2>
+
+                        ${data.title}
+
+                    </h2>
+
+                    <p>
+
+                        ${data.description}
+
+                    </p>
+
+                    <button
+                    onclick="window.location.href='quiz.html?id=${data.quizId}'">
+
+                        ▶ PLAY QUIZ NOW
+
+                    </button>
+
+                </div>
+
+            `;
+
+        });
+
+    }
+
+    catch(error){
+
+        console.log(
+            "Prize Challenge Error:",
+            error
+        );
+
+    }
+
+}
+
+loadPrizeChallenge();
+
+/* =========================================================
+END OF SECTION 02
 ========================================================= */  
-  
-const prizeChallengeContainer =  
-document.getElementById(  
-"prizeChallengeContainer"  
-);  
-  
-  
-async function loadPrizeChallenge(){  
-  
-    try{  
-  
-        const snapshot =  
-        await getDocs(  
-            collection(  
-                db,  
-                "prizeChallenge"  
-            )  
-        );  
-  
-  
-        prizeChallengeContainer.innerHTML =  
-        "";  
-  
-  
-        if(  
-            snapshot.empty  
-        ){  
-  
-            prizeChallengeContainer.innerHTML = `  
-  
-                <p  
-                style="  
-                text-align:center;  
-                color:#9CA3AF;  
-                padding:20px;  
-                ">  
-  
-                    No Prize Challenge Available  
-  
-                </p>  
-  
-            `;  
-  
-  
-            return;  
-  
-        }  
-  
-  
-        snapshot.forEach(  
-            function(docItem){  
-  
-                const data =  
-                docItem.data();  
-  
-  
-                prizeChallengeContainer.innerHTML += `  
-  
-                    <div  
-                    class="prize-challenge-card">  
-  
-  
-                        <img  
-                        src="${data.image}"  
-                        alt="${data.title}">  
-  
-  
-                        <h2>  
-  
-                            ${data.title}  
-  
-                        </h2>  
-  
-  
-                        <p>  
-  
-                            ${data.description}  
-  
-                        </p>  
-  
-  
-                        <button  
-onclick="window.location.href='category.html?subcategoryId=${data.subcategoryId}&name=${encodeURIComponent(data.categoryName)}'">  
-  
-    ▶ PLAY QUIZ NOW  
-  
-</button>  
-  
-                    </div>  
-  
-                `;  
-  
-            }  
-        );  
-  
-    }  
-  
-    catch(error){  
-  
-        console.log(  
-            "Prize Challenge Error:",  
-            error  
-        );  
-  
-    }  
-  
-}  
-  
-  
-loadPrizeChallenge();  
+
+
   
   
 </script></body></html> 
