@@ -712,20 +712,14 @@ let quizQuestions=[];
 let currentQuestionIndex=0;
 
 /* =========================================================
-GET QUIZ ID
+GET QUIZ OR PRIZE ID
 ========================================================= */
 
-const params=new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search);
 
-const quizId=params.get("id");
+const quizId = params.get("id");
 
-if(!quizId){
-
-alert("Quiz not found.");
-
-throw new Error("Missing Quiz ID");
-
-}
+const prizeId = params.get("prize");
 
 /* =========================================================
 LOAD QUIZ
@@ -735,7 +729,17 @@ async function loadQuiz(){
 
 try{
 
-const snap=await getDoc(doc(db,"quizzes",quizId));
+let snap;
+
+if(prizeId){
+
+snap = await getDoc(doc(db,"prizeChallenge",prizeId));
+
+}else{
+
+snap = await getDoc(doc(db,"quizzes",quizId));
+
+}
 
 if(!snap.exists()){
 
@@ -745,9 +749,9 @@ return;
 
 }
 
-quizData=snap.data();
+quizData = snap.data();
 
-quizQuestions=quizData.questions||[];
+quizQuestions = quizData.questions || [];
 
 displayQuestion();
 
