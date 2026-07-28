@@ -172,81 +172,67 @@ SECTION 02
 PRIZE CHALLENGE CSS
 ========================================================= */
 
-.featured-carousel{
+#prizeChallengeContainer{
 
-width:100%;  
+width:100%;
 
-padding:6px 8px 10px;
+max-width:1200px;
 
-}
+margin:25px auto;
 
-.featured-title{
+padding:15px;
 
-display:flex;  
+display:grid;
 
-align-items:center;  
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 
-gap:8px;  
-
-margin-left:4px;  
-
-margin-bottom:10px;  
-
-font-size:16px;  
-
-font-weight:900;  
-
-color:#FFFFFF;  
-
-letter-spacing:1px;  
-
-text-transform:uppercase;  
-
-text-shadow:0 2px 8px rgba(0,0,0,.35);
-
-}
-
-.prize-challenge-container{
-
-display:flex;  
-
-flex-direction:column;  
-
-gap:20px;
+gap:24px;
 
 }
 
 .prize-challenge-card{
 
-background:#171C2F;  
+background:#111827;
 
-border-radius:20px;  
+border-radius:22px;
 
-padding:20px;  
+overflow:hidden;
 
-text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,.18);
+
+transition:.25s;
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+.prize-challenge-card:hover{
+
+transform:translateY(-6px);
 
 }
 
 .prize-challenge-card img{
 
-width:100%;  
+width:100%;
 
-max-width:320px;  
+height:220px;
 
-display:block;  
+object-fit:cover;
 
-margin:auto;  
-
-border-radius:14px;
+display:block;
 
 }
 
 .prize-challenge-card h2{
 
-margin-top:20px;  
+padding:18px 20px 8px;
 
-font-size:28px;  
+font-size:24px;
+
+font-weight:800;
 
 color:#F59E0B;
 
@@ -254,37 +240,69 @@ color:#F59E0B;
 
 .prize-challenge-card p{
 
-margin-top:15px;  
+padding:0 20px;
 
-font-size:16px;  
+font-size:15px;
 
-line-height:1.6;  
+line-height:1.7;
 
 color:#9CA3AF;
+
+flex:1;
 
 }
 
 .prize-challenge-card button{
 
-margin-top:25px;  
+margin:22px 20px 20px;
 
-width:220px;  
+height:54px;
 
-height:60px;  
+border:none;
 
-background:#F59E0B;  
+border-radius:14px;
 
-color:#FFFFFF;  
+background:#F59E0B;
 
-font-size:22px;  
+color:#FFFFFF;
 
-font-weight:bold;  
+font-size:17px;
 
-border:none;  
-
-border-radius:15px;  
+font-weight:800;
 
 cursor:pointer;
+
+transition:.2s;
+
+}
+
+.prize-challenge-card button:hover{
+
+background:#D97706;
+
+}
+
+@media(max-width:600px){
+
+#prizeChallengeContainer{
+
+grid-template-columns:1fr;
+
+padding:12px;
+
+}
+
+.prize-challenge-card img{
+
+height:200px;
+
+}
+
+.prize-challenge-card h2{
+
+font-size:22px;
+
+}
 
 }
 
@@ -1034,95 +1052,18 @@ MOBILE
 }
 
 }
-/* =========================================================
-PRIZE CHALLENGE HOME CSS
-========================================================= */
 
-#prizeChallengeContainer{
 
-width:100%;
 
-max-width:1200px;
+</style> 
 
-margin:40px auto;
-
-padding:20px;
-
-}
-
-.prizeChallengeGrid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-
-gap:20px;
-
-}
-
-.prizeCard{
-
-background:#111827;
-
-border-radius:18px;
-
-overflow:hidden;
-
-cursor:pointer;
-
-transition:.25s;
-
-}
-
-.prizeCard:hover{
-
-transform:translateY(-5px);
-
-}
-
-.prizeCard img{
-
-width:100%;
-
-height:180px;
-
-object-fit:cover;
-
-}
-
-.prizeBody{
-
-padding:18px;
-
-}
-
-.prizeTitle{
-
-font-size:22px;
-
-font-weight:bold;
-
-margin-bottom:10px;
-
-color:#fff;
-
-}
-
-.prizeDescription{
-
-font-size:15px;
-
-color:#bdbdbd;
-
-line-height:1.6;
-
-}
-
-</style>  </head><body>  
+</head>
+<body>  
 <!-- =========================================================  
 SECTION 01  
 QUIZCANO HEADER HTML  
-========================================================= -->  <header class="top-header">  
+========================================================= -->  
+<header class="top-header">  
 <button  
 class="menu-btn"  
 id="menuBtn">  ☰
