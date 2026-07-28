@@ -299,17 +299,16 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 /* =========================================================
-GET CATEGORY
+GET PRIZE CHALLENGE
 ========================================================= */
 
 const params = new URLSearchParams(window.location.search);
 
-const categoryId = params.get("subcategoryId");
+const prizeChallengeId = params.get("prize");
 const categoryName = params.get("name");
 
 document.getElementById("categoryTitle").textContent =
 categoryName || "Quizzes";
-
 /* =========================================================
 LOAD QUIZZES
 ========================================================= */
@@ -323,9 +322,9 @@ async function loadQuizzes(){
 
     try{
 
-   const q = query(
+const q = query(
     collection(db,"quizzes"),
-    where("subCategoryId","==",categoryId)
+    where("prizeChallengeId","==",prizeChallengeId)
 );
         const snapshot = await getDocs(q);
         console.log("Quizzes found:", snapshot.size);
