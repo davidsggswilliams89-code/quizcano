@@ -2696,19 +2696,23 @@ manageQuizButton.onclick=()=>{
 
 manageQuizSection.classList.add("show");
 
+createQuizSection.classList.remove("show");
+prizeChallengeSection.classList.remove("show");
+managePrizeSection.classList.remove("show");
+logoutSection.classList.remove("show");
+
 quizGrid.innerHTML="";
 
 filterMotherCategory.value="";
 
 filterSubCategory.innerHTML=`
 <option value="">
-Select Sub Category
+Select Prize Challenge
 </option>
 `;
 
 };
 
-/* Load Sub Categories */
 /* Load Prize Challenges */
 
 filterMotherCategory.onchange = async ()=>{
