@@ -2187,11 +2187,9 @@ quizQuestions[i].image=result.secure_url;
 
 /* Save Quiz */
 
-await addDoc(
+/* Save or Update Quiz */
 
-collection(db,"quizzes"),
-
-{
+const quizData = {
 
 prizeChallengeId: quizPrizeChallenge.value,
 
@@ -2199,15 +2197,41 @@ title: quizTitle.value,
 
 totalQuestions: Number(totalQuestions.value),
 
-questions: quizQuestions,
+questions: quizQuestions
 
-createdAt: serverTimestamp()
+};
 
-}
+if(saveQuizButton.dataset.editId){
+
+await updateDoc(
+
+doc(db,"quizzes",saveQuizButton.dataset.editId),
+
+quizData
+
+);
+
+alert("Quiz updated successfully.");
+
+delete saveQuizButton.dataset.editId;
+
+saveQuizButton.innerText = "Save Quiz";
+
+}else{
+
+quizData.createdAt = serverTimestamp();
+
+await addDoc(
+
+collection(db,"quizzes"),
+
+quizData
 
 );
 
 alert("Quiz saved successfully.");
+
+}
 
 /* Reset */
 
