@@ -2552,6 +2552,75 @@ return;
 
 const quiz = snapshot.data();
 
+/* Editing Mode */
+
+editingQuiz = true;
+
+editingQuizId = id;
+
+loadedQuestions = [...quiz.questions];
+
+quizQuestions = [...quiz.questions];
+
+currentQuestion = 1;
+
+/* Open Create Quiz */
+
+createQuizSection.classList.add("show");
+
+manageQuizSection.classList.remove("show");
+
+/* Fill Quiz Details */
+
+quizPrizeChallenge.value = quiz.prizeChallengeId;
+
+quizTitle.value = quiz.title;
+
+totalQuestions.value = quiz.totalQuestions;
+
+/* Load First Question */
+
+const firstQuestion = loadedQuestions[0];
+
+questionNumber.innerText = "Question 1";
+
+optionA.value = firstQuestion.optionA;
+
+optionB.value = firstQuestion.optionB;
+
+optionC.value = firstQuestion.optionC;
+
+optionD.value = firstQuestion.optionD;
+
+correctAnswer.value = firstQuestion.correctAnswer;
+
+questionPreviewImage.src = firstQuestion.image;
+
+questionPreviewImage.style.display = "block";
+
+questionPreviewText.style.display = "none";
+
+/* Update Button */
+
+saveQuizButton.dataset.editId = id;
+
+saveQuizButton.innerText = "Update Quiz";
+
+nextQuestionButton.style.display = "none";
+
+saveQuizButton.style.display = "block";
+
+}
+catch(error){
+
+console.error(error);
+
+alert("Failed to load quiz.");
+
+}
+
+}
+
 /* Open Create Quiz */
 
 createQuizSection.classList.add("show");
