@@ -324,7 +324,7 @@ async function loadQuizzes(){
 
 const q = query(
     collection(db,"quizzes"),
-    where("prizeChallengeId","==",prizeChallengeId)
+    where("prizeChallengeId","==",challengeId)
 );
         const snapshot = await getDocs(q);
         console.log("Quizzes found:", snapshot.size);
