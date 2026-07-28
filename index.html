@@ -170,128 +170,96 @@ font-size:22px;
 cursor:pointer;  
   
 }  
-  
-/* =========================================================  
-SECTION 02  
-PRIZE CHALLENGE CSS  
-========================================================= */  
-  
-.featured-carousel{  
-  
-width:100%;    
-  
-padding:6px 8px 10px;  
-  
+/* =========================================================
+SECTION 02
+PRIZE CHALLENGE CSS
+========================================================= */
+
+.featured-carousel{
+
+    width:100%;
+    padding:6px 8px 10px;
+
+}
+
+.featured-title{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-left:4px;
+    margin-bottom:10px;
+    font-size:16px;
+    font-weight:900;
+    color:#FFFFFF;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    text-shadow:0 2px 8px rgba(0,0,0,.35);
+
+}
+
+.prize-challenge-container{
+
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    align-items:center;
+
+}
+
+.prize-challenge-card{
+
+    width:100%;
+    max-width:300px;
+    background:#171C2F;
+    border-radius:15px;
+    padding:12px;
+    text-align:center;
+    margin:0 auto;
+
+}
+
+.prize-challenge-card img{
+
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    border-radius:12px;
+
+}
+
+.prize-challenge-card h2{
+
+    margin-top:12px;
+    font-size:20px;
+    color:#F59E0B;
+
+}
+
+.prize-challenge-card p{
+
+    margin-top:10px;
+    font-size:14px;
+    line-height:1.5;
+    color:#9CA3AF;
+
+}
+
+.prize-challenge-card button{
+
+    margin-top:15px;
+    width:170px;
+    height:45px;
+    background:#F59E0B;
+    color:#FFFFFF;
+    font-size:16px;
+    font-weight:bold;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+
 }  
-  
-.featured-title{  
-  
-display:flex;    
-  
-align-items:center;    
-  
-gap:8px;    
-  
-margin-left:4px;    
-  
-margin-bottom:10px;    
-  
-font-size:16px;    
-  
-font-weight:900;    
-  
-color:#FFFFFF;    
-  
-letter-spacing:1px;    
-  
-text-transform:uppercase;    
-  
-text-shadow:0 2px 8px rgba(0,0,0,.35);  
-  
-}  
-  
-.prize-challenge-container{  
-  
-display:flex;    
-  
-flex-direction:column;    
-  
-gap:20px;  
-  
-}  
-  
-.prize-challenge-card{  
-  
-background:#171C2F;    
-  
-border-radius:20px;    
-  
-padding:20px;    
-  
-text-align:center;  
-  
-}  
-  
-.prize-challenge-card img{  
-  
-width:100%;    
-  
-max-width:320px;    
-  
-display:block;    
-  
-margin:auto;    
-  
-border-radius:14px;  
-  
-}  
-  
-.prize-challenge-card h2{  
-  
-margin-top:20px;    
-  
-font-size:28px;    
-  
-color:#F59E0B;  
-  
-}  
-  
-.prize-challenge-card p{  
-  
-margin-top:15px;    
-  
-font-size:16px;    
-  
-line-height:1.6;    
-  
-color:#9CA3AF;  
-  
-}  
-  
-.prize-challenge-card button{  
-  
-margin-top:25px;    
-  
-width:220px;    
-  
-height:60px;    
-  
-background:#F59E0B;    
-  
-color:#FFFFFF;    
-  
-font-size:22px;    
-  
-font-weight:bold;    
-  
-border:none;    
-  
-border-radius:15px;    
-  
-cursor:pointer;  
-  
-}  
-  
+
 /* =========================================================  
 SECTION 03  
 QUIZ CATEGORY SCROLLER CSS  
@@ -832,75 +800,7 @@ MOBILE
 PRIZE CHALLENGE HOME CSS  
 ========================================================= */  
   
-#prizeChallengeContainer{
 
-    width:100%;
-
-    max-width:1200px;
-
-    margin:40px auto;
-
-    padding:20px;
-
-}
-  
-.prizeCard{  
-  
-background:#111827;  
-  
-border-radius:18px;  
-  
-overflow:hidden;  
-  
-cursor:pointer;  
-  
-transition:.25s;  
-  
-}  
-  
-.prizeCard:hover{  
-  
-transform:translateY(-5px);  
-  
-}  
-  
-.prizeCard img{  
-  
-width:100%;  
-  
-height:180px;  
-  
-object-fit:cover;  
-  
-}  
-  
-.prizeBody{  
-  
-padding:18px;  
-  
-}  
-  
-.prizeTitle{  
-  
-font-size:22px;  
-  
-font-weight:bold;  
-  
-margin-bottom:10px;  
-  
-color:#fff;  
-  
-}  
-  
-.prizeDescription{  
-  
-font-size:15px;  
-  
-color:#bdbdbd;  
-  
-line-height:1.6;  
-  
-}  
   
 </style>  
 </head>
@@ -908,7 +808,8 @@ line-height:1.6;
 <!-- =========================================================    
 SECTION 01    
 QUIZCANO HEADER HTML    
-========================================================= -->  <header class="top-header">    
+========================================================= -->  
+<header class="top-header">    
 <button    
 class="menu-btn"    
 id="menuBtn">  ☰  
