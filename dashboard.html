@@ -1900,6 +1900,12 @@ let currentQuestion=1;
 
 let quizQuestions=[];
 
+let editingQuiz = false;
+
+let editingQuizId = "";
+
+let loadedQuestions = [];  
+
 /* Open */
 
 createQuizButton.onclick=()=>{
@@ -2528,8 +2534,6 @@ alert("Delete failed.");
 
 /* Edit Quiz */
 
-/* Edit Quiz */
-
 async function editQuiz(id){
 
 try{
@@ -2569,6 +2573,12 @@ saveQuizButton.dataset.editId = id;
 /* Change Button */
 
 saveQuizButton.innerText = "Update Quiz";
+editingQuiz = true;
+
+editingQuizId = id;
+
+loadedQuestions = [...quiz.questions];
+  
 
 /* Disable Question Entry for now */
 
