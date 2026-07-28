@@ -2946,7 +2946,17 @@ document.getElementById("confirmLogoutButton");
 
 logoutButton.onclick=()=>{
 
+clearMenuFocus();
+
 logoutSection.classList.add("show");
+
+createQuizSection.classList.remove("show");
+
+manageQuizSection.classList.remove("show");
+
+prizeChallengeSection.classList.remove("show");
+
+managePrizeSection.classList.remove("show");
 
 };
 
