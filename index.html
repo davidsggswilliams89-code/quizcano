@@ -425,136 +425,6 @@ pointer-events:none;
   
 }  
   
-/* =========================================================  
-SECTION 04  
-TRENDING QUIZZES CSS  
-========================================================= */  
-  
-.trending-quizzes{  
-  
-width:100%;    
-  
-padding:16px 15px 30px;  
-  
-}  
-  
-.trending-quizzes .section-header{  
-  
-display:flex;    
-  
-justify-content:space-between;    
-  
-align-items:center;    
-  
-margin-bottom:14px;  
-  
-}  
-  
-.trending-quizzes .section-header h2{  
-  
-font-size:16px;    
-  
-font-weight:800;    
-  
-color:#FFFFFF;  
-  
-}  
-  
-.trending-quizzes .section-header a{  
-  
-color:#F59E0B;    
-  
-text-decoration:none;    
-  
-font-size:13px;    
-  
-font-weight:700;  
-  
-}  
-  
-.quiz-card{  
-  
-display:flex;    
-  
-align-items:center;    
-  
-gap:12px;    
-  
-background:#171C2F;    
-  
-border:1px solid rgba(255,255,255,.06);    
-  
-border-radius:18px;    
-  
-padding:12px;    
-  
-margin-bottom:12px;    
-  
-transition:.25s ease;  
-  
-}  
-  
-.quiz-card:hover{  
-  
-transform:translateY(-2px);    
-  
-background:#1E2744;  
-  
-}  
-  
-.quiz-number{  
-  
-width:26px;    
-  
-height:26px;    
-  
-border-radius:50%;    
-  
-background:#2D3656;    
-  
-color:#FFFFFF;    
-  
-display:flex;    
-  
-justify-content:center;    
-  
-align-items:center;    
-  
-font-size:12px;    
-  
-font-weight:bold;    
-  
-flex-shrink:0;  
-  
-}  
-  
-.gold{  
-  
-background:#F4B400;    
-  
-color:#111111;  
-  
-}  
-  
-.silver{  
-  
-background:#C0C0C0;    
-  
-color:#111111;  
-  
-}  
-  
-.bronze{  
-  
-background:#CD7F32;  
-  
-}  
-  
-.quiz-thumb{  
-  
-width:62px;    
-  
-height:62px;    
   
 border-radius:12px;    
   
@@ -787,87 +657,7 @@ text-decoration:none;
 font-size:13px;    
   
 font-weight:700;  
-  
-}  
-  
-.popular-slider{  
-  
-display:flex;    
-  
-gap:14px;    
-  
-overflow-x:auto;    
-  
-scrollbar-width:none;    
-  
-scroll-behavior:smooth;  
-  
-}  
-  
-.popular-slider::-webkit-scrollbar{  
-  
-display:none;  
-  
-}  
-  
-.popular-card{  
-  
-flex:0 0 150px;    
-  
-background:#171C2F;    
-  
-border-radius:18px;    
-  
-overflow:hidden;    
-  
-border:1px solid rgba(255,255,255,.08);    
-  
-cursor:pointer;  
-  
-}  
-  
-.popular-card img{  
-  
-width:100%;    
-  
-height:180px;    
-  
-object-fit:cover;    
-  
-display:block;  
-  
-}  
-  
-.popular-info{  
-  
-padding:10px;  
-  
-}  
-  
-.popular-info h3{  
-  
-font-size:13px;    
-  
-color:#FFFFFF;    
-  
-font-weight:700;    
-  
-margin-bottom:6px;  
-  
-}  
-  
-.popular-info span{  
-  
-font-size:11px;    
-  
-color:#9CA3AF;  
-  
-}  
-  
-/* =========================================================  
-SECTION 07  
-RECENT QUIZZES CSS  
-========================================================= */  
+
   
 .recent-quiz-section{  
   
@@ -1966,10 +1756,10 @@ SECTION 02
 PRIZE CHALLENGE JAVASCRIPT  
 ========================================================= */  
   
-const prizeChallengeContainer =  
-document.getElementById(  
-"prizeChallengeContainer"  
-);  
+const prizeChallengeContainer =
+document.getElementById(
+"prizeChallengeGrid"
+);
   
 async function loadPrizeChallenge(){  
   
