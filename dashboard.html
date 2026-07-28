@@ -1557,8 +1557,17 @@ Prize Challenges
 
 </select>
 
-</div>
+<select
+id="filterSubCategory"
+class="manageQuizInput">
 
+<option value="">
+Select Prize Challenge
+</option>
+
+</select>
+
+</div>
 <div
 id="quizGrid"
 class="quizGrid">
@@ -2345,24 +2354,35 @@ reader.readAsDataURL(file);
 /* Load Sub Categories */
 async function loadQuizPrizeChallenges(){
 
-    quizPrizeChallenge.innerHTML =
-    `<option value="">Select Prize Challenge</option>`;
+    quizPrizeChallenge.innerHTML = `
+    <option value="">Select Prize Challenge</option>
+    `;
 
-    const snapshot = await getDocs(
-        collection(db,"prizeChallenge")
-    );
+    try{
 
-    snapshot.forEach((docItem)=>{
+        const snapshot = await getDocs(
+            collection(db,"prizeChallenge")
+        );
 
-        const data = docItem.data();
+        snapshot.forEach((docItem)=>{
 
-        quizPrizeChallenge.innerHTML += `
-        <option value="${docItem.id}">
-            ${data.title}
-        </option>
-        `;
+            const data = docItem.data();
 
-    });
+            quizPrizeChallenge.innerHTML += `
+            <option value="${docItem.id}">
+                ${data.title}
+            </option>
+            `;
+
+        });
+
+    }catch(error){
+
+        console.error(error);
+
+        alert("Failed to load Prize Challenges.");
+
+    }
 
 }
 
