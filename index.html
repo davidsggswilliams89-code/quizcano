@@ -1210,18 +1210,6 @@ SECTION 01
 GET PRIZE CHALLENGE ID  
 ========================================================= */  
   
-const params = new URLSearchParams(window.location.search);  
-  
-const prizeId = params.get("prize");  
-  
-if(!prizeId){  
-  
-alert("Prize Challenge not found.");  
-  
-throw new Error("No Prize Challenge ID");  
-  
-}  
-  
 /* =========================================================  
 END OF SECTION 01  
 ========================================================= */         
