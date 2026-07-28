@@ -2504,9 +2504,63 @@ alert("Delete failed.");
 
 /* Edit Quiz */
 
+/* Edit Quiz */
+
 async function editQuiz(id){
 
-alert("Edit Quiz will be implemented in the next step.");
+try{
+
+const snapshot = await getDoc(
+doc(db,"quizzes",id)
+);
+
+if(!snapshot.exists()){
+
+alert("Quiz not found.");
+
+return;
+
+}
+
+const quiz = snapshot.data();
+
+/* Open Create Quiz */
+
+createQuizSection.classList.add("show");
+
+manageQuizSection.classList.remove("show");
+
+/* Fill Basic Information */
+
+quizTitle.value = quiz.title;
+
+totalQuestions.value = quiz.totalQuestions;
+
+quizPrizeChallenge.value = quiz.prizeChallengeId;
+
+/* Remember Quiz ID */
+
+saveQuizButton.dataset.editId = id;
+
+/* Change Button */
+
+saveQuizButton.innerText = "Update Quiz";
+
+/* Disable Question Entry for now */
+
+nextQuestionButton.style.display = "none";
+
+saveQuizButton.style.display = "block";
+
+alert("Quiz loaded successfully. Saving updates will be connected in the next step.");
+
+}catch(error){
+
+console.error(error);
+
+alert("Failed to load quiz.");
+
+}
 
 }
 /* =========================================================
